@@ -50,7 +50,8 @@ Zakres badañ zale¿ny od specjalizacji*
 # Godz. przyjmowania s¹ œciœle ustalone (8h pracy w godzinach 8-16, 10-18 lub 12-20)
 D¹¿ymy do minimalizacji bazy danych
 Normalizacja nazw zmiennych
-Nazwy tabel w liczbie mnogiej*
+# Unifikacja ID
+# Nazwy tabel w liczbie mnogiej
 ---------------------------------------------------
 * - opcjonalne
 ** - gdy bêdzie trzeba wypchaæ bazê
