@@ -1,0 +1,56 @@
+--------------------- Pacjent ---------------------
+Imie i nazwisko
+PESEL
+P³eæ (enum, w najgorszym przypadku bool)
+Data urodzenia (z PESELu)
+Adres zamieszkania
+Lekarz prowadz¹cy
+Telefon
+Oœwiadczenia* (bool tak/nie lub rozbudowaæ**)
+
+--------------------- Lekarz ----------------------
+Imie i nazwisko
+PESEL
+Adres zamieszkania
+Specjalizacja
+Telefon
+Nr gabinetu
+Godz przyjmowania
+Zakres badan*
+Cennik**
+
+--------------------- Specjalizacja ---------------
+Nazwa
+
+--------------------- Wizyty ----------------------
+Pacjent
+Lekarz
+Data wizyty
+Zakres badan
+Recepta
+Opis s³owny (rozpoznanie, choroba, dawka etc)
+
+--------------------- Recepta ---------------------
+Dawka
+Okres
+
+--------------------- Leki ------------------------
+Nazwa
+
+
+--------------------- Za³o¿enia -------------------
+# Jeden lekarz mo¿e prowadziæ kilku pacjentów
+# Jeden lekarz mo¿e mieæ kilka specjalizacji
+# Jedn¹ specjalizacjê mo¿e mieæ kilku lekarzy
+Zakres badañ zale¿ny od specjalizacji*
+# W jednym czasie u jednego lekarza mo¿e byæ tylko jeden pacjent
+# Jedna recepta mo¿e zawieraæ kilka leków
+# Leki zawieraj¹ dawki
+# Opis s³owny nie mo¿e byæ pusty
+# Godz. przyjmowania s¹ œciœle ustalone (8h pracy w godzinach 8-16, 10-18 lub 12-20)
+D¹¿ymy do minimalizacji bazy danych
+Normalizacja nazw zmiennych
+Nazwy tabel w liczbie mnogiej*
+---------------------------------------------------
+* - opcjonalne
+** - gdy bêdzie trzeba wypchaæ bazê
