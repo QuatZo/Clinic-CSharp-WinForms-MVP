@@ -1,0 +1,16 @@
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\bin\Debug\Patient.exe.config
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\bin\Debug\Patient.exe
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\bin\Debug\Patient.pdb
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.Form1.resources
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.MenuPanel.resources
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.Properties.Resources.resources
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.csproj.GenerateResource.cache
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.csproj.CoreCompileInputs.cache
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.exe
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.pdb
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.InfoPanel.resources
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.LoginPanel.resources
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.RegisterPanel.resources
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.RegisterAppointmentPanel.resources
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.AppointmentsPanel.resources
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.AppointmentPanel.resources
