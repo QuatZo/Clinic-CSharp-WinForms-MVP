@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.labelInfo = new System.Windows.Forms.Label();
+            this.editPanel1 = new Patient.EditPanel();
             this.loginPanel1 = new Patient.LoginPanel();
             this.menuPanel1 = new Patient.MenuPanel();
             this.appointmentPanel1 = new Patient.AppointmentPanel();
@@ -48,6 +49,18 @@
             this.labelInfo.Text = "Przychodnia lekarska\r\n\r\nPanel pacjenta\r\n\r\nWitaj, [...]\r\n\r\n\r\nAutorzy:\r\nMadejski\r\nM" +
     "rosek\r\nParkitny";
             this.labelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // editPanel1
+            // 
+            this.editPanel1.Address = "Adres";
+            this.editPanel1.Enabled = false;
+            this.editPanel1.Location = new System.Drawing.Point(337, 13);
+            this.editPanel1.Name = "editPanel1";
+            this.editPanel1.Phone = "Telefon";
+            this.editPanel1.Size = new System.Drawing.Size(807, 559);
+            this.editPanel1.TabIndex = 8;
+            this.editPanel1.Visible = false;
+            this.editPanel1.VisibleChanged += new System.EventHandler(this.editPanel1_VisibleChanged);
             // 
             // loginPanel1
             // 
@@ -105,6 +118,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1115, 537);
+            this.Controls.Add(this.editPanel1);
             this.Controls.Add(this.labelInfo);
             this.Controls.Add(this.loginPanel1);
             this.Controls.Add(this.menuPanel1);
@@ -128,6 +142,7 @@
         private AppointmentsPanel appointmentsPanel1;
         private AppointmentPanel appointmentPanel1;
         private System.Windows.Forms.Label labelInfo;
+        private EditPanel editPanel1;
     }
 }
 

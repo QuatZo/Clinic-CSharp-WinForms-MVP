@@ -28,104 +28,107 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBoxSex = new System.Windows.Forms.ComboBox();
+            this.dateTimeBirth = new System.Windows.Forms.DateTimePicker();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonRegister = new System.Windows.Forms.Button();
+            this.textBoxPhone = new System.Windows.Forms.TextBox();
+            this.textBoxAddress = new System.Windows.Forms.TextBox();
+            this.textBoxPesel = new System.Windows.Forms.TextBox();
+            this.textBoxSurname = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // comboBoxSex
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(268, 330);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 21);
-            this.comboBox1.TabIndex = 21;
-            this.comboBox1.Text = "Płeć";
+            this.comboBoxSex.FormattingEnabled = true;
+            this.comboBoxSex.Items.AddRange(new object[] {
+            "Kobieta",
+            "Mężczyzna"});
+            this.comboBoxSex.Location = new System.Drawing.Point(268, 330);
+            this.comboBoxSex.Name = "comboBoxSex";
+            this.comboBoxSex.Size = new System.Drawing.Size(200, 21);
+            this.comboBoxSex.TabIndex = 21;
+            this.comboBoxSex.Text = "Płeć";
             // 
-            // dateTimePicker1
+            // dateTimeBirth
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(268, 304);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 20;
+            this.dateTimeBirth.Location = new System.Drawing.Point(268, 304);
+            this.dateTimeBirth.Name = "dateTimeBirth";
+            this.dateTimeBirth.Size = new System.Drawing.Size(200, 20);
+            this.dateTimeBirth.TabIndex = 20;
             // 
-            // button2
+            // buttonClear
             // 
-            this.button2.Location = new System.Drawing.Point(393, 357);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Wyczyść";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonClear.Location = new System.Drawing.Point(393, 357);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(75, 23);
+            this.buttonClear.TabIndex = 19;
+            this.buttonClear.Text = "Wyczyść";
+            this.buttonClear.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonRegister
             // 
-            this.button1.Location = new System.Drawing.Point(268, 357);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Zarejestruj";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonRegister.Location = new System.Drawing.Point(268, 357);
+            this.buttonRegister.Name = "buttonRegister";
+            this.buttonRegister.Size = new System.Drawing.Size(75, 23);
+            this.buttonRegister.TabIndex = 18;
+            this.buttonRegister.Text = "Zarejestruj";
+            this.buttonRegister.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // textBoxPhone
             // 
-            this.textBox5.Location = new System.Drawing.Point(268, 278);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(200, 20);
-            this.textBox5.TabIndex = 17;
-            this.textBox5.Text = "Telefon";
+            this.textBoxPhone.Location = new System.Drawing.Point(268, 278);
+            this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.Size = new System.Drawing.Size(200, 20);
+            this.textBoxPhone.TabIndex = 17;
+            this.textBoxPhone.Text = "Telefon";
             // 
-            // textBox4
+            // textBoxAddress
             // 
-            this.textBox4.Location = new System.Drawing.Point(268, 252);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(200, 20);
-            this.textBox4.TabIndex = 16;
-            this.textBox4.Text = "Adres";
+            this.textBoxAddress.Location = new System.Drawing.Point(268, 252);
+            this.textBoxAddress.Name = "textBoxAddress";
+            this.textBoxAddress.Size = new System.Drawing.Size(200, 20);
+            this.textBoxAddress.TabIndex = 16;
+            this.textBoxAddress.Text = "Adres";
             // 
-            // textBox3
+            // textBoxPesel
             // 
-            this.textBox3.Location = new System.Drawing.Point(268, 226);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(200, 20);
-            this.textBox3.TabIndex = 15;
-            this.textBox3.Text = "PESEL";
+            this.textBoxPesel.Location = new System.Drawing.Point(268, 226);
+            this.textBoxPesel.Name = "textBoxPesel";
+            this.textBoxPesel.Size = new System.Drawing.Size(200, 20);
+            this.textBoxPesel.TabIndex = 15;
+            this.textBoxPesel.Text = "PESEL";
             // 
-            // textBox2
+            // textBoxSurname
             // 
-            this.textBox2.Location = new System.Drawing.Point(268, 200);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 20);
-            this.textBox2.TabIndex = 14;
-            this.textBox2.Text = "Nazwisko";
+            this.textBoxSurname.Location = new System.Drawing.Point(268, 200);
+            this.textBoxSurname.Name = "textBoxSurname";
+            this.textBoxSurname.Size = new System.Drawing.Size(200, 20);
+            this.textBoxSurname.TabIndex = 14;
+            this.textBoxSurname.Text = "Nazwisko";
             // 
-            // textBox1
+            // textBoxName
             // 
-            this.textBox1.Location = new System.Drawing.Point(268, 174);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 13;
-            this.textBox1.Text = "Imie";
+            this.textBoxName.Location = new System.Drawing.Point(268, 174);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(200, 20);
+            this.textBoxName.TabIndex = 13;
+            this.textBoxName.Text = "Imie";
             // 
             // RegisterPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.comboBoxSex);
+            this.Controls.Add(this.dateTimeBirth);
+            this.Controls.Add(this.buttonClear);
+            this.Controls.Add(this.buttonRegister);
+            this.Controls.Add(this.textBoxPhone);
+            this.Controls.Add(this.textBoxAddress);
+            this.Controls.Add(this.textBoxPesel);
+            this.Controls.Add(this.textBoxSurname);
+            this.Controls.Add(this.textBoxName);
             this.Name = "RegisterPanel";
             this.Size = new System.Drawing.Size(777, 555);
             this.ResumeLayout(false);
@@ -135,14 +138,14 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBoxSex;
+        private System.Windows.Forms.DateTimePicker dateTimeBirth;
+        private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.Button buttonRegister;
+        private System.Windows.Forms.TextBox textBoxPhone;
+        private System.Windows.Forms.TextBox textBoxAddress;
+        private System.Windows.Forms.TextBox textBoxPesel;
+        private System.Windows.Forms.TextBox textBoxSurname;
+        private System.Windows.Forms.TextBox textBoxName;
     }
 }

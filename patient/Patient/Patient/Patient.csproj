@@ -58,12 +58,20 @@
     <Compile Include="AppointmentsPanel.Designer.cs">
       <DependentUpon>AppointmentsPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditPanel.Designer.cs">
+      <DependentUpon>EditPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditPanelPresenter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IEditPanelView.cs" />
     <Compile Include="ILoginPanelView.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="LoginPanel.cs">
@@ -100,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AppointmentsPanel.resx">
       <DependentUpon>AppointmentsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditPanel.resx">
+      <DependentUpon>EditPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -12,21 +12,7 @@ namespace Patient
 {
     public partial class Form1 : Form, IView
     {
-        public Form1()
-        {
-            InitializeComponent();
-        }
-
-        //public IxdPanelView nazwa{
-        //    get{
-        //        return nazwa_panelu_z_form1
-        //    }
-        //    set{ (prawdopodobnie)
-        //        nazwa_panelu_z_form1.visible=True;
-        //        nazwa_panelu_z_form1.enabled=True;
-        //    }
-        //}
-
+        #region Properties
         public ILoginPanelView LoginView
         {
             get
@@ -34,8 +20,48 @@ namespace Patient
                 return loginPanel1;
             }
         }
+        public IEditPanelView EditView
+        {
+            get
+            {
+                return editPanel1;
+            }
+        }
+
+        public bool LoginActive
+        {
+            set
+            {
+                loginPanel1.Enabled = value;
+                loginPanel1.Visible = value;
+            }
+        }
+        public bool EditActive
+        {
+            set
+            {
+                editPanel1.Enabled = value;
+                editPanel1.Visible = value;
+            }
+        }
+        #endregion
 
         // public event [...] - to co w IView
+        #region Events
+        public event Action EditPanelVisibilityChanged;
+        #endregion
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void editPanel1_VisibleChanged(object sender, EventArgs e)
+        {
+            if (EditPanelVisibilityChanged != null)
+                EditPanelVisibilityChanged();
+        }
+
 
         // inne metody, jesli beda potrzebne
     }
