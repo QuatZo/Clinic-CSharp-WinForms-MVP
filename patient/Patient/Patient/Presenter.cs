@@ -23,7 +23,19 @@ namespace Patient
             //prezenter = konstruktor prezentera, np.
             LoginPresenter = new LoginPanelPresenter(view.LoginView, model);
 
+            this.view.LoginView.LoginButtonClicked += LoginView_LoginButtonClicked;
             //eventy
+        }
+
+        private void LoginView_LoginButtonClicked()
+        {
+            if (model.IsInDatabase(view.LoginView.CurrentPesel, view.LoginView.CurrentSurname, view.LoginView.CurrentID))
+            {
+                Console.WriteLine("PESEL: " + view.LoginView.CurrentPesel + "\n" +
+                    "Nazwisko: " + view.LoginView.CurrentSurname + "\n" +
+                    "ID: " + view.LoginView.CurrentID);
+                // tutaj bedzie zapytanie do bazy
+            }
         }
     }
 }

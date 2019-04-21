@@ -9,7 +9,7 @@ namespace Patient
     interface IView
     {
         // wszystkie panele, np.
-        ILoginPanelView LoginView {get;}
+        ILoginPanelView LoginView { get;}
 
         // eventy z formy (prawdopodobnie przelaczanie aktywnego okna w zaleznosci od przycisku main)
     }

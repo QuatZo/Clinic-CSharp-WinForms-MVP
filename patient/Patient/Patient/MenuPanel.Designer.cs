@@ -39,7 +39,7 @@
             this.button4.Location = new System.Drawing.Point(3, 3);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(313, 44);
-            this.button4.TabIndex = 10;
+            this.button4.TabIndex = 0;
             this.button4.Text = "Edytuj dane";
             this.button4.UseVisualStyleBackColor = true;
             // 
@@ -48,7 +48,7 @@
             this.button3.Location = new System.Drawing.Point(3, 53);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(313, 44);
-            this.button3.TabIndex = 9;
+            this.button3.TabIndex = 1;
             this.button3.Text = "Zarejestruj";
             this.button3.UseVisualStyleBackColor = true;
             // 
@@ -57,7 +57,7 @@
             this.button2.Location = new System.Drawing.Point(3, 103);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(313, 44);
-            this.button2.TabIndex = 8;
+            this.button2.TabIndex = 2;
             this.button2.Text = "Wizyty";
             this.button2.UseVisualStyleBackColor = true;
             // 
@@ -66,7 +66,7 @@
             this.button1.Location = new System.Drawing.Point(3, 153);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(313, 44);
-            this.button1.TabIndex = 7;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Wyloguj";
             this.button1.UseVisualStyleBackColor = true;
             // 

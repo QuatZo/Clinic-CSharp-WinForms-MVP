@@ -28,14 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.labelInfo = new System.Windows.Forms.Label();
+            this.loginPanel1 = new Patient.LoginPanel();
+            this.menuPanel1 = new Patient.MenuPanel();
             this.appointmentPanel1 = new Patient.AppointmentPanel();
             this.appointmentsPanel1 = new Patient.AppointmentsPanel();
             this.registerAppointment1 = new Patient.RegisterAppointmentPanel();
             this.registerPanel1 = new Patient.RegisterPanel();
-            this.loginPanel1 = new Patient.LoginPanel();
-            this.menuPanel1 = new Patient.MenuPanel();
-            this.labelInfo = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // labelInfo
+            // 
+            this.labelInfo.AutoSize = true;
+            this.labelInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInfo.Location = new System.Drawing.Point(68, 13);
+            this.labelInfo.Name = "labelInfo";
+            this.labelInfo.Size = new System.Drawing.Size(207, 264);
+            this.labelInfo.TabIndex = 7;
+            this.labelInfo.Text = "Przychodnia lekarska\r\n\r\nPanel pacjenta\r\n\r\nWitaj, [...]\r\n\r\n\r\nAutorzy:\r\nMadejski\r\nM" +
+    "rosek\r\nParkitny";
+            this.labelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // loginPanel1
+            // 
+            this.loginPanel1.ButtonStatus = false;
+            this.loginPanel1.Location = new System.Drawing.Point(337, 13);
+            this.loginPanel1.Name = "loginPanel1";
+            this.loginPanel1.Size = new System.Drawing.Size(766, 512);
+            this.loginPanel1.TabIndex = 0;
+            // 
+            // menuPanel1
+            // 
+            this.menuPanel1.Location = new System.Drawing.Point(16, 321);
+            this.menuPanel1.Name = "menuPanel1";
+            this.menuPanel1.Size = new System.Drawing.Size(325, 204);
+            this.menuPanel1.TabIndex = 1;
             // 
             // appointmentPanel1
             // 
@@ -73,32 +100,6 @@
             this.registerPanel1.TabIndex = 3;
             this.registerPanel1.Visible = false;
             // 
-            // loginPanel1
-            // 
-            this.loginPanel1.Location = new System.Drawing.Point(337, 13);
-            this.loginPanel1.Name = "loginPanel1";
-            this.loginPanel1.Size = new System.Drawing.Size(766, 512);
-            this.loginPanel1.TabIndex = 2;
-            // 
-            // menuPanel1
-            // 
-            this.menuPanel1.Location = new System.Drawing.Point(16, 321);
-            this.menuPanel1.Name = "menuPanel1";
-            this.menuPanel1.Size = new System.Drawing.Size(325, 204);
-            this.menuPanel1.TabIndex = 0;
-            // 
-            // labelInfo
-            // 
-            this.labelInfo.AutoSize = true;
-            this.labelInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInfo.Location = new System.Drawing.Point(68, 13);
-            this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(207, 264);
-            this.labelInfo.TabIndex = 7;
-            this.labelInfo.Text = "Przychodnia lekarska\r\n\r\nPanel klienta\r\n\r\nWitaj, [...]\r\n\r\n\r\nAutorzy:\r\nMadejski\r\nMr" +
-    "osek\r\nParkitny";
-            this.labelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,7 +113,7 @@
             this.Controls.Add(this.registerAppointment1);
             this.Controls.Add(this.registerPanel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Panel pacjenta";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -10,11 +10,14 @@ namespace Patient
     {
         #region Properties
         string CurrentPesel { get;  }
-
+        string CurrentSurname { get; }
+        string CurrentID { get; }
+        bool ButtonStatus { get; set; }
         #endregion
 
         #region Events
         event Action PeselChanged;
+        event Action LoginButtonClicked;
         #endregion
     }
 }

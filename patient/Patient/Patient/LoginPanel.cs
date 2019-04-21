@@ -20,10 +20,36 @@ namespace Patient
                 return textBoxPesel.Text;
             }
         }
+        public string CurrentSurname
+        {
+            get
+            {
+                return textBoxSurname.Text;
+            }
+        }
+        public string CurrentID
+        {
+            get
+            {
+                if (Int32.TryParse(textBoxID.Text, out int temp)) { return textBoxID.Text; }
+                else { return (-1).ToString(); }
+            }
+        }
+        public bool ButtonStatus{
+            get
+            {
+                return buttonLogin.Enabled;
+            }
+            set
+            {
+                buttonLogin.Enabled = value;
+            }
+        }
         #endregion
 
         #region Events
         public event Action PeselChanged;
+        public event Action LoginButtonClicked;
         #endregion
 
         public LoginPanel()
@@ -35,6 +61,12 @@ namespace Patient
         {
             if (PeselChanged != null)
                 PeselChanged();
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            if (LoginButtonClicked != null)
+                LoginButtonClicked();
         }
     }
 }

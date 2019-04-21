@@ -39,7 +39,7 @@
             this.textBoxID.Location = new System.Drawing.Point(293, 222);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(243, 20);
-            this.textBoxID.TabIndex = 11;
+            this.textBoxID.TabIndex = 2;
             this.textBoxID.Text = "ID (w przypadku braku konta pozostaw puste)";
             // 
             // textBoxSurname
@@ -47,7 +47,7 @@
             this.textBoxSurname.Location = new System.Drawing.Point(293, 196);
             this.textBoxSurname.Name = "textBoxSurname";
             this.textBoxSurname.Size = new System.Drawing.Size(243, 20);
-            this.textBoxSurname.TabIndex = 10;
+            this.textBoxSurname.TabIndex = 1;
             this.textBoxSurname.Text = "Nazwisko";
             // 
             // textBoxPesel
@@ -55,18 +55,20 @@
             this.textBoxPesel.Location = new System.Drawing.Point(293, 170);
             this.textBoxPesel.Name = "textBoxPesel";
             this.textBoxPesel.Size = new System.Drawing.Size(243, 20);
-            this.textBoxPesel.TabIndex = 9;
+            this.textBoxPesel.TabIndex = 0;
             this.textBoxPesel.Text = "PESEL";
             this.textBoxPesel.TextChanged += new System.EventHandler(this.textBoxPesel_TextChanged);
             // 
             // buttonLogin
             // 
+            this.buttonLogin.Enabled = false;
             this.buttonLogin.Location = new System.Drawing.Point(362, 268);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(105, 48);
-            this.buttonLogin.TabIndex = 8;
+            this.buttonLogin.TabIndex = 3;
             this.buttonLogin.Text = "Logowanie";
             this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // LoginPanel
             // 

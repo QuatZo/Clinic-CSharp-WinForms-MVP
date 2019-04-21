@@ -23,10 +23,10 @@ namespace Patient
         {
             if (!model.CheckPesel(view.CurrentPesel))
             {
-                Console.WriteLine(view.CurrentPesel);
+                if (view.ButtonStatus) { view.ButtonStatus = false; }
             }
             else {
-                Console.WriteLine("Dobry PESEL!");
+                if (!view.ButtonStatus) { view.ButtonStatus = true; }
             }
             
         }
