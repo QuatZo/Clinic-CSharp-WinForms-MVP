@@ -8,9 +8,9 @@ E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.cs
 E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.csproj.CoreCompileInputs.cache
 E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.exe
 E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.pdb
-E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.InfoPanel.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.LoginPanel.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.RegisterPanel.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.RegisterAppointmentPanel.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.AppointmentsPanel.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.AppointmentPanel.resources
+E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.csprojAssemblyReference.cache

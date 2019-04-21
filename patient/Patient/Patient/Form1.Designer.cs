@@ -33,8 +33,8 @@
             this.registerAppointment1 = new Patient.RegisterAppointmentPanel();
             this.registerPanel1 = new Patient.RegisterPanel();
             this.loginPanel1 = new Patient.LoginPanel();
-            this.infoPanel1 = new Patient.InfoPanel();
             this.menuPanel1 = new Patient.MenuPanel();
+            this.labelInfo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // appointmentPanel1
@@ -80,47 +80,53 @@
             this.loginPanel1.Size = new System.Drawing.Size(766, 512);
             this.loginPanel1.TabIndex = 2;
             // 
-            // infoPanel1
-            // 
-            this.infoPanel1.Location = new System.Drawing.Point(12, 13);
-            this.infoPanel1.Name = "infoPanel1";
-            this.infoPanel1.Size = new System.Drawing.Size(318, 229);
-            this.infoPanel1.TabIndex = 1;
-            // 
             // menuPanel1
             // 
-            this.menuPanel1.Location = new System.Drawing.Point(12, 321);
+            this.menuPanel1.Location = new System.Drawing.Point(16, 321);
             this.menuPanel1.Name = "menuPanel1";
             this.menuPanel1.Size = new System.Drawing.Size(325, 204);
             this.menuPanel1.TabIndex = 0;
+            // 
+            // labelInfo
+            // 
+            this.labelInfo.AutoSize = true;
+            this.labelInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInfo.Location = new System.Drawing.Point(68, 13);
+            this.labelInfo.Name = "labelInfo";
+            this.labelInfo.Size = new System.Drawing.Size(207, 264);
+            this.labelInfo.TabIndex = 7;
+            this.labelInfo.Text = "Przychodnia lekarska\r\n\r\nPanel klienta\r\n\r\nWitaj, [...]\r\n\r\n\r\nAutorzy:\r\nMadejski\r\nMr" +
+    "osek\r\nParkitny";
+            this.labelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1115, 537);
+            this.Controls.Add(this.labelInfo);
+            this.Controls.Add(this.loginPanel1);
+            this.Controls.Add(this.menuPanel1);
             this.Controls.Add(this.appointmentPanel1);
             this.Controls.Add(this.appointmentsPanel1);
             this.Controls.Add(this.registerAppointment1);
             this.Controls.Add(this.registerPanel1);
-            this.Controls.Add(this.loginPanel1);
-            this.Controls.Add(this.infoPanel1);
-            this.Controls.Add(this.menuPanel1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private MenuPanel menuPanel1;
-        private InfoPanel infoPanel1;
         private LoginPanel loginPanel1;
         private RegisterPanel registerPanel1;
         private RegisterAppointmentPanel registerAppointment1;
         private AppointmentsPanel appointmentsPanel1;
         private AppointmentPanel appointmentPanel1;
+        private System.Windows.Forms.Label labelInfo;
     }
 }
 
