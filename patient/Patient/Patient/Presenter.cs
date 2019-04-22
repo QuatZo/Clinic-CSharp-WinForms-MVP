@@ -25,16 +25,31 @@ namespace Patient
             EditPresenter = new EditPanelPresenter(view.EditView, model);
 
             this.view.LoginView.LoginButtonClicked += LoginView_LoginButtonClicked;
+            this.view.LoginScreenPopup += View_LoginScreenPopup;
             this.view.EditPanelVisibilityChanged += View_EditPanelVisibilityChanged;
             //eventy
+        }
+
+        private void View_LoginScreenPopup()
+        {
+            if(!view.LoginActive)
+                view.LoginActive = true;
+            if(view.EditActive)
+                view.EditActive = false;
+            if(view.MenuActive)
+                view.MenuActive = false;
         }
 
         private void LoginView_LoginButtonClicked()
         {
             if (model.IsInDatabase(view.LoginView.CurrentPesel, view.LoginView.CurrentSurname, view.LoginView.CurrentID))
             {
-                view.LoginActive = false;
-                view.EditActive = true;
+                if (view.LoginActive)
+                    view.LoginActive = false;
+                if (!view.EditActive)
+                    view.EditActive = true;
+                if (!view.MenuActive)
+                    view.MenuActive = true;
 
                 Console.WriteLine("PESEL: " + view.LoginView.CurrentPesel + "\n" +
                     "Nazwisko: " + view.LoginView.CurrentSurname + "\n" +

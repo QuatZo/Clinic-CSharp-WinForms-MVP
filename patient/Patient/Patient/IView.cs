@@ -12,12 +12,14 @@ namespace Patient
         #region Properties
         ILoginPanelView LoginView { get;}
         IEditPanelView EditView { get; }
-        bool LoginActive { set; }
-        bool EditActive { set; }
+        bool LoginActive { get; set; }
+        bool EditActive { get; set; }
+        bool MenuActive { get; set; }
         #endregion
         // eventy z formy (prawdopodobnie przelaczanie aktywnego okna w zaleznosci od przycisku main)
         #region Events
         event Action EditPanelVisibilityChanged;
+        event Action LoginScreenPopup;
         #endregion
     }
 }

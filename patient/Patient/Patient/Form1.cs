@@ -30,6 +30,10 @@ namespace Patient
 
         public bool LoginActive
         {
+            get
+            {
+                return loginPanel1.Enabled && loginPanel1.Visible;
+            }
             set
             {
                 loginPanel1.Enabled = value;
@@ -38,10 +42,26 @@ namespace Patient
         }
         public bool EditActive
         {
+            get
+            {
+                return editPanel1.Enabled && editPanel1.Visible;
+            }
             set
             {
                 editPanel1.Enabled = value;
                 editPanel1.Visible = value;
+            }
+        }
+        public bool MenuActive
+        {
+            get
+            {
+                return menuPanel1.Enabled && menuPanel1.Visible;
+            }
+            set
+            {
+                menuPanel1.Enabled = value;
+                menuPanel1.Visible = value;
             }
         }
         #endregion
@@ -49,6 +69,7 @@ namespace Patient
         // public event [...] - to co w IView
         #region Events
         public event Action EditPanelVisibilityChanged;
+        public event Action LoginScreenPopup;
         #endregion
 
         public Form1()
@@ -60,6 +81,12 @@ namespace Patient
         {
             if (EditPanelVisibilityChanged != null)
                 EditPanelVisibilityChanged();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            if (LoginScreenPopup != null)
+                LoginScreenPopup();
         }
 
 
