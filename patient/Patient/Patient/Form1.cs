@@ -27,6 +27,14 @@ namespace Patient
                 return editPanel1;
             }
         }
+        public IMenuPanelView MenuView
+        {
+            get
+            {
+                return menuPanel1;
+            }
+        }
+
 
         public bool LoginActive
         {
@@ -62,6 +70,17 @@ namespace Patient
             {
                 menuPanel1.Enabled = value;
                 menuPanel1.Visible = value;
+            }
+        }
+        public string WelcomeLabel
+        {
+            get
+            {
+                return labelInfo.Text;
+            }
+            set
+            {
+                labelInfo.Text = value;
             }
         }
         #endregion

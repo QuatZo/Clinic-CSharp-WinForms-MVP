@@ -46,8 +46,8 @@
             this.labelInfo.Name = "labelInfo";
             this.labelInfo.Size = new System.Drawing.Size(207, 264);
             this.labelInfo.TabIndex = 7;
-            this.labelInfo.Text = "Przychodnia lekarska\r\n\r\nPanel pacjenta\r\n\r\nWitaj, [...]\r\n\r\n\r\nAutorzy:\r\nMadejski\r\nM" +
-    "rosek\r\nParkitny";
+            this.labelInfo.Text = "Przychodnia lekarska\r\n\r\nPanel pacjenta\r\n\r\nWitaj\r\n\r\n\r\nAutorzy:\r\nMadejski\r\nMrosek\r\n" +
+    "Parkitny";
             this.labelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // editPanel1

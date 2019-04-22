@@ -73,6 +73,7 @@
     </Compile>
     <Compile Include="IEditPanelView.cs" />
     <Compile Include="ILoginPanelView.cs" />
+    <Compile Include="IMenuPanelView.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="LoginPanel.cs">
       <SubType>UserControl</SubType>
@@ -87,6 +88,7 @@
     <Compile Include="MenuPanel.Designer.cs">
       <DependentUpon>MenuPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuPanelPresenter.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Presenter.cs" />
     <Compile Include="Program.cs" />

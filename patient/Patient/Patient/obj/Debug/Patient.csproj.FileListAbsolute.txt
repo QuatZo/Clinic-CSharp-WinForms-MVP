@@ -13,5 +13,4 @@ E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.Re
 E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.RegisterAppointmentPanel.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.AppointmentsPanel.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.AppointmentPanel.resources
-E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.csprojAssemblyReference.cache
 E:\Studia\Projekty\BDiC#\BD_SiSharp\patient\Patient\Patient\obj\Debug\Patient.EditPanel.resources
