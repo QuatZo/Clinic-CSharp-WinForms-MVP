@@ -11,19 +11,26 @@ namespace Patient
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// 
+
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Model model = new Model();
-            IView view = new Form1();
 
+            FormLogin loginForm = new FormLogin();
+            if (loginForm.ShowDialog() == DialogResult.OK)
+            {
+                Model model = new Model();
+                IView view = new Form1();
 
-            Presenter presenter = new Presenter(view, model);
+                Presenter presenter = new Presenter(view, model);
 
-            Application.Run((Form)view);       
+                Application.Run((Form)view);
+            }
+            
         }
     }
 }

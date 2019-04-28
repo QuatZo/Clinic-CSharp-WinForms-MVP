@@ -10,10 +10,8 @@ namespace Patient
     {
         // wszystkie panele, np.
         #region Properties
-        ILoginPanelView LoginView { get;}
         IEditPanelView EditView { get; }
         IMenuPanelView MenuView { get; }
-        bool LoginActive { get; set; }
         bool EditActive { get; set; }
         bool MenuActive { get; set; }
         string WelcomeLabel { get; set; }

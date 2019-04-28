@@ -71,17 +71,15 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="IEditPanelView.cs" />
-    <Compile Include="ILoginPanelView.cs" />
     <Compile Include="IMenuPanelView.cs" />
     <Compile Include="IView.cs" />
-    <Compile Include="LoginPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LoginPanel.Designer.cs">
-      <DependentUpon>LoginPanel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LoginPanelPresenter.cs" />
     <Compile Include="MenuPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -117,8 +115,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginPanel.resx">
-      <DependentUpon>LoginPanel.cs</DependentUpon>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPanel.resx">
       <DependentUpon>MenuPanel.cs</DependentUpon>

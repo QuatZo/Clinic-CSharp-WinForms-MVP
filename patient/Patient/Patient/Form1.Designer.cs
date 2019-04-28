@@ -30,7 +30,6 @@
         {
             this.labelInfo = new System.Windows.Forms.Label();
             this.editPanel1 = new Patient.EditPanel();
-            this.loginPanel1 = new Patient.LoginPanel();
             this.menuPanel1 = new Patient.MenuPanel();
             this.appointmentPanel1 = new Patient.AppointmentPanel();
             this.appointmentsPanel1 = new Patient.AppointmentsPanel();
@@ -53,22 +52,12 @@
             // editPanel1
             // 
             this.editPanel1.Address = "Adres";
-            this.editPanel1.Enabled = false;
             this.editPanel1.Location = new System.Drawing.Point(337, 13);
             this.editPanel1.Name = "editPanel1";
             this.editPanel1.Phone = "Telefon";
             this.editPanel1.Size = new System.Drawing.Size(807, 559);
             this.editPanel1.TabIndex = 8;
-            this.editPanel1.Visible = false;
             this.editPanel1.VisibleChanged += new System.EventHandler(this.editPanel1_VisibleChanged);
-            // 
-            // loginPanel1
-            // 
-            this.loginPanel1.ButtonStatus = false;
-            this.loginPanel1.Location = new System.Drawing.Point(337, 13);
-            this.loginPanel1.Name = "loginPanel1";
-            this.loginPanel1.Size = new System.Drawing.Size(766, 512);
-            this.loginPanel1.TabIndex = 0;
             // 
             // menuPanel1
             // 
@@ -120,7 +109,6 @@
             this.ClientSize = new System.Drawing.Size(1115, 537);
             this.Controls.Add(this.editPanel1);
             this.Controls.Add(this.labelInfo);
-            this.Controls.Add(this.loginPanel1);
             this.Controls.Add(this.menuPanel1);
             this.Controls.Add(this.appointmentPanel1);
             this.Controls.Add(this.appointmentsPanel1);
@@ -137,7 +125,6 @@
         #endregion
 
         private MenuPanel menuPanel1;
-        private LoginPanel loginPanel1;
         private RegisterPanel registerPanel1;
         private RegisterAppointmentPanel registerAppointment1;
         private AppointmentsPanel appointmentsPanel1;

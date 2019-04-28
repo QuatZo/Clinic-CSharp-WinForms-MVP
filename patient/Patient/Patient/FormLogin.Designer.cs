@@ -1,13 +1,13 @@
 ﻿namespace Patient
 {
-    partial class LoginPanel
+    partial class FormLogin
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,10 +20,10 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -36,50 +36,52 @@
             // 
             // textBoxID
             // 
-            this.textBoxID.Location = new System.Drawing.Point(293, 222);
+            this.textBoxID.Location = new System.Drawing.Point(131, 180);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(243, 20);
-            this.textBoxID.TabIndex = 2;
+            this.textBoxID.TabIndex = 6;
             this.textBoxID.Text = "ID (w przypadku braku konta pozostaw puste)";
+            this.textBoxID.TextChanged += new System.EventHandler(this.textBoxID_TextChanged);
             // 
             // textBoxSurname
             // 
-            this.textBoxSurname.Location = new System.Drawing.Point(293, 196);
+            this.textBoxSurname.Location = new System.Drawing.Point(131, 154);
             this.textBoxSurname.Name = "textBoxSurname";
             this.textBoxSurname.Size = new System.Drawing.Size(243, 20);
-            this.textBoxSurname.TabIndex = 1;
+            this.textBoxSurname.TabIndex = 5;
             this.textBoxSurname.Text = "Nazwisko";
             // 
             // textBoxPesel
             // 
-            this.textBoxPesel.Location = new System.Drawing.Point(293, 170);
+            this.textBoxPesel.Location = new System.Drawing.Point(131, 128);
             this.textBoxPesel.Name = "textBoxPesel";
             this.textBoxPesel.Size = new System.Drawing.Size(243, 20);
-            this.textBoxPesel.TabIndex = 0;
+            this.textBoxPesel.TabIndex = 4;
             this.textBoxPesel.Text = "PESEL";
             this.textBoxPesel.TextChanged += new System.EventHandler(this.textBoxPesel_TextChanged);
             // 
             // buttonLogin
             // 
             this.buttonLogin.Enabled = false;
-            this.buttonLogin.Location = new System.Drawing.Point(362, 268);
+            this.buttonLogin.Location = new System.Drawing.Point(200, 226);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(105, 48);
-            this.buttonLogin.TabIndex = 3;
+            this.buttonLogin.TabIndex = 7;
             this.buttonLogin.Text = "Logowanie";
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
-            // LoginPanel
+            // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(534, 406);
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.textBoxSurname);
             this.Controls.Add(this.textBoxPesel);
             this.Controls.Add(this.buttonLogin);
-            this.Name = "LoginPanel";
-            this.Size = new System.Drawing.Size(874, 516);
+            this.Name = "FormLogin";
+            this.Text = "FormLogin";
             this.ResumeLayout(false);
             this.PerformLayout();
 

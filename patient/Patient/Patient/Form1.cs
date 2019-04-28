@@ -13,13 +13,6 @@ namespace Patient
     public partial class Form1 : Form, IView
     {
         #region Properties
-        public ILoginPanelView LoginView
-        {
-            get
-            {
-                return loginPanel1;
-            }
-        }
         public IEditPanelView EditView
         {
             get
@@ -35,19 +28,6 @@ namespace Patient
             }
         }
 
-
-        public bool LoginActive
-        {
-            get
-            {
-                return loginPanel1.Enabled && loginPanel1.Visible;
-            }
-            set
-            {
-                loginPanel1.Enabled = value;
-                loginPanel1.Visible = value;
-            }
-        }
         public bool EditActive
         {
             get
