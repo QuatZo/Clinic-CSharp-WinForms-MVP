@@ -60,8 +60,9 @@ namespace Clinic
             Close();
         }
 
-        public List<Patient> QueryPatients(string name)
+        public List<Patient> PatientInfo(string name)
         {
+            Console.WriteLine(name);
             using (var cmd = new MySqlCommand(name, connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -72,12 +73,39 @@ namespace Clinic
 
                 while (reader.Read())
                 {
-                    Patient pat = new Patient(Int32.Parse(reader[0].ToString()), reader[2].ToString(), reader[3].ToString(), Double.Parse(reader[1].ToString()), reader[6].ToString(), reader[5].ToString());
+                    Sex sex;
+                    if(reader[4].ToString() == "Kobieta") { sex=Sex.kobieta; }
+                    else { sex = Sex.mezczyzna; }
+
+                    Patient pat = new Patient(Int32.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), Double.Parse(reader[3].ToString()), sex, DateTime.Parse(reader[5].ToString()), reader[6].ToString(), reader[7].ToString());
 
                     patients.Add(pat);
                 }
-
                 return patients;
+            }
+        }
+        public List<Doctor> DoctorInfo(string name)
+        {
+            using (var cmd = new MySqlCommand(name, connection))
+            {
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                List<Doctor> doctors = new List<Doctor>();
+
+                List<string> record = new List<string>();
+
+                while (reader.Read())
+                {
+                    Hours hours;
+                    if (reader[4].ToString() == "poranne") { hours=Hours.poranne; }
+                    else if (reader[4].ToString() == "popoludniowe") { hours = Hours.popoludniowe; }
+                    else { hours = Hours.wieczorowe; }
+
+                    Doctor pat = new Doctor(Int32.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), Double.Parse(reader[3].ToString()), reader[4].ToString(), Int32.Parse(reader[5].ToString()), hours);
+
+                    doctors.Add(pat);
+                }
+                return doctors;
             }
         }
     }

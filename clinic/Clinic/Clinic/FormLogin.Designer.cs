@@ -40,8 +40,7 @@
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(243, 20);
             this.textBoxID.TabIndex = 6;
-            this.textBoxID.Text = "ID (w przypadku braku konta pozostaw puste)";
-            this.textBoxID.TextChanged += new System.EventHandler(this.textBoxID_TextChanged);
+            this.textBoxID.Text = "ID";
             // 
             // textBoxSurname
             // 

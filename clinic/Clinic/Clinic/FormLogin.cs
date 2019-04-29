@@ -16,6 +16,7 @@ namespace Clinic
         {
             InitializeComponent();
         }
+
         bool PeselValidation(double dPesel)
         {
             int[] multipliers = { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3, 1 };
@@ -32,17 +33,26 @@ namespace Clinic
             if (sum % 10 == 0) { return true; }
             else { return false; }
         }
-        public bool IsInDatabase(string CurrentPesel, string CurrentSurname, string CurrentID)
+
+        public bool IsInDatabase(string CurrentPesel, string CurrentSurname, string CurrentID, string table)
         {
 
             // to tylko zapytanie czy taki PESEL istnieje, tu beda inne dane
-            using (var connection = new DatabaseConnection("localhost", "sanivitas", "root", ""))
+            using (var connection = new DatabaseConnection("localhost", "clinic", "clinic", "ZZZxxxCCCvvvBBBnnnMMM"))
             {
                 if (connection.Open()) {
-                    List<Patient> results = connection.QueryPatients($"SELECT * FROM osoba WHERE pesel={CurrentPesel}");
 
-                if (results.Count > 0) { return true; }
-                    else { return false; }
+                    if (table == "pacjenci") {
+                        List<Patient> results = connection.PatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM {table} WHERE pesel={CurrentPesel} AND nazwisko=\"{CurrentSurname}\" AND idp={CurrentID}");
+                        if (results.Count > 0) { return true; }
+                        else { return false; }
+                    }
+                    else
+                    {
+                        List<Doctor> results = connection.DoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM {table} WHERE pesel={CurrentPesel} AND nazwisko=\"{CurrentSurname}\" AND idd={CurrentID}");
+                        if (results.Count > 0) { return true; }
+                        else { return false; }
+                    }
                 }
                 else {
                     MessageBox.Show("Błąd z połaczeniem!");
@@ -50,11 +60,6 @@ namespace Clinic
                     return false;
                 }
             }
-        }
-
-        private void textBoxID_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void textBoxPesel_TextChanged(object sender, EventArgs e)
@@ -73,10 +78,24 @@ namespace Clinic
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            if (IsInDatabase(textBoxPesel.Text, textBoxSurname.Text, textBoxID.Text)) {
+            try
+            {
+                Int32.Parse(textBoxID.Text);
+            }
+            catch (FormatException)
+            {
+                textBoxID.Text = "-1";
+            }
+
+            if (IsInDatabase(textBoxPesel.Text, textBoxSurname.Text, textBoxID.Text, "pacjenci")) {
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-                Console.WriteLine("Logowanie udane!");
+                Console.WriteLine("Logowanie na pacjenta udane!");
+            }
+            else if(IsInDatabase(textBoxPesel.Text, textBoxSurname.Text, textBoxID.Text, "doktorzy")){
+                this.DialogResult = DialogResult.Yes;
+                this.Close();
+                Console.WriteLine("Logowanie na lekarza udane!");
             }
             else
             {

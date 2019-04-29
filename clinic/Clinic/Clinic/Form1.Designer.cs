@@ -34,7 +34,6 @@
             this.appointmentPanel1 = new Clinic.AppointmentPanel();
             this.appointmentsPanel1 = new Clinic.AppointmentsPanel();
             this.registerAppointment1 = new Clinic.RegisterAppointmentPanel();
-            this.registerPanel1 = new Clinic.RegisterPanel();
             this.SuspendLayout();
             // 
             // labelInfo
@@ -45,8 +44,7 @@
             this.labelInfo.Name = "labelInfo";
             this.labelInfo.Size = new System.Drawing.Size(207, 264);
             this.labelInfo.TabIndex = 7;
-            this.labelInfo.Text = "Przychodnia lekarska\r\n\r\nPanel pacjenta\r\n\r\nWitaj\r\n\r\n\r\nAutorzy:\r\nMadejski\r\nMrosek\r\n" +
-    "Parkitny";
+            this.labelInfo.Text = "Przychodnia lekarska\r\n\r\nPanel\r\n\r\nWitaj\r\n\r\n\r\nAutorzy:\r\nMadejski\r\nMrosek\r\nParkitny";
             this.labelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // editPanel1
@@ -93,15 +91,6 @@
             this.registerAppointment1.TabIndex = 4;
             this.registerAppointment1.Visible = false;
             // 
-            // registerPanel1
-            // 
-            this.registerPanel1.Enabled = false;
-            this.registerPanel1.Location = new System.Drawing.Point(337, 13);
-            this.registerPanel1.Name = "registerPanel1";
-            this.registerPanel1.Size = new System.Drawing.Size(766, 512);
-            this.registerPanel1.TabIndex = 3;
-            this.registerPanel1.Visible = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -113,7 +102,6 @@
             this.Controls.Add(this.appointmentPanel1);
             this.Controls.Add(this.appointmentsPanel1);
             this.Controls.Add(this.registerAppointment1);
-            this.Controls.Add(this.registerPanel1);
             this.Name = "Form1";
             this.Text = "Panel pacjenta";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -125,7 +113,6 @@
         #endregion
 
         private MenuPanel menuPanel1;
-        private RegisterPanel registerPanel1;
         private RegisterAppointmentPanel registerAppointment1;
         private AppointmentsPanel appointmentsPanel1;
         private AppointmentPanel appointmentPanel1;

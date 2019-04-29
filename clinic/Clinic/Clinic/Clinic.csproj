@@ -75,6 +75,7 @@
       <DependentUpon>AppointmentsPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseConnection.cs" />
+    <Compile Include="Doctor.cs" />
     <Compile Include="EditPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -115,12 +116,6 @@
     <Compile Include="RegisterAppointmentPanel.Designer.cs">
       <DependentUpon>RegisterAppointmentPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegisterPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="RegisterPanel.Designer.cs">
-      <DependentUpon>RegisterPanel.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AppointmentPanel.resx">
       <DependentUpon>AppointmentPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,9 +146,6 @@
     </Compile>
     <EmbeddedResource Include="RegisterAppointmentPanel.resx">
       <DependentUpon>RegisterAppointmentPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RegisterPanel.resx">
-      <DependentUpon>RegisterPanel.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -38,7 +38,6 @@ E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormLo
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.MenuPanel.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.Properties.Resources.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.RegisterAppointmentPanel.resources
-E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.RegisterPanel.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csproj.GenerateResource.cache
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csproj.CopyComplete

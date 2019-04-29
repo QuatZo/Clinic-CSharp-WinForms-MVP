@@ -8,8 +8,12 @@ namespace Clinic
 {
     class Presenter
     {
-        Model model = new Model();
-        IView view = new Form1();
+        Model model;
+        IView view;
+
+        // klasy, bedziemy wybierac jedna
+        Patient pacjent;
+        Doctor lekarz;
 
         // wszystkie prezentery, np.
         EditPanelPresenter EditPresenter;
@@ -25,7 +29,34 @@ namespace Clinic
             MenuPresenter = new MenuPanelPresenter(view.MenuView, model);
 
             // eventy
+            this.view.FormLoaded += View_FormLoaded;
             //this.view.EditPanelVisibilityChanged += View_EditPanelVisibilityChanged;
+
+        }
+
+        private void View_FormLoaded()
+        {
+            // tutaj beda wszystkie okna, upewnienie sie, ze na pewno dobre wyswietli
+            if (!view.EditActive)
+                view.EditActive = true;
+            if (!view.MenuActive)
+                view.MenuActive = true;
+
+            if(view.Position == "pacjent")
+            {
+                // metoda w modelu, ktora pobierze pacjenta
+                //pacjent = [...];
+                //lekarz = null;
+            }
+            else
+            {
+                // metoda w modelu, ktora pobierze lekarza
+                //pacjent = null;
+                //lekarz = [...];
+            }
+
+            view.WelcomeLabel = view.WelcomeLabel.Replace("Panel", "Panel " + view.Position + "a").Replace("Witaj", "Witaj, " + "TU BEDZIE IMIE + NAZWISKO!");
+
         }
 
         //private void LoginView_LoginButtonClicked()

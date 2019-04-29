@@ -12,7 +12,20 @@ namespace Clinic
 {
     public partial class Form1 : Form, IView
     {
+        string position;
         #region Properties
+        public string Position
+        {
+            get
+            {
+                return position;
+            }
+            set
+            {
+                position = value;
+            }
+        }
+
         public IEditPanelView EditView
         {
             get
@@ -68,12 +81,13 @@ namespace Clinic
         // public event [...] - to co w IView
         #region Events
         public event Action EditPanelVisibilityChanged;
-        public event Action LoginScreenPopup;
+        public event Action FormLoaded;
         #endregion
 
-        public Form1()
+        public Form1(string position)
         {
             InitializeComponent();
+            this.position = position;
         }
 
         private void editPanel1_VisibleChanged(object sender, EventArgs e)
@@ -84,9 +98,10 @@ namespace Clinic
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (LoginScreenPopup != null)
-                LoginScreenPopup();
+            if(FormLoaded != null)
+                FormLoaded();
         }
+
 
 
         // inne metody, jesli beda potrzebne

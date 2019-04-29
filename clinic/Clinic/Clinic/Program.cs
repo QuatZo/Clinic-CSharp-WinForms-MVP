@@ -12,7 +12,6 @@ namespace Clinic
         /// The main entry point for the application.
         /// </summary>
         /// 
-
         [STAThread]
         static void Main()
         {
@@ -24,13 +23,22 @@ namespace Clinic
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
                 Model model = new Model();
-                IView view = new Form1();
+                IView view = new Form1("pacjent");
 
                 Presenter presenter = new Presenter(view, model);
 
                 Application.Run((Form)view);
             }
-            
+            else if (loginForm.ShowDialog() == DialogResult.Yes)
+            {
+                Model model = new Model();
+                IView view = new Form1("lekarz");
+
+                Presenter presenter = new Presenter(view, model);
+
+                Application.Run((Form)view);
+            }
+
         }
     }
 }
