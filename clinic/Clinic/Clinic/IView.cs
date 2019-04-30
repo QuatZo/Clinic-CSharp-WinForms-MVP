@@ -10,18 +10,20 @@ namespace Clinic
     {
         // wszystkie panele, np.
         #region Properties
-        string Position { get; set; }
-
+        string title { set; }
+ 
         IEditPanelView EditView { get; }
         IMenuPanelView MenuView { get; }
         bool EditActive { get; set; }
         bool MenuActive { get; set; }
         string WelcomeLabel { get; set; }
         #endregion
+
         // eventy z formy (prawdopodobnie przelaczanie aktywnego okna w zaleznosci od przycisku main)
         #region Events
-        event Action EditPanelVisibilityChanged;
         event Action FormLoaded;
         #endregion
+
+        void ExitForm();
     }
 }

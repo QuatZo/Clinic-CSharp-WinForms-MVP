@@ -12,17 +12,12 @@ namespace Clinic
 {
     public partial class Form1 : Form, IView
     {
-        string position;
         #region Properties
-        public string Position
+        public string title
         {
-            get
-            {
-                return position;
-            }
             set
             {
-                position = value;
+                Text = $"Panel {value}a";
             }
         }
 
@@ -76,24 +71,16 @@ namespace Clinic
                 labelInfo.Text = value;
             }
         }
+
         #endregion
 
-        // public event [...] - to co w IView
         #region Events
-        public event Action EditPanelVisibilityChanged;
         public event Action FormLoaded;
         #endregion
 
-        public Form1(string position)
+        public Form1()
         {
             InitializeComponent();
-            this.position = position;
-        }
-
-        private void editPanel1_VisibleChanged(object sender, EventArgs e)
-        {
-            if (EditPanelVisibilityChanged != null)
-                EditPanelVisibilityChanged();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -101,9 +88,10 @@ namespace Clinic
             if(FormLoaded != null)
                 FormLoaded();
         }
-
-
-
+        public void ExitForm()
+        {
+            Close();
+        }
         // inne metody, jesli beda potrzebne
     }
 }

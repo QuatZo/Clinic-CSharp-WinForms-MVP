@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Clinic
 {
@@ -10,18 +11,77 @@ namespace Clinic
     {
         // Wszystkie metody wszystkich widoków
 
-        // pobiera informacje uzytkownika i wrzuca je do tablicy znaków
-        public string[] GetUserInfo(string CurrentPesel)
+        // pobiera informacje lekarza i wrzuca je do klasy Doctor
+        public Doctor GetDoctorInfo(string pesel)
         {
-            // dane będą pobierane z bazy danych
-            // 2 to ilosc info, poki co 2 (a bedzie jakby cala klasa, wszystkie info)
-            // na potrzeby testow uzywamy po prostu adresu i numeru telefonu
-            string[] Info = new string[2];
+            using (var connection = new DatabaseConnection())
+            {
+                if (connection.Open())
+                {
+                    Doctor result = connection.DoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM doktorzy WHERE pesel={pesel}")[0];
+                    return result;
+                }
+                else
+                {
+                    MessageBox.Show("Błąd z połaczeniem!");
+                    Doctor result = null;
+                    return result;
+                }
+            }
+        }
 
-            Info[0] = "Piłsudskiego 27/5";
-            Info[1] = "502609296";
+        // aktualizuje dane lekarza i zwraca czy zostaly zaktualizowane
+        public bool UpdateDoctorInfo(string pesel, string phoneNumber, string hour, int room)
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                if (connection.Open())
+                {
+                    if(connection.UpdateInfo($"UPDATE doktorzy SET telefon={phoneNumber}, gabinet={room}, godziny=\"{hour}\" WHERE pesel={pesel}")) { return true; }
+                    else { return false; }
+                }
+                else
+                {
+                    MessageBox.Show("Błąd z połaczeniem!");
+                    return false;
+                }
+            }
+        }
 
-            return Info;
+        // aktualizuje dane pacjenta i zwraca czy zostaly zaktualizowane
+        public bool UpdatePatientInfo(string pesel, string phoneNumber, string address)
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                if (connection.Open())
+                {
+                    if (connection.UpdateInfo($"UPDATE pacjenci SET telefon={phoneNumber}, adres=\"{address}\" WHERE pesel={pesel}")) { return true; }
+                    else { return false; }
+                }
+                else
+                {
+                    MessageBox.Show("Błąd z połaczeniem!");
+                    return false;
+                }
+            }
+        }
+        // pobiera informacje pacjenta i wrzuca je do klasy Patient
+        public Patient GetPatientInfo(string pesel)
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                if (connection.Open())
+                {
+                    Patient result = connection.PatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM pacjenci WHERE pesel={pesel}")[0];
+                    return result;
+                }
+                else
+                {
+                    MessageBox.Show("Błąd z połaczeniem!");
+                    Patient result = null;
+                    return result;
+                }
+            }
         }
     }
 }

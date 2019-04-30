@@ -6,38 +6,38 @@ using System.Threading.Tasks;
 
 namespace Clinic
 {
-    enum Sex {
+    public enum Sexs {
         kobieta,
         mezczyzna
     };
 
     class Patient
     {
-        int id;
-        string name;
-        string surname;
-        double pesel;
-        Sex sex;
-        DateTime birthDay;
-        string address;
-        string phoneNumber;
+        // pola klasy, do ktorych nikt nie ma miec dostepu (chyba, ze za wyjatkiem metod)
+        public int Id { get; }
+        public string Name { get; }
+        public string Surname { get; }
+        public double Pesel { get; }
+        public Sexs Sex { get; }
+        public DateTime BirthDay { get; }
+        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
 
-        // pamietac naprawic konstruktor jak sie odkomentuje powyzsze pola
-        public Patient(int id, string name, string surname, double pesel, Sex sex, DateTime birthDay, string address, string phoneNumber)
+        public Patient(int id, string name, string surname, double pesel, Sexs sex, DateTime birthDay, string address, string phoneNumber)
         {
-            this.id = id;
-            this.name = name;
-            this.surname = surname;
-            this.sex = sex;
-            this.birthDay = birthDay.Date; 
-            this.pesel = pesel;
-            this.address = address;
-            this.phoneNumber = phoneNumber;
+            Id = id;
+            Name = name;
+            Surname = surname;
+            Pesel = pesel;
+            Sex = sex;
+            BirthDay = birthDay.Date; 
+            Address = address;
+            PhoneNumber = phoneNumber;
         }
 
         public override string ToString()
         {
-            return $"{id}\t{name}\t{surname}\t{pesel}\t{sex}\t{birthDay}\t{address}\t{phoneNumber}";
+            return $"{Id}\t{Name}\t{Surname}\t{Pesel}\t{Sex}\t{BirthDay}\t{Address}\t{PhoneNumber}";
         }
     }
 }

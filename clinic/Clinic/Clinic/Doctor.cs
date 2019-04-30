@@ -15,28 +15,28 @@ namespace Clinic
 
     class Doctor
     {
-        int id;
-        string name;
-        string surname;
-        double pesel;
-        string phoneNumber;
-        int room;
-        Hours hours;
+        public int Id { get; }
+        public string Name { get; }
+        public string Surname { get; }
+        public double Pesel { get; }
+        public string PhoneNumber { get; }
+        public int Room { get; }
+        public Hours Hour { get; }
 
         public Doctor(int id, string name, string surname, double pesel, string phoneNumber, int room, Hours hours)
         {
-            this.id = id;
-            this.name = name;
-            this.surname = surname;
-            this.pesel = pesel;
-            this.phoneNumber = phoneNumber;
-            this.room = room;
-            this.hours = hours;
+            Id = id;
+            Name = name;
+            Surname = surname;
+            Pesel = pesel;
+            PhoneNumber = phoneNumber;
+            Room = room;
+            Hour = hours;
         }
 
         public override string ToString()
         {
-            return $"{id}\t{name}\t{surname}\t{pesel}\t{phoneNumber}\t{room}\t{hours}";
+            return $"{Id}\t{Name}\t{Surname}\t{Pesel}\t{PhoneNumber}\t{Room}\t{Hour}";
         }
     }
 }

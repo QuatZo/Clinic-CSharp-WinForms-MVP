@@ -52,10 +52,9 @@
             this.editPanel1.Address = "Adres";
             this.editPanel1.Location = new System.Drawing.Point(337, 13);
             this.editPanel1.Name = "editPanel1";
-            this.editPanel1.Phone = "Telefon";
+            this.editPanel1.PhoneNumber = "Telefon";
             this.editPanel1.Size = new System.Drawing.Size(807, 559);
             this.editPanel1.TabIndex = 8;
-            this.editPanel1.VisibleChanged += new System.EventHandler(this.editPanel1_VisibleChanged);
             // 
             // menuPanel1
             // 

@@ -14,6 +14,7 @@ namespace Clinic
 
         #region Events
         event Action LogOut;
+        event Action EditPanelClicked;
         #endregion
     }
 }

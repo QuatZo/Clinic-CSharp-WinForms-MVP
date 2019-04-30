@@ -17,12 +17,12 @@ namespace Clinic
         private readonly string userID;
         private readonly string passwd;
 
-        public DatabaseConnection(string server, string database, string userID, string passwd)
+        public DatabaseConnection()
         {
-            this.server = server;
-            this.database = database;
-            this.userID = userID;
-            this.passwd = passwd;
+            server = "localhost";
+            database = "clinic";
+            userID = "clinic";
+            passwd = "ZZZxxxCCCvvvBBBnnnMMM";
 
             connection = new MySqlConnection
             {
@@ -62,7 +62,6 @@ namespace Clinic
 
         public List<Patient> PatientInfo(string name)
         {
-            Console.WriteLine(name);
             using (var cmd = new MySqlCommand(name, connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -73,9 +72,9 @@ namespace Clinic
 
                 while (reader.Read())
                 {
-                    Sex sex;
-                    if(reader[4].ToString() == "Kobieta") { sex=Sex.kobieta; }
-                    else { sex = Sex.mezczyzna; }
+                    Sexs sex;
+                    if(reader[4].ToString() == "Kobieta") { sex=Sexs.kobieta; }
+                    else { sex = Sexs.mezczyzna; }
 
                     Patient pat = new Patient(Int32.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), Double.Parse(reader[3].ToString()), sex, DateTime.Parse(reader[5].ToString()), reader[6].ToString(), reader[7].ToString());
 
@@ -97,8 +96,8 @@ namespace Clinic
                 while (reader.Read())
                 {
                     Hours hours;
-                    if (reader[4].ToString() == "poranne") { hours=Hours.poranne; }
-                    else if (reader[4].ToString() == "popoludniowe") { hours = Hours.popoludniowe; }
+                    if (reader[6].ToString() == "poranne") { hours=Hours.poranne; }
+                    else if (reader[6].ToString() == "popoludniowe") { hours = Hours.popoludniowe; }
                     else { hours = Hours.wieczorowe; }
 
                     Doctor pat = new Doctor(Int32.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), Double.Parse(reader[3].ToString()), reader[4].ToString(), Int32.Parse(reader[5].ToString()), hours);
@@ -106,6 +105,15 @@ namespace Clinic
                     doctors.Add(pat);
                 }
                 return doctors;
+            }
+        }
+
+        public bool UpdateInfo(string name)
+        {
+            using (var cmd = new MySqlCommand(name, connection))
+            {
+                if (cmd.ExecuteNonQuery() > 0) { return true; }
+                else { return false; }
             }
         }
     }

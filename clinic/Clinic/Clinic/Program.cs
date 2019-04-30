@@ -20,19 +20,22 @@ namespace Clinic
 
 
             FormLogin loginForm = new FormLogin();
-            if (loginForm.ShowDialog() == DialogResult.OK)
+
+            DialogResult result = loginForm.ShowDialog();
+
+            if (result == DialogResult.OK)
             {
                 Model model = new Model();
-                IView view = new Form1("pacjent");
+                IView view = new Form1();
 
                 Presenter presenter = new Presenter(view, model);
 
                 Application.Run((Form)view);
             }
-            else if (loginForm.ShowDialog() == DialogResult.Yes)
+            else if (result == DialogResult.Yes)
             {
                 Model model = new Model();
-                IView view = new Form1("lekarz");
+                IView view = new Form1();
 
                 Presenter presenter = new Presenter(view, model);
 

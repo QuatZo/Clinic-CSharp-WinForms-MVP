@@ -10,8 +10,15 @@ using System.Windows.Forms;
 
 namespace Clinic
 {
+    public enum Position
+    {
+        pacjent,
+        lekarz
+    };
     public partial class FormLogin : Form
     {
+        public static Position position;
+        public static double pesel;
         public FormLogin()
         {
             InitializeComponent();
@@ -36,21 +43,30 @@ namespace Clinic
 
         public bool IsInDatabase(string CurrentPesel, string CurrentSurname, string CurrentID, string table)
         {
-
-            // to tylko zapytanie czy taki PESEL istnieje, tu beda inne dane
-            using (var connection = new DatabaseConnection("localhost", "clinic", "clinic", "ZZZxxxCCCvvvBBBnnnMMM"))
+            using (var connection = new DatabaseConnection())
             {
                 if (connection.Open()) {
 
+                    double.TryParse(CurrentPesel, out double dPesel);
                     if (table == "pacjenci") {
                         List<Patient> results = connection.PatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM {table} WHERE pesel={CurrentPesel} AND nazwisko=\"{CurrentSurname}\" AND idp={CurrentID}");
-                        if (results.Count > 0) { return true; }
+                        if (results.Count > 0)
+                        {
+                            pesel = dPesel;
+                            position = Position.pacjent;
+                            return true;
+                        }
                         else { return false; }
                     }
                     else
                     {
                         List<Doctor> results = connection.DoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM {table} WHERE pesel={CurrentPesel} AND nazwisko=\"{CurrentSurname}\" AND idd={CurrentID}");
-                        if (results.Count > 0) { return true; }
+                        if (results.Count > 0)
+                        {
+                            pesel = dPesel;
+                            position = Position.lekarz;
+                            return true;
+                        }
                         else { return false; }
                     }
                 }
@@ -64,7 +80,7 @@ namespace Clinic
 
         private void textBoxPesel_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxPesel.Text.Length == 11 && Double.TryParse(textBoxPesel.Text, out double dPesel))
+            if (textBoxPesel.Text.Length == 11 && double.TryParse(textBoxPesel.Text, out double dPesel))
             {
                 if (PeselValidation(dPesel)) { buttonLogin.Enabled = true; }
                 else
@@ -80,7 +96,7 @@ namespace Clinic
         {
             try
             {
-                Int32.Parse(textBoxID.Text);
+                int.Parse(textBoxID.Text);
             }
             catch (FormatException)
             {
@@ -88,13 +104,13 @@ namespace Clinic
             }
 
             if (IsInDatabase(textBoxPesel.Text, textBoxSurname.Text, textBoxID.Text, "pacjenci")) {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                DialogResult = DialogResult.OK;
+                Close();
                 Console.WriteLine("Logowanie na pacjenta udane!");
             }
             else if(IsInDatabase(textBoxPesel.Text, textBoxSurname.Text, textBoxID.Text, "doktorzy")){
-                this.DialogResult = DialogResult.Yes;
-                this.Close();
+                DialogResult = DialogResult.Yes;
+                Close();
                 Console.WriteLine("Logowanie na lekarza udane!");
             }
             else
