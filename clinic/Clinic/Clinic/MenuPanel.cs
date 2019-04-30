@@ -17,8 +17,8 @@ namespace Clinic
         #endregion
 
         #region Events
-        public event Action LogOut;
-        public event Action EditPanelClicked;
+        public event Action LogOut; // wyjscie z programu
+        public event Action EditPanelClicked; // panel edycji
         #endregion
         public MenuPanel()
         {

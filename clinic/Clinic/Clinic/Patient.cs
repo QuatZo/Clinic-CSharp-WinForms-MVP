@@ -13,7 +13,7 @@ namespace Clinic
 
     class Patient
     {
-        // pola klasy, do ktorych nikt nie ma miec dostepu (chyba, ze za wyjatkiem metod)
+        // parametry klasy
         public int Id { get; }
         public string Name { get; }
         public string Surname { get; }
@@ -23,6 +23,7 @@ namespace Clinic
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
 
+        // konstruktor klasy
         public Patient(int id, string name, string surname, double pesel, Sexs sex, DateTime birthDay, string address, string phoneNumber)
         {
             Id = id;
@@ -35,6 +36,7 @@ namespace Clinic
             PhoneNumber = phoneNumber;
         }
 
+        // przeciazona metoda ToString
         public override string ToString()
         {
             return $"{Id}\t{Name}\t{Surname}\t{Pesel}\t{Sex}\t{BirthDay}\t{Address}\t{PhoneNumber}";

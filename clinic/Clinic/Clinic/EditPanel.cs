@@ -13,7 +13,7 @@ namespace Clinic
     public partial class EditPanel : UserControl, IEditPanelView
     {
         #region Properties
-        // Parametry ustawiajace widoczność pól wspólnych, pacjenta i doktora
+        // parametry ustawiajace widoczność pól wspólnych, pacjenta i doktora
         public bool SharedFields
         {
             get
@@ -55,7 +55,7 @@ namespace Clinic
             }
         }
 
-        // Wspólne pola
+        // wspólne pola
         public int ID
         {
             get
@@ -112,7 +112,7 @@ namespace Clinic
             }
         }
 
-        // Pola pacjenta
+        // pola pacjenta
         public string Sex
         {
             get
@@ -147,7 +147,7 @@ namespace Clinic
             }
         }
 
-        // Pola doktora
+        // pola doktora
         public int Room
         {
             get
@@ -173,7 +173,7 @@ namespace Clinic
         #endregion
 
         #region Events
-        // Zapis danych
+        // zapis danych
         public event Action SaveButtonClicked;
         #endregion
 

@@ -43,6 +43,7 @@
             // 
             // comboBoxSex
             // 
+            this.comboBoxSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSex.Enabled = false;
             this.comboBoxSex.FormattingEnabled = true;
             this.comboBoxSex.Items.AddRange(new object[] {
@@ -52,7 +53,6 @@
             this.comboBoxSex.Name = "comboBoxSex";
             this.comboBoxSex.Size = new System.Drawing.Size(200, 21);
             this.comboBoxSex.TabIndex = 30;
-            this.comboBoxSex.Text = "Płeć";
             // 
             // buttonEdit
             // 
@@ -134,6 +134,7 @@
             // 
             // comboBoxHours
             // 
+            this.comboBoxHours.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxHours.FormattingEnabled = true;
             this.comboBoxHours.Items.AddRange(new object[] {
             "poranne",
@@ -143,7 +144,6 @@
             this.comboBoxHours.Name = "comboBoxHours";
             this.comboBoxHours.Size = new System.Drawing.Size(200, 21);
             this.comboBoxHours.TabIndex = 37;
-            this.comboBoxHours.Text = "Godziny przyjmowania";
             // 
             // EditPanel
             // 

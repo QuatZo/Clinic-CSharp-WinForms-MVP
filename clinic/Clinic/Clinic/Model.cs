@@ -7,10 +7,9 @@ using System.Windows.Forms;
 
 namespace Clinic
 {
+    // Wszystkie metody wszystkich widoków
     class Model
     {
-        // Wszystkie metody wszystkich widoków
-
         // pobiera informacje lekarza i wrzuca je do klasy Doctor
         public Doctor GetDoctorInfo(string pesel)
         {

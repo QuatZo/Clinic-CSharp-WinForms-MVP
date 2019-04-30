@@ -13,6 +13,7 @@ namespace Clinic
     public partial class Form1 : Form, IView
     {
         #region Properties
+        // tytul okna
         public string title
         {
             set
@@ -21,6 +22,7 @@ namespace Clinic
             }
         }
 
+        // widoki
         public IEditPanelView EditView
         {
             get
@@ -36,6 +38,7 @@ namespace Clinic
             }
         }
 
+        // metody jako parametry (zmiana widocznosci okien, tekst)
         public bool EditActive
         {
             get
@@ -75,7 +78,7 @@ namespace Clinic
         #endregion
 
         #region Events
-        public event Action FormLoaded;
+        public event Action FormLoaded; // logowanie formy, podpisany jest pod to przycisk Edycji z menu
         #endregion
 
         public Form1()

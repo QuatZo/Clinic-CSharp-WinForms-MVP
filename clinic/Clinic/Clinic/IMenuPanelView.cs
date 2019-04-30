@@ -13,8 +13,8 @@ namespace Clinic
         #endregion
 
         #region Events
-        event Action LogOut;
-        event Action EditPanelClicked;
+        event Action LogOut; // zamkniecie programu
+        event Action EditPanelClicked; // wejscie do panelu edycji
         #endregion
     }
 }

@@ -15,6 +15,7 @@ namespace Clinic
 
     class Doctor
     {
+        // parametry klasy
         public int Id { get; }
         public string Name { get; }
         public string Surname { get; }
@@ -23,6 +24,7 @@ namespace Clinic
         public int Room { get; }
         public Hours Hour { get; }
 
+        // konstruktor
         public Doctor(int id, string name, string surname, double pesel, string phoneNumber, int room, Hours hours)
         {
             Id = id;
@@ -34,6 +36,7 @@ namespace Clinic
             Hour = hours;
         }
 
+        // przeciazona metoda ToString
         public override string ToString()
         {
             return $"{Id}\t{Name}\t{Surname}\t{Pesel}\t{PhoneNumber}\t{Room}\t{Hour}";

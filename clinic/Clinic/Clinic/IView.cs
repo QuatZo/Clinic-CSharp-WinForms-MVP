@@ -8,18 +8,21 @@ namespace Clinic
 {
     interface IView
     {
-        // wszystkie panele, np.
         #region Properties
+        // tytul formy
         string title { set; }
  
+        // widoki
         IEditPanelView EditView { get; }
         IMenuPanelView MenuView { get; }
+
+        // metody jako parametry (zmiana widocznosci okien, tekst)
         bool EditActive { get; set; }
         bool MenuActive { get; set; }
         string WelcomeLabel { get; set; }
         #endregion
 
-        // eventy z formy (prawdopodobnie przelaczanie aktywnego okna w zaleznosci od przycisku main)
+        // eventy
         #region Events
         event Action FormLoaded;
         #endregion

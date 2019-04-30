@@ -80,7 +80,7 @@
             this.Controls.Add(this.textBoxPesel);
             this.Controls.Add(this.buttonLogin);
             this.Name = "FormLogin";
-            this.Text = "FormLogin";
+            this.Text = "Panel logowania";
             this.ResumeLayout(false);
             this.PerformLayout();
 
