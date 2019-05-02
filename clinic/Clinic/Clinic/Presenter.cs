@@ -19,6 +19,7 @@ namespace Clinic
         EditPanelPresenter EditPresenter;
         MenuPanelPresenter MenuPresenter;
         AppointmentsPanelPresenter AppointmentsPresenter;
+        AppointmentPanelPresenter AppointmentPresenter;
 
         // konstruktor
         public Presenter(IView view, Model model){
@@ -29,12 +30,28 @@ namespace Clinic
             EditPresenter = new EditPanelPresenter(view.EditView, model);
             MenuPresenter = new MenuPanelPresenter(view.MenuView, model);
             AppointmentsPresenter = new AppointmentsPanelPresenter(view.AppointmentsView, model);
+            AppointmentPresenter = new AppointmentPanelPresenter(view.AppointmentView, model);
 
             // eventy
             this.view.FormLoaded += MenuView_EditButtonClicked;
             this.view.MenuView.EditButtonClicked += MenuView_EditButtonClicked;
             this.view.MenuView.LogOut += MenuView_LogOut;
             this.view.MenuView.AppointmentsButtonClicked += MenuView_AppointmentsButtonClicked;
+            this.view.AppointmentsView.ChosenAppointmentClick += AppointmentsView_ChosenAppointmentClick;
+        }
+
+        private void AppointmentsView_ChosenAppointmentClick()
+        {
+            if (view.EditActive)
+                view.EditActive = false;
+            if (!view.MenuActive)
+                view.MenuActive = true;
+            if (view.AppointmentsActive)
+                view.AppointmentsActive = false;
+            if (!view.AppointmentActive)
+                view.AppointmentActive = true;
+
+            Console.WriteLine(view.AppointmentsView.ChosenAppointment);
         }
 
         private void MenuView_AppointmentsButtonClicked()
@@ -45,6 +62,8 @@ namespace Clinic
                 view.MenuActive = true;
             if (!view.AppointmentsActive)
                 view.AppointmentsActive = true;
+            if (view.AppointmentActive)
+                view.AppointmentActive = false;
 
             view.AppointmentsView.Content = model.GetAppointments(FormLogin.pesel.ToString());
         }
@@ -65,9 +84,11 @@ namespace Clinic
                 view.MenuActive = true;
             if (view.AppointmentsActive)
                 view.AppointmentsActive = false;
+            if (view.AppointmentActive)
+                view.AppointmentActive = false;
 
             // aktualizacja panelu informacji (kto jest zalogowany i jaki panel [pacjent/lekarz])
-            if(!view.WelcomeLabel.Contains(FormLogin.position.ToString()))
+            if (!view.WelcomeLabel.Contains(FormLogin.position.ToString()))
                 view.WelcomeLabel = view.WelcomeLabel.Replace("Panel", "Panel " + FormLogin.position + "a");
 
             // aktualizacja panelu edycji (pola wspoldzielone)

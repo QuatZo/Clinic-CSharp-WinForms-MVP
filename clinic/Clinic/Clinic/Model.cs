@@ -64,6 +64,7 @@ namespace Clinic
                 }
             }
         }
+
         // pobiera informacje pacjenta i wrzuca je do klasy Patient
         public Patient GetPatientInfo(string pesel)
         {
@@ -83,6 +84,7 @@ namespace Clinic
             }
         }
 
+        // pobiera informacje nt wizyty, w zaleznosci od zalogowanej osoby
         public List<string> GetAppointments(string pesel)
         {
             using (var connection = new DatabaseConnection())

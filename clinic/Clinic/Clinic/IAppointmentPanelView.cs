@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace Clinic
 {
-    public interface IAppointmentsPanelView
+    public interface IAppointmentPanelView
     {
         #region Properties
-        List<string> Content { set; }
-        string ChosenAppointment { get; }
+
         #endregion
 
         #region Events
-        event Action ChosenAppointmentClick;
+
         #endregion
     }
 }

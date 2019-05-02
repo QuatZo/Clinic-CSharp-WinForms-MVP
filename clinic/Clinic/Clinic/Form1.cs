@@ -37,12 +37,18 @@ namespace Clinic
                 return menuPanel1;
             }
         }
-
         public IAppointmentsPanelView AppointmentsView
         {
             get
             {
                 return appointmentsPanel1;
+            }
+        }
+        public IAppointmentPanelView AppointmentView
+        {
+            get
+            {
+                return appointmentPanel1;
             }
         }
 
@@ -83,6 +89,18 @@ namespace Clinic
                 appointmentsPanel1.Visible = value;
             }
         }
+        public bool AppointmentActive
+        {
+            get
+            {
+                return appointmentPanel1.Enabled && appointmentPanel1.Visible;
+            }
+            set
+            {
+                appointmentPanel1.Enabled = value;
+                appointmentPanel1.Visible = value;
+            }
+        }
         public string WelcomeLabel
         {
             get
@@ -94,7 +112,6 @@ namespace Clinic
                 labelInfo.Text = value;
             }
         }
-
         #endregion
 
         #region Events

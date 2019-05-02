@@ -30,18 +30,30 @@ namespace Clinic
         {
             get
             {
-                List<string> ChosenAppointmentInfo = new List<string>(listBox1.SelectedItem.ToString().Split());
+                if (listBox1.SelectedIndex > -1)
+                {
+                    List<string> ChosenAppointmentInfo = new List<string>(listBox1.SelectedItem.ToString().Split());
 
-                Console.WriteLine(ChosenAppointmentInfo);
-
-                return ChosenAppointmentInfo[0];
+                    return ChosenAppointmentInfo[0];
+                }
+                return "-1";
             }
         }
+        #endregion
+
+        #region Events
+        public event Action ChosenAppointmentClick;
         #endregion
 
         public AppointmentsPanel()
         {
             InitializeComponent();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ChosenAppointmentClick != null)
+                ChosenAppointmentClick();
         }
     }
 }

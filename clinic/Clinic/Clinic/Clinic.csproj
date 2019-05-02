@@ -68,6 +68,7 @@
     <Compile Include="AppointmentPanel.Designer.cs">
       <DependentUpon>AppointmentPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppointmentPanelPresenter.cs" />
     <Compile Include="AppointmentsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +97,7 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="IAppointmentPanelView.cs" />
     <Compile Include="IAppointmentsPanelView.cs" />
     <Compile Include="IEditPanelView.cs" />
     <Compile Include="IMenuPanelView.cs" />

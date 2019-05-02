@@ -16,11 +16,13 @@ namespace Clinic
         IEditPanelView EditView { get; }
         IMenuPanelView MenuView { get; }
         IAppointmentsPanelView AppointmentsView { get; }
+        IAppointmentPanelView AppointmentView { get; }
 
         // metody jako parametry (zmiana widocznosci okien, tekst)
         bool EditActive { get; set; }
         bool MenuActive { get; set; }
         bool AppointmentsActive { get; set; }
+        bool AppointmentActive { get; set; }
         string WelcomeLabel { get; set; }
         #endregion
 
