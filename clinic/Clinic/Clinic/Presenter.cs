@@ -18,6 +18,7 @@ namespace Clinic
         // wszystkie prezentery, np.
         EditPanelPresenter EditPresenter;
         MenuPanelPresenter MenuPresenter;
+        AppointmentsPanelPresenter AppointmentsPresenter;
 
         // konstruktor
         public Presenter(IView view, Model model){
@@ -27,11 +28,25 @@ namespace Clinic
             // prezenter = konstruktor prezentera
             EditPresenter = new EditPanelPresenter(view.EditView, model);
             MenuPresenter = new MenuPanelPresenter(view.MenuView, model);
+            AppointmentsPresenter = new AppointmentsPanelPresenter(view.AppointmentsView, model);
 
             // eventy
-            this.view.FormLoaded += View_FormLoaded;
-            this.view.MenuView.EditPanelClicked += View_FormLoaded;
+            this.view.FormLoaded += MenuView_EditButtonClicked;
+            this.view.MenuView.EditButtonClicked += MenuView_EditButtonClicked;
             this.view.MenuView.LogOut += MenuView_LogOut;
+            this.view.MenuView.AppointmentsButtonClicked += MenuView_AppointmentsButtonClicked;
+        }
+
+        private void MenuView_AppointmentsButtonClicked()
+        {
+            if (view.EditActive)
+                view.EditActive = false;
+            if (!view.MenuActive)
+                view.MenuActive = true;
+            if (!view.AppointmentsActive)
+                view.AppointmentsActive = true;
+
+            view.AppointmentsView.Content = model.GetAppointments(FormLogin.pesel.ToString());
         }
 
         private void MenuView_LogOut()
@@ -39,7 +54,7 @@ namespace Clinic
             view.ExitForm();
         }
 
-        private void View_FormLoaded()
+        private void MenuView_EditButtonClicked()
         {
             view.title = FormLogin.position.ToString();
 
@@ -48,6 +63,8 @@ namespace Clinic
                 view.EditActive = true;
             if (!view.MenuActive)
                 view.MenuActive = true;
+            if (view.AppointmentsActive)
+                view.AppointmentsActive = false;
 
             // aktualizacja panelu informacji (kto jest zalogowany i jaki panel [pacjent/lekarz])
             if(!view.WelcomeLabel.Contains(FormLogin.position.ToString()))

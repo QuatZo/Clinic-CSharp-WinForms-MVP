@@ -74,6 +74,7 @@
     <Compile Include="AppointmentsPanel.Designer.cs">
       <DependentUpon>AppointmentsPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppointmentsPanelPresenter.cs" />
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="Doctor.cs" />
     <Compile Include="EditPanel.cs">
@@ -95,6 +96,7 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="IAppointmentsPanelView.cs" />
     <Compile Include="IEditPanelView.cs" />
     <Compile Include="IMenuPanelView.cs" />
     <Compile Include="IView.cs" />

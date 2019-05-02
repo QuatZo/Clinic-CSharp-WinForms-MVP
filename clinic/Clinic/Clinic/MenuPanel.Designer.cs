@@ -61,6 +61,7 @@
             this.buttonAppointments.TabIndex = 2;
             this.buttonAppointments.Text = "Wizyty";
             this.buttonAppointments.UseVisualStyleBackColor = true;
+            this.buttonAppointments.Click += new System.EventHandler(this.buttonAppointments_Click);
             // 
             // buttonLogOut
             // 

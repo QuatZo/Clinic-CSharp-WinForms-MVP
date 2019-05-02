@@ -18,7 +18,8 @@ namespace Clinic
 
         #region Events
         public event Action LogOut; // wyjscie z programu
-        public event Action EditPanelClicked; // panel edycji
+        public event Action EditButtonClicked; // panel edycji
+        public event Action AppointmentsButtonClicked; // panel wizyt
         #endregion
         public MenuPanel()
         {
@@ -33,8 +34,14 @@ namespace Clinic
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            if (EditPanelClicked != null)
-                EditPanelClicked();
+            if (EditButtonClicked != null)
+                EditButtonClicked();
+        }
+
+        private void buttonAppointments_Click(object sender, EventArgs e)
+        {
+            if (AppointmentsButtonClicked != null)
+                AppointmentsButtonClicked();
         }
     }
 }

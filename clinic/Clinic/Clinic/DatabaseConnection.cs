@@ -133,5 +133,23 @@ namespace Clinic
                 else { return false; }
             }
         }
+
+        public List<string> Appointments(string name)
+        {
+            using (var cmd = new MySqlCommand(name, connection))
+            {
+                MySqlDataReader reader = cmd.ExecuteReader(); // czytnik
+
+                List<string> records = new List<string>(); // lista wynikow, ktora bedzie przerobiona na liste lekarzy
+
+                // poki sa jakies wyniki (chociaz zawsze zakladamy, ze jest 1 wynik, bo PESEL jest unikalny)
+                while (reader.Read())
+                {
+                    records.Add($"{reader[0].ToString()} {reader[1].ToString()} {reader[2]} {reader[3]} {reader[4].ToString()}");
+                }
+
+                return records;
+            }
+        }
     }
 }

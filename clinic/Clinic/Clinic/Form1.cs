@@ -38,6 +38,14 @@ namespace Clinic
             }
         }
 
+        public IAppointmentsPanelView AppointmentsView
+        {
+            get
+            {
+                return appointmentsPanel1;
+            }
+        }
+
         // metody jako parametry (zmiana widocznosci okien, tekst)
         public bool EditActive
         {
@@ -61,6 +69,18 @@ namespace Clinic
             {
                 menuPanel1.Enabled = value;
                 menuPanel1.Visible = value;
+            }
+        }
+        public bool AppointmentsActive
+        {
+            get
+            {
+                return appointmentsPanel1.Enabled && appointmentsPanel1.Visible;
+            }
+            set
+            {
+                appointmentsPanel1.Enabled = value;
+                appointmentsPanel1.Visible = value;
             }
         }
         public string WelcomeLabel

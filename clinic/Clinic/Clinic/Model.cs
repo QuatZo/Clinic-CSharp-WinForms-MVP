@@ -82,5 +82,37 @@ namespace Clinic
                 }
             }
         }
+
+        public List<string> GetAppointments(string pesel)
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                if (connection.Open())
+                {
+                    string uniqueFields;
+                    string whereClause;
+                    if (FormLogin.position == Position.pacjent)
+                    {
+                        uniqueFields = "doktorzy.imie, doktorzy.nazwisko, doktorzy.gabinet";
+                        whereClause = $"pacjenci.pesel={pesel}";
+                    }
+                    else
+                    {
+                        uniqueFields = "pacjenci.imie, pacjenci.nazwisko, pacjenci.pesel";
+                        whereClause = $"doktorzy.pesel={pesel}";
+                    }
+
+                    List<string> result = connection.Appointments($"SELECT wizyty.idw, wizyty.data, {uniqueFields} FROM wizyty JOIN pacjenci ON pacjenci.idp=wizyty.idp JOIN doktorzy ON doktorzy.idd=wizyty.idd WHERE {whereClause}");
+                    
+                    return result;
+                }
+                else
+                {
+                    MessageBox.Show("Błąd z połaczeniem!");
+                    List<string> result = null;
+                    return result;
+                }
+            }
+        }
     }
 }

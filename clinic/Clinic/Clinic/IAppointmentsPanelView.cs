@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace Clinic
 {
-    public interface IMenuPanelView
+    public interface IAppointmentsPanelView
     {
         #region Properties
-
+        List<string> Content { set; }
+        string ChosenAppointment { get; }
         #endregion
 
         #region Events
-        event Action LogOut; // zamkniecie programu
-        event Action EditButtonClicked; // wejscie do panelu edycji
-        event Action AppointmentsButtonClicked; // wejscie do panelu wizyt
+
         #endregion
     }
 }
