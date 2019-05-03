@@ -35,7 +35,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button2
@@ -99,16 +98,7 @@
             this.comboBox1.TabIndex = 10;
             this.comboBox1.Text = "Lekarz (po wybraniu specjalizacji)";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(227, 117);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "(Dane z logowania)";
-            // 
-            // RegisterAppointment
+            // RegisterAppointmentPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -119,8 +109,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label1);
-            this.Name = "RegisterAppointment";
+            this.Name = "RegisterAppointmentPanel";
             this.Size = new System.Drawing.Size(767, 527);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -136,6 +125,5 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
     }
 }

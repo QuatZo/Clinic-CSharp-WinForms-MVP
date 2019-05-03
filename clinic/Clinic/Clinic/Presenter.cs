@@ -51,7 +51,7 @@ namespace Clinic
             if (!view.AppointmentActive)
                 view.AppointmentActive = true;
 
-            Console.WriteLine(view.AppointmentsView.ChosenAppointment);
+            view.AppointmentView.FullfilFields = model.GetSpecificAppointment(view.AppointmentsView.ChosenAppointment);
         }
 
         private void MenuView_AppointmentsButtonClicked()

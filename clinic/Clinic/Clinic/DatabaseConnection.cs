@@ -140,12 +140,51 @@ namespace Clinic
             {
                 MySqlDataReader reader = cmd.ExecuteReader(); // czytnik
 
-                List<string> records = new List<string>(); // lista wynikow, ktora bedzie przerobiona na liste lekarzy
+                List<string> records = new List<string>(); // lista wynikow, ktora bedzie przerobiona na liste wizyt
 
-                // poki sa jakies wyniki (chociaz zawsze zakladamy, ze jest 1 wynik, bo PESEL jest unikalny)
                 while (reader.Read())
                 {
                     records.Add($"{reader[0].ToString()} {reader[1].ToString()} {reader[2]} {reader[3]} {reader[4].ToString()}");
+                }
+
+                return records;
+            }
+        }
+        public List<string> Appointment(string name)
+        {
+            using (var cmd = new MySqlCommand(name, connection))
+            {
+                MySqlDataReader reader = cmd.ExecuteReader(); // czytnik
+
+                List<string> records = new List<string>(); // lista wynikow, ktora bedzie przerobiona na daną wizytę
+
+                // poki sa jakies wyniki (chociaz zawsze zakladamy, ze jest 1 wynik, bo ID jest unikalne)
+                while (reader.Read())
+                {
+                    Console.WriteLine(reader.FieldCount);
+
+                    for(int i = 0; i < reader.FieldCount; i++)
+                    {
+                        records.Add(reader[i].ToString());
+                    }
+                }
+
+                return records;
+            }
+        }
+
+        public List<string> Prescription(string name)
+        {
+            using (var cmd = new MySqlCommand(name, connection))
+            {
+                MySqlDataReader reader = cmd.ExecuteReader(); // czytnik
+
+                List<string> records = new List<string>(); // lista wynikow, ktora bedzie przerobiona na daną wizytę
+
+                // poki sa jakies wyniki (chociaz zawsze zakladamy, ze jest 1 wynik, bo ID jest unikalne)
+                while (reader.Read())
+                {
+                    records.Add($"{reader[0].ToString()}");
                 }
 
                 return records;

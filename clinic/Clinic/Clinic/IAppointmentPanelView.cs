@@ -9,7 +9,7 @@ namespace Clinic
     public interface IAppointmentPanelView
     {
         #region Properties
-
+        List<string> FullfilFields { set; }
         #endregion
 
         #region Events
