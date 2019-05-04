@@ -123,10 +123,9 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-
                     List<string> result = connection.Appointment($"SELECT pacjenci.pesel, CONCAT(pacjenci.imie, \" \", pacjenci.nazwisko), CONCAT(doktorzy.imie, \" \", doktorzy.nazwisko), wizyty.opis, wizyty.data FROM wizyty JOIN pacjenci ON pacjenci.idp=wizyty.idp JOIN doktorzy ON doktorzy.idd=wizyty.idd WHERE wizyty.idw={id}");
 
-                    result.Add(String.Join("\n", connection.Prescription($"SELECT CONCAT(leki.nazwa, \" \", dawki.ile, \" od \", dawki_i_leki.od_kiedy, \" do \", dawki_i_leki.do_kiedy) FROM wizyty JOIN wizyty_i_dawki_i_leki ON wizyty.idw=wizyty_i_dawki_i_leki.idw JOIN dawki_i_leki ON wizyty_i_dawki_i_leki.iddl=dawki_i_leki.iddl JOIN dawki ON dawki_i_leki.idd=dawki.idd JOIN leki ON dawki_i_leki.idl=leki.idl WHERE wizyty.idw={id}").ToArray()));
+                    result.Add(string.Join("\n", connection.Prescription($"SELECT CONCAT(leki.nazwa, \" \", dawki.ile, \" od \", dawki_i_leki.od_kiedy, \" do \", dawki_i_leki.do_kiedy) FROM wizyty JOIN wizyty_i_dawki_i_leki ON wizyty.idw=wizyty_i_dawki_i_leki.idw JOIN dawki_i_leki ON wizyty_i_dawki_i_leki.iddl=dawki_i_leki.iddl JOIN dawki ON dawki_i_leki.idd=dawki.idd JOIN leki ON dawki_i_leki.idl=leki.idl WHERE wizyty.idw={id}").ToArray()));
 
                     return result;
                 }
@@ -134,6 +133,62 @@ namespace Clinic
                 {
                     MessageBox.Show("Błąd z połaczeniem!");
                     List<string> result = null;
+                    return result;
+                }
+            }
+        }
+
+        public List<string> GetSpecializations()
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                if (connection.Open())
+                {
+                    List<string> result = connection.Specializations($"SELECT nazwa FROM specjalizacje");
+
+                    return result;
+                }
+                else
+                {
+                    MessageBox.Show("Błąd z połaczeniem!");
+                    List<string> result = null;
+                    return result;
+                }
+            }
+        }
+        public List<string> GetDoctors(string specialization)
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                if (connection.Open())
+                {
+                    List<string> result = connection.Doctors($"SELECT doktorzy.idd, doktorzy.imie, doktorzy.nazwisko FROM doktorzy JOIN dok_i_spec ON doktorzy.idd=dok_i_spec.idd JOIN specjalizacje ON dok_i_spec.ids=specjalizacje.ids WHERE specjalizacje.nazwa=\"{specialization}\"");
+
+                    return result;
+                }
+                else
+                {
+                    MessageBox.Show("Błąd z połaczeniem!");
+                    List<string> result = null;
+                    return result;
+                }
+            }
+        }
+        public string GetDoctorHours(string id)
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                if (connection.Open())
+                {
+                    Console.WriteLine(connection.DoctorHours($"SELECT godziny FROM doktorzy WHERE idd={id}"));
+                    string result = connection.DoctorHours($"SELECT godziny FROM doktorzy WHERE idd={id}");
+
+                    return result;
+                }
+                else
+                {
+                    MessageBox.Show("Błąd z połaczeniem!");
+                    string result = null;
                     return result;
                 }
             }

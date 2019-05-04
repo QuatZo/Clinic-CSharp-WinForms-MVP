@@ -28,87 +28,89 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonRegister = new System.Windows.Forms.Button();
+            this.dateTimePickerAppointment = new System.Windows.Forms.DateTimePicker();
+            this.textBoxContent = new System.Windows.Forms.TextBox();
+            this.comboBoxSpecialization = new System.Windows.Forms.ComboBox();
+            this.comboBoxDoctor = new System.Windows.Forms.ComboBox();
+            this.textBoxHours = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button2
+            // buttonClear
             // 
-            this.button2.Location = new System.Drawing.Point(411, 384);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Wyczyść";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonClear.Location = new System.Drawing.Point(414, 356);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(75, 23);
+            this.buttonClear.TabIndex = 16;
+            this.buttonClear.Text = "Wyczyść";
+            this.buttonClear.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonRegister
             // 
-            this.button1.Location = new System.Drawing.Point(303, 384);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Zarejestruj";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonRegister.Location = new System.Drawing.Point(277, 356);
+            this.buttonRegister.Name = "buttonRegister";
+            this.buttonRegister.Size = new System.Drawing.Size(75, 23);
+            this.buttonRegister.TabIndex = 15;
+            this.buttonRegister.Text = "Zarejestruj";
+            this.buttonRegister.UseVisualStyleBackColor = true;
             // 
-            // comboBox3
+            // dateTimePickerAppointment
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(462, 327);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(93, 21);
-            this.comboBox3.TabIndex = 14;
-            this.comboBox3.Text = "Godzina wizyty";
+            this.dateTimePickerAppointment.Location = new System.Drawing.Point(277, 304);
+            this.dateTimePickerAppointment.Name = "dateTimePickerAppointment";
+            this.dateTimePickerAppointment.Size = new System.Drawing.Size(212, 20);
+            this.dateTimePickerAppointment.TabIndex = 13;
             // 
-            // dateTimePicker1
+            // textBoxContent
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(230, 328);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(214, 20);
-            this.dateTimePicker1.TabIndex = 13;
+            this.textBoxContent.Location = new System.Drawing.Point(277, 228);
+            this.textBoxContent.Multiline = true;
+            this.textBoxContent.Name = "textBoxContent";
+            this.textBoxContent.Size = new System.Drawing.Size(212, 70);
+            this.textBoxContent.TabIndex = 12;
+            this.textBoxContent.Text = "Opis (nadpisywany później przez lekarza)";
             // 
-            // textBox1
+            // comboBoxSpecialization
             // 
-            this.textBox1.Location = new System.Drawing.Point(230, 270);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(164, 38);
-            this.textBox1.TabIndex = 12;
-            this.textBox1.Text = "Opis (nadpisywany później przez lekarza)";
+            this.comboBoxSpecialization.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSpecialization.FormattingEnabled = true;
+            this.comboBoxSpecialization.Location = new System.Drawing.Point(277, 174);
+            this.comboBoxSpecialization.Name = "comboBoxSpecialization";
+            this.comboBoxSpecialization.Size = new System.Drawing.Size(212, 21);
+            this.comboBoxSpecialization.TabIndex = 11;
+            this.comboBoxSpecialization.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpecialization_SelectedIndexChanged);
             // 
-            // comboBox2
+            // comboBoxDoctor
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(230, 190);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(212, 21);
-            this.comboBox2.TabIndex = 11;
-            this.comboBox2.Text = "Specjalizacja";
+            this.comboBoxDoctor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDoctor.Enabled = false;
+            this.comboBoxDoctor.FormattingEnabled = true;
+            this.comboBoxDoctor.Location = new System.Drawing.Point(277, 201);
+            this.comboBoxDoctor.Name = "comboBoxDoctor";
+            this.comboBoxDoctor.Size = new System.Drawing.Size(212, 21);
+            this.comboBoxDoctor.TabIndex = 10;
+            this.comboBoxDoctor.SelectedIndexChanged += new System.EventHandler(this.comboBoxDoctor_SelectedIndexChanged);
             // 
-            // comboBox1
+            // textBoxHours
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(230, 231);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(212, 21);
-            this.comboBox1.TabIndex = 10;
-            this.comboBox1.Text = "Lekarz (po wybraniu specjalizacji)";
+            this.textBoxHours.Enabled = false;
+            this.textBoxHours.Location = new System.Drawing.Point(277, 330);
+            this.textBoxHours.Name = "textBoxHours";
+            this.textBoxHours.Size = new System.Drawing.Size(212, 20);
+            this.textBoxHours.TabIndex = 17;
             // 
             // RegisterAppointmentPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.textBoxHours);
+            this.Controls.Add(this.buttonClear);
+            this.Controls.Add(this.buttonRegister);
+            this.Controls.Add(this.dateTimePickerAppointment);
+            this.Controls.Add(this.textBoxContent);
+            this.Controls.Add(this.comboBoxSpecialization);
+            this.Controls.Add(this.comboBoxDoctor);
             this.Name = "RegisterAppointmentPanel";
             this.Size = new System.Drawing.Size(767, 527);
             this.ResumeLayout(false);
@@ -118,12 +120,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.Button buttonRegister;
+        private System.Windows.Forms.DateTimePicker dateTimePickerAppointment;
+        private System.Windows.Forms.TextBox textBoxContent;
+        private System.Windows.Forms.ComboBox comboBoxSpecialization;
+        private System.Windows.Forms.ComboBox comboBoxDoctor;
+        private System.Windows.Forms.TextBox textBoxHours;
     }
 }

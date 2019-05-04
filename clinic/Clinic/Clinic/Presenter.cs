@@ -57,6 +57,10 @@ namespace Clinic
                 view.AppointmentActive = false;
             if (!view.RegisterAppointmentActive)
                 view.RegisterAppointmentActive = true;
+
+            if (view.RegisterAppointmentView.DoctorActive)
+                view.RegisterAppointmentView.DoctorActive = false;
+            view.RegisterAppointmentView.SetSpecializationsList = model.GetSpecializations();
         }
 
         private void AppointmentsView_ChosenAppointmentClick()
