@@ -14,7 +14,7 @@ namespace Clinic
     {
         #region Properties
         // tytul okna
-        public string title
+        public string Title
         {
             set
             {
@@ -50,6 +50,14 @@ namespace Clinic
             {
                 return appointmentPanel1;
             }
+        }
+        public IRegisterAppointmentPanelView RegisterAppointmentView
+        {
+            get
+            {
+                return registerAppointment1;
+            }
+
         }
 
         // metody jako parametry (zmiana widocznosci okien, tekst)
@@ -101,6 +109,19 @@ namespace Clinic
                 appointmentPanel1.Visible = value;
             }
         }
+        public bool RegisterAppointmentActive
+        {
+            get
+            {
+                return registerAppointment1.Enabled && registerAppointment1.Visible;
+            }
+            set
+            {
+                registerAppointment1.Enabled = value;
+                registerAppointment1.Visible = value;
+            }
+        }
+        #endregion
         public string WelcomeLabel
         {
             get
@@ -112,7 +133,6 @@ namespace Clinic
                 labelInfo.Text = value;
             }
         }
-        #endregion
 
         #region Events
         public event Action FormLoaded; // logowanie formy, podpisany jest pod to przycisk Edycji z menu

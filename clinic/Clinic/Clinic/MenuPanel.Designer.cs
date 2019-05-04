@@ -52,6 +52,7 @@
             this.buttonRegisterAppointment.TabIndex = 1;
             this.buttonRegisterAppointment.Text = "Zarejestruj Wizyte";
             this.buttonRegisterAppointment.UseVisualStyleBackColor = true;
+            this.buttonRegisterAppointment.Click += new System.EventHandler(this.buttonRegisterAppointment_Click);
             // 
             // buttonAppointments
             // 

@@ -101,6 +101,7 @@
     <Compile Include="IAppointmentsPanelView.cs" />
     <Compile Include="IEditPanelView.cs" />
     <Compile Include="IMenuPanelView.cs" />
+    <Compile Include="IRegisterAppointmentPanelView.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="MenuPanel.cs">
       <SubType>UserControl</SubType>
@@ -120,6 +121,7 @@
     <Compile Include="RegisterAppointmentPanel.Designer.cs">
       <DependentUpon>RegisterAppointmentPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegisterAppointmentPanelPresenter.cs" />
     <EmbeddedResource Include="AppointmentPanel.resx">
       <DependentUpon>AppointmentPanel.cs</DependentUpon>
     </EmbeddedResource>

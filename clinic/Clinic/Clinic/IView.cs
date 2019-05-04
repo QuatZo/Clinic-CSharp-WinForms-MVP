@@ -10,19 +10,21 @@ namespace Clinic
     {
         #region Properties
         // tytul formy
-        string title { set; }
+        string Title { set; }
  
         // widoki
         IEditPanelView EditView { get; }
         IMenuPanelView MenuView { get; }
         IAppointmentsPanelView AppointmentsView { get; }
         IAppointmentPanelView AppointmentView { get; }
+        IRegisterAppointmentPanelView RegisterAppointmentView { get; }
 
         // metody jako parametry (zmiana widocznosci okien, tekst)
         bool EditActive { get; set; }
         bool MenuActive { get; set; }
         bool AppointmentsActive { get; set; }
         bool AppointmentActive { get; set; }
+        bool RegisterAppointmentActive { get; set; }
         string WelcomeLabel { get; set; }
         #endregion
 

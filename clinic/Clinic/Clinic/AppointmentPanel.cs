@@ -17,12 +17,12 @@ namespace Clinic
         {
             set
             {
-                    textBoxPatientPesel.Text = value[0];
-                    textBoxPatient.Text = value[1];
-                    textBoxDoctor.Text = value[2];
-                    textBoxContent.Text = value[3];
-                    dateTimePickerAppointment.Value = DateTime.Parse(value[4]);
-                    textBoxPrescription.Text = value[5];
+                textBoxPatientPesel.Text = value[0];
+                textBoxPatient.Text = value[1];
+                textBoxDoctor.Text = value[2];
+                textBoxContent.Text = value[3];
+                dateTimePickerAppointment.Value = DateTime.Parse(value[4]);
+                textBoxPrescription.Text = value[5];
             }
         }
         #endregion

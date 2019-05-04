@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Clinic
 {
-    public partial class RegisterAppointmentPanel : UserControl
+    public partial class RegisterAppointmentPanel : UserControl, IRegisterAppointmentPanelView
     {
         public RegisterAppointmentPanel()
         {

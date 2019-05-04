@@ -20,7 +20,9 @@ namespace Clinic
         public event Action LogOut; // wyjscie z programu
         public event Action EditButtonClicked; // panel edycji
         public event Action AppointmentsButtonClicked; // panel wizyt
+        public event Action RegisterAppointmentButtonClicked; // panel rejestracji wizyty
         #endregion
+
         public MenuPanel()
         {
             InitializeComponent();
@@ -42,6 +44,12 @@ namespace Clinic
         {
             if (AppointmentsButtonClicked != null)
                 AppointmentsButtonClicked();
+        }
+
+        private void buttonRegisterAppointment_Click(object sender, EventArgs e)
+        {
+            if (RegisterAppointmentButtonClicked != null)
+                RegisterAppointmentButtonClicked();
         }
     }
 }
