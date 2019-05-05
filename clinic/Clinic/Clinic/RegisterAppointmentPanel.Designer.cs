@@ -48,6 +48,8 @@
             // 
             // dateTimePickerAppointment
             // 
+            this.dateTimePickerAppointment.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dateTimePickerAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerAppointment.Location = new System.Drawing.Point(277, 304);
             this.dateTimePickerAppointment.Name = "dateTimePickerAppointment";
             this.dateTimePickerAppointment.Size = new System.Drawing.Size(212, 20);

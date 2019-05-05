@@ -155,7 +155,7 @@ namespace Clinic
 
                 while (reader.Read())
                 {
-                    records.Add($"{reader[0].ToString()} {reader[1].ToString()} {reader[2]} {reader[3]} {reader[4].ToString()}");
+                    records.Add($"{reader[0].ToString()} {DateTime.Parse(reader[1].ToString()).ToString("yyyy-MM-dd HH:mm")} {reader[2]} {reader[3]} {reader[4].ToString()}");
                 }
 
                 return records;

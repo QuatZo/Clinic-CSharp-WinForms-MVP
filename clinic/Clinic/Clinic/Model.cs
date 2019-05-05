@@ -199,13 +199,13 @@ namespace Clinic
             }
         }
 
-        public bool RegisterAppointment(List<string> appointmentInfo)
+        public bool RegisterAppointment(string doctorID, string content, DateTime date)
         {
             using (var connection = new DatabaseConnection())
             {
                 if (connection.Open())
                 {
-                    if (connection.InsertInfo($"INSERT INTO wizyty (idp, idd, opis, data) VALUES ({appointmentInfo[0]}, {appointmentInfo[1]}, \"{appointmentInfo[2]}\", \"{appointmentInfo[3]}\")")) { return true; }
+                    if (connection.InsertInfo($"INSERT INTO wizyty (idp, idd, opis, data) VALUES ({FormLogin.id}, {doctorID}, \"{content}\", \"{date.ToString("yyyy-MM-dd HH:mm:ss")}\")")) { return true; }
                     else { return false; }
                 }
                 else

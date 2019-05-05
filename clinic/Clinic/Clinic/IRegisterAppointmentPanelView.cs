@@ -9,12 +9,13 @@ namespace Clinic
     public interface IRegisterAppointmentPanelView
     {
         #region Properties
-        List<string> SetSpecializationsList { set; }
-        string GetSpecialization { get; }
-        List<string> SetDoctorsList { set; }
-        string GetDoctor { get; }
-        string HoursField { set; }
-        List<string> Fields { get; }
+        List<string> Specializations { set; }
+        string Specialization { get; }
+        List<string> Doctors { set; }
+        string Doctor { get; }
+        string Hour { set; }
+        string Content { get; }
+        DateTime AppointmentDate { get; }
 
         bool DoctorActive { get; set; }
         #endregion

@@ -13,7 +13,7 @@ namespace Clinic
     public partial class RegisterAppointmentPanel : UserControl, IRegisterAppointmentPanelView
     {
         #region Properties
-        public List<string> SetSpecializationsList
+        public List<string> Specializations
         {
             set
             {
@@ -24,7 +24,7 @@ namespace Clinic
                 }
             }
         }
-        public string GetSpecialization
+        public string Specialization
         {
             get
             {
@@ -39,7 +39,7 @@ namespace Clinic
             }
         }
 
-        public List<string> SetDoctorsList
+        public List<string> Doctors
         {
             set
             {
@@ -50,7 +50,7 @@ namespace Clinic
                 }
             }
         }
-        public string GetDoctor
+        public string Doctor
         {
             get
             {
@@ -65,25 +65,25 @@ namespace Clinic
             }
         }
 
-        public string HoursField
+        public string Content
+        {
+            get
+            {
+                return textBoxContent.Text;
+            }
+        }
+        public DateTime AppointmentDate
+        {
+            get
+            {
+                return dateTimePickerAppointment.Value;
+            }
+        }
+        public string Hour
         {
             set
             {
                 textBoxHours.Text = value;
-            }
-        }
-        public List<string> Fields
-        {
-            get
-            {
-                List<string> fields = new List<string>();
-
-                fields.Add(FormLogin.id.ToString());
-                fields.Add(GetDoctor);
-                fields.Add(textBoxContent.Text);
-                fields.Add(dateTimePickerAppointment.Value.ToString());
-
-                return fields;
             }
         }
 

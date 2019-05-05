@@ -24,9 +24,9 @@ namespace Clinic
 
         private void View_RegisterButtonClicked()
         {
-            if (view.GetSpecialization != "" && view.GetDoctor != "")
+            if (view.Specialization != "" && view.Doctor != "")
             {
-                if (model.RegisterAppointment(view.Fields)) { MessageBox.Show("Wizyta została zarejestrowana!"); }
+                if (model.RegisterAppointment(view.Doctor, view.Content, view.AppointmentDate)) { MessageBox.Show("Wizyta została zarejestrowana!"); }
                 else { MessageBox.Show("Ups! Coś poszło nie tak!"); }
             }
             else
@@ -37,9 +37,9 @@ namespace Clinic
 
         private void View_DoctorChosen()
         {
-            if (view.GetDoctor != null || view.GetDoctor != "")
+            if (view.Doctor != null || view.Doctor != "")
             {
-                view.HoursField = model.GetDoctorHours(view.GetDoctor);
+                view.Hour = model.GetDoctorHours(view.Doctor);
             }
         }
 
@@ -50,12 +50,12 @@ namespace Clinic
 
             List<string> doctors = new List<string>();
 
-            foreach(var doc in model.GetDoctors(view.GetSpecialization))
+            foreach(var doc in model.GetDoctors(view.Specialization))
             {
                 Console.WriteLine(doc);
             }
 
-            view.SetDoctorsList = model.GetDoctors(view.GetSpecialization);
+            view.Doctors = model.GetDoctors(view.Specialization);
         }
     }
 }
