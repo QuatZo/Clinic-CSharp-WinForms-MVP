@@ -19,7 +19,8 @@ namespace Clinic
     public partial class FormLogin : Form
     {
         public static Position position;
-        public static double pesel; // mozliwe, ze niepotrzebne
+        public static int id;
+        public static double pesel;
         public FormLogin()
         {
             InitializeComponent();
@@ -58,6 +59,7 @@ namespace Clinic
                     if (resultsP.Count > 0)
                     {
                         pesel = dPesel;
+                        id = resultsP[0].Id;
                         // ustaw, ze loguje sie pacjent
                         position = Position.pacjent;
                         return true;
@@ -70,6 +72,7 @@ namespace Clinic
                         if (resultsD.Count > 0)
                         {
                             pesel = dPesel;
+                            id = resultsD[0].Id;
                             // ustaw, ze loguje sie lekarz
                             position = Position.lekarz;
                             return true;

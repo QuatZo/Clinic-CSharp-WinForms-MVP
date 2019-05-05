@@ -30,13 +30,13 @@ namespace Clinic
         }
 
         // aktualizuje dane lekarza i zwraca czy zostaly zaktualizowane
-        public bool UpdateDoctorInfo(string pesel, string phoneNumber, string hour, int room)
+        public bool UpdateDoctorInfo(string phoneNumber, string hour, int room)
         {
             using (var connection = new DatabaseConnection())
             {
                 if (connection.Open())
                 {
-                    if(connection.UpdateInfo($"UPDATE doktorzy SET telefon={phoneNumber}, gabinet={room}, godziny=\"{hour}\" WHERE pesel={pesel}")) { return true; }
+                    if(connection.UpdateInfo($"UPDATE doktorzy SET telefon={phoneNumber}, gabinet={room}, godziny=\"{hour}\" WHERE pesel={FormLogin.pesel}")) { return true; }
                     else { return false; }
                 }
                 else
@@ -48,13 +48,13 @@ namespace Clinic
         }
 
         // aktualizuje dane pacjenta i zwraca czy zostaly zaktualizowane
-        public bool UpdatePatientInfo(string pesel, string phoneNumber, string address)
+        public bool UpdatePatientInfo(string phoneNumber, string address)
         {
             using (var connection = new DatabaseConnection())
             {
                 if (connection.Open())
                 {
-                    if (connection.UpdateInfo($"UPDATE pacjenci SET telefon={phoneNumber}, adres=\"{address}\" WHERE pesel={pesel}")) { return true; }
+                    if (connection.UpdateInfo($"UPDATE pacjenci SET telefon={phoneNumber}, adres=\"{address}\" WHERE pesel={FormLogin.pesel}")) { return true; }
                     else { return false; }
                 }
                 else
@@ -84,8 +84,8 @@ namespace Clinic
             }
         }
 
-        // pobiera informacje nt wizyty, w zaleznosci od zalogowanej osoby
-        public List<string> GetAppointments(string pesel)
+        // pobiera informacje nt wizyt, w zaleznosci od zalogowanej osoby
+        public List<string> GetAppointments()
         {
             using (var connection = new DatabaseConnection())
             {
@@ -96,12 +96,12 @@ namespace Clinic
                     if (FormLogin.position == Position.pacjent)
                     {
                         uniqueFields = "doktorzy.imie, doktorzy.nazwisko, doktorzy.gabinet";
-                        whereClause = $"pacjenci.pesel={pesel}";
+                        whereClause = $"pacjenci.pesel={FormLogin.pesel}";
                     }
                     else
                     {
                         uniqueFields = "pacjenci.imie, pacjenci.nazwisko, pacjenci.pesel";
-                        whereClause = $"doktorzy.pesel={pesel}";
+                        whereClause = $"doktorzy.pesel={FormLogin.pesel}";
                     }
 
                     List<string> result = connection.Appointments($"SELECT wizyty.idw, wizyty.data, {uniqueFields} FROM wizyty JOIN pacjenci ON pacjenci.idp=wizyty.idp JOIN doktorzy ON doktorzy.idd=wizyty.idd WHERE {whereClause}");
@@ -117,6 +117,7 @@ namespace Clinic
             }
         }
 
+        // pobiera informacje nt konkretnej wizyty, wybranej przez zalogowanego uzytkownika
         public List<string> GetSpecificAppointment(string id)
         {
             using (var connection = new DatabaseConnection())
@@ -138,6 +139,7 @@ namespace Clinic
             }
         }
 
+        // pobiera liste specjalizacji lekarzy (panel rejestracji wizyty)
         public List<string> GetSpecializations()
         {
             using (var connection = new DatabaseConnection())
@@ -156,6 +158,8 @@ namespace Clinic
                 }
             }
         }
+
+        // pobiera lekarzy, ktorzy posiadaja dana specjalizacje (panel rejestracji wizyty)
         public List<string> GetDoctors(string specialization)
         {
             using (var connection = new DatabaseConnection())
@@ -174,13 +178,14 @@ namespace Clinic
                 }
             }
         }
+
+        // pobiera w jakich godzinach przyjmuje wybrany lekarz (panel rejestracji wizyty)
         public string GetDoctorHours(string id)
         {
             using (var connection = new DatabaseConnection())
             {
                 if (connection.Open())
                 {
-                    Console.WriteLine(connection.DoctorHours($"SELECT godziny FROM doktorzy WHERE idd={id}"));
                     string result = connection.DoctorHours($"SELECT godziny FROM doktorzy WHERE idd={id}");
 
                     return result;
@@ -190,6 +195,23 @@ namespace Clinic
                     MessageBox.Show("Błąd z połaczeniem!");
                     string result = null;
                     return result;
+                }
+            }
+        }
+
+        public bool RegisterAppointment(List<string> appointmentInfo)
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                if (connection.Open())
+                {
+                    if (connection.InsertInfo($"INSERT INTO wizyty (idp, idd, opis, data) VALUES ({appointmentInfo[0]}, {appointmentInfo[1]}, \"{appointmentInfo[2]}\", \"{appointmentInfo[3]}\")")) { return true; }
+                    else { return false; }
+                }
+                else
+                {
+                    MessageBox.Show("Błąd z połaczeniem!");
+                    return false;
                 }
             }
         }

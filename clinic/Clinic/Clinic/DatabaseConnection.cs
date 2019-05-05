@@ -85,7 +85,7 @@ namespace Clinic
                     else { sex = Sexs.mezczyzna; }
 
                     // tworzenie pacjenta
-                    Patient pat = new Patient(Int32.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), Double.Parse(reader[3].ToString()), sex, DateTime.Parse(reader[5].ToString()), reader[6].ToString(), reader[7].ToString());
+                    Patient pat = new Patient(int.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), double.Parse(reader[3].ToString()), sex, DateTime.Parse(reader[5].ToString()), reader[6].ToString(), reader[7].ToString());
 
                     // dodanie pacjenta do listy pacjentow
                     patients.Add(pat);
@@ -134,6 +134,17 @@ namespace Clinic
             }
         }
 
+        // metoda wpisujaca wartosc do bazy
+        public bool InsertInfo(string name)
+        {
+            using (var cmd = new MySqlCommand(name, connection))
+            {
+                if (cmd.ExecuteNonQuery() > 0) { return true; }
+                else { return false; }
+            }
+        }
+
+        // metoda pobierajaca liste wizyt
         public List<string> Appointments(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
@@ -150,6 +161,8 @@ namespace Clinic
                 return records;
             }
         }
+
+        // metoda pobierajaca informacje nt. danej wizyty
         public List<string> Appointment(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
@@ -173,6 +186,7 @@ namespace Clinic
             }
         }
 
+        // metoda pobierajaca recepte
         public List<string> Prescription(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
@@ -191,6 +205,7 @@ namespace Clinic
             }
         }
 
+        // metoda pobierajaca specjalizacje
         public List<string> Specializations(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
@@ -202,12 +217,14 @@ namespace Clinic
                 // poki sa jakies wyniki
                 while (reader.Read())
                 {
-                    records.Add($"{reader[0].ToString()}");
+                    records.Add(reader[0].ToString());
                 }
 
                 return records;
             }
         }
+
+        // metoda pobierajaca doktorow danej specjalizacji wraz z ID
         public List<string> Doctors(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
@@ -225,6 +242,8 @@ namespace Clinic
                 return records;
             }
         }
+
+        // metoda pobierajaca godziny przyjmowania danego doktora
         public string DoctorHours(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))

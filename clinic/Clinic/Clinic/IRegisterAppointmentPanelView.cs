@@ -22,6 +22,7 @@ namespace Clinic
         #region Events
         event Action SpecializationChosen;
         event Action DoctorChosen;
+        event Action RegisterButtonClicked;
         #endregion
     }
 }

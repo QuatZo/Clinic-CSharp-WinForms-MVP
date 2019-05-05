@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonClear = new System.Windows.Forms.Button();
             this.buttonRegister = new System.Windows.Forms.Button();
             this.dateTimePickerAppointment = new System.Windows.Forms.DateTimePicker();
             this.textBoxContent = new System.Windows.Forms.TextBox();
@@ -37,23 +36,15 @@
             this.textBoxHours = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // buttonClear
-            // 
-            this.buttonClear.Location = new System.Drawing.Point(414, 356);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(75, 23);
-            this.buttonClear.TabIndex = 16;
-            this.buttonClear.Text = "Wyczyść";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            // 
             // buttonRegister
             // 
             this.buttonRegister.Location = new System.Drawing.Point(277, 356);
             this.buttonRegister.Name = "buttonRegister";
-            this.buttonRegister.Size = new System.Drawing.Size(75, 23);
+            this.buttonRegister.Size = new System.Drawing.Size(212, 23);
             this.buttonRegister.TabIndex = 15;
             this.buttonRegister.Text = "Zarejestruj";
             this.buttonRegister.UseVisualStyleBackColor = true;
+            this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
             // dateTimePickerAppointment
             // 
@@ -105,7 +96,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textBoxHours);
-            this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.dateTimePickerAppointment);
             this.Controls.Add(this.textBoxContent);
@@ -113,14 +103,13 @@
             this.Controls.Add(this.comboBoxDoctor);
             this.Name = "RegisterAppointmentPanel";
             this.Size = new System.Drawing.Size(767, 527);
+            this.Load += new System.EventHandler(this.RegisterAppointmentPanel_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonRegister;
         private System.Windows.Forms.DateTimePicker dateTimePickerAppointment;
         private System.Windows.Forms.TextBox textBoxContent;

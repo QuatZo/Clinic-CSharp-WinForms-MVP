@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Clinic
 {
@@ -47,20 +48,28 @@ namespace Clinic
 
         private void MenuView_RegisterAppointmentButtonClicked()
         {
-            if (view.EditActive)
-                view.EditActive = false;
-            if (!view.MenuActive)
-                view.MenuActive = true;
-            if (view.AppointmentsActive)
-                view.AppointmentsActive = false;
-            if (view.AppointmentActive)
-                view.AppointmentActive = false;
-            if (!view.RegisterAppointmentActive)
-                view.RegisterAppointmentActive = true;
+            if (FormLogin.position == Position.pacjent)
+            {
+                if (view.EditActive)
+                    view.EditActive = false;
+                if (!view.MenuActive)
+                    view.MenuActive = true;
+                if (view.AppointmentsActive)
+                    view.AppointmentsActive = false;
+                if (view.AppointmentActive)
+                    view.AppointmentActive = false;
+                if (!view.RegisterAppointmentActive)
+                    view.RegisterAppointmentActive = true;
 
-            if (view.RegisterAppointmentView.DoctorActive)
-                view.RegisterAppointmentView.DoctorActive = false;
-            view.RegisterAppointmentView.SetSpecializationsList = model.GetSpecializations();
+                if (view.RegisterAppointmentView.DoctorActive)
+                    view.RegisterAppointmentView.DoctorActive = false;
+
+                view.RegisterAppointmentView.SetSpecializationsList = model.GetSpecializations();
+            }
+            else
+            {
+                MessageBox.Show("Brak uprawnien! To jest menu dla pacjenta!");
+            }
         }
 
         private void AppointmentsView_ChosenAppointmentClick()
@@ -95,7 +104,7 @@ namespace Clinic
             if (view.RegisterAppointmentActive)
                 view.RegisterAppointmentActive = false;
 
-            view.AppointmentsView.Content = model.GetAppointments(FormLogin.pesel.ToString());
+            view.AppointmentsView.Content = model.GetAppointments();
         }
 
         private void MenuView_LogOut()
@@ -127,6 +136,10 @@ namespace Clinic
             if (!view.EditView.SharedFields)
                 view.EditView.SharedFields = true;
 
+            // aktualizacja pól wspólnych, które znajdują się w tej samej klasie FormLogin
+            view.EditView.ID = FormLogin.id;
+            view.EditView.Pesel = FormLogin.pesel;
+
             // jesli jest zalogowany pacjent
             if (FormLogin.position == Position.pacjent)
             {
@@ -147,10 +160,8 @@ namespace Clinic
                     view.EditView.DoctorFields = false;
 
                 // uzupelnij dane (przydalaby sie jakas osobna metoda do tego, dla obydwoch 'pozycji' [lekarz/pacjent])
-                view.EditView.ID = pacjent.Id;
                 view.EditView.FirstName = pacjent.Name;
                 view.EditView.Surname = pacjent.Surname;
-                view.EditView.Pesel = pacjent.Pesel;
                 view.EditView.PhoneNumber = pacjent.PhoneNumber;
                 view.EditView.Sex = pacjent.Sex.ToString();
                 view.EditView.BirthDay = pacjent.BirthDay;
@@ -176,10 +187,8 @@ namespace Clinic
 
 
                 // uzupelnij dane (przydalaby sie jakas osobna metoda do tego, dla obydwoch 'pozycji' [lekarz/pacjent])
-                view.EditView.ID = lekarz.Id;
                 view.EditView.FirstName = lekarz.Name;
                 view.EditView.Surname = lekarz.Surname;
-                view.EditView.Pesel = lekarz.Pesel;
                 view.EditView.PhoneNumber = lekarz.PhoneNumber;
                 view.EditView.Hour = lekarz.Hour.ToString();
                 view.EditView.Room = lekarz.Room;

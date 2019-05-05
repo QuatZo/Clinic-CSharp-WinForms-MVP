@@ -28,9 +28,17 @@ namespace Clinic
         {
             get
             {
-                return comboBoxSpecialization.SelectedItem.ToString();
+                try
+                {
+                    return comboBoxSpecialization.SelectedItem.ToString();
+                }
+                catch (NullReferenceException)
+                {
+                    return "";
+                }
             }
         }
+
         public List<string> SetDoctorsList
         {
             set
@@ -46,9 +54,17 @@ namespace Clinic
         {
             get
             {
-                return comboBoxDoctor.SelectedItem.ToString().Split()[0];
+                try
+                {
+                    return comboBoxDoctor.SelectedItem.ToString().Split()[0];
+                }
+                catch (NullReferenceException)
+                {
+                    return "";
+                }
             }
         }
+
         public string HoursField
         {
             set
@@ -56,18 +72,16 @@ namespace Clinic
                 textBoxHours.Text = value;
             }
         }
-
         public List<string> Fields
         {
             get
             {
                 List<string> fields = new List<string>();
 
-                fields.Add(comboBoxSpecialization.SelectedText);
-                fields.Add(comboBoxDoctor.SelectedText);
+                fields.Add(FormLogin.id.ToString());
+                fields.Add(GetDoctor);
                 fields.Add(textBoxContent.Text);
                 fields.Add(dateTimePickerAppointment.Value.ToString());
-                fields.Add(textBoxHours.Text);
 
                 return fields;
             }
@@ -89,6 +103,8 @@ namespace Clinic
         #region Events
         public event Action SpecializationChosen;
         public event Action DoctorChosen;
+
+        public event Action RegisterButtonClicked;
         #endregion
 
         public RegisterAppointmentPanel()
@@ -106,6 +122,27 @@ namespace Clinic
         {
             if (DoctorChosen != null)
                 DoctorChosen();
+        }
+
+        private void buttonRegister_Click(object sender, EventArgs e)
+        {
+            if (RegisterButtonClicked != null)
+                RegisterButtonClicked();
+        }
+
+        private void textBoxSpecializationID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxDoctorID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RegisterAppointmentPanel_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
