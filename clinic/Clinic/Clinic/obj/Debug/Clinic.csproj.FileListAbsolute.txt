@@ -43,3 +43,4 @@ E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csproj
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.exe
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.pdb
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csprojAssemblyReference.cache
+E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.DBInfo.resources

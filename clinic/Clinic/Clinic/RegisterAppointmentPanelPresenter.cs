@@ -48,13 +48,6 @@ namespace Clinic
             if (!view.DoctorActive)
                 view.DoctorActive = true;
 
-            List<string> doctors = new List<string>();
-
-            foreach(var doc in model.GetDoctors(view.Specialization))
-            {
-                Console.WriteLine(doc);
-            }
-
             view.Doctors = model.GetDoctors(view.Specialization);
         }
     }

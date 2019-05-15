@@ -32,7 +32,6 @@ namespace Clinic
                 try
                 {
                     int.Parse(view.PhoneNumber);
-                    Console.WriteLine(view.PhoneNumber);
                     // metoda w modelu, ktora zapisze pacjenta, a potem pobiera (prawdopodobnie) nowe dane
                     if (model.UpdatePatientInfo(view.PhoneNumber, view.Address))
                         pacjent = model.GetPatientInfo(FormLogin.pesel.ToString());

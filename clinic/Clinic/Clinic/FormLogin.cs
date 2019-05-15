@@ -21,6 +21,7 @@ namespace Clinic
         public static Position position;
         public static int id;
         public static double pesel;
+
         public FormLogin()
         {
             InitializeComponent();

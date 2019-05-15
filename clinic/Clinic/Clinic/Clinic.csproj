@@ -77,6 +77,11 @@
     </Compile>
     <Compile Include="AppointmentsPanelPresenter.cs" />
     <Compile Include="DatabaseConnection.cs" />
+    <Compile Include="DBInfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBInfo.resx</DependentUpon>
+    </Compile>
     <Compile Include="Doctor.cs" />
     <Compile Include="EditPanel.cs">
       <SubType>UserControl</SubType>
@@ -127,6 +132,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AppointmentsPanel.resx">
       <DependentUpon>AppointmentsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBInfo.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DBInfo.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="EditPanel.resx">
       <DependentUpon>EditPanel.cs</DependentUpon>

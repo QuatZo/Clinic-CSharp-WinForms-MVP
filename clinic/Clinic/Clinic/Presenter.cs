@@ -185,7 +185,6 @@ namespace Clinic
                 if (!view.EditView.DoctorFields)
                     view.EditView.DoctorFields = true;
 
-
                 // uzupelnij dane (przydalaby sie jakas osobna metoda do tego, dla obydwoch 'pozycji' [lekarz/pacjent])
                 view.EditView.FirstName = lekarz.Name;
                 view.EditView.Surname = lekarz.Surname;

@@ -13,23 +13,13 @@ namespace Clinic
     {
         // prywatne pola klasy, zeby nikt nie odczytal
         private readonly MySqlConnection connection;
-        private readonly string server;
-        private readonly string database;
-        private readonly string userID;
-        private readonly string passwd;
 
         public DatabaseConnection()
         {
-            // dane do bazy
-            server = "localhost";
-            database = "clinic";
-            userID = "clinic";
-            passwd = "ZZZxxxCCCvvvBBBnnnMMM";
-
             // utworzenie polaczenia
             connection = new MySqlConnection
             {
-                ConnectionString = String.Format($"server={server};database={database};uid={userID};password={passwd}")
+                ConnectionString = string.Format($"server={DBInfo.server};database={DBInfo.database};uid={DBInfo.user};password={DBInfo.passwd}")
             };
         }
 
@@ -174,8 +164,6 @@ namespace Clinic
                 // poki sa jakies wyniki (chociaz zawsze zakladamy, ze jest 1 wynik, bo ID jest unikalne)
                 while (reader.Read())
                 {
-                    Console.WriteLine(reader.FieldCount);
-
                     for(int i = 0; i < reader.FieldCount; i++)
                     {
                         records.Add(reader[i].ToString());

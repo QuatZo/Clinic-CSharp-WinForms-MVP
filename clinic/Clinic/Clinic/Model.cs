@@ -104,7 +104,7 @@ namespace Clinic
                         whereClause = $"doktorzy.pesel={FormLogin.pesel}";
                     }
 
-                    List<string> result = connection.Appointments($"SELECT wizyty.idw, wizyty.data, {uniqueFields} FROM wizyty JOIN pacjenci ON pacjenci.idp=wizyty.idp JOIN doktorzy ON doktorzy.idd=wizyty.idd WHERE {whereClause}");
+                    List<string> result = connection.Appointments($"SELECT wizyty.idw, wizyty.data, {uniqueFields} FROM wizyty JOIN pacjenci ON pacjenci.idp=wizyty.idp JOIN doktorzy ON doktorzy.idd=wizyty.idd WHERE {whereClause} ORDER BY wizyty.data DESC");
                     
                     return result;
                 }
@@ -126,7 +126,7 @@ namespace Clinic
                 {
                     List<string> result = connection.Appointment($"SELECT pacjenci.pesel, CONCAT(pacjenci.imie, \" \", pacjenci.nazwisko), CONCAT(doktorzy.imie, \" \", doktorzy.nazwisko), wizyty.opis, wizyty.data FROM wizyty JOIN pacjenci ON pacjenci.idp=wizyty.idp JOIN doktorzy ON doktorzy.idd=wizyty.idd WHERE wizyty.idw={id}");
 
-                    result.Add(string.Join("\n", connection.Prescription($"SELECT CONCAT(leki.nazwa, \" \", dawki.ile, \" od \", dawki_i_leki.od_kiedy, \" do \", dawki_i_leki.do_kiedy) FROM wizyty JOIN wizyty_i_dawki_i_leki ON wizyty.idw=wizyty_i_dawki_i_leki.idw JOIN dawki_i_leki ON wizyty_i_dawki_i_leki.iddl=dawki_i_leki.iddl JOIN dawki ON dawki_i_leki.idd=dawki.idd JOIN leki ON dawki_i_leki.idl=leki.idl WHERE wizyty.idw={id}").ToArray()));
+                    result.Add(string.Join("\n", connection.Prescription($"SELECT CONCAT(leki.nazwa, \" \", dawki.ile, \" od \", dawki_i_leki.od_kiedy, \" do \", dawki_i_leki.do_kiedy) FROM wizyty JOIN wiz_i_dawki_i_leki ON wizyty.idw=wiz_i_dawki_i_leki.idw JOIN dawki_i_leki ON wiz_i_dawki_i_leki.iddl=dawki_i_leki.iddl JOIN dawki ON dawki_i_leki.idd=dawki.idd JOIN leki ON dawki_i_leki.idl=leki.idl WHERE wizyty.idw={id}").ToArray()));
 
                     return result;
                 }
@@ -199,6 +199,7 @@ namespace Clinic
             }
         }
 
+        // zapisuje nową wizytę do bazy danych
         public bool RegisterAppointment(string doctorID, string content, DateTime date)
         {
             using (var connection = new DatabaseConnection())

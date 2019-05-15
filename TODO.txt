@@ -1,0 +1,9 @@
+- NAJWAŻNIEJSZE! - POMYŚLEĆ NAD ZMIANĄ TEJ BAZY (AKTUALNY SYSTEM RECEPT JEST... EKHEM... NO...)
+
+- Rejestracja pacjenta po wpisaniu PESELu, którego nie ma ani w tabeli lekarzy ani pacjentów
+- Możliwość edycji wizyty pacjenta dla lekarza (czyt. zmiana opisu, tworzenie recepty [lek -> dawka -> od -> do])
+- Dodawanie leków i dawek przez lekarza (w miejscu rejestracji wizyty przez pacjenta)
+- Unifikacja nazw zmiennych
+- Metodyzacja niektórych elementów (jak np. wyświetlanie elementów - pomysłem jest jedna metoda, która wszystko ukrywa (prócz menu i labelu witającego)
+- Zabezpieczenie poleceń przed SQL Injection (parametryzacja zapytań)
+- Diagram związków encji bazy
