@@ -182,10 +182,12 @@ namespace Clinic
             InitializeComponent();
         }
 
+        #region Methods
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             if (SaveButtonClicked != null)
                 SaveButtonClicked();
         }
+        #endregion
     }
 }

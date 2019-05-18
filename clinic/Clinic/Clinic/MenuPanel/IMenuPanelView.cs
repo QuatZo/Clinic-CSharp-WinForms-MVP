@@ -9,7 +9,8 @@ namespace Clinic
     public interface IMenuPanelView
     {
         #region Properties
-
+        bool RegisterAppointmentButtonVisibility { get; set; }
+        bool EditAppointmentButtonVisibility { get; set; }
         #endregion
 
         #region Events
@@ -17,6 +18,7 @@ namespace Clinic
         event Action EditButtonClicked; // wejscie do panelu edycji
         event Action AppointmentsButtonClicked; // wejscie do panelu wizyt
         event Action RegisterAppointmentButtonClicked; // wejscie do panelu rejestracji wizyty
+        event Action EditAppointmentSearchButtonClicked; // wejście do panelu edycji wizyty (wyszukiwarki)
         #endregion
     }
 }

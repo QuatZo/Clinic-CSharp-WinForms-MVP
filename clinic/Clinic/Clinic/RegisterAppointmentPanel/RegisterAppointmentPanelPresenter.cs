@@ -9,8 +9,10 @@ namespace Clinic
 {
     class RegisterAppointmentPanelPresenter
     {
+        #region Classes
         IRegisterAppointmentPanelView view;
         Model model;
+        #endregion
 
         public RegisterAppointmentPanelPresenter(IRegisterAppointmentPanelView view, Model model)
         {
@@ -24,6 +26,7 @@ namespace Clinic
             this.view.AppointmentDateChanged += View_AppointmentDateChanged;
         }
 
+        #region Methods
         private void View_AppointmentDateChanged()
         {
             if (view.AppointmentDate < DateTime.Now)
@@ -61,5 +64,6 @@ namespace Clinic
 
             view.Doctors = model.GetDoctors(view.Specialization);
         }
+        #endregion
     }
 }

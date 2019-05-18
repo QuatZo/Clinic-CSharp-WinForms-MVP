@@ -13,7 +13,7 @@ namespace Clinic
 
     class Patient
     {
-        // parametry klasy
+        #region Properties
         public int Id { get; }
         public string Name { get; }
         public string Surname { get; }
@@ -22,8 +22,8 @@ namespace Clinic
         public DateTime BirthDay { get; }
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
+        #endregion
 
-        // konstruktor klasy
         public Patient(int id, string name, string surname, double pesel, Sexs sex, DateTime birthDay, string address, string phoneNumber)
         {
             Id = id;
@@ -36,10 +36,11 @@ namespace Clinic
             PhoneNumber = phoneNumber;
         }
 
-        // przeciazona metoda ToString
+        #region Methods
         public override string ToString()
         {
             return $"{Id}\t{Name}\t{Surname}\t{Pesel}\t{Sex}\t{BirthDay}\t{Address}\t{PhoneNumber}";
         }
+        #endregion
     }
 }

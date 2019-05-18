@@ -8,8 +8,10 @@ namespace Clinic
 {
     class AppointmentPanelPresenter
     {
+        #region Classes
         IAppointmentPanelView view;
         Model model;
+        #endregion
 
         public AppointmentPanelPresenter(IAppointmentPanelView view, Model model)
         {

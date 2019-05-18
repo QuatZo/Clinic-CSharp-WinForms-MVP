@@ -16,17 +16,21 @@ namespace Clinic
         pacjent,
         lekarz
     };
+
     public partial class FormLogin : Form
     {
+        #region Static fields
         public static Position position;
         public static int id;
         public static double pesel;
+        #endregion
 
         public FormLogin()
         {
             InitializeComponent();
         }
 
+        #region Methods
         // walidacja numeru PESEL
         bool PeselValidation(double dPesel)
         {
@@ -133,5 +137,6 @@ namespace Clinic
                 if (DialogResult != DialogResult.Abort) { MessageBox.Show("Błędne dane!"); }
             }
         }
+        #endregion
     }
 }

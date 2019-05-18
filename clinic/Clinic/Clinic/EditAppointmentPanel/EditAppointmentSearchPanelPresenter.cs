@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace Clinic
 {
-    class MenuPanelPresenter
+    class EditAppointmentSearchPanelPresenter
     {
-        #region Classes
-        IMenuPanelView view;
+        IEditAppointmentSearchPanelView view;
         Model model;
-        #endregion
 
-        public MenuPanelPresenter(IMenuPanelView view, Model model)
+        public EditAppointmentSearchPanelPresenter(IEditAppointmentSearchPanelView view, Model model)
         {
             this.view = view;
             this.model = model;
         }
+
     }
 }

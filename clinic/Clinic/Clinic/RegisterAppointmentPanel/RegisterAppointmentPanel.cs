@@ -118,22 +118,20 @@ namespace Clinic
             InitializeComponent();
         }
 
+        #region Methods
         private void comboBoxSpecialization_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (SpecializationChosen != null)
-                SpecializationChosen();
+            SpecializationChosen?.Invoke();
         }
 
         private void comboBoxDoctor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (DoctorChosen != null)
-                DoctorChosen();
+            DoctorChosen?.Invoke();
         }
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-            if (RegisterButtonClicked != null)
-                RegisterButtonClicked();
+            RegisterButtonClicked?.Invoke();
         }
 
         private void textBoxSpecializationID_TextChanged(object sender, EventArgs e)
@@ -153,8 +151,8 @@ namespace Clinic
 
         private void dateTimePickerAppointment_ValueChanged(object sender, EventArgs e)
         {
-            if (AppointmentDateChanged != null)
-                AppointmentDateChanged();
+            AppointmentDateChanged?.Invoke();
         }
+        #endregion
     }
 }

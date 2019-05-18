@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clinic
 {
-    enum Hours
+    public enum Hours
     {
         poranne,
         popoludniowe,
@@ -15,7 +15,7 @@ namespace Clinic
 
     class Doctor
     {
-        // parametry klasy
+        #region Properties
         public int Id { get; }
         public string Name { get; }
         public string Surname { get; }
@@ -23,8 +23,8 @@ namespace Clinic
         public string PhoneNumber { get; }
         public int Room { get; }
         public Hours Hour { get; }
+        #endregion
 
-        // konstruktor
         public Doctor(int id, string name, string surname, double pesel, string phoneNumber, int room, Hours hours)
         {
             Id = id;
@@ -36,10 +36,11 @@ namespace Clinic
             Hour = hours;
         }
 
-        // przeciazona metoda ToString
+        #region Methods
         public override string ToString()
         {
             return $"{Id}\t{Name}\t{Surname}\t{Pesel}\t{PhoneNumber}\t{Room}\t{Hour}";
         }
+        #endregion
     }
 }

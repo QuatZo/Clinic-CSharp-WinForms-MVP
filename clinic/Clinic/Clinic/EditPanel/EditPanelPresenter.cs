@@ -9,12 +9,13 @@ namespace Clinic
 {
     class EditPanelPresenter
     {
+        #region Classes
         IEditPanelView view;
         Model model;
 
-        // klasy, bedziemy wybierac jedna
         Patient pacjent;
         Doctor lekarz;
+        #endregion
 
         public EditPanelPresenter(IEditPanelView view, Model model)
         {
@@ -24,6 +25,7 @@ namespace Clinic
             view.SaveButtonClicked += View_SaveButtonClicked; // aktualizacja danych (polaczenie z baza)
         }
 
+        #region Methods
         private void View_SaveButtonClicked()
         {
             // jesli pacjent jest zalogowany
@@ -74,5 +76,6 @@ namespace Clinic
             }   
             
         }
+        #endregion
     }
 }

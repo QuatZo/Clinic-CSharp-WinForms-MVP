@@ -11,13 +11,15 @@ namespace Clinic
         #region Properties
         // tytul formy
         string Title { set; }
- 
+
         // widoki
         IEditPanelView EditView { get; }
         IMenuPanelView MenuView { get; }
         IAppointmentsPanelView AppointmentsView { get; }
         IAppointmentPanelView AppointmentView { get; }
         IRegisterAppointmentPanelView RegisterAppointmentView { get; }
+        IEditAppointmentPanelView EditAppointmentView { get; }
+        IEditAppointmentSearchPanelView EditAppointmentSearchView { get; }
 
         // metody jako parametry (zmiana widocznosci okien, tekst)
         bool EditActive { get; set; }
@@ -25,14 +27,17 @@ namespace Clinic
         bool AppointmentsActive { get; set; }
         bool AppointmentActive { get; set; }
         bool RegisterAppointmentActive { get; set; }
+        bool EditAppointmentActive { get; set; }
+        bool EditAppointmentSearchActive { get; set; }
         string WelcomeLabel { get; set; }
         #endregion
 
-        // eventy
         #region Events
         event Action FormLoaded;
         #endregion
 
+        #region Methods
         void ExitForm();
+        #endregion
     }
 }

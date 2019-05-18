@@ -50,10 +50,12 @@ namespace Clinic
             InitializeComponent();
         }
 
+        #region Methods
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ChosenAppointmentClick != null)
                 ChosenAppointmentClick();
         }
+        #endregion
     }
 }

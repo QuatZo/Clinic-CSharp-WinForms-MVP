@@ -59,6 +59,21 @@ namespace Clinic
             }
 
         }
+        public IEditAppointmentPanelView EditAppointmentView
+        {
+            get
+            {
+                return editAppointmentPanel1;
+            }
+        }
+        public IEditAppointmentSearchPanelView EditAppointmentSearchView
+        {
+            get
+            {
+                return editAppointmentSearchPanel1;
+            }
+        }
+        
 
         // metody jako parametry (zmiana widocznosci okien, tekst)
         public bool EditActive
@@ -121,7 +136,31 @@ namespace Clinic
                 registerAppointment1.Visible = value;
             }
         }
-        #endregion
+        public bool EditAppointmentActive
+        {
+            get
+            {
+                return editAppointmentPanel1.Enabled && editAppointmentPanel1.Visible;
+            }
+            set
+            {
+                editAppointmentPanel1.Enabled = value;
+                editAppointmentPanel1.Visible = value;
+            }
+        }
+        public bool EditAppointmentSearchActive
+        {
+            get
+            {
+                return editAppointmentSearchPanel1.Enabled && editAppointmentSearchPanel1.Visible;
+            }
+            set
+            {
+                editAppointmentSearchPanel1.Enabled = value;
+                editAppointmentSearchPanel1.Visible = value;
+            }
+        }
+
         public string WelcomeLabel
         {
             get
@@ -133,6 +172,7 @@ namespace Clinic
                 labelInfo.Text = value;
             }
         }
+        #endregion
 
         #region Events
         public event Action FormLoaded; // logowanie formy, podpisany jest pod to przycisk Edycji z menu
@@ -143,15 +183,15 @@ namespace Clinic
             InitializeComponent();
         }
 
+        #region Methods
         private void Form1_Load(object sender, EventArgs e)
         {
-            if(FormLoaded != null)
-                FormLoaded();
+            FormLoaded?.Invoke();
         }
         public void ExitForm()
         {
             Close();
         }
-        // inne metody, jesli beda potrzebne
+        #endregion
     }
 }

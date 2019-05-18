@@ -10,6 +10,7 @@ namespace Clinic
     // Wszystkie metody wszystkich widoków
     class Model
     {
+        #region Methods
         // pobiera informacje lekarza i wrzuca je do klasy Doctor
         public Doctor GetDoctorInfo(string pesel)
         {
@@ -216,5 +217,6 @@ namespace Clinic
                 }
             }
         }
+        #endregion
     }
 }

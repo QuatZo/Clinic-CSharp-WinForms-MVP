@@ -13,7 +13,28 @@ namespace Clinic
     public partial class MenuPanel : UserControl, IMenuPanelView
     {
         #region Properties
-
+        public bool RegisterAppointmentButtonVisibility
+        {
+            get
+            {
+                return buttonRegisterAppointment.Visible;
+            }
+            set
+            {
+                buttonRegisterAppointment.Visible = value;
+            }
+        }
+        public bool EditAppointmentButtonVisibility
+        {
+            get
+            {
+                return buttonEditAppointment.Visible;
+            }
+            set
+            {
+                buttonEditAppointment.Visible = value;
+            }
+        }
         #endregion
 
         #region Events
@@ -21,6 +42,7 @@ namespace Clinic
         public event Action EditButtonClicked; // panel edycji
         public event Action AppointmentsButtonClicked; // panel wizyt
         public event Action RegisterAppointmentButtonClicked; // panel rejestracji wizyty
+        public event Action EditAppointmentSearchButtonClicked; // panel wyszukiwania wizyty do edycji
         #endregion
 
         public MenuPanel()
@@ -28,28 +50,31 @@ namespace Clinic
             InitializeComponent();
         }
 
+        #region Methods
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
-            if (LogOut != null)
-                LogOut();
+            LogOut?.Invoke();
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            if (EditButtonClicked != null)
-                EditButtonClicked();
+            EditButtonClicked?.Invoke();
         }
 
         private void buttonAppointments_Click(object sender, EventArgs e)
         {
-            if (AppointmentsButtonClicked != null)
-                AppointmentsButtonClicked();
+            AppointmentsButtonClicked?.Invoke();
         }
 
         private void buttonRegisterAppointment_Click(object sender, EventArgs e)
         {
-            if (RegisterAppointmentButtonClicked != null)
-                RegisterAppointmentButtonClicked();
+            RegisterAppointmentButtonClicked?.Invoke();
         }
+
+        private void buttonEditAppointment_Click(object sender, EventArgs e)
+        {
+            EditAppointmentSearchButtonClicked?.Invoke();
+        }
+        #endregion
     }
 }

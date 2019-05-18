@@ -32,6 +32,7 @@
             this.buttonRegisterAppointment = new System.Windows.Forms.Button();
             this.buttonAppointments = new System.Windows.Forms.Button();
             this.buttonLogOut = new System.Windows.Forms.Button();
+            this.buttonEditAppointment = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonEdit
@@ -74,10 +75,21 @@
             this.buttonLogOut.UseVisualStyleBackColor = true;
             this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
+            // buttonEditAppointment
+            // 
+            this.buttonEditAppointment.Location = new System.Drawing.Point(4, 53);
+            this.buttonEditAppointment.Name = "buttonEditAppointment";
+            this.buttonEditAppointment.Size = new System.Drawing.Size(313, 44);
+            this.buttonEditAppointment.TabIndex = 4;
+            this.buttonEditAppointment.Text = "Edytuj Wizyte";
+            this.buttonEditAppointment.UseVisualStyleBackColor = true;
+            this.buttonEditAppointment.Click += new System.EventHandler(this.buttonEditAppointment_Click);
+            // 
             // MenuPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonEditAppointment);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonRegisterAppointment);
             this.Controls.Add(this.buttonAppointments);
@@ -94,5 +106,6 @@
         private System.Windows.Forms.Button buttonRegisterAppointment;
         private System.Windows.Forms.Button buttonAppointments;
         private System.Windows.Forms.Button buttonLogOut;
+        private System.Windows.Forms.Button buttonEditAppointment;
     }
 }

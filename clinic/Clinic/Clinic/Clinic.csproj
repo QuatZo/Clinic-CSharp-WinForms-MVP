@@ -83,6 +83,20 @@
       <DependentUpon>DBInfo.resx</DependentUpon>
     </Compile>
     <Compile Include="Classes\Doctor.cs" />
+    <Compile Include="EditAppointmentPanel\EditAppointmentPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditAppointmentPanel\EditAppointmentPanel.Designer.cs">
+      <DependentUpon>EditAppointmentPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditAppointmentPanel\EditAppointmentPanelPresenter.cs" />
+    <Compile Include="EditAppointmentPanel\EditAppointmentSearchPanelPresenter.cs" />
+    <Compile Include="EditAppointmentPanel\EditAppointmentSearchPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditAppointmentPanel\EditAppointmentSearchPanel.Designer.cs">
+      <DependentUpon>EditAppointmentSearchPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditPanel\EditPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -105,6 +119,8 @@
     <Compile Include="AppointmentsPanels\IAppointmentPanelView.cs" />
     <Compile Include="AppointmentsPanels\IAppointmentsPanelView.cs" />
     <Compile Include="EditPanel\IEditPanelView.cs" />
+    <Compile Include="EditAppointmentPanel\IEditAppointmentPanelView.cs" />
+    <Compile Include="EditAppointmentPanel\IEditAppointmentSearchPanelView.cs" />
     <Compile Include="MenuPanel\IMenuPanelView.cs" />
     <Compile Include="RegisterAppointmentPanel\IRegisterAppointmentPanelView.cs" />
     <Compile Include="IView.cs" />
@@ -136,6 +152,12 @@
     <EmbeddedResource Include="Database\DBInfo.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DBInfo.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditAppointmentPanel\EditAppointmentPanel.resx">
+      <DependentUpon>EditAppointmentPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditAppointmentPanel\EditAppointmentSearchPanel.resx">
+      <DependentUpon>EditAppointmentSearchPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditPanel\EditPanel.resx">
       <DependentUpon>EditPanel.cs</DependentUpon>

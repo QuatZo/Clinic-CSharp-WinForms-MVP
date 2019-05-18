@@ -16,7 +16,6 @@ namespace Clinic
         string Hour { set; }
         string Content { get; }
         DateTime AppointmentDate { get; set; }
-
         bool DoctorActive { get; set; }
         #endregion
 

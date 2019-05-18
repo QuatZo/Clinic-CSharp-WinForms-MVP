@@ -32,9 +32,11 @@ namespace Clinic
             InitializeComponent();
         }
 
+        #region Methods
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
+        #endregion
     }
 }

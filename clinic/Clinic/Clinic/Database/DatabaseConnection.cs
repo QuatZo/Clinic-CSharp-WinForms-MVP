@@ -12,9 +12,11 @@ namespace Clinic
 {
     class DatabaseConnection: IDisposable
     {
-        // prywatne pola klasy, zeby nikt nie odczytal
+        #region Fields
         private readonly MySqlConnection connection;
+        #endregion
 
+        #region Main methods
         public DatabaseConnection()
         {
             // utworzenie polaczenia
@@ -55,7 +57,9 @@ namespace Clinic
         {
             Close();
         }
+        #endregion
 
+        #region Patient methods
         // metoda pobierajaca dane nt. pacjenta
         public List<Patient> PatientInfo(string name)
         {
@@ -84,7 +88,9 @@ namespace Clinic
                 return patients;
             }
         }
+        #endregion
 
+        #region Doctor methods
         // metoda pobierajaca dane nt. lekarza
         public List<Doctor> DoctorInfo(string name)
         {
@@ -115,6 +121,39 @@ namespace Clinic
             }
         }
 
+        // metoda pobierajaca doktorow danej specjalizacji wraz z ID
+        public List<string> Doctors(string name)
+        {
+            using (var cmd = new MySqlCommand(name, connection))
+            {
+                MySqlDataReader reader = cmd.ExecuteReader(); // czytnik
+
+                List<string> records = new List<string>(); // lista wynikow, ktora bedzie przerobiona na daną wizytę
+
+                // poki sa jakies wyniki
+                while (reader.Read())
+                {
+                    records.Add($"{reader[0].ToString()} <-> {reader[1].ToString()} {reader[2].ToString()}");
+                }
+
+                return records;
+            }
+        }
+
+        // metoda pobierajaca godziny przyjmowania danego doktora
+        public string DoctorHours(string name)
+        {
+            using (var cmd = new MySqlCommand(name, connection))
+            {
+                MySqlDataReader reader = cmd.ExecuteReader(); // czytnik
+
+                if (reader.Read()) { return reader[0].ToString(); }
+                else { return ""; }
+            }
+        }
+        #endregion
+
+        #region Database activity methods
         // metoda aktualizujaca dane (update)
         public bool UpdateInfo(string name)
         {
@@ -134,7 +173,9 @@ namespace Clinic
                 else { return false; }
             }
         }
+        #endregion
 
+        #region Other methods
         // metoda pobierajaca liste wizyt
         public List<string> Appointments(string name)
         {
@@ -212,36 +253,6 @@ namespace Clinic
                 return records;
             }
         }
-
-        // metoda pobierajaca doktorow danej specjalizacji wraz z ID
-        public List<string> Doctors(string name)
-        {
-            using (var cmd = new MySqlCommand(name, connection))
-            {
-                MySqlDataReader reader = cmd.ExecuteReader(); // czytnik
-
-                List<string> records = new List<string>(); // lista wynikow, ktora bedzie przerobiona na daną wizytę
-
-                // poki sa jakies wyniki
-                while (reader.Read())
-                {
-                    records.Add($"{reader[0].ToString()} <-> {reader[1].ToString()} {reader[2].ToString()}");
-                }
-
-                return records;
-            }
-        }
-
-        // metoda pobierajaca godziny przyjmowania danego doktora
-        public string DoctorHours(string name)
-        {
-            using (var cmd = new MySqlCommand(name, connection))
-            {
-                MySqlDataReader reader = cmd.ExecuteReader(); // czytnik
-
-                if (reader.Read()) { return reader[0].ToString(); }
-                else { return ""; }
-            }
-        }
+        #endregion
     }
 }
