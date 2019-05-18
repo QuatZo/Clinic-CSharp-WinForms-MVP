@@ -12,24 +12,47 @@ namespace Clinic
 {
     public partial class EditAppointmentSearchPanel : UserControl, IEditAppointmentSearchPanelView
     {
+        #region Properties
+        public string PeselPatient
+        {
+            get
+            {
+                return textBoxPatientPesel.Text;
+            }
+            set
+            {
+                textBoxPatientPesel.Text = value;
+            }
+        }
+        public DateTime DateTimeAppointment
+        {
+            get
+            {
+                return dateTimePickerAppointmentDate.Value;
+            }
+        }
+        #endregion
+
+        #region Events
+        public event Action SearchAppointmentButtonClicked;
+        public event Action PatientPeselChanged;
+        #endregion
+
         public EditAppointmentSearchPanel()
         {
             InitializeComponent();
         }
 
-        private void EditAppointmentSearchPanel_Load(object sender, EventArgs e)
+        #region Methods
+        private void buttonSearch_Click(object sender, EventArgs e)
         {
-
+            SearchAppointmentButtonClicked?.Invoke();
         }
 
         private void textBoxPatientPesel_TextChanged(object sender, EventArgs e)
         {
-
+            PatientPeselChanged?.Invoke();
         }
-
-        private void dateTimePickerAppointmentDate_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

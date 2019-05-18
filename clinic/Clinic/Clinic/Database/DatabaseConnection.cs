@@ -216,6 +216,24 @@ namespace Clinic
             }
         }
 
+        // metoda pobierajaca ilosc wynikow z wyszukiwarki wizyt do edycji
+        public int AppointmentsForEdit(string name)
+        {
+            using (var cmd = new MySqlCommand(name, connection))
+            {
+                MySqlDataReader reader = cmd.ExecuteReader(); // czytnik
+                int i = 0;
+
+                // poki sa jakies wyniki (chociaz zawsze zakladamy, ze jest 1 wynik, bo ID jest unikalne)
+                while (reader.Read())
+                {
+                    i++;
+                }
+
+                return i;
+            }
+        }
+
         // metoda pobierajaca recepte
         public List<string> Prescription(string name)
         {

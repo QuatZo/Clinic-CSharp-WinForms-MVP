@@ -39,6 +39,7 @@
             this.textBoxPatientPesel.Name = "textBoxPatientPesel";
             this.textBoxPatientPesel.Size = new System.Drawing.Size(200, 20);
             this.textBoxPatientPesel.TabIndex = 0;
+            this.textBoxPatientPesel.Text = "PESEL pacjenta";
             this.textBoxPatientPesel.TextChanged += new System.EventHandler(this.textBoxPatientPesel_TextChanged);
             // 
             // dateTimePickerAppointmentDate
@@ -49,7 +50,6 @@
             this.dateTimePickerAppointmentDate.Name = "dateTimePickerAppointmentDate";
             this.dateTimePickerAppointmentDate.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerAppointmentDate.TabIndex = 1;
-            this.dateTimePickerAppointmentDate.ValueChanged += new System.EventHandler(this.dateTimePickerAppointmentDate_ValueChanged);
             // 
             // buttonSearch
             // 
@@ -59,6 +59,7 @@
             this.buttonSearch.TabIndex = 2;
             this.buttonSearch.Text = "Szukaj";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // EditAppointmentSearchPanel
             // 
@@ -69,7 +70,6 @@
             this.Controls.Add(this.textBoxPatientPesel);
             this.Name = "EditAppointmentSearchPanel";
             this.Size = new System.Drawing.Size(581, 440);
-            this.Load += new System.EventHandler(this.EditAppointmentSearchPanel_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

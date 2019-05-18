@@ -15,7 +15,21 @@ namespace Clinic
         {
             this.view = view;
             this.model = model;
+
+            this.view.PatientPeselChanged += View_PatientPeselChanged;
         }
 
+        private void View_PatientPeselChanged()
+        {
+            try
+            {
+                double.Parse(view.PeselPatient);
+            }
+            catch (FormatException)
+            {
+                if (view.PeselPatient.Length < 2) { view.PeselPatient = ""; }
+                else { view.PeselPatient = view.PeselPatient.Remove(view.PeselPatient.Length - 1); }
+            }
+        }
     }
 }

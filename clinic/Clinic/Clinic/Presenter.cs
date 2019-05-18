@@ -51,6 +51,18 @@ namespace Clinic
             this.view.MenuView.EditAppointmentSearchButtonClicked += MenuView_EditAppointmentSearchButtonClicked;
 
             this.view.AppointmentsView.ChosenAppointmentClick += AppointmentsView_ChosenAppointmentClick;
+
+            this.view.EditAppointmentSearchView.SearchAppointmentButtonClicked += EditAppointmentSearchView_SearchAppointmentButtonClicked;
+        }
+
+        private void EditAppointmentSearchView_SearchAppointmentButtonClicked()
+        {
+            if (model.AppointmentExist(view.EditAppointmentSearchView.PeselPatient, view.EditAppointmentSearchView.DateTimeAppointment)){
+                if (!view.EditAppointmentActive)
+                    view.EditAppointmentActive = true;
+                if (view.EditAppointmentSearchActive)
+                    view.EditAppointmentSearchActive = false;
+            }
         }
 
         private void MenuView_EditAppointmentSearchButtonClicked()

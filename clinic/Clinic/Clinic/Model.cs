@@ -217,6 +217,27 @@ namespace Clinic
                 }
             }
         }
+
+        public bool AppointmentExist(string patientPesel, DateTime date)
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                if (connection.Open())
+                {
+                    Console.WriteLine($"SELECT wizyty.idw, wizyty.data, wizyty.opis, wizyty.idd, wizyty.idp FROM wizyty JOIN pacjenci ON wizyty.idp=pacjenci.idp JOIN doktorzy ON wizyty.idd=doktorzy.idd WHERE pacjenci.pesel={patientPesel} AND doktorzy.pesel={FormLogin.pesel} AND (wizyty.data BETWEEN \"{date.AddMinutes(-1).ToString("yyyy-MM-dd HH:mm:ss")}\" AND \"{date.AddMinutes(1).ToString("yyyy-MM-dd HH:mm:ss")}\")");
+                    int appointmentsForEditCount = connection.AppointmentsForEdit($"SELECT wizyty.idw, wizyty.data, wizyty.opis, wizyty.idd, wizyty.idp FROM wizyty JOIN pacjenci ON wizyty.idp=pacjenci.idp JOIN doktorzy ON wizyty.idd=doktorzy.idd WHERE pacjenci.pesel={patientPesel} AND doktorzy.pesel={FormLogin.pesel} AND (wizyty.data BETWEEN \"{date.AddMinutes(-1).ToString("yyyy-MM-dd HH:mm:ss")}\" AND \"{date.AddMinutes(1).ToString("yyyy-MM-dd HH:mm:ss")}\")");
+                    if ( appointmentsForEditCount == 1) { return true; }
+                    else if (appointmentsForEditCount == 0) { MessageBox.Show("Brak wyników!"); }
+                    else { MessageBox.Show("Podana wizyta widnieje 2x w systemie. Proszę zgłosić się do administratora."); }
+                    return false;
+                }
+                else
+                {
+                    MessageBox.Show("Błąd z połaczeniem!");
+                    return false;
+                }
+            }
+        }
         #endregion
     }
 }
