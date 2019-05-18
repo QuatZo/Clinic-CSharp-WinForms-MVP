@@ -62,34 +62,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppointmentPanel.cs">
+    <Compile Include="AppointmentsPanels\AppointmentPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AppointmentPanel.Designer.cs">
+    <Compile Include="AppointmentsPanels\AppointmentPanel.Designer.cs">
       <DependentUpon>AppointmentPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppointmentPanelPresenter.cs" />
-    <Compile Include="AppointmentsPanel.cs">
+    <Compile Include="AppointmentsPanels\AppointmentPanelPresenter.cs" />
+    <Compile Include="AppointmentsPanels\AppointmentsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AppointmentsPanel.Designer.cs">
+    <Compile Include="AppointmentsPanels\AppointmentsPanel.Designer.cs">
       <DependentUpon>AppointmentsPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppointmentsPanelPresenter.cs" />
-    <Compile Include="DatabaseConnection.cs" />
-    <Compile Include="DBInfo.Designer.cs">
+    <Compile Include="AppointmentsPanels\AppointmentsPanelPresenter.cs" />
+    <Compile Include="Database\DatabaseConnection.cs" />
+    <Compile Include="Database\DBInfo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBInfo.resx</DependentUpon>
     </Compile>
-    <Compile Include="Doctor.cs" />
-    <Compile Include="EditPanel.cs">
+    <Compile Include="Classes\Doctor.cs" />
+    <Compile Include="EditPanel\EditPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditPanel.Designer.cs">
+    <Compile Include="EditPanel\EditPanel.Designer.cs">
       <DependentUpon>EditPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditPanelPresenter.cs" />
+    <Compile Include="EditPanel\EditPanelPresenter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,42 +102,42 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="IAppointmentPanelView.cs" />
-    <Compile Include="IAppointmentsPanelView.cs" />
-    <Compile Include="IEditPanelView.cs" />
-    <Compile Include="IMenuPanelView.cs" />
-    <Compile Include="IRegisterAppointmentPanelView.cs" />
+    <Compile Include="AppointmentsPanels\IAppointmentPanelView.cs" />
+    <Compile Include="AppointmentsPanels\IAppointmentsPanelView.cs" />
+    <Compile Include="EditPanel\IEditPanelView.cs" />
+    <Compile Include="MenuPanel\IMenuPanelView.cs" />
+    <Compile Include="RegisterAppointmentPanel\IRegisterAppointmentPanelView.cs" />
     <Compile Include="IView.cs" />
-    <Compile Include="MenuPanel.cs">
+    <Compile Include="MenuPanel\MenuPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MenuPanel.Designer.cs">
+    <Compile Include="MenuPanel\MenuPanel.Designer.cs">
       <DependentUpon>MenuPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuPanelPresenter.cs" />
+    <Compile Include="MenuPanel\MenuPanelPresenter.cs" />
     <Compile Include="Model.cs" />
-    <Compile Include="Patient.cs" />
+    <Compile Include="Classes\Patient.cs" />
     <Compile Include="Presenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterAppointmentPanel.cs">
+    <Compile Include="RegisterAppointmentPanel\RegisterAppointmentPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="RegisterAppointmentPanel.Designer.cs">
+    <Compile Include="RegisterAppointmentPanel\RegisterAppointmentPanel.Designer.cs">
       <DependentUpon>RegisterAppointmentPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegisterAppointmentPanelPresenter.cs" />
-    <EmbeddedResource Include="AppointmentPanel.resx">
+    <Compile Include="RegisterAppointmentPanel\RegisterAppointmentPanelPresenter.cs" />
+    <EmbeddedResource Include="AppointmentsPanels\AppointmentPanel.resx">
       <DependentUpon>AppointmentPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AppointmentsPanel.resx">
+    <EmbeddedResource Include="AppointmentsPanels\AppointmentsPanel.resx">
       <DependentUpon>AppointmentsPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DBInfo.resx">
+    <EmbeddedResource Include="Database\DBInfo.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DBInfo.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditPanel.resx">
+    <EmbeddedResource Include="EditPanel\EditPanel.resx">
       <DependentUpon>EditPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
@@ -146,7 +146,7 @@
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuPanel.resx">
+    <EmbeddedResource Include="MenuPanel\MenuPanel.resx">
       <DependentUpon>MenuPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -159,7 +159,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RegisterAppointmentPanel.resx">
+    <EmbeddedResource Include="RegisterAppointmentPanel\RegisterAppointmentPanel.resx">
       <DependentUpon>RegisterAppointmentPanel.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

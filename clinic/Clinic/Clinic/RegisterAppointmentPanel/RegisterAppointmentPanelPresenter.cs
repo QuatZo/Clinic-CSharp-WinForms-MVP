@@ -20,6 +20,17 @@ namespace Clinic
             this.view.SpecializationChosen += View_SpecializationChosen;
             this.view.DoctorChosen += View_DoctorChosen;
             this.view.RegisterButtonClicked += View_RegisterButtonClicked;
+
+            this.view.AppointmentDateChanged += View_AppointmentDateChanged;
+        }
+
+        private void View_AppointmentDateChanged()
+        {
+            if (view.AppointmentDate < DateTime.Now)
+            {
+                MessageBox.Show("Nie można umówić wizyty na przeszłość!");
+                view.AppointmentDate = DateTime.Now;
+            }
         }
 
         private void View_RegisterButtonClicked()

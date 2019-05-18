@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Clinic {
+namespace Clinic.Database {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Clinic {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Clinic.DBInfo", typeof(DBInfo).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Clinic.Database.DBInfo", typeof(DBInfo).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

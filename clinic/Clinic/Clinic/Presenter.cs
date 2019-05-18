@@ -17,11 +17,11 @@ namespace Clinic
         Doctor lekarz;
 
         // wszystkie prezentery, np.
-        EditPanelPresenter EditPresenter;
-        MenuPanelPresenter MenuPresenter;
-        AppointmentsPanelPresenter AppointmentsPresenter;
-        AppointmentPanelPresenter AppointmentPresenter;
-        RegisterAppointmentPanelPresenter RegisterAppointmentPresenter;
+        readonly EditPanelPresenter EditPresenter;
+        readonly MenuPanelPresenter MenuPresenter;
+        readonly AppointmentsPanelPresenter AppointmentsPresenter;
+        readonly AppointmentPanelPresenter AppointmentPresenter;
+        readonly RegisterAppointmentPanelPresenter RegisterAppointmentPresenter;
 
         // konstruktor
         public Presenter(IView view, Model model){

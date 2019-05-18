@@ -38,13 +38,17 @@ namespace Clinic
 
                     // czy dane zostaly zaktualizowane
                     if (pacjent.PhoneNumber == view.PhoneNumber && pacjent.Address == view.Address) { MessageBox.Show("Poprawnie zaktualizowano dane pacjenta!"); }
-                    else { MessageBox.Show("Ups! Coś poszło nie tak!"); }
+                    else { MessageBox.Show("Ups! Coś poszło nie tak. Sprawdź czy nie umieściłeś/aś gdzieś polskich znaków."); }
 
                     if (lekarz != null) { lekarz = null; }
                 }
                 catch (FormatException)
                 {
                     MessageBox.Show("Podano błędne dane!");
+                }
+                catch (OverflowException)
+                {
+                    MessageBox.Show("Podano błędny numer telefonu!");
                 }
             }
             // jesli lekarz jest zalogowany

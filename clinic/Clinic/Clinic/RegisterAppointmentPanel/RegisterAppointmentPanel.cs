@@ -78,6 +78,10 @@ namespace Clinic
             {
                 return dateTimePickerAppointment.Value;
             }
+            set
+            {
+                dateTimePickerAppointment.Value = value;
+            }
         }
         public string Hour
         {
@@ -105,6 +109,8 @@ namespace Clinic
         public event Action DoctorChosen;
 
         public event Action RegisterButtonClicked;
+
+        public event Action AppointmentDateChanged;
         #endregion
 
         public RegisterAppointmentPanel()
@@ -143,6 +149,12 @@ namespace Clinic
         private void RegisterAppointmentPanel_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void dateTimePickerAppointment_ValueChanged(object sender, EventArgs e)
+        {
+            if (AppointmentDateChanged != null)
+                AppointmentDateChanged();
         }
     }
 }

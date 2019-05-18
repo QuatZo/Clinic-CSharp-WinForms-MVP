@@ -15,7 +15,7 @@ namespace Clinic
         string Doctor { get; }
         string Hour { set; }
         string Content { get; }
-        DateTime AppointmentDate { get; }
+        DateTime AppointmentDate { get; set; }
 
         bool DoctorActive { get; set; }
         #endregion
@@ -24,6 +24,7 @@ namespace Clinic
         event Action SpecializationChosen;
         event Action DoctorChosen;
         event Action RegisterButtonClicked;
+        event Action AppointmentDateChanged;
         #endregion
     }
 }

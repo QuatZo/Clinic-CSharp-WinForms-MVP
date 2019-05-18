@@ -54,6 +54,7 @@
             this.dateTimePickerAppointment.Name = "dateTimePickerAppointment";
             this.dateTimePickerAppointment.Size = new System.Drawing.Size(212, 20);
             this.dateTimePickerAppointment.TabIndex = 13;
+            this.dateTimePickerAppointment.ValueChanged += new System.EventHandler(this.dateTimePickerAppointment_ValueChanged);
             // 
             // textBoxContent
             // 
