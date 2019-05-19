@@ -8,5 +8,9 @@ namespace Clinic
 {
     public interface IEditAppointmentPanelView
     {
+        #region Properties
+        string Content { get; set; }
+        List<string> Prescription { get; set; }
+        #endregion
     }
 }

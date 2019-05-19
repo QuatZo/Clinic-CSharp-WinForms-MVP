@@ -27,8 +27,8 @@ namespace Clinic
             }
             catch (FormatException)
             {
-                if (view.PeselPatient.Length < 2) { view.PeselPatient = ""; }
-                else { view.PeselPatient = view.PeselPatient.Remove(view.PeselPatient.Length - 1); }
+                if (view.PeselPatient.Length < 1) { view.PeselPatient = ""; }
+                else { view.PeselPatient = view.PeselPatient.Substring(0, view.PeselPatient.Length - 1); }
             }
         }
     }

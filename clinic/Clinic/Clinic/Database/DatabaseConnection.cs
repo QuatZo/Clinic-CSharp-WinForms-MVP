@@ -217,20 +217,20 @@ namespace Clinic
         }
 
         // metoda pobierajaca ilosc wynikow z wyszukiwarki wizyt do edycji
-        public int AppointmentsForEdit(string name)
+        public List<int> AppointmentToEdit(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader(); // czytnik
-                int i = 0;
+                List<int> vs = new List<int> { 0 };
 
                 // poki sa jakies wyniki (chociaz zawsze zakladamy, ze jest 1 wynik, bo ID jest unikalne)
                 while (reader.Read())
                 {
-                    i++;
+                    vs[0]++;
+                    vs.Add(int.Parse(reader[0].ToString()));
                 }
-
-                return i;
+                return vs;
             }
         }
 
@@ -246,7 +246,15 @@ namespace Clinic
                 // poki sa jakies wyniki (chociaz zawsze zakladamy, ze jest 1 wynik, bo ID jest unikalne)
                 while (reader.Read())
                 {
-                    records.Add($"{reader[0].ToString()}");
+                    string rdr = "";
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        
+                        rdr += reader[i].ToString();
+
+                        if(i < reader.FieldCount - 1) { rdr += " <=> "; }
+                    }
+                    records.Add(rdr);
                 }
 
                 return records;

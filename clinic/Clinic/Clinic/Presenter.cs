@@ -27,7 +27,7 @@ namespace Clinic
         readonly EditAppointmentSearchPanelPresenter EditAppointmentSearchPresenter;
         #endregion
 
-        #region Methods
+        
         public Presenter(IView view, Model model){
             this.view = view;
             this.model = model;
@@ -55,13 +55,18 @@ namespace Clinic
             this.view.EditAppointmentSearchView.SearchAppointmentButtonClicked += EditAppointmentSearchView_SearchAppointmentButtonClicked;
         }
 
+        #region Methods
         private void EditAppointmentSearchView_SearchAppointmentButtonClicked()
         {
-            if (model.AppointmentExist(view.EditAppointmentSearchView.PeselPatient, view.EditAppointmentSearchView.DateTimeAppointment)){
+            int idToEdit = model.GetAppointmentToEditID(view.EditAppointmentSearchView.PeselPatient, view.EditAppointmentSearchView.DateTimeAppointment);
+            if ( idToEdit > -1){
                 if (!view.EditAppointmentActive)
                     view.EditAppointmentActive = true;
                 if (view.EditAppointmentSearchActive)
                     view.EditAppointmentSearchActive = false;
+
+                view.EditAppointmentView.Content = model.GetSpecificAppointment(idToEdit.ToString())[3];
+                view.EditAppointmentView.Prescription = model.GetPrescription(idToEdit);
             }
         }
 

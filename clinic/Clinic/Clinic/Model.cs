@@ -218,23 +218,44 @@ namespace Clinic
             }
         }
 
-        public bool AppointmentExist(string patientPesel, DateTime date)
+        // pobiera ID wizyty do edycji
+        public int GetAppointmentToEditID(string patientPesel, DateTime date)
         {
             using (var connection = new DatabaseConnection())
             {
                 if (connection.Open())
                 {
-                    Console.WriteLine($"SELECT wizyty.idw, wizyty.data, wizyty.opis, wizyty.idd, wizyty.idp FROM wizyty JOIN pacjenci ON wizyty.idp=pacjenci.idp JOIN doktorzy ON wizyty.idd=doktorzy.idd WHERE pacjenci.pesel={patientPesel} AND doktorzy.pesel={FormLogin.pesel} AND (wizyty.data BETWEEN \"{date.AddMinutes(-1).ToString("yyyy-MM-dd HH:mm:ss")}\" AND \"{date.AddMinutes(1).ToString("yyyy-MM-dd HH:mm:ss")}\")");
-                    int appointmentsForEditCount = connection.AppointmentsForEdit($"SELECT wizyty.idw, wizyty.data, wizyty.opis, wizyty.idd, wizyty.idp FROM wizyty JOIN pacjenci ON wizyty.idp=pacjenci.idp JOIN doktorzy ON wizyty.idd=doktorzy.idd WHERE pacjenci.pesel={patientPesel} AND doktorzy.pesel={FormLogin.pesel} AND (wizyty.data BETWEEN \"{date.AddMinutes(-1).ToString("yyyy-MM-dd HH:mm:ss")}\" AND \"{date.AddMinutes(1).ToString("yyyy-MM-dd HH:mm:ss")}\")");
-                    if ( appointmentsForEditCount == 1) { return true; }
+                    List<int> appointmentToEdit = connection.AppointmentToEdit($"SELECT wizyty.idw FROM wizyty JOIN pacjenci ON wizyty.idp=pacjenci.idp JOIN doktorzy ON wizyty.idd=doktorzy.idd WHERE pacjenci.pesel={patientPesel} AND doktorzy.pesel={FormLogin.pesel} AND (wizyty.data BETWEEN \"{date.AddMinutes(-1).ToString("yyyy-MM-dd HH:mm:ss")}\" AND \"{date.AddMinutes(1).ToString("yyyy-MM-dd HH:mm:ss")}\")");
+                    int appointmentsForEditCount = appointmentToEdit[0];
+                    if ( appointmentsForEditCount == 1) { return appointmentToEdit[1]; }
                     else if (appointmentsForEditCount == 0) { MessageBox.Show("Brak wyników!"); }
                     else { MessageBox.Show("Podana wizyta widnieje 2x w systemie. Proszę zgłosić się do administratora."); }
-                    return false;
+                    return -1;
                 }
                 else
                 {
                     MessageBox.Show("Błąd z połaczeniem!");
-                    return false;
+                    return -1;
+                }
+            }
+        }
+
+        // pobiera informacje nt danej recepty (lista leków i dawek)
+        public List<string> GetPrescription(int id)
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                if (connection.Open())
+                {
+                    List<string> result = connection.Prescription($"SELECT dawki_i_leki.iddl, leki.nazwa, dawki.ile FROM `wiz_i_dawki_i_leki` JOIN dawki_i_leki ON dawki_i_leki.iddl=wiz_i_dawki_i_leki.iddl JOIN dawki ON dawki.idd=dawki_i_leki.idd JOIN leki ON leki.idl=dawki_i_leki.idl WHERE idw={id} ORDER BY 2, 3");
+
+                    return result;
+                }
+                else
+                {
+                    MessageBox.Show("Błąd z połaczeniem!");
+                    List<string> result = null;
+                    return result;
                 }
             }
         }

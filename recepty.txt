@@ -1,0 +1,1 @@
+SELECT dawki_i_leki.iddl, leki.nazwa, dawki.ile FROM `wiz_i_dawki_i_leki` JOIN dawki_i_leki ON dawki_i_leki.iddl=wiz_i_dawki_i_leki.iddl JOIN dawki ON dawki.idd=dawki_i_leki.idd JOIN leki ON leki.idl=dawki_i_leki.idl WHERE idw=1 ORDER BY 2, 3

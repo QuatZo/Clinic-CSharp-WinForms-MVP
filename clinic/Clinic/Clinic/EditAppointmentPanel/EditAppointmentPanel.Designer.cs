@@ -104,7 +104,6 @@
             this.Controls.Add(this.textBoxContent);
             this.Name = "EditAppointmentPanel";
             this.Size = new System.Drawing.Size(886, 620);
-            this.Load += new System.EventHandler(this.EditAppointmentPanel_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
