@@ -12,137 +12,94 @@ namespace Clinic
 {
     public partial class FormAddRowToPrescription : Form
     {
-        #region Properties
-        private List<string> Medicines
+        private int AppointmentID { get; set; }
+
+        private List<int> RowsID
         {
             get
             {
-                List<string> medicines = new List<string>();
-                foreach(var el in comboBoxMedicine.Items)
+                List<int> rowsID = new List<int>();
+                foreach(var el in listBoxRows.SelectedItems)
                 {
-                    medicines.Add(el.ToString());
+                    rowsID.Add(int.Parse(el.ToString().Split()[0]));
+                    Console.WriteLine(int.Parse(el.ToString().Split()[0]));
                 }
-                return medicines;
+                return rowsID;
             }
+        }
+        private List<string> Rows
+        {
             set
             {
-                if(comboBoxMedicine.Items.Count > 0) { comboBoxMedicine.Items.Clear(); }
+                if(listBoxRows.Items.Count > 0) { listBoxRows.Items.Clear(); }
                 foreach(var el in value)
                 {
-                    comboBoxMedicine.Items.Add(el);
+                    listBoxRows.Items.Add(el);
                 }
             }
         }
-        private List<string> Doses
-        {
-            get
-            {
-                List<string> doses = new List<string>();
-                foreach (var el in comboBoxDose.Items)
-                {
-                    doses.Add(el.ToString());
-                }
-                return doses;                    
-            }
-            set
-            {
-                if (comboBoxDose.Items.Count > 0) { comboBoxDose.Items.Clear(); }
-                foreach (var el in value)
-                {
-                    comboBoxDose.Items.Add(el);
-                }
-            }
-        }
-
-        private int AppointmentID;
-        private int SelectedMedicine
-        {
-            get
-            {
-                return int.Parse(comboBoxMedicine.SelectedItem.ToString().Split()[0]);
-            }
-        }
-        private int SelectedDose
-        {
-            get
-            {
-                return int.Parse(comboBoxDose.SelectedItem.ToString().Split()[0]);
-            }
-        }
-        #endregion
-
+        
         public FormAddRowToPrescription(int id)
         {
             InitializeComponent();
             AppointmentID = id;
         }
 
-        #region Methods
-        private void buttonExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            if (SelectedMedicine > -1 && SelectedDose > -1)
-            {
-                using (var connection = new DatabaseConnection())
-                {
-                    if (connection.Open())
-                    {
-                        Console.WriteLine($"INSERT INTO dawki_i_leki(idd, idl) VALUES({SelectedDose}, {SelectedMedicine})");
-                        if (connection.InsertInfo($"INSERT INTO dawki_i_leki(idd, idl) VALUES({SelectedDose}, {SelectedMedicine})")){
-                            Console.WriteLine($"SELECT iddl FROM dawki_i_leki WHERE idd={SelectedDose} AND idl={SelectedMedicine}");
-                            int id = int.Parse(connection.Prescription($"SELECT iddl FROM dawki_i_leki WHERE idd={SelectedDose} AND idl={SelectedMedicine}")[0].Split()[0]);
-                            Console.WriteLine(id);
-                            Console.WriteLine($"INSERT INTO wiz_i_dawki_i_leki(idw, iddl) VALUES({AppointmentID}, {id})");
-                            if (connection.InsertInfo($"INSERT INTO wiz_i_dawki_i_leki(idw, iddl) VALUES({AppointmentID}, {id})")) { MessageBox.Show("Poprawnie dodano!"); }
-                            else{ MessageBox.Show("Błąd podpisania leku do recepty! Zgłoś się do administratora!"); }
-                        }
-                        else { MessageBox.Show("Błąd z przypisywaniem dawki do leku! Zgłoś się do administratora!"); }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Błąd z połaczeniem!");
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Wybierz coś!");
-            }
-        }
-
-        private void FormAddRowToPrescription_Load(object sender, EventArgs e)
+        private List<string> GetPrescriptions()
         {
             using (var connection = new DatabaseConnection())
             {
                 if (connection.Open())
                 {
-                    List<string> medicines = new List<string>();
+                    return connection.Prescription($"SELECT dawki_i_leki.iddl, leki.nazwa, dawki.ile FROM dawki_i_leki JOIN leki ON leki.idl=dawki_i_leki.idl JOIN dawki ON dawki.idd=dawki_i_leki.idd WHERE iddl NOT IN (SELECT iddl FROM wiz_i_dawki_i_leki WHERE idw={AppointmentID}) ORDER BY 2");
+                }
+                else
+                {
+                    MessageBox.Show("Błąd z połaczeniem!");
+                    List<string> vs = new List<string>();
+                    return vs;
 
-                    foreach (var el in connection.Prescription("SELECT idl, nazwa FROM leki ORDER BY 2"))
+                }
+            }
+        }
+
+        private void FormAddRowToPrescription_Load(object sender, EventArgs e)
+        {
+            Rows = GetPrescriptions();
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            FormConnectMedDose connectMedDose = new FormConnectMedDose();
+            // dodajemy event zamykania powyzszej formy, wtedy tak jakby wczytujemy na nowo nasza forme (czyli uzupelniamy liste)
+            connectMedDose.FormClosing += new FormClosingEventHandler(FormAddRowToPrescription_Load);
+            connectMedDose.Show();
+        }
+        private void FormConnectMedDose_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Rows = GetPrescriptions();
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                if (connection.Open())
+                {
+                    bool status = true;
+                    foreach(var id in RowsID)
                     {
-                        medicines.Add(el);
+                        if (!connection.InsertInfo($"INSERT INTO wiz_i_dawki_i_leki(idw, iddl) VALUES({AppointmentID}, {id})")) { status = false; }
                     }
-
-                    List<string> doses = new List<string>();
-
-                    foreach (var el in connection.Prescription("SELECT idd, ile FROM dawki ORDER BY 2"))
-                    {
-                        doses.Add(el);
-                    }
-
-                    Medicines = medicines;
-                    Doses = doses;
+                    if (status) { MessageBox.Show("Leki zostały poprawnie dodane do recepty!", "Pozytywnie dodano!", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                    else { MessageBox.Show("Błąd podpisania leku do recepty! Zgłoś się do administratora!", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 }
                 else
                 {
                     MessageBox.Show("Błąd z połaczeniem!");
                 }
             }
+            
         }
-        #endregion
     }
 }

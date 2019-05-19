@@ -185,6 +185,15 @@ namespace Clinic
                 }
             }
         }
+
+        // zwraca wartość dla poleceń pobierających tylko COUNT
+        public int SelectCount(string name)
+        {
+            using (var cmd = new MySqlCommand(name, connection))
+            {
+                return int.Parse(cmd.ExecuteScalar().ToString());
+            }
+        }
         #endregion
 
         #region Other methods

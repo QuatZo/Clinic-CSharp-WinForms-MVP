@@ -104,6 +104,12 @@
       <DependentUpon>EditPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="EditPanel\EditPanelPresenter.cs" />
+    <Compile Include="FormConnectMedDose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConnectMedDose.Designer.cs">
+      <DependentUpon>FormConnectMedDose.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAddRowToPrescription.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditPanel\EditPanel.resx">
       <DependentUpon>EditPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConnectMedDose.resx">
+      <DependentUpon>FormConnectMedDose.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAddRowToPrescription.resx">
       <DependentUpon>FormAddRowToPrescription.cs</DependentUpon>

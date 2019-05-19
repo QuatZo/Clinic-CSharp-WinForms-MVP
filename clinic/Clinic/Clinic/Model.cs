@@ -293,6 +293,26 @@ namespace Clinic
                 }
             }
         }
+
+        public bool UpdateAppointmentInfo(int id, string content)
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                if (connection.Open())
+                {
+                    if (connection.UpdateInfo($"UPDATE wizyty SET opis=\"{content}\" WHERE idw={id}"))
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                else
+                {
+                    MessageBox.Show("Błąd z połaczeniem!");
+                    return false;
+                }
+            }
+        }
         #endregion
     }
 }

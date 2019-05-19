@@ -78,5 +78,10 @@ namespace Clinic
         {
             AddRowButtonClicked?.Invoke();
         }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            SaveAppointmentButtonClicked?.Invoke();
+        }
     }
 }

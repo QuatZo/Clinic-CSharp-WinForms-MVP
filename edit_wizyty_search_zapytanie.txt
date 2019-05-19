@@ -1,1 +1,0 @@
-SELECT wizyty.idw, wizyty.data, wizyty.opis, wizyty.idd, wizyty.idp FROM wizyty JOIN pacjenci ON wizyty.idp=pacjenci.idp JOIN doktorzy ON wizyty.idd=doktorzy.idd WHERE pacjenci.pesel=97090605938 AND doktorzy.pesel=97090605938 AND (wizyty.data BETWEEN "2019-05-01 11:00:00" AND "2019-05-01 11:01:00")
