@@ -34,6 +34,7 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.labelHelp = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxContent
@@ -41,7 +42,7 @@
             this.textBoxContent.Location = new System.Drawing.Point(252, 28);
             this.textBoxContent.Multiline = true;
             this.textBoxContent.Name = "textBoxContent";
-            this.textBoxContent.Size = new System.Drawing.Size(302, 150);
+            this.textBoxContent.Size = new System.Drawing.Size(221, 150);
             this.textBoxContent.TabIndex = 0;
             this.textBoxContent.Text = "Opis";
             // 
@@ -62,6 +63,7 @@
             this.buttonAdd.TabIndex = 2;
             this.buttonAdd.Text = "+";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonDelete
             // 
@@ -71,10 +73,11 @@
             this.buttonDelete.TabIndex = 3;
             this.buttonDelete.Text = "-";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(479, 413);
+            this.buttonSave.Location = new System.Drawing.Point(479, 28);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 4;
@@ -86,16 +89,29 @@
             this.labelHelp.AutoSize = true;
             this.labelHelp.Location = new System.Drawing.Point(252, 443);
             this.labelHelp.Name = "labelHelp";
-            this.labelHelp.Size = new System.Drawing.Size(301, 26);
+            this.labelHelp.Size = new System.Drawing.Size(298, 52);
             this.labelHelp.TabIndex = 5;
-            this.labelHelp.Text = "Wybierz ile chcesz za pomocą CTRL, SHIFT lub STRZAŁEK. \r\nJeśli nie ma danej recep" +
-    "ty/dawki, kliknij na +.\r\n";
+            this.labelHelp.Text = "Wybierz ile chcesz za pomocą CTRL, SHIFT lub STRZAŁEK.\r\nPowyższe odnosi się do ch" +
+    "ęci usunięcia wpisów. \r\nJeśli chcesz dodać lek do recepty, kliknij na +.\r\nPrzyci" +
+    "sk \"Zapisz\" zapisuje opis!\r\n";
             this.labelHelp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Enabled = false;
+            this.label1.Location = new System.Drawing.Point(211, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(16, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "-1";
+            this.label1.Visible = false;
             // 
             // EditAppointmentPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelHelp);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonDelete);
@@ -117,5 +133,6 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Label labelHelp;
+        private System.Windows.Forms.Label label1;
     }
 }

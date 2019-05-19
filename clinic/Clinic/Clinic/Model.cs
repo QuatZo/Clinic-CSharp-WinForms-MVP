@@ -259,6 +259,40 @@ namespace Clinic
                 }
             }
         }
+
+        // usuwa podane wpisy w recepcie
+        public bool DeleteRowsFromPrescription(int id, List<int> rows)
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                if (connection.Open())
+                {
+                    string inClause = "";
+                    if (rows.Count > 0)
+                    {
+                        inClause = "AND iddl IN (";
+
+                        foreach(var row in rows)
+                        {
+                            inClause += $"{row}, ";
+                        }
+                        inClause = inClause.Remove(inClause.Length - 2) + ")";
+                    }
+
+                    if(!connection.DeleteInfo($"DELETE FROM wiz_i_dawki_i_leki WHERE idw={id} {inClause}"))
+                    {
+                        MessageBox.Show("Ups! Coś poszło nie tak, spróbuj ponownie!");
+                        return false;
+                    }
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Błąd z połaczeniem!");
+                    return false;
+                }
+            }
+        }
         #endregion
     }
 }

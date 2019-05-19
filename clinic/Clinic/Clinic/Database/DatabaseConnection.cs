@@ -173,6 +173,18 @@ namespace Clinic
                 else { return false; }
             }
         }
+
+        // metoda usuwajaca wartosci z bazy
+        public bool DeleteInfo(string name)
+        {
+            {
+                using (var cmd = new MySqlCommand(name, connection))
+                {
+                    if (cmd.ExecuteNonQuery() > 0) { return true; }
+                    else { return false; }
+                }
+            }
+        }
         #endregion
 
         #region Other methods

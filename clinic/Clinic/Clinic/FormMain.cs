@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Clinic
 {
-    public partial class Form1 : Form, IView
+    public partial class FormMain : Form, IView
     {
         #region Properties
         // tytul okna
@@ -178,7 +178,7 @@ namespace Clinic
         public event Action FormLoaded; // logowanie formy, podpisany jest pod to przycisk Edycji z menu
         #endregion
 
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }

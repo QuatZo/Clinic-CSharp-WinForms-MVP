@@ -11,7 +11,7 @@ namespace Clinic
     {
         #region Classes
         Model model = new Model();
-        IView view = new Form1();
+        IView view = new FormMain();
 
         Patient pacjent;
         Doctor lekarz;
@@ -27,17 +27,20 @@ namespace Clinic
         readonly EditAppointmentSearchPanelPresenter EditAppointmentSearchPresenter;
         #endregion
 
-        
         public Presenter(IView view, Model model){
             this.view = view;
             this.model = model;
 
             // prezenter = konstruktor prezentera
             EditPresenter = new EditPanelPresenter(view.EditView, model);
+
             MenuPresenter = new MenuPanelPresenter(view.MenuView, model);
+
             AppointmentsPresenter = new AppointmentsPanelPresenter(view.AppointmentsView, model);
             AppointmentPresenter = new AppointmentPanelPresenter(view.AppointmentView, model);
+
             RegisterAppointmentPresenter = new RegisterAppointmentPanelPresenter(view.RegisterAppointmentView, model);
+
             EditAppointmentPresenter = new EditAppointmentPanelPresenter(view.EditAppointmentView, model);
             EditAppointmentSearchPresenter = new EditAppointmentSearchPanelPresenter(view.EditAppointmentSearchView, model);
 
@@ -58,15 +61,15 @@ namespace Clinic
         #region Methods
         private void EditAppointmentSearchView_SearchAppointmentButtonClicked()
         {
-            int idToEdit = model.GetAppointmentToEditID(view.EditAppointmentSearchView.PeselPatient, view.EditAppointmentSearchView.DateTimeAppointment);
-            if ( idToEdit > -1){
+            view.EditAppointmentView.AppointmentID = model.GetAppointmentToEditID(view.EditAppointmentSearchView.PeselPatient, view.EditAppointmentSearchView.DateTimeAppointment);
+            if (view.EditAppointmentView.AppointmentID > -1){
                 if (!view.EditAppointmentActive)
                     view.EditAppointmentActive = true;
                 if (view.EditAppointmentSearchActive)
                     view.EditAppointmentSearchActive = false;
 
-                view.EditAppointmentView.Content = model.GetSpecificAppointment(idToEdit.ToString())[3];
-                view.EditAppointmentView.Prescription = model.GetPrescription(idToEdit);
+                view.EditAppointmentView.Content = model.GetSpecificAppointment(view.EditAppointmentView.AppointmentID.ToString())[3];
+                view.EditAppointmentView.Prescription = model.GetPrescription(view.EditAppointmentView.AppointmentID);
             }
         }
 

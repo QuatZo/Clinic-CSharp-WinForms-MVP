@@ -22,7 +22,7 @@ namespace Clinic
             if (new FormLogin().ShowDialog() == DialogResult.OK)
             {
                 Model model = new Model();
-                IView view = new Form1();
+                IView view = new FormMain();
 
                 Presenter presenter = new Presenter(view, model);
 

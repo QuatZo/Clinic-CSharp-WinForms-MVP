@@ -13,6 +13,17 @@ namespace Clinic
     public partial class EditAppointmentPanel : UserControl, IEditAppointmentPanelView
     {
         #region Properties
+        public int AppointmentID
+        {
+            get
+            {
+                return int.Parse(label1.Text);
+            }
+            set
+            {
+                label1.Text = value.ToString();
+            }
+        }
         public string Content
         {
             get
@@ -32,7 +43,6 @@ namespace Clinic
 
                 foreach(var el in listBoxReceipt.SelectedItems)
                 {
-                    Console.WriteLine(el.ToString());
                     receipts.Add(el.ToString());
                 }
                 return receipts;
@@ -48,9 +58,25 @@ namespace Clinic
         }
         #endregion
 
+        #region Events
+        public event Action AddRowButtonClicked;
+        public event Action DeleteRowButtonClicked;
+        public event Action SaveAppointmentButtonClicked;
+        #endregion
+
         public EditAppointmentPanel()
         {
             InitializeComponent();
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            DeleteRowButtonClicked?.Invoke();
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            AddRowButtonClicked?.Invoke();
         }
     }
 }
