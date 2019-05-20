@@ -114,10 +114,10 @@
 
         #endregion
         private System.Windows.Forms.Button buttonRegister;
-        private System.Windows.Forms.DateTimePicker dateTimePickerAppointment;
         private System.Windows.Forms.TextBox textBoxContent;
         private System.Windows.Forms.ComboBox comboBoxSpecialization;
         private System.Windows.Forms.ComboBox comboBoxDoctor;
         private System.Windows.Forms.TextBox textBoxHours;
+        private System.Windows.Forms.DateTimePicker dateTimePickerAppointment;
     }
 }

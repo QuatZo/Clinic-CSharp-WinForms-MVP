@@ -62,11 +62,11 @@ namespace Clinic
         private void EditAppointmentSearchView_SearchAppointmentButtonClicked()
         {
             view.EditAppointmentView.AppointmentID = model.GetAppointmentToEditID(view.EditAppointmentSearchView.PeselPatient, view.EditAppointmentSearchView.DateTimeAppointment);
+
             if (view.EditAppointmentView.AppointmentID > -1){
-                if (!view.EditAppointmentActive)
-                    view.EditAppointmentActive = true;
-                if (view.EditAppointmentSearchActive)
-                    view.EditAppointmentSearchActive = false;
+
+                view.SetView();
+                if (!view.EditAppointmentActive) { view.EditAppointmentActive = true; }
 
                 view.EditAppointmentView.Content = model.GetSpecificAppointment(view.EditAppointmentView.AppointmentID.ToString())[3];
                 view.EditAppointmentView.Prescription = model.GetPrescription(view.EditAppointmentView.AppointmentID);
@@ -75,40 +75,17 @@ namespace Clinic
 
         private void MenuView_EditAppointmentSearchButtonClicked()
         {
-            if (view.EditActive)
-                view.EditActive = false;
-            if (!view.MenuActive)
-                view.MenuActive = true;
-            if (view.AppointmentsActive)
-                view.AppointmentsActive = false;
-            if (view.AppointmentActive)
-                view.AppointmentActive = false;
-            if (view.RegisterAppointmentActive)
-                view.RegisterAppointmentActive = false;
-            if (view.EditAppointmentActive)
-                view.EditAppointmentActive = false;
-            if (!view.EditAppointmentSearchActive)
-                view.EditAppointmentSearchActive = true;
+            view.SetView();
+            if (!view.EditAppointmentSearchActive) { view.EditAppointmentSearchActive = true; }
         }
 
         private void MenuView_RegisterAppointmentButtonClicked()
         {
             if (FormLogin.position == Position.pacjent)
             {
-                if (view.EditActive)
-                    view.EditActive = false;
-                if (!view.MenuActive)
-                    view.MenuActive = true;
-                if (view.AppointmentsActive)
-                    view.AppointmentsActive = false;
-                if (view.AppointmentActive)
-                    view.AppointmentActive = false;
-                if (!view.RegisterAppointmentActive)
-                    view.RegisterAppointmentActive = true;
-                if (view.EditAppointmentActive)
-                    view.EditAppointmentActive = false;
-                if (view.EditAppointmentSearchActive)
-                    view.EditAppointmentSearchActive = false;
+
+                view.SetView();
+                if (!view.RegisterAppointmentActive) { view.RegisterAppointmentActive = true; }
 
                 if (view.RegisterAppointmentView.DoctorActive)
                     view.RegisterAppointmentView.DoctorActive = false;
@@ -125,20 +102,9 @@ namespace Clinic
         {
             if (int.Parse(view.AppointmentsView.ChosenAppointment) > -1)
             {
-                if (view.EditActive)
-                    view.EditActive = false;
-                if (!view.MenuActive)
-                    view.MenuActive = true;
-                if (view.AppointmentsActive)
-                    view.AppointmentsActive = false;
-                if (!view.AppointmentActive)
-                    view.AppointmentActive = true;
-                if (view.RegisterAppointmentActive)
-                    view.RegisterAppointmentActive = false;
-                if (view.EditAppointmentActive)
-                    view.EditAppointmentActive = false;
-                if (view.EditAppointmentSearchActive)
-                    view.EditAppointmentSearchActive = false;
+
+                view.SetView();
+                if (!view.AppointmentActive) { view.AppointmentActive = true; }
 
                 view.AppointmentView.FullfilFields = model.GetSpecificAppointment(view.AppointmentsView.ChosenAppointment);
             }
@@ -146,20 +112,8 @@ namespace Clinic
 
         private void MenuView_AppointmentsButtonClicked()
         {
-            if (view.EditActive)
-                view.EditActive = false;
-            if (!view.MenuActive)
-                view.MenuActive = true;
-            if (!view.AppointmentsActive)
-                view.AppointmentsActive = true;
-            if (view.AppointmentActive)
-                view.AppointmentActive = false;
-            if (view.RegisterAppointmentActive)
-                view.RegisterAppointmentActive = false;
-            if (view.EditAppointmentActive)
-                view.EditAppointmentActive = false;
-            if (view.EditAppointmentSearchActive)
-                view.EditAppointmentSearchActive = false;
+            view.SetView();
+            if (!view.AppointmentsActive) { view.AppointmentsActive = true; }
 
             view.AppointmentsView.Content = model.GetAppointments();
         }
@@ -173,21 +127,9 @@ namespace Clinic
         {
             view.Title = FormLogin.position.ToString();
 
-            // tutaj beda wszystkie okna, upewnienie sie, ze na pewno dobre wyswietli - w kazdej metodzie tak bedzie, wiec moze zrobi sie osobna metode obslugujaca wszystkie wyjatki
-            if (!view.EditActive)
-                view.EditActive = true;
-            if (!view.MenuActive)
-                view.MenuActive = true;
-            if (view.AppointmentsActive)
-                view.AppointmentsActive = false;
-            if (view.AppointmentActive)
-                view.AppointmentActive = false;
-            if (view.RegisterAppointmentActive)
-                view.RegisterAppointmentActive = false;
-            if (view.EditAppointmentActive)
-                view.EditAppointmentActive = false;
-            if (view.EditAppointmentSearchActive)
-                view.EditAppointmentSearchActive = false;
+            // wylacz wszystkie widoki procz menu, potem wlacz ten ktory chcemy widziec
+            view.SetView();
+            if (!view.EditActive) { view.EditActive = true; }
 
             // aktualizacja panelu informacji (kto jest zalogowany i jaki panel [pacjent/lekarz])
             if (!view.WelcomeLabel.Contains(FormLogin.position.ToString()))

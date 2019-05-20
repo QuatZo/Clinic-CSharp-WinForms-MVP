@@ -104,16 +104,16 @@
       <DependentUpon>EditPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="EditPanel\EditPanelPresenter.cs" />
-    <Compile Include="FormConnectMedDose.cs">
+    <Compile Include="SingleForms\FormConnectMedDose.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormConnectMedDose.Designer.cs">
+    <Compile Include="SingleForms\FormConnectMedDose.Designer.cs">
       <DependentUpon>FormConnectMedDose.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAddRowToPrescription.cs">
+    <Compile Include="SingleForms\FormAddRowToPrescription.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddRowToPrescription.Designer.cs">
+    <Compile Include="SingleForms\FormAddRowToPrescription.Designer.cs">
       <DependentUpon>FormAddRowToPrescription.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
@@ -122,10 +122,10 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLogin.cs">
+    <Compile Include="SingleForms\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLogin.Designer.cs">
+    <Compile Include="SingleForms\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="AppointmentsPanels\IAppointmentPanelView.cs" />
@@ -133,6 +133,12 @@
     <Compile Include="EditPanel\IEditPanelView.cs" />
     <Compile Include="EditAppointmentPanel\IEditAppointmentPanelView.cs" />
     <Compile Include="EditAppointmentPanel\IEditAppointmentSearchPanelView.cs" />
+    <Compile Include="SingleForms\FormRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SingleForms\FormRegister.Designer.cs">
+      <DependentUpon>FormRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuPanel\IMenuPanelView.cs" />
     <Compile Include="RegisterAppointmentPanel\IRegisterAppointmentPanelView.cs" />
     <Compile Include="IView.cs" />
@@ -174,17 +180,20 @@
     <EmbeddedResource Include="EditPanel\EditPanel.resx">
       <DependentUpon>EditPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormConnectMedDose.resx">
+    <EmbeddedResource Include="SingleForms\FormConnectMedDose.resx">
       <DependentUpon>FormConnectMedDose.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAddRowToPrescription.resx">
+    <EmbeddedResource Include="SingleForms\FormAddRowToPrescription.resx">
       <DependentUpon>FormAddRowToPrescription.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLogin.resx">
+    <EmbeddedResource Include="SingleForms\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SingleForms\FormRegister.resx">
+      <DependentUpon>FormRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPanel\MenuPanel.resx">
       <DependentUpon>MenuPanel.cs</DependentUpon>

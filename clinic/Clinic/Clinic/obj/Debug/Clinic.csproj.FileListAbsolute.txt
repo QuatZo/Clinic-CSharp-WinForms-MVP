@@ -48,3 +48,4 @@ E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csproj
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormMain.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormAddRowToPrescription.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormConnectMedDose.resources
+E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormRegister.resources

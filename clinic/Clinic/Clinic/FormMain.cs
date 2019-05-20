@@ -192,6 +192,16 @@ namespace Clinic
         {
             Close();
         }
+        public void SetView()
+        {
+            if (!MenuActive) { MenuActive = true; }
+            if (EditActive) { EditActive = false; }
+            if (AppointmentActive) { AppointmentActive = false; }
+            if (AppointmentsActive) { AppointmentsActive = false; }
+            if (RegisterAppointmentActive) { RegisterAppointmentActive = false; }
+            if (EditAppointmentActive) { EditAppointmentActive = false; }
+            if (EditAppointmentSearchActive) { EditAppointmentSearchActive = false; }
+        }
         #endregion
     }
 }

@@ -32,7 +32,7 @@ namespace Clinic
 
         #region Methods
         // walidacja numeru PESEL
-        bool PeselValidation(double dPesel)
+        private bool PeselValidation(double dPesel)
         {
             int[] multipliers = { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3, 1 };
             int sum = 0;
@@ -50,16 +50,16 @@ namespace Clinic
         }
 
         // czy jest w bazie danych
-        public bool IsInDatabase(string CurrentPesel, string CurrentSurname, string CurrentID)
+        private bool IsInDatabase(string currentPesel, string currentSurname, string currentID)
         {
             using (var connection = new DatabaseConnection())
             {
                 // jesli idzie otworzyc polaczenie
                 if (connection.Open()) {
-                    double.TryParse(CurrentPesel, out double dPesel); // pesel jest przechowywany w stringu, parsujemy na double
+                    double.TryParse(currentPesel, out double dPesel); // pesel jest przechowywany w stringu, parsujemy na double
 
                     // lista pacjentow; powinien byc jeden wynik, ale na wszelki wypadek wrzucamy do listy (bo w koncu select bez LIMIT 1)
-                    List<Patient> resultsP = connection.PatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM pacjenci WHERE pesel={CurrentPesel} AND nazwisko=\"{CurrentSurname}\" AND idp={CurrentID}");
+                    List<Patient> resultsP = connection.PatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM pacjenci WHERE pesel={currentPesel} AND nazwisko=\"{currentSurname}\" AND idp={currentID}");
                     // jesli byl jakis wynik
                     if (resultsP.Count > 0)
                     {
@@ -72,7 +72,7 @@ namespace Clinic
                     else
                     {
                         // lista lekarzy; powinien byc jeden wynik, ale na wszelki wypadek wrzucamy do listy (bo w koncu select bez LIMIT 1)
-                        List<Doctor> resultsD = connection.DoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM doktorzy WHERE pesel={CurrentPesel} AND nazwisko=\"{CurrentSurname}\" AND idd={CurrentID}");
+                        List<Doctor> resultsD = connection.DoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM doktorzy WHERE pesel={currentPesel} AND nazwisko=\"{currentSurname}\" AND idd={currentID}");
                         // jesli byl jakis wynik
                         if (resultsD.Count > 0)
                         {
@@ -87,6 +87,33 @@ namespace Clinic
                     }
                 }
                 else {
+                    // zwroc falsz i problem z polaczeniem jesli nie udalo sie otworzyc polaczenia
+                    MessageBox.Show("Błąd z połaczeniem!");
+                    DialogResult = DialogResult.Abort;
+                    return false;
+                }
+            }
+        }
+
+        // czy pesel istnieje w bazie danych
+        private bool PeselExistsInDatabase(string currentPesel)
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                // jesli idzie otworzyc polaczenie
+                if (connection.Open())
+                {
+                    double.TryParse(currentPesel, out double dPesel); // pesel jest przechowywany w stringu, parsujemy na double
+
+                    // lista pacjentow; powinien byc jeden wynik, ale na wszelki wypadek wrzucamy do listy (bo w koncu select bez LIMIT 1)
+                    if (connection.SelectCount($"SELECT COUNT(*) FROM pacjenci WHERE pesel={currentPesel}") > 0)
+                    {
+                        return true;
+                    }
+                    else { return false; }
+                }
+                else
+                {
                     // zwroc falsz i problem z polaczeniem jesli nie udalo sie otworzyc polaczenia
                     MessageBox.Show("Błąd z połaczeniem!");
                     DialogResult = DialogResult.Abort;
@@ -134,7 +161,14 @@ namespace Clinic
             // jesli jednak nie jest w bazie to wyrzuc info o blednych danych (chyba, ze blad z polaczeniem to tylko info o bledzie z polaczeniem)
             else
             {
-                if (DialogResult != DialogResult.Abort) { MessageBox.Show("Błędne dane!"); }
+                if (!PeselExistsInDatabase(textBoxPesel.Text))
+                {
+                    DialogResult = DialogResult.No;
+                    pesel = double.Parse(textBoxPesel.Text);
+                }
+            
+
+                if (DialogResult != DialogResult.Abort && DialogResult != DialogResult.No) { MessageBox.Show("Błędne dane!"); }
             }
         }
         #endregion

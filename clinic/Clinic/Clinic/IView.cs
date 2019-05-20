@@ -38,6 +38,7 @@ namespace Clinic
 
         #region Methods
         void ExitForm();
+        void SetView();
         #endregion
     }
 }
