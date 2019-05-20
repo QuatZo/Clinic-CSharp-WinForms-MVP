@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 01 Maj 2019, 13:10
+-- Czas generowania: 20 Maj 2019, 13:55
 -- Wersja serwera: 10.1.36-MariaDB
 -- Wersja PHP: 7.2.10
 
@@ -53,20 +53,25 @@ INSERT INTO `dawki` (`idd`, `ile`) VALUES
 CREATE TABLE `dawki_i_leki` (
   `iddl` int(11) NOT NULL,
   `idd` int(11) NOT NULL,
-  `idl` int(11) NOT NULL,
-  `od_kiedy` date DEFAULT NULL,
-  `do_kiedy` date DEFAULT NULL
+  `idl` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Zrzut danych tabeli `dawki_i_leki`
 --
 
-INSERT INTO `dawki_i_leki` (`iddl`, `idd`, `idl`, `od_kiedy`, `do_kiedy`) VALUES
-(2, 6, 2, '2019-05-09', '2019-05-30'),
-(3, 5, 1, '2019-05-01', '2019-05-31'),
-(4, 7, 6, '2019-07-12', '2019-10-18'),
-(5, 8, 4, '2019-05-02', '2019-05-04');
+INSERT INTO `dawki_i_leki` (`iddl`, `idd`, `idl`) VALUES
+(1, 6, 5),
+(2, 7, 4),
+(4, 6, 3),
+(44, 7, 3),
+(45, 9, 4),
+(46, 6, 1),
+(47, 6, 4),
+(48, 7, 5),
+(49, 9, 3),
+(50, 7, 2),
+(51, 8, 2);
 
 -- --------------------------------------------------------
 
@@ -89,7 +94,7 @@ CREATE TABLE `doktorzy` (
 --
 
 INSERT INTO `doktorzy` (`idd`, `imie`, `nazwisko`, `pesel`, `telefon`, `gabinet`, `godziny`) VALUES
-(13, 'Dawid', 'Mrosek', '97090605938', '123', 123, 'poranne');
+(13, 'Dawid', 'Mrosek', '97090605938', '290010010', 1, 'poranne');
 
 -- --------------------------------------------------------
 
@@ -156,7 +161,10 @@ CREATE TABLE `pacjenci` (
 --
 
 INSERT INTO `pacjenci` (`idp`, `imie`, `nazwisko`, `pesel`, `plec`, `data_urodzenia`, `adres`, `telefon`) VALUES
-(1, 'Dawid', 'Mrosek', '97090605938', 'Mężczyzna', '1997-09-06', 'Mrosek', '502609296');
+(1, 'Dawid', 'Mrosek', '97090605938', 'Mężczyzna', '1997-09-06', 'Pilsudskiego 2121', '123'),
+(2, 'Zdzisław', 'Kręcina', '74030372954', 'Mężczyzna', '2019-05-15', 'Jakas tam ulica 22/222', '123123123'),
+(3, 'Maciej', 'Kowik', '97090605921', 'Kobieta', '1973-06-13', 'Jakas tam fajna uliczka 223/32', '111222333'),
+(4, 'Andrii', 'Shevchenko', '91082828837', 'Kobieta', '2019-05-08', 'Lwów Polski tak mówia Putina/Miedwiediewa', '989090909');
 
 -- --------------------------------------------------------
 
@@ -193,17 +201,51 @@ CREATE TABLE `wizyty` (
   `data` datetime NOT NULL,
   `opis` varchar(512) NOT NULL,
   `idd` int(11) NOT NULL,
-  `idp` int(11) NOT NULL,
-  `iddl` int(11) NOT NULL
+  `idp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Zrzut danych tabeli `wizyty`
 --
 
-INSERT INTO `wizyty` (`idw`, `data`, `opis`, `idd`, `idp`, `iddl`) VALUES
-(1, '2019-05-01 11:00:00', 'Tutaj jest jakiś opis, który został wpisany w bazie danych. Jakieś rozeznanie albo, że dawki leku X mają być brane co Y godzin.', 13, 1, 3),
-(2, '2019-05-01 06:18:25', 'No i jakiś inny opis, j/w', 13, 1, 5);
+INSERT INTO `wizyty` (`idw`, `data`, `opis`, `idd`, `idp`) VALUES
+(1, '2019-05-01 11:00:00', 'Tutaj jest jakiś opis, który został wpisany w bazie danych. Jakieś rozeznanie albo, że dawki leku X mają być brane co Y godzin.', 13, 1),
+(2, '2019-05-01 06:18:25', 'No i jakiś inny opis, j/w', 13, 1),
+(3, '2019-05-21 00:00:00', 'Moim zdaniem to nie ma tak, ze dobrze albo ze nie dobrze. Gdybym mial powiedziec, co cenie w zyciu najbardziej, powiedzialbym, ze ludzi. Ekhm... Ludzi, którzy podali mi pomocna dlon, kiedy sobie nie radzilem, kiedy bylem sam. I co ciekawe, to wlasnie przypadkowe spotkania wplywaja na nasze zycie. Chodzi o to, ze kiedy wyznaje sie pewne wartosci, nawet pozornie uniwersalne, bywa, ze nie znajduje sie zrozumienia, które by tak rzec, które pomaga sie nam rozwijac. Ja mialem szczescie, by tak rzec, poniewaz je z', 13, 1),
+(6, '2019-05-05 16:37:43', 'Czy w koncu ta data zadziala?!', 13, 1),
+(7, '2019-05-02 16:11:43', 'Data w koncu dziala... Ale czy po zmianie godziny znikna sekundy?', 13, 1),
+(8, '2019-05-02 18:37:37', 'Opis (nadpisywany pózniej przez lekarza)', 13, 1),
+(9, '2019-05-15 13:01:21', 'Opis (nadpisywany pózniej przez lekarza)', 13, 1),
+(10, '2019-05-18 16:05:13', 'Opis (nadpisywany pózniej przez lekarza)', 13, 1),
+(11, '2019-05-18 16:06:26', 'Opis (nadpisywany pózniej przez lekarza)', 13, 2),
+(12, '2019-05-07 16:10:51', 'Jakis se tam opis jest', 13, 2),
+(13, '2019-06-12 16:15:48', 'Opis (nadpisywany pózniej przez lekarza)', 13, 2),
+(14, '2019-05-18 16:21:05', 'asdniej przez lekarza)', 13, 1),
+(15, '2019-05-18 17:02:50', '123ózniej przez lekarza)', 13, 1),
+(16, '2019-06-01 17:03:00', 'Dupa', 13, 1),
+(17, '2019-05-28 17:03:36', '23123zxczdasdany pózniej przez lekarza)', 13, 1),
+(18, '2019-05-18 17:41:25', 'Ty no ja nie wiem', 13, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `wiz_i_dawki_i_leki`
+--
+
+CREATE TABLE `wiz_i_dawki_i_leki` (
+  `idw` int(11) NOT NULL,
+  `iddl` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Zrzut danych tabeli `wiz_i_dawki_i_leki`
+--
+
+INSERT INTO `wiz_i_dawki_i_leki` (`idw`, `iddl`) VALUES
+(16, 4),
+(16, 46),
+(16, 49),
+(16, 50);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -221,7 +263,7 @@ ALTER TABLE `dawki`
 --
 ALTER TABLE `dawki_i_leki`
   ADD PRIMARY KEY (`iddl`),
-  ADD UNIQUE KEY `idrecepta_has_leki_UNIQUE` (`iddl`),
+  ADD UNIQUE KEY `iddl_UNIQUE` (`iddl`),
   ADD KEY `fk_recepta_has_leki_leki1_idx` (`idl`),
   ADD KEY `fk_recepta_has_leki_recepta1_idx` (`idd`);
 
@@ -273,8 +315,15 @@ ALTER TABLE `wizyty`
   ADD PRIMARY KEY (`idw`),
   ADD UNIQUE KEY `idwizyty_UNIQUE` (`idw`),
   ADD KEY `fk_wizyty_lekarz1_idx` (`idd`),
-  ADD KEY `fk_wizyty_pacjent1_idx` (`idp`),
-  ADD KEY `fk_wizyty_recepta_i_leki1_idx` (`iddl`);
+  ADD KEY `fk_wizyty_pacjent1_idx` (`idp`);
+
+--
+-- Indeksy dla tabeli `wiz_i_dawki_i_leki`
+--
+ALTER TABLE `wiz_i_dawki_i_leki`
+  ADD PRIMARY KEY (`idw`,`iddl`),
+  ADD KEY `fk_wizyty_has_dawki_i_leki_dawki_i_leki1_idx` (`iddl`),
+  ADD KEY `fk_wizyty_has_dawki_i_leki_wizyty1_idx` (`idw`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -290,7 +339,7 @@ ALTER TABLE `dawki`
 -- AUTO_INCREMENT dla tabeli `dawki_i_leki`
 --
 ALTER TABLE `dawki_i_leki`
-  MODIFY `iddl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `iddl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT dla tabeli `doktorzy`
@@ -308,7 +357,7 @@ ALTER TABLE `leki`
 -- AUTO_INCREMENT dla tabeli `pacjenci`
 --
 ALTER TABLE `pacjenci`
-  MODIFY `idp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT dla tabeli `specjalizacje`
@@ -320,7 +369,7 @@ ALTER TABLE `specjalizacje`
 -- AUTO_INCREMENT dla tabeli `wizyty`
 --
 ALTER TABLE `wizyty`
-  MODIFY `idw` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idw` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Ograniczenia dla zrzutów tabel
@@ -345,8 +394,14 @@ ALTER TABLE `dok_i_spec`
 --
 ALTER TABLE `wizyty`
   ADD CONSTRAINT `fk_wizyty_lekarz1` FOREIGN KEY (`idd`) REFERENCES `doktorzy` (`idd`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_wizyty_pacjent1` FOREIGN KEY (`idp`) REFERENCES `pacjenci` (`idp`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_wizyty_recepta_i_leki1` FOREIGN KEY (`iddl`) REFERENCES `dawki_i_leki` (`iddl`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_wizyty_pacjent1` FOREIGN KEY (`idp`) REFERENCES `pacjenci` (`idp`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Ograniczenia dla tabeli `wiz_i_dawki_i_leki`
+--
+ALTER TABLE `wiz_i_dawki_i_leki`
+  ADD CONSTRAINT `fk_wizyty_has_dawki_i_leki_dawki_i_leki1` FOREIGN KEY (`iddl`) REFERENCES `dawki_i_leki` (`iddl`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_wizyty_has_dawki_i_leki_wizyty1` FOREIGN KEY (`idw`) REFERENCES `wizyty` (`idw`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
