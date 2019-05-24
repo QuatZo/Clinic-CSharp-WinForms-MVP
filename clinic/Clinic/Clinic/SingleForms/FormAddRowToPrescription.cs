@@ -51,7 +51,7 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    return connection.Prescription($"SELECT dawki_i_leki.iddl, leki.nazwa, dawki.ile FROM dawki_i_leki JOIN leki ON leki.idl=dawki_i_leki.idl JOIN dawki ON dawki.idd=dawki_i_leki.idd WHERE iddl NOT IN (SELECT iddl FROM wiz_i_dawki_i_leki WHERE idw={AppointmentID}) ORDER BY 2");
+                    return connection.GetPrescription($"SELECT dawki_i_leki.iddl, leki.nazwa, dawki.ile FROM dawki_i_leki JOIN leki ON leki.idl=dawki_i_leki.idl JOIN dawki ON dawki.idd=dawki_i_leki.idd WHERE iddl NOT IN (SELECT iddl FROM wiz_i_dawki_i_leki WHERE idw={AppointmentID}) ORDER BY 2");
                 }
                 else
                 {

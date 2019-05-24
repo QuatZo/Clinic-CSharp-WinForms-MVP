@@ -35,5 +35,10 @@ namespace Clinic
         #region Events
         event Action SaveButtonClicked; // zapis (aktualizacja danych do bazy)
         #endregion
+
+        #region Methods
+        void FullfilPatientFields();
+        void FullfilDoctorFields();
+        #endregion
     }
 }

@@ -13,10 +13,10 @@ namespace Clinic
         wieczorowe
     };
 
-    class Doctor
+    public class Doctor
     {
         #region Properties
-        public int Id { get; }
+        public int Id { get; } = -1;
         public string Name { get; }
         public string Surname { get; }
         public double Pesel { get; }

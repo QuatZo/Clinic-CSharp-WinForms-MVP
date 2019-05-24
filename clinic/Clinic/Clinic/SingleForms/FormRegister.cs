@@ -12,6 +12,7 @@ namespace Clinic
 {
     public partial class FormRegister : Form
     {
+        #region Properties
         private string FirstName
         {
             get
@@ -48,7 +49,7 @@ namespace Clinic
         {
             get
             {
-                return comboBoxSex.SelectedIndex;
+                return comboBoxSex.SelectedIndex + 1; // powiekszone o 1, bo ID w bazie dla enum zaczynaja sie od 1, a w C# od 0
             }
         }
         private DateTime DateTimeBirthDay
@@ -65,12 +66,14 @@ namespace Clinic
                 return textBoxAddress.Text;
             }
         }
+        #endregion
 
         public FormRegister()
         {
             InitializeComponent();
         }
 
+        #region Methods
         private void textBoxAddress_TextChanged(object sender, EventArgs e)
         {
 
@@ -83,7 +86,7 @@ namespace Clinic
 
         private void FormRegister_Load(object sender, EventArgs e)
         {
-            PESEL = FormLogin.pesel.ToString();
+            PESEL = FormLogin.patient.Pesel.ToString();
         }
 
         private void buttonRegister_Click(object sender, EventArgs e)
@@ -96,7 +99,7 @@ namespace Clinic
                     if (connection.Open())
                     {
                         if (connection.InsertInfo($"INSERT INTO pacjenci(imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon) VALUES(\"{FirstName}\", \"{Surname}\", {PESEL}, {SexID}, \"{DateTimeBirthDay.ToString("yyyy-MM-dd")}\", \"{Address}\", {PhoneNumber})")){
-                            int id = connection.PatientInfo($"SELECT * FROM pacjenci WHERE pesel={PESEL}")[0].Id;
+                            int id = connection.GetPatientInfo($"SELECT * FROM pacjenci WHERE pesel={PESEL}").Id;
                             MessageBox.Show($"Rejestracja zakończona powodzeniem. Twoje ID do logowania to: {id}");
                             Close();
                         }
@@ -151,5 +154,6 @@ namespace Clinic
         {
             MessageBox.Show(errorMessage, "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+        #endregion
     }
 }
