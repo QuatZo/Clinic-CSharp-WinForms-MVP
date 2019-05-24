@@ -91,7 +91,6 @@ namespace Clinic
                     {
                         if (connection.SelectCount($"SELECT COUNT(*) FROM dawki_i_leki WHERE idd={SelectedDose} AND idl={SelectedMedicine}") == 0)
                         {
-                            Console.WriteLine($"INSERT INTO dawki_i_leki(idd, idl) VALUES({SelectedDose}, {SelectedMedicine})");
                             if (connection.InsertInfo($"INSERT INTO dawki_i_leki(idd, idl) VALUES({SelectedDose}, {SelectedMedicine})"))
                             {
                                 

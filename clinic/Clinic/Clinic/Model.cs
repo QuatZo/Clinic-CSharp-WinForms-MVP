@@ -12,20 +12,17 @@ namespace Clinic
     {
         #region Methods
         // pobiera informacje lekarza i wrzuca je do klasy Doctor
-        public Doctor GetDoctorInfo(string pesel)
+        public void GetDoctorInfo(string pesel)
         {
             using (var connection = new DatabaseConnection())
             {
                 if (connection.Open())
                 {
-                    Doctor result = connection.DoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM doktorzy WHERE pesel={pesel}")[0];
-                    return result;
+                    connection.GetDoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM doktorzy WHERE pesel={pesel}");
                 }
                 else
                 {
                     MessageBox.Show("Błąd z połaczeniem!");
-                    Doctor result = null;
-                    return result;
                 }
             }
         }
@@ -37,7 +34,8 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    if(connection.UpdateInfo($"UPDATE doktorzy SET telefon={phoneNumber}, gabinet={room}, godziny=\"{hour}\" WHERE pesel={FormLogin.pesel}")) { return true; }
+                    Doctor.Instance.Edit(phoneNumber, hour, room);
+                    if (connection.UpdateInfo($"UPDATE doktorzy SET telefon={phoneNumber}, gabinet={room}, godziny=\"{hour}\" WHERE pesel={Doctor.Instance.Pesel}")) { return true; }
                     else { return false; }
                 }
                 else
@@ -55,7 +53,8 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    if (connection.UpdateInfo($"UPDATE pacjenci SET telefon={phoneNumber}, adres=\"{address}\" WHERE pesel={FormLogin.pesel}")) { return true; }
+                    Patient.Instance.Edit(phoneNumber, address);
+                    if (connection.UpdateInfo($"UPDATE pacjenci SET telefon={phoneNumber}, adres=\"{address}\" WHERE pesel={Patient.Instance.Pesel}")) { return true; }
                     else { return false; }
                 }
                 else
@@ -67,20 +66,17 @@ namespace Clinic
         }
 
         // pobiera informacje pacjenta i wrzuca je do klasy Patient
-        public Patient GetPatientInfo(string pesel)
+        public void GetPatientInfo(string pesel)
         {
             using (var connection = new DatabaseConnection())
             {
                 if (connection.Open())
                 {
-                    Patient result = connection.PatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM pacjenci WHERE pesel={pesel}")[0];
-                    return result;
+                    connection.GetPatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM pacjenci WHERE pesel={pesel}");
                 }
                 else
                 {
                     MessageBox.Show("Błąd z połaczeniem!");
-                    Patient result = null;
-                    return result;
                 }
             }
         }
@@ -97,12 +93,12 @@ namespace Clinic
                     if (FormLogin.position == Position.pacjent)
                     {
                         uniqueFields = "doktorzy.imie, doktorzy.nazwisko, doktorzy.gabinet";
-                        whereClause = $"pacjenci.pesel={FormLogin.pesel}";
+                        whereClause = $"pacjenci.pesel={Patient.Instance.Pesel}";
                     }
                     else
                     {
                         uniqueFields = "pacjenci.imie, pacjenci.nazwisko, pacjenci.pesel";
-                        whereClause = $"doktorzy.pesel={FormLogin.pesel}";
+                        whereClause = $"doktorzy.pesel={Doctor.Instance.Pesel}";
                     }
 
                     List<string> result = connection.Appointments($"SELECT wizyty.idw, wizyty.data, {uniqueFields} FROM wizyty JOIN pacjenci ON pacjenci.idp=wizyty.idp JOIN doktorzy ON doktorzy.idd=wizyty.idd WHERE {whereClause} ORDER BY wizyty.data DESC");
@@ -207,7 +203,7 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    if (connection.InsertInfo($"INSERT INTO wizyty (idp, idd, opis, data) VALUES ({FormLogin.id}, {doctorID}, \"{content}\", \"{date.ToString("yyyy-MM-dd HH:mm:ss")}\")")) { return true; }
+                    if (connection.InsertInfo($"INSERT INTO wizyty (idp, idd, opis, data) VALUES ({Patient.Instance.Id}, {doctorID}, \"{content}\", \"{date.ToString("yyyy-MM-dd HH:mm:ss")}\")")) { return true; }
                     else { return false; }
                 }
                 else
@@ -225,7 +221,7 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    List<int> appointmentToEdit = connection.AppointmentToEdit($"SELECT wizyty.idw FROM wizyty JOIN pacjenci ON wizyty.idp=pacjenci.idp JOIN doktorzy ON wizyty.idd=doktorzy.idd WHERE pacjenci.pesel={patientPesel} AND doktorzy.pesel={FormLogin.pesel} AND (wizyty.data BETWEEN \"{date.AddMinutes(-1).ToString("yyyy-MM-dd HH:mm:ss")}\" AND \"{date.AddMinutes(1).ToString("yyyy-MM-dd HH:mm:ss")}\")");
+                    List<int> appointmentToEdit = connection.AppointmentToEdit($"SELECT wizyty.idw FROM wizyty JOIN pacjenci ON wizyty.idp=pacjenci.idp JOIN doktorzy ON wizyty.idd=doktorzy.idd WHERE pacjenci.pesel={patientPesel} AND doktorzy.pesel={Doctor.Instance.Pesel} AND (wizyty.data BETWEEN \"{date.AddMinutes(-1).ToString("yyyy-MM-dd HH:mm:ss")}\" AND \"{date.AddMinutes(1).ToString("yyyy-MM-dd HH:mm:ss")}\")");
                     int appointmentsForEditCount = appointmentToEdit[0];
                     if ( appointmentsForEditCount == 1) { return appointmentToEdit[1]; }
                     else if (appointmentsForEditCount == 0) { MessageBox.Show("Brak wyników!"); }

@@ -12,9 +12,6 @@ namespace Clinic
         #region Classes
         Model model = new Model();
         IView view = new FormMain();
-
-        Patient pacjent;
-        Doctor lekarz;
         #endregion
 
         #region Presenters
@@ -139,22 +136,15 @@ namespace Clinic
             if (!view.EditView.SharedFields)
                 view.EditView.SharedFields = true;
 
-            // aktualizacja pól wspólnych, które znajdują się w tej samej klasie FormLogin
-            view.EditView.ID = FormLogin.id;
-            view.EditView.Pesel = FormLogin.pesel;
-
             // jesli jest zalogowany pacjent
             if (FormLogin.position == Position.pacjent)
             {
                 // metoda w modelu, ktora pobierze pacjenta
-                pacjent = model.GetPatientInfo(FormLogin.pesel.ToString());
-
-                // na wszelki wypadek czyscimy lekarza, jesli jest
-                if(lekarz != null) { lekarz = null; }
+                model.GetPatientInfo(Patient.Instance.Id.ToString());
 
                 // aktualizuj info, jesli juz nie jest zaktualizowane (czyt. pierwszy raz odpalone)
-                if (!view.WelcomeLabel.Contains($"Witaj, {pacjent.Name} {pacjent.Surname}"))
-                    view.WelcomeLabel = view.WelcomeLabel.Replace("Witaj", $"Witaj, {pacjent.Name} {pacjent.Surname}");
+                if (!view.WelcomeLabel.Contains($"Witaj, {Patient.Instance.Name} {Patient.Instance.Surname}"))
+                    view.WelcomeLabel = view.WelcomeLabel.Replace("Witaj", $"Witaj, {Patient.Instance.Name} {Patient.Instance.Surname}");
 
                 // pokaz pola pacjenta i ukryj doktora
                 if (!view.EditView.PatientFields)
@@ -167,27 +157,26 @@ namespace Clinic
                     view.MenuView.RegisterAppointmentButtonVisibility = true;
 
                 // uzupelnij dane (przydalaby sie jakas osobna metoda do tego, dla obydwoch 'pozycji' [lekarz/pacjent])
-                view.EditView.FirstName = pacjent.Name;
-                view.EditView.Surname = pacjent.Surname;
-                view.EditView.PhoneNumber = pacjent.PhoneNumber;
-                view.EditView.Sex = pacjent.Sex.ToString();
-                view.EditView.BirthDay = pacjent.BirthDay;
-                view.EditView.Address = pacjent.Address;
+                view.EditView.ID = Patient.Instance.Id;
+                view.EditView.FirstName = Patient.Instance.Name;
+                view.EditView.Surname = Patient.Instance.Surname;
+                view.EditView.Pesel = Patient.Instance.Pesel;
+                view.EditView.PhoneNumber = Patient.Instance.PhoneNumber;
+                view.EditView.Sex = Patient.Instance.Sex.ToString();
+                view.EditView.BirthDay = Patient.Instance.BirthDay;
+                view.EditView.Address = Patient.Instance.Address;
             }
             else
             {
                 // metoda w modelu, ktora pobierze lekarza
-                lekarz = model.GetDoctorInfo(FormLogin.pesel.ToString());
-
-                // na wszelki wypadek czyscimy pacjenta, jesli jest
-                if (pacjent != null) { pacjent = null; }
+                model.GetDoctorInfo(Doctor.Instance.Pesel.ToString());
 
                 // aktualizuj info, jesli juz nie jest zaktualizowane (czyt. pierwszy raz odpalone)
-                if (!view.WelcomeLabel.Contains($"Witaj, {lekarz.Name} {lekarz.Surname}"))
-                    view.WelcomeLabel = view.WelcomeLabel.Replace("Witaj", $"Witaj, {lekarz.Name} {lekarz.Surname}");
+                if (!view.WelcomeLabel.Contains($"Witaj, {Doctor.Instance.Name} {Doctor.Instance.Surname}"))
+                    view.WelcomeLabel = view.WelcomeLabel.Replace("Witaj", $"Witaj, {Doctor.Instance.Name} {Doctor.Instance.Surname}");
 
                 // ukryj pola pacjenta i pokaz doktora
-                if (view.EditView.PatientFields)
+                    if (view.EditView.PatientFields)
                     view.EditView.PatientFields = false;
                 if (!view.EditView.DoctorFields)
                     view.EditView.DoctorFields = true;
@@ -197,11 +186,13 @@ namespace Clinic
                     view.MenuView.RegisterAppointmentButtonVisibility = false;
 
                 // uzupelnij dane (przydalaby sie jakas osobna metoda do tego, dla obydwoch 'pozycji' [lekarz/pacjent])
-                view.EditView.FirstName = lekarz.Name;
-                view.EditView.Surname = lekarz.Surname;
-                view.EditView.PhoneNumber = lekarz.PhoneNumber;
-                view.EditView.Hour = lekarz.Hour.ToString();
-                view.EditView.Room = lekarz.Room;
+                view.EditView.ID = Doctor.Instance.Id;
+                view.EditView.FirstName = Doctor.Instance.Name;
+                view.EditView.Surname = Doctor.Instance.Surname;
+                view.EditView.Pesel = Doctor.Instance.Pesel;
+                view.EditView.PhoneNumber = Doctor.Instance.PhoneNumber;
+                view.EditView.Hour = Doctor.Instance.Hour.ToString();
+                view.EditView.Room = Doctor.Instance.Room;
             }
         }
         #endregion

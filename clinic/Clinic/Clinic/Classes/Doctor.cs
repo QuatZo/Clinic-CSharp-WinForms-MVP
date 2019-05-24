@@ -16,16 +16,32 @@ namespace Clinic
     class Doctor
     {
         #region Properties
-        public int Id { get; }
-        public string Name { get; }
-        public string Surname { get; }
-        public double Pesel { get; }
-        public string PhoneNumber { get; }
-        public int Room { get; }
-        public Hours Hour { get; }
-        #endregion
+        private static Doctor instance = null;
 
-        public Doctor(int id, string name, string surname, double pesel, string phoneNumber, int room, Hours hours)
+        public int Id { get; private set; }
+        public string Name { get; private set; }
+        public string Surname { get; private set; }
+        public double Pesel { get; private set; }
+        public string PhoneNumber { get; private set; }
+        public int Room { get; private set; }
+        public Hours Hour { get; private set; }
+        #endregion
+        public static Doctor Instance
+        {
+            get
+            {
+                // jesli lewo null to zwroc prawo
+                return instance ?? (instance = new Doctor());
+            }
+        }
+
+        private Doctor()
+        {
+            Console.WriteLine("Singleton Lekarza");
+        }
+
+        #region Methods
+        public void Create(int id, string name, string surname, double pesel, string phoneNumber, int room, Hours hours)
         {
             Id = id;
             Name = name;
@@ -36,7 +52,16 @@ namespace Clinic
             Hour = hours;
         }
 
-        #region Methods
+        public void Edit(string phoneNumber, string hour, int room)
+        {
+            PhoneNumber = phoneNumber;
+            Room = room;
+
+            if (hour == "poranne") { Hour = Hours.poranne; }
+            else if (hour == "popoludniowe") { Hour = Hours.popoludniowe; }
+            else { Hour = Hours.wieczorowe; }
+        }
+        
         public override string ToString()
         {
             return $"{Id}\t{Name}\t{Surname}\t{Pesel}\t{PhoneNumber}\t{Room}\t{Hour}";
