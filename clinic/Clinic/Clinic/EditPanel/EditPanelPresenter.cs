@@ -13,6 +13,7 @@ namespace Clinic
         IEditPanelView view;
         Model model;
 
+        Patient pacjent;
         Doctor lekarz;
         #endregion
 
@@ -33,13 +34,12 @@ namespace Clinic
                 try
                 {
                     int.Parse(view.PhoneNumber);
-
                     // metoda w modelu, ktora zapisze pacjenta, a potem pobiera (prawdopodobnie) nowe dane
                     if (model.UpdatePatientInfo(view.PhoneNumber, view.Address))
-                        model.GetPatientInfo(Patient.Instance.Id.ToString());
+                        pacjent = model.GetPatientInfo(FormLogin.pesel.ToString());
 
                     // czy dane zostaly zaktualizowane
-                    if (Patient.Instance.PhoneNumber == view.PhoneNumber && Patient.Instance.Address == view.Address) { MessageBox.Show("Poprawnie zaktualizowano dane pacjenta!"); }
+                    if (pacjent.PhoneNumber == view.PhoneNumber && pacjent.Address == view.Address) { MessageBox.Show("Poprawnie zaktualizowano dane pacjenta!"); }
                     else { MessageBox.Show("Ups! Coś poszło nie tak. Sprawdź czy nie umieściłeś/aś gdzieś polskich znaków."); }
 
                     if (lekarz != null) { lekarz = null; }
@@ -61,11 +61,13 @@ namespace Clinic
                     int.Parse(view.PhoneNumber);
                     // metoda w modelu, ktora zapisze lekarza, a potem pobiera (prawdopodobnie) nowe dane
                     if (model.UpdateDoctorInfo(view.PhoneNumber, view.Hour, view.Room))
-                        model.GetDoctorInfo(Doctor.Instance.Pesel.ToString());
+                        lekarz = model.GetDoctorInfo(FormLogin.pesel.ToString());
 
                     // czy dane zostaly zaktualizowane
-                    if (Doctor.Instance.PhoneNumber == view.PhoneNumber && Doctor.Instance.Hour.ToString() == view.Hour && Doctor.Instance.Room == view.Room) { MessageBox.Show("Poprawnie zaktualizowano dane lekarza!"); }
+                    if (lekarz.PhoneNumber == view.PhoneNumber && lekarz.Hour.ToString() == view.Hour && lekarz.Room == view.Room) { MessageBox.Show("Poprawnie zaktualizowano dane lekarza!"); }
                     else { MessageBox.Show("Ups! Coś poszło nie tak!"); }
+                
+                    if (pacjent != null) { pacjent = null; }
                 }
                 catch (FormatException)
                 {

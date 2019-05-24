@@ -61,37 +61,49 @@ namespace Clinic
 
         #region Patient methods
         // metoda pobierajaca dane nt. pacjenta
-        public void GetPatientInfo(string name)
+        public List<Patient> PatientInfo(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader(); // czytnik 
 
-                //Patient.Instance.Test(-1, "", "", 0, Sexs.kobieta, DateTime.Now, "", "");
+                List<Patient> patients = new List<Patient>(); // lista pacjentow
 
-                if (reader.Read())
+                List<string> record = new List<string>(); // lista wynikow, ktora bedzie przerobiona na liste pacjentow
+
+                // poki sa jakies wyniki (chociaz zawsze zakladamy, ze jest 1 wynik, bo PESEL jest unikalny)
+                while (reader.Read())
                 {
                     // czytanie enuma z bazy do zmiennej enum aplikacji
                     Sexs sex;
-                    if (reader[4].ToString() == "Kobieta") { sex = Sexs.kobieta; }
+                    if(reader[4].ToString() == "Kobieta") { sex=Sexs.kobieta; }
                     else { sex = Sexs.mezczyzna; }
 
                     // tworzenie pacjenta
-                    Patient.Instance.Create(int.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), double.Parse(reader[3].ToString()), sex, DateTime.Parse(reader[5].ToString()), reader[6].ToString(), reader[7].ToString());
+                    Patient pat = new Patient(int.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), double.Parse(reader[3].ToString()), sex, DateTime.Parse(reader[5].ToString()), reader[6].ToString(), reader[7].ToString());
+
+                    // dodanie pacjenta do listy pacjentow
+                    patients.Add(pat);
                 }
+                return patients;
             }
         }
         #endregion
 
         #region Doctor methods
         // metoda pobierajaca dane nt. lekarza
-        public void GetDoctorInfo(string name)
+        public List<Doctor> DoctorInfo(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader(); // czytnik
 
-                if (reader.Read())
+                List<Doctor> doctors = new List<Doctor>(); // lista lekarzy
+
+                List<string> record = new List<string>(); // lista wynikow, ktora bedzie przerobiona na liste lekarzy
+
+                // poki sa jakies wyniki (chociaz zawsze zakladamy, ze jest 1 wynik, bo PESEL jest unikalny)
+                while (reader.Read())
                 {
                     // czytanie enuma z bazy do zmiennej enum aplikacji
                     Hours hours;
@@ -100,8 +112,12 @@ namespace Clinic
                     else { hours = Hours.wieczorowe; }
 
                     // tworzenie lekarza
-                    Doctor.Instance.Create(int.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), double.Parse(reader[3].ToString()), reader[4].ToString(), int.Parse(reader[5].ToString()), hours);
+                    Doctor pat = new Doctor(Int32.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), Double.Parse(reader[3].ToString()), reader[4].ToString(), Int32.Parse(reader[5].ToString()), hours);
+
+                    // dodanie lekarza do listy lekarzy
+                    doctors.Add(pat);
                 }
+                return doctors;
             }
         }
 

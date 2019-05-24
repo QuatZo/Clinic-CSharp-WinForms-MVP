@@ -21,6 +21,7 @@ namespace Clinic
     {
         #region Static fields
         public static Position position;
+        public static int id;
         public static double pesel;
         #endregion
 
@@ -53,26 +54,37 @@ namespace Clinic
         {
             using (var connection = new DatabaseConnection())
             {
-                // jesli idzi1e otworzyc polaczenie
+                // jesli idzie otworzyc polaczenie
                 if (connection.Open()) {
                     double.TryParse(currentPesel, out double dPesel); // pesel jest przechowywany w stringu, parsujemy na double
 
-                    if (connection.SelectCount($"SELECT COUNT(*) FROM pacjenci WHERE pesel={currentPesel} AND nazwisko=\"{currentSurname}\" AND idp={currentID}") > 0)
+                    // lista pacjentow; powinien byc jeden wynik, ale na wszelki wypadek wrzucamy do listy (bo w koncu select bez LIMIT 1)
+                    List<Patient> resultsP = connection.PatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM pacjenci WHERE pesel={currentPesel} AND nazwisko=\"{currentSurname}\" AND idp={currentID}");
+                    // jesli byl jakis wynik
+                    if (resultsP.Count > 0)
                     {
-                        connection.GetPatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM pacjenci WHERE pesel={currentPesel} AND nazwisko=\"{currentSurname}\" AND idp={currentID}");
+                        pesel = dPesel;
+                        id = resultsP[0].Id;
+                        // ustaw, ze loguje sie pacjent
                         position = Position.pacjent;
                         return true;
                     }
-                    else if (connection.SelectCount($"SELECT COUNT(*) FROM doktorzy WHERE pesel={currentPesel} AND nazwisko=\"{currentSurname}\" AND idd={currentID}") > 0)
+                    else
                     {
-
-                        connection.GetDoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM doktorzy WHERE pesel={currentPesel} AND nazwisko=\"{currentSurname}\" AND idd={currentID}");
-                        // ustaw, ze loguje sie lekarz
-                        position = Position.lekarz;
-                        return true;
+                        // lista lekarzy; powinien byc jeden wynik, ale na wszelki wypadek wrzucamy do listy (bo w koncu select bez LIMIT 1)
+                        List<Doctor> resultsD = connection.DoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM doktorzy WHERE pesel={currentPesel} AND nazwisko=\"{currentSurname}\" AND idd={currentID}");
+                        // jesli byl jakis wynik
+                        if (resultsD.Count > 0)
+                        {
+                            pesel = dPesel;
+                            id = resultsD[0].Id;
+                            // ustaw, ze loguje sie lekarz
+                            position = Position.lekarz;
+                            return true;
+                        }
+                        // jesli jednak nie ma w bazie to zwroc falsz
+                        else { return false; }
                     }
-                    // jesli jednak nie ma w bazie
-                    else { return false; }
                 }
                 else {
                     // zwroc falsz i problem z polaczeniem jesli nie udalo sie otworzyc polaczenia
@@ -146,10 +158,9 @@ namespace Clinic
                 if (position == Position.pacjent) { Console.WriteLine("Logowanie na pacjenta udane!"); }
                 else { Console.WriteLine("Logowanie na lekarza udane!"); }
             }
-            // jesli jednak nie jest w bazie to sprawdz czy sam pesel jest w bazie pacjentow, jesli tak to wyrzuc info o blednych danych (chyba, ze blad z polaczeniem to tylko info o bledzie z polaczeniem)
+            // jesli jednak nie jest w bazie to wyrzuc info o blednych danych (chyba, ze blad z polaczeniem to tylko info o bledzie z polaczeniem)
             else
             {
-                // jesli pesel nie istnieje w bazie to przejdz do rejestracji
                 if (!PeselExistsInDatabase(textBoxPesel.Text))
                 {
                     DialogResult = DialogResult.No;

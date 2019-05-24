@@ -96,8 +96,8 @@ namespace Clinic
                     if (connection.Open())
                     {
                         if (connection.InsertInfo($"INSERT INTO pacjenci(imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon) VALUES(\"{FirstName}\", \"{Surname}\", {PESEL}, {SexID}, \"{DateTimeBirthDay.ToString("yyyy-MM-dd")}\", \"{Address}\", {PhoneNumber})")){
-                            connection.GetPatientInfo($"SELECT * FROM pacjenci WHERE pesel={PESEL}");
-                            MessageBox.Show($"Rejestracja zakończona powodzeniem. Twoje ID do logowania to: {Patient.Instance.Id}");
+                            int id = connection.PatientInfo($"SELECT * FROM pacjenci WHERE pesel={PESEL}")[0].Id;
+                            MessageBox.Show($"Rejestracja zakończona powodzeniem. Twoje ID do logowania to: {id}");
                             Close();
                         }
                         else

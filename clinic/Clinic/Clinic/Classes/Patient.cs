@@ -11,54 +11,32 @@ namespace Clinic
         mezczyzna
     };
 
-    public sealed class Patient
+    class Patient
     {
         #region Properties
-        private static Patient instance = null;
-
-        public int Id { get; private set; }
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public double Pesel { get; private set; }
-        public Sexs Sex { get; private set; }
-        public DateTime BirthDay { get; private set; }
-        public string Address { get; private set; }
-        public string PhoneNumber { get; private set; }
+        public int Id { get; }
+        public string Name { get; }
+        public string Surname { get; }
+        public double Pesel { get; }
+        public Sexs Sex { get; }
+        public DateTime BirthDay { get; }
+        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
         #endregion
 
-        public static Patient Instance
-        {
-            get
-            {
-                // jesli lewo null to zwroc prawo
-                return instance ?? (instance = new Patient());
-            }
-        }
-
-        private Patient()
-        {
-            Console.WriteLine("Singleton Pacjenta");
-        }
-
-        #region Methods
-        public void Create(int id, string name, string surname, double pesel, Sexs sex, DateTime birthDay, string address, string phoneNumber)
+        public Patient(int id, string name, string surname, double pesel, Sexs sex, DateTime birthDay, string address, string phoneNumber)
         {
             Id = id;
             Name = name;
             Surname = surname;
             Pesel = pesel;
             Sex = sex;
-            BirthDay = birthDay.Date;
+            BirthDay = birthDay.Date; 
             Address = address;
             PhoneNumber = phoneNumber;
         }
 
-        public void Edit(string phoneNumber, string address)
-        {
-            PhoneNumber = phoneNumber;
-            Address = address;
-        }
-
+        #region Methods
         public override string ToString()
         {
             return $"{Id}\t{Name}\t{Surname}\t{Pesel}\t{Sex}\t{BirthDay}\t{Address}\t{PhoneNumber}";

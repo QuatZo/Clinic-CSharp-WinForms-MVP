@@ -22,6 +22,7 @@ namespace Clinic
                 foreach(var el in listBoxRows.SelectedItems)
                 {
                     rowsID.Add(int.Parse(el.ToString().Split()[0]));
+                    Console.WriteLine(int.Parse(el.ToString().Split()[0]));
                 }
                 return rowsID;
             }
