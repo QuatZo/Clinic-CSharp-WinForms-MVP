@@ -11,17 +11,17 @@ namespace Clinic
         mezczyzna
     };
 
-    class Patient
+    public class Patient
     {
         #region Properties
-        public int Id { get; }
-        public string Name { get; }
-        public string Surname { get; }
-        public double Pesel { get; }
-        public Sexs Sex { get; }
-        public DateTime BirthDay { get; }
-        public string Address { get; set; }
-        public string PhoneNumber { get; set; }
+        public int Id { get; private set; }
+        public string Name { get; private set; }
+        public string Surname { get; private set; }
+        public double Pesel { get; private set; }
+        public Sexs Sex { get; private set; }
+        public DateTime BirthDay { get; private set; }
+        public string Address { get; private set; }
+        public string PhoneNumber { get; private set; }
         #endregion
 
         public Patient(int id, string name, string surname, double pesel, Sexs sex, DateTime birthDay, string address, string phoneNumber)

@@ -188,10 +188,12 @@ namespace Clinic
         {
             FormLoaded?.Invoke();
         }
+
         public void ExitForm()
         {
             Close();
         }
+
         public void SetView()
         {
             if (!MenuActive) { MenuActive = true; }

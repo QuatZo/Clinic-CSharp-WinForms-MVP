@@ -36,7 +36,7 @@ namespace Clinic
                     int.Parse(view.PhoneNumber);
                     // metoda w modelu, ktora zapisze pacjenta, a potem pobiera (prawdopodobnie) nowe dane
                     if (model.UpdatePatientInfo(view.PhoneNumber, view.Address))
-                        pacjent = model.GetPatientInfo(FormLogin.pesel.ToString());
+                        pacjent = model.GetPatientInfo(FormLogin.patient.Pesel.ToString());
 
                     // czy dane zostaly zaktualizowane
                     if (pacjent.PhoneNumber == view.PhoneNumber && pacjent.Address == view.Address) { MessageBox.Show("Poprawnie zaktualizowano dane pacjenta!"); }
@@ -61,7 +61,7 @@ namespace Clinic
                     int.Parse(view.PhoneNumber);
                     // metoda w modelu, ktora zapisze lekarza, a potem pobiera (prawdopodobnie) nowe dane
                     if (model.UpdateDoctorInfo(view.PhoneNumber, view.Hour, view.Room))
-                        lekarz = model.GetDoctorInfo(FormLogin.pesel.ToString());
+                        lekarz = model.GetDoctorInfo(FormLogin.doctor.Pesel.ToString());
 
                     // czy dane zostaly zaktualizowane
                     if (lekarz.PhoneNumber == view.PhoneNumber && lekarz.Hour.ToString() == view.Hour && lekarz.Room == view.Room) { MessageBox.Show("Poprawnie zaktualizowano dane lekarza!"); }

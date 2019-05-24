@@ -61,18 +61,16 @@ namespace Clinic
 
         #region Patient methods
         // metoda pobierajaca dane nt. pacjenta
-        public List<Patient> PatientInfo(string name)
+        public Patient GetPatientInfo(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader(); // czytnik 
 
-                List<Patient> patients = new List<Patient>(); // lista pacjentow
-
-                List<string> record = new List<string>(); // lista wynikow, ktora bedzie przerobiona na liste pacjentow
+                Patient patient = new Patient(-1, "", "", 0, Sexs.kobieta, DateTime.Now, "", "");
 
                 // poki sa jakies wyniki (chociaz zawsze zakladamy, ze jest 1 wynik, bo PESEL jest unikalny)
-                while (reader.Read())
+                if (reader.Read())
                 {
                     // czytanie enuma z bazy do zmiennej enum aplikacji
                     Sexs sex;
@@ -80,30 +78,25 @@ namespace Clinic
                     else { sex = Sexs.mezczyzna; }
 
                     // tworzenie pacjenta
-                    Patient pat = new Patient(int.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), double.Parse(reader[3].ToString()), sex, DateTime.Parse(reader[5].ToString()), reader[6].ToString(), reader[7].ToString());
-
-                    // dodanie pacjenta do listy pacjentow
-                    patients.Add(pat);
+                    patient = new Patient(int.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), double.Parse(reader[3].ToString()), sex, DateTime.Parse(reader[5].ToString()), reader[6].ToString(), reader[7].ToString());
                 }
-                return patients;
+                return patient;
             }
         }
         #endregion
 
         #region Doctor methods
         // metoda pobierajaca dane nt. lekarza
-        public List<Doctor> DoctorInfo(string name)
+        public Doctor GetDoctorInfo(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader(); // czytnik
 
-                List<Doctor> doctors = new List<Doctor>(); // lista lekarzy
-
-                List<string> record = new List<string>(); // lista wynikow, ktora bedzie przerobiona na liste lekarzy
+                Doctor doctor = new Doctor(-1, "", "", 0, "", 0, Hours.poranne); 
 
                 // poki sa jakies wyniki (chociaz zawsze zakladamy, ze jest 1 wynik, bo PESEL jest unikalny)
-                while (reader.Read())
+                if (reader.Read())
                 {
                     // czytanie enuma z bazy do zmiennej enum aplikacji
                     Hours hours;
@@ -112,17 +105,15 @@ namespace Clinic
                     else { hours = Hours.wieczorowe; }
 
                     // tworzenie lekarza
-                    Doctor pat = new Doctor(Int32.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), Double.Parse(reader[3].ToString()), reader[4].ToString(), Int32.Parse(reader[5].ToString()), hours);
+                    doctor = new Doctor(int.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString(), double.Parse(reader[3].ToString()), reader[4].ToString(), int.Parse(reader[5].ToString()), hours);
 
-                    // dodanie lekarza do listy lekarzy
-                    doctors.Add(pat);
                 }
-                return doctors;
+                return doctor;
             }
         }
 
         // metoda pobierajaca doktorow danej specjalizacji wraz z ID
-        public List<string> Doctors(string name)
+        public List<string> GetDoctors(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
             {
@@ -141,7 +132,7 @@ namespace Clinic
         }
 
         // metoda pobierajaca godziny przyjmowania danego doktora
-        public string DoctorHours(string name)
+        public string GetDoctorHours(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
             {
@@ -198,25 +189,67 @@ namespace Clinic
 
         #region Other methods
         // metoda pobierajaca liste wizyt
-        public List<string> Appointments(string name)
+        public List<Appointment> GetAppointments(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
             {
                 MySqlDataReader reader = cmd.ExecuteReader(); // czytnik
 
-                List<string> records = new List<string>(); // lista wynikow, ktora bedzie przerobiona na liste wizyt
+                List<Appointment> appointments = new List<Appointment>(); // lista wizyt
 
                 while (reader.Read())
                 {
-                    records.Add($"{reader[0].ToString()} {DateTime.Parse(reader[1].ToString()).ToString("yyyy-MM-dd HH:mm")} {reader[2]} {reader[3]} {reader[4].ToString()}");
+                    string sex = reader["plec"].ToString();
+                    Sexs sexs;
+                    if ( sex == "kobieta") { sexs = Sexs.kobieta; }
+                    else { sexs = Sexs.mezczyzna; }
+
+                    string hour = reader["godziny"].ToString();
+                    Hours hours;
+                    if (hour == "poranne") { hours = Hours.poranne; }
+                    else if(hour == "popoludniowe") { hours = Hours.popoludniowe; }
+                    else { hours = Hours.wieczorowe; }
+
+
+                    List<(string, string)> medicines = new List<(string, string)>();
+                    medicines.Add(("", ""));
+
+                    //idp imie nazwisko pesel plec data_urodzenia adres telefon idd imie nazwisko pesel telefon gabinet godziny idw data opis
+                    appointments.Add(
+                        new Appointment(
+                            int.Parse(reader["idw"].ToString()),
+                            new Patient(
+                                int.Parse(reader["idp"].ToString()),
+                                reader["pImie"].ToString(),
+                                reader["pNazwisko"].ToString(),
+                                double.Parse(reader["pPesel"].ToString()),
+                                sexs,
+                                DateTime.Parse(reader["data_urodzenia"].ToString()),
+                                reader["adres"].ToString(),
+                                reader["pTelefon"].ToString()
+                            ),
+                            new Doctor(
+                                int.Parse(reader["idd"].ToString()),
+                                reader["dImie"].ToString(),
+                                reader["dNazwisko"].ToString(),
+                                double.Parse(reader["dPesel"].ToString()),
+                                reader["dTelefon"].ToString(),
+                                int.Parse(reader["gabinet"].ToString()),
+                                hours
+                            ),
+                            DateTime.Parse(reader["data"].ToString()),
+                            reader["opis"].ToString(),
+                            medicines
+                        )
+                    );
                 }
 
-                return records;
+                return appointments;
             }
         }
 
         // metoda pobierajaca informacje nt. danej wizyty
-        public List<string> Appointment(string name)
+        public List<string> GetAppointment(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
             {
@@ -238,7 +271,7 @@ namespace Clinic
         }
 
         // metoda pobierajaca ilosc wynikow z wyszukiwarki wizyt do edycji
-        public List<int> AppointmentToEdit(string name)
+        public List<int> GetAppointmentToEdit(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
             {
@@ -256,7 +289,7 @@ namespace Clinic
         }
 
         // metoda pobierajaca recepte
-        public List<string> Prescription(string name)
+        public List<string> GetPrescription(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
             {
@@ -283,7 +316,7 @@ namespace Clinic
         }
 
         // metoda pobierajaca specjalizacje
-        public List<string> Specializations(string name)
+        public List<string> GetSpecializations(string name)
         {
             using (var cmd = new MySqlCommand(name, connection))
             {

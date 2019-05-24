@@ -122,14 +122,14 @@ namespace Clinic
                 {
                     List<string> medicines = new List<string>();
 
-                    foreach (var el in connection.Prescription("SELECT idl, nazwa FROM leki ORDER BY 2"))
+                    foreach (var el in connection.GetPrescription("SELECT idl, nazwa FROM leki ORDER BY 2"))
                     {
                         medicines.Add(el);
                     }
 
                     List<string> doses = new List<string>();
 
-                    foreach (var el in connection.Prescription("SELECT idd, ile FROM dawki ORDER BY 2"))
+                    foreach (var el in connection.GetPrescription("SELECT idd, ile FROM dawki ORDER BY 2"))
                     {
                         doses.Add(el);
                     }

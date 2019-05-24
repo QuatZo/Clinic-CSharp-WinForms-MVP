@@ -5,3 +5,10 @@
 - Walidacja
 
 - Design
+
+- Przerobić wszystkie funkcje, metody na bardziej obiektowe 
+	(np. po wybraniu danej wizyty nie powinno na nowo pobierać info tylko skorzystać z aktualnego, już pobranego)
+	
+- Dodać leki z dawkami do wizyt (póki co dodaje ("", ""))
+
+- Stworzyć zmienną widoczną w namepsace FormMain, która będzie przechowywała listę wizyt

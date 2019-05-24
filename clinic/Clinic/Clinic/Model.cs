@@ -18,7 +18,7 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    Doctor result = connection.DoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM doktorzy WHERE pesel={pesel}")[0];
+                    Doctor result = connection.GetDoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM doktorzy WHERE pesel={pesel}");
                     return result;
                 }
                 else
@@ -37,7 +37,7 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    if(connection.UpdateInfo($"UPDATE doktorzy SET telefon={phoneNumber}, gabinet={room}, godziny=\"{hour}\" WHERE pesel={FormLogin.pesel}")) { return true; }
+                    if(connection.UpdateInfo($"UPDATE doktorzy SET telefon={phoneNumber}, gabinet={room}, godziny=\"{hour}\" WHERE idd={FormLogin.doctor.Id}")) { return true; }
                     else { return false; }
                 }
                 else
@@ -55,7 +55,7 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    if (connection.UpdateInfo($"UPDATE pacjenci SET telefon={phoneNumber}, adres=\"{address}\" WHERE pesel={FormLogin.pesel}")) { return true; }
+                    if (connection.UpdateInfo($"UPDATE pacjenci SET telefon={phoneNumber}, adres=\"{address}\" WHERE idp={FormLogin.patient.Id}")) { return true; }
                     else { return false; }
                 }
                 else
@@ -73,7 +73,7 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    Patient result = connection.PatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM pacjenci WHERE pesel={pesel}")[0];
+                    Patient result = connection.GetPatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM pacjenci WHERE pesel={pesel}");
                     return result;
                 }
                 else
@@ -86,33 +86,31 @@ namespace Clinic
         }
 
         // pobiera informacje nt wizyt, w zaleznosci od zalogowanej osoby
-        public List<string> GetAppointments()
+        public List<Appointment> GetAppointments()
         {
             using (var connection = new DatabaseConnection())
             {
                 if (connection.Open())
                 {
-                    string uniqueFields;
                     string whereClause;
+
                     if (FormLogin.position == Position.pacjent)
                     {
-                        uniqueFields = "doktorzy.imie, doktorzy.nazwisko, doktorzy.gabinet";
-                        whereClause = $"pacjenci.pesel={FormLogin.pesel}";
+                        whereClause = $"pacjenci.idp={FormLogin.patient.Id}";
                     }
                     else
                     {
-                        uniqueFields = "pacjenci.imie, pacjenci.nazwisko, pacjenci.pesel";
-                        whereClause = $"doktorzy.pesel={FormLogin.pesel}";
+                        whereClause = $"doktorzy.idd={FormLogin.doctor.Id}";
                     }
 
-                    List<string> result = connection.Appointments($"SELECT wizyty.idw, wizyty.data, {uniqueFields} FROM wizyty JOIN pacjenci ON pacjenci.idp=wizyty.idp JOIN doktorzy ON doktorzy.idd=wizyty.idd WHERE {whereClause} ORDER BY wizyty.data DESC");
-                    
+                    List<Appointment> result = connection.GetAppointments($"SELECT pacjenci.idp, pacjenci.imie AS pImie, pacjenci.nazwisko AS pNazwisko, pacjenci.pesel AS pPesel, plec, data_urodzenia, adres, pacjenci.telefon AS pTelefon, doktorzy.idd, doktorzy.imie AS dImie, doktorzy.nazwisko AS dNazwisko, doktorzy.pesel AS dPesel, doktorzy.telefon AS dTelefon, doktorzy.gabinet, doktorzy.godziny, wizyty.idw, wizyty.data, wizyty.opis FROM wizyty JOIN pacjenci ON pacjenci.idp=wizyty.idp JOIN doktorzy ON doktorzy.idd=wizyty.idd WHERE {whereClause} ORDER BY wizyty.data DESC");
+
                     return result;
                 }
                 else
                 {
                     MessageBox.Show("Błąd z połaczeniem!");
-                    List<string> result = null;
+                    List<Appointment> result = null;
                     return result;
                 }
             }
@@ -125,9 +123,9 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    List<string> result = connection.Appointment($"SELECT pacjenci.pesel, CONCAT(pacjenci.imie, \" \", pacjenci.nazwisko), CONCAT(doktorzy.imie, \" \", doktorzy.nazwisko), wizyty.opis, wizyty.data FROM wizyty JOIN pacjenci ON pacjenci.idp=wizyty.idp JOIN doktorzy ON doktorzy.idd=wizyty.idd WHERE wizyty.idw={id}");
+                    List<string> result = connection.GetAppointment($"SELECT pacjenci.pesel, CONCAT(pacjenci.imie, \" \", pacjenci.nazwisko), CONCAT(doktorzy.imie, \" \", doktorzy.nazwisko), wizyty.opis, wizyty.data FROM wizyty JOIN pacjenci ON pacjenci.idp=wizyty.idp JOIN doktorzy ON doktorzy.idd=wizyty.idd WHERE wizyty.idw={id}");
 
-                    result.Add(string.Join("\n", connection.Prescription($"SELECT CONCAT(leki.nazwa, \" \", dawki.ile) FROM wizyty JOIN wiz_i_dawki_i_leki ON wizyty.idw=wiz_i_dawki_i_leki.idw JOIN dawki_i_leki ON wiz_i_dawki_i_leki.iddl=dawki_i_leki.iddl JOIN dawki ON dawki_i_leki.idd=dawki.idd JOIN leki ON dawki_i_leki.idl=leki.idl WHERE wizyty.idw={id}").ToArray()));
+                    result.Add(string.Join("\n", connection.GetPrescription($"SELECT CONCAT(leki.nazwa, \" \", dawki.ile) FROM wizyty JOIN wiz_i_dawki_i_leki ON wizyty.idw=wiz_i_dawki_i_leki.idw JOIN dawki_i_leki ON wiz_i_dawki_i_leki.iddl=dawki_i_leki.iddl JOIN dawki ON dawki_i_leki.idd=dawki.idd JOIN leki ON dawki_i_leki.idl=leki.idl WHERE wizyty.idw={id}").ToArray()));
 
                     return result;
                 }
@@ -147,7 +145,7 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    List<string> result = connection.Specializations($"SELECT nazwa FROM specjalizacje");
+                    List<string> result = connection.GetSpecializations($"SELECT nazwa FROM specjalizacje");
 
                     return result;
                 }
@@ -167,7 +165,7 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    List<string> result = connection.Doctors($"SELECT doktorzy.idd, doktorzy.imie, doktorzy.nazwisko FROM doktorzy JOIN dok_i_spec ON doktorzy.idd=dok_i_spec.idd JOIN specjalizacje ON dok_i_spec.ids=specjalizacje.ids WHERE specjalizacje.nazwa=\"{specialization}\"");
+                    List<string> result = connection.GetDoctors($"SELECT doktorzy.idd, doktorzy.imie, doktorzy.nazwisko FROM doktorzy JOIN dok_i_spec ON doktorzy.idd=dok_i_spec.idd JOIN specjalizacje ON dok_i_spec.ids=specjalizacje.ids WHERE specjalizacje.nazwa=\"{specialization}\"");
 
                     return result;
                 }
@@ -187,7 +185,7 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    string result = connection.DoctorHours($"SELECT godziny FROM doktorzy WHERE idd={id}");
+                    string result = connection.GetDoctorHours($"SELECT godziny FROM doktorzy WHERE idd={id}");
 
                     return result;
                 }
@@ -207,7 +205,7 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    if (connection.InsertInfo($"INSERT INTO wizyty (idp, idd, opis, data) VALUES ({FormLogin.id}, {doctorID}, \"{content}\", \"{date.ToString("yyyy-MM-dd HH:mm:ss")}\")")) { return true; }
+                    if (connection.InsertInfo($"INSERT INTO wizyty (idp, idd, opis, data) VALUES ({FormLogin.patient.Id}, {doctorID}, \"{content}\", \"{date.ToString("yyyy-MM-dd HH:mm:ss")}\")")) { return true; }
                     else { return false; }
                 }
                 else
@@ -225,7 +223,7 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    List<int> appointmentToEdit = connection.AppointmentToEdit($"SELECT wizyty.idw FROM wizyty JOIN pacjenci ON wizyty.idp=pacjenci.idp JOIN doktorzy ON wizyty.idd=doktorzy.idd WHERE pacjenci.pesel={patientPesel} AND doktorzy.pesel={FormLogin.pesel} AND (wizyty.data BETWEEN \"{date.AddMinutes(-1).ToString("yyyy-MM-dd HH:mm:ss")}\" AND \"{date.AddMinutes(1).ToString("yyyy-MM-dd HH:mm:ss")}\")");
+                    List<int> appointmentToEdit = connection.GetAppointmentToEdit($"SELECT wizyty.idw FROM wizyty JOIN pacjenci ON wizyty.idp=pacjenci.idp JOIN doktorzy ON wizyty.idd=doktorzy.idd WHERE pacjenci.pesel={patientPesel} AND doktorzy.pesel={FormLogin.doctor.Pesel} AND (wizyty.data BETWEEN \"{date.AddMinutes(-1).ToString("yyyy-MM-dd HH:mm:ss")}\" AND \"{date.AddMinutes(1).ToString("yyyy-MM-dd HH:mm:ss")}\")");
                     int appointmentsForEditCount = appointmentToEdit[0];
                     if ( appointmentsForEditCount == 1) { return appointmentToEdit[1]; }
                     else if (appointmentsForEditCount == 0) { MessageBox.Show("Brak wyników!"); }
@@ -247,7 +245,7 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    List<string> result = connection.Prescription($"SELECT dawki_i_leki.iddl, leki.nazwa, dawki.ile FROM `wiz_i_dawki_i_leki` JOIN dawki_i_leki ON dawki_i_leki.iddl=wiz_i_dawki_i_leki.iddl JOIN dawki ON dawki.idd=dawki_i_leki.idd JOIN leki ON leki.idl=dawki_i_leki.idl WHERE idw={id} ORDER BY 2, 3");
+                    List<string> result = connection.GetPrescription($"SELECT dawki_i_leki.iddl, leki.nazwa, dawki.ile FROM `wiz_i_dawki_i_leki` JOIN dawki_i_leki ON dawki_i_leki.iddl=wiz_i_dawki_i_leki.iddl JOIN dawki ON dawki.idd=dawki_i_leki.idd JOIN leki ON leki.idl=dawki_i_leki.idl WHERE idw={id} ORDER BY 2, 3");
 
                     return result;
                 }

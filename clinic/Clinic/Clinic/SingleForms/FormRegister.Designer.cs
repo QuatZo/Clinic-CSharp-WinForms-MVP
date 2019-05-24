@@ -124,7 +124,7 @@
             this.Controls.Add(this.textBoxPhoneNumber);
             this.Controls.Add(this.textBoxAddress);
             this.Name = "FormRegister";
-            this.Text = "FormRegister";
+            this.Text = "Panel rejestracji";
             this.Load += new System.EventHandler(this.FormRegister_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

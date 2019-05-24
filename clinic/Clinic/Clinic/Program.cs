@@ -21,10 +21,10 @@ namespace Clinic
 
             DialogResult loginResult = new FormLogin().ShowDialog();
 
-            // poki uzytkownik sie nie zaloguje lub nie wylaczy programu
-            while(loginResult != DialogResult.OK && loginResult != DialogResult.Cancel)
+            // poki uzytkownik sie nie zaloguje (brak peselu w bazie) LUB nie wylaczy programu ORAZ jest polaczenie z baza
+            while(loginResult != DialogResult.OK && loginResult != DialogResult.Cancel && loginResult != DialogResult.Abort)
             {
-                Application.Run(new FormRegister()); // odpalaj formularz rejestracji
+                Application.Run(new FormRegister()); // odpalaj formularz rejestracji, forma logowania pojawi sie dopiero po wylaczeniu
                 loginResult = new FormLogin().ShowDialog();
             }
 
