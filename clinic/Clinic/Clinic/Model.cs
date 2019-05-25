@@ -102,8 +102,18 @@ namespace Clinic
                     {
                         whereClause = $"doktorzy.idd={FormLogin.doctor.Id}";
                     }
-
-                    List<Appointment> result = connection.GetAppointments($"SELECT pacjenci.idp, pacjenci.imie AS pImie, pacjenci.nazwisko AS pNazwisko, pacjenci.pesel AS pPesel, plec, data_urodzenia, adres, pacjenci.telefon AS pTelefon, doktorzy.idd, doktorzy.imie AS dImie, doktorzy.nazwisko AS dNazwisko, doktorzy.pesel AS dPesel, doktorzy.telefon AS dTelefon, doktorzy.gabinet, doktorzy.godziny, wizyty.idw, wizyty.data, wizyty.opis FROM wizyty JOIN pacjenci ON pacjenci.idp=wizyty.idp JOIN doktorzy ON doktorzy.idd=wizyty.idd WHERE {whereClause} ORDER BY wizyty.data DESC");
+                    List<Appointment> result = connection.GetAppointments($"SELECT pacjenci.idp, pacjenci.imie AS pImie, pacjenci.nazwisko AS pNazwisko, pacjenci.pesel AS pPesel, plec, data_urodzenia, adres, pacjenci.telefon AS pTelefon," +
+                        $" doktorzy.idd, doktorzy.imie AS dImie, doktorzy.nazwisko AS dNazwisko, doktorzy.pesel AS dPesel, doktorzy.telefon AS dTelefon, doktorzy.gabinet, doktorzy.godziny," +
+                        $" wizyty.idw AS idWizyty,wizyty.data, wizyty.opis," +
+                        $" (SELECT GROUP_CONCAT(CONCAT(dawki_i_leki.iddl, \"-\", leki.nazwa, \"-\", dawki.ile) SEPARATOR ',') FROM wizyty JOIN wiz_i_dawki_i_leki ON wizyty.idw = wiz_i_dawki_i_leki.idw" +
+                            " JOIN dawki_i_leki ON dawki_i_leki.iddl = wiz_i_dawki_i_leki.iddl" +
+                            " JOIN dawki ON dawki_i_leki.idd = dawki.idd" +
+                            " JOIN leki ON dawki_i_leki.idl = leki.idl" +
+                            " WHERE wizyty.idw = idWizyty) AS medicines" +
+                        " FROM wizyty" +
+                        " JOIN pacjenci ON pacjenci.idp = wizyty.idp" +
+                        " JOIN doktorzy ON doktorzy.idd = wizyty.idd" +
+                        $" WHERE {whereClause} ORDER BY wizyty.data DESC");
 
                     return result;
                 }

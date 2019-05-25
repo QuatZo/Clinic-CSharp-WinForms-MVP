@@ -210,14 +210,22 @@ namespace Clinic
                     else if(hour == "popoludniowe") { hours = Hours.popoludniowe; }
                     else { hours = Hours.wieczorowe; }
 
+                    List<(int, string, string)> medicines = new List<(int, string, string)>();
+                    string[] medicinesToClean = reader["medicines"].ToString().Split(',');
+                    foreach(var medicineToClean in medicinesToClean)
+                    {
+                        Console.WriteLine(medicineToClean);
+                        string[] medicineAlmostClean = medicineToClean.Split('-');
+                        if (medicineAlmostClean.Length >= 3) { medicines.Add((int.Parse(medicineAlmostClean[0]), medicineAlmostClean[1], medicineAlmostClean[2])); }
+                        else { medicines.Add((-1, "", "")); }
+                    }
 
-                    List<(string, string)> medicines = new List<(string, string)>();
-                    medicines.Add(("", ""));
+                    
 
                     //idp imie nazwisko pesel plec data_urodzenia adres telefon idd imie nazwisko pesel telefon gabinet godziny idw data opis
                     appointments.Add(
                         new Appointment(
-                            int.Parse(reader["idw"].ToString()),
+                            int.Parse(reader["idWizyty"].ToString()),
                             new Patient(
                                 int.Parse(reader["idp"].ToString()),
                                 reader["pImie"].ToString(),

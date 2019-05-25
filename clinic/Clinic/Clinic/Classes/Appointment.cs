@@ -14,10 +14,10 @@ namespace Clinic
         public Doctor Doctor { get; set; }
         public DateTime Date { get; set; }
         public string Content { get; set; }
-        public List<(string Name, string Dose)> Medicines { get; set; }
+        public List<(int ID, string Name, string Dose)> Medicines { get; set; }
         #endregion
 
-        public Appointment(int id, Patient patient, Doctor doctor, DateTime date, string content, List<(string, string)> medicines)
+        public Appointment(int id, Patient patient, Doctor doctor, DateTime date, string content, List<(int, string, string)> medicines)
         {
             Id = id;
             Patient = patient;
@@ -32,7 +32,7 @@ namespace Clinic
             string str = $"{Id}\t{Patient}\t{Doctor}\t{Date.ToString()}\t{Content}\t";
             foreach(var medicine in Medicines)
             {
-                str += $"({medicine.Name}, {medicine.Dose})\t";
+                str += $"({medicine.ID}, {medicine.Name}, {medicine.Dose})\t";
             }
             return str;
         }
