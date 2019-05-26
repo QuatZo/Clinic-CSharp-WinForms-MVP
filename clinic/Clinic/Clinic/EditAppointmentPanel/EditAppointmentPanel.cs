@@ -69,6 +69,18 @@ namespace Clinic
             InitializeComponent();
         }
 
+        public void FullfilFields(Appointment appointment)
+        {
+            Content = appointment.Content;
+
+            List<string> prescription = new List<string>();
+            foreach(var medicine in appointment.Medicines)
+            {
+                prescription.Add($"{medicine.ID} <=> {medicine.Name} <=> {medicine.Dose}");
+            }
+            Prescription = prescription;
+        }
+
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             DeleteRowButtonClicked?.Invoke();

@@ -30,6 +30,8 @@ namespace Clinic
         bool EditAppointmentActive { get; set; }
         bool EditAppointmentSearchActive { get; set; }
         string WelcomeLabel { get; set; }
+
+        List<Appointment> Appointments { get; set; }
         #endregion
 
         #region Events

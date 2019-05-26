@@ -58,14 +58,22 @@ namespace Clinic
         {
             get
             {
-                return int.Parse(comboBoxMedicine.SelectedItem.ToString().Split()[0]);
+                if (comboBoxMedicine.SelectedIndex > -1)
+                {
+                    return int.Parse(comboBoxMedicine.SelectedItem.ToString().Split()[0]);
+                }
+                else return -1;
             }
         }
         private int SelectedDose
         {
             get
             {
-                return int.Parse(comboBoxDose.SelectedItem.ToString().Split()[0]);
+                if (comboBoxDose.SelectedIndex > -1)
+                {
+                    return int.Parse(comboBoxDose.SelectedItem.ToString().Split()[0]);
+                }
+                else return -1;
             }
         }
         #endregion
@@ -91,7 +99,6 @@ namespace Clinic
                     {
                         if (connection.SelectCount($"SELECT COUNT(*) FROM dawki_i_leki WHERE idd={SelectedDose} AND idl={SelectedMedicine}") == 0)
                         {
-                            Console.WriteLine($"INSERT INTO dawki_i_leki(idd, idl) VALUES({SelectedDose}, {SelectedMedicine})");
                             if (connection.InsertInfo($"INSERT INTO dawki_i_leki(idd, idl) VALUES({SelectedDose}, {SelectedMedicine})"))
                             {
                                 

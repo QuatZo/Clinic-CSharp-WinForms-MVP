@@ -10,7 +10,7 @@ namespace Clinic
     {
         #region Properties
         List<string> Content { set; }
-        string ChosenAppointment { get; }
+        int ChosenAppointment { get; }
         #endregion
 
         #region Events

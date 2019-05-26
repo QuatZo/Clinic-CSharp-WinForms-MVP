@@ -227,25 +227,22 @@ namespace Clinic
         }
 
         // pobiera ID wizyty do edycji
-        public int GetAppointmentToEditID(string patientPesel, DateTime date)
+        public int GetAppointmentToEditID(List<Appointment> appointments, string patientPesel, DateTime date)
         {
-            using (var connection = new DatabaseConnection())
+            int count = 0;
+            int id = -1;
+            for(int i = 0; i < appointments.Count; i++)
             {
-                if (connection.Open())
+                if(appointments[i].Patient.Pesel.ToString() == patientPesel && appointments[i].Date >= date.AddMinutes(-1) && appointments[i].Date <= date.AddMinutes(1))
                 {
-                    List<int> appointmentToEdit = connection.GetAppointmentToEdit($"SELECT wizyty.idw FROM wizyty JOIN pacjenci ON wizyty.idp=pacjenci.idp JOIN doktorzy ON wizyty.idd=doktorzy.idd WHERE pacjenci.pesel={patientPesel} AND doktorzy.pesel={FormLogin.doctor.Pesel} AND (wizyty.data BETWEEN \"{date.AddMinutes(-1).ToString("yyyy-MM-dd HH:mm:ss")}\" AND \"{date.AddMinutes(1).ToString("yyyy-MM-dd HH:mm:ss")}\")");
-                    int appointmentsForEditCount = appointmentToEdit[0];
-                    if ( appointmentsForEditCount == 1) { return appointmentToEdit[1]; }
-                    else if (appointmentsForEditCount == 0) { MessageBox.Show("Brak wyników!"); }
-                    else { MessageBox.Show("Podana wizyta widnieje 2x w systemie. Proszę zgłosić się do administratora."); }
-                    return -1;
-                }
-                else
-                {
-                    MessageBox.Show("Błąd z połaczeniem!");
-                    return -1;
+                    count++;
+                    id = i;
                 }
             }
+            if ( count == 1) { return id; }
+            else if (count == 0) { MessageBox.Show("Brak wyników!"); }
+            else { MessageBox.Show("Podana wizyta widnieje 2x w systemie. Proszę zgłosić się do administratora."); }
+            return -1;
         }
 
         // pobiera informacje nt danej recepty (lista leków i dawek)
@@ -279,12 +276,7 @@ namespace Clinic
                     if (rows.Count > 0)
                     {
                         inClause = "AND iddl IN (";
-
-                        foreach(var row in rows)
-                        {
-                            inClause += $"{row}, ";
-                        }
-                        inClause = inClause.Remove(inClause.Length - 2) + ")";
+                        inClause += string.Join(", ", rows.ToArray()) + ")";
                     }
 
                     if(!connection.DeleteInfo($"DELETE FROM wiz_i_dawki_i_leki WHERE idw={id} {inClause}"))

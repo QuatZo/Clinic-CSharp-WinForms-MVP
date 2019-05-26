@@ -58,15 +58,14 @@ namespace Clinic
         #region Methods
         private void EditAppointmentSearchView_SearchAppointmentButtonClicked()
         {
-            view.EditAppointmentView.AppointmentID = model.GetAppointmentToEditID(view.EditAppointmentSearchView.PeselPatient, view.EditAppointmentSearchView.DateTimeAppointment);
+            view.Appointments = model.GetAppointments();
+            view.EditAppointmentView.AppointmentID = model.GetAppointmentToEditID(view.Appointments, view.EditAppointmentSearchView.PeselPatient, view.EditAppointmentSearchView.DateTimeAppointment);
 
             if (view.EditAppointmentView.AppointmentID > -1){
-
                 view.SetView();
-                if (!view.EditAppointmentActive) { view.EditAppointmentActive = true; }
 
-                view.EditAppointmentView.Content = model.GetSpecificAppointment(view.EditAppointmentView.AppointmentID.ToString())[3];
-                view.EditAppointmentView.Prescription = model.GetPrescription(view.EditAppointmentView.AppointmentID);
+                if (!view.EditAppointmentActive) { view.EditAppointmentActive = true; }
+                view.EditAppointmentView.FullfilFields(view.Appointments[view.EditAppointmentView.AppointmentID]);
             }
         }
 
@@ -97,13 +96,11 @@ namespace Clinic
 
         private void AppointmentsView_ChosenAppointmentClick()
         {
-            if (int.Parse(view.AppointmentsView.ChosenAppointment) > -1)
+            if (view.AppointmentsView.ChosenAppointment > -1)
             {
-
                 view.SetView();
                 if (!view.AppointmentActive) { view.AppointmentActive = true; }
-
-                view.AppointmentView.FullfilFields = model.GetSpecificAppointment(view.AppointmentsView.ChosenAppointment);
+                view.AppointmentView.FullfilFields = view.Appointments[view.AppointmentsView.ChosenAppointment];
             }
         }
 
@@ -113,7 +110,8 @@ namespace Clinic
             if (!view.AppointmentsActive) { view.AppointmentsActive = true; }
 
             List<string> appointments = new List<string>();
-            foreach(var appointment in model.GetAppointments())
+            view.Appointments = model.GetAppointments();
+            foreach (var appointment in view.Appointments)
             {
                 string str = appointment.Id.ToString() + "\t- ";
                 str += appointment.Date.ToString("yyyy-MM-dd HH:mm") + "\t- ";

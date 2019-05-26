@@ -69,7 +69,6 @@ namespace Clinic
 
                 Patient patient = new Patient(-1, "", "", 0, Sexs.kobieta, DateTime.Now, "", "");
 
-                // poki sa jakies wyniki (chociaz zawsze zakladamy, ze jest 1 wynik, bo PESEL jest unikalny)
                 if (reader.Read())
                 {
                     // czytanie enuma z bazy do zmiennej enum aplikacji
@@ -95,7 +94,6 @@ namespace Clinic
 
                 Doctor doctor = new Doctor(-1, "", "", 0, "", 0, Hours.poranne); 
 
-                // poki sa jakies wyniki (chociaz zawsze zakladamy, ze jest 1 wynik, bo PESEL jest unikalny)
                 if (reader.Read())
                 {
                     // czytanie enuma z bazy do zmiennej enum aplikacji
@@ -119,12 +117,12 @@ namespace Clinic
             {
                 MySqlDataReader reader = cmd.ExecuteReader(); // czytnik
 
-                List<string> records = new List<string>(); // lista wynikow, ktora bedzie przerobiona na daną wizytę
+                List<string> records = new List<string>(); // lista wynikow
 
                 // poki sa jakies wyniki
                 while (reader.Read())
                 {
-                    records.Add($"{reader[0].ToString()} <-> {reader[1].ToString()} {reader[2].ToString()}");
+                    records.Add($"{reader[0].ToString()} <=> {reader[1].ToString()} {reader[2].ToString()}");
                 }
 
                 return records;
@@ -214,13 +212,10 @@ namespace Clinic
                     string[] medicinesToClean = reader["medicines"].ToString().Split(',');
                     foreach(var medicineToClean in medicinesToClean)
                     {
-                        Console.WriteLine(medicineToClean);
                         string[] medicineAlmostClean = medicineToClean.Split('-');
                         if (medicineAlmostClean.Length >= 3) { medicines.Add((int.Parse(medicineAlmostClean[0]), medicineAlmostClean[1], medicineAlmostClean[2])); }
                         else { medicines.Add((-1, "", "")); }
                     }
-
-                    
 
                     //idp imie nazwisko pesel plec data_urodzenia adres telefon idd imie nazwisko pesel telefon gabinet godziny idw data opis
                     appointments.Add(
@@ -275,24 +270,6 @@ namespace Clinic
                 }
 
                 return records;
-            }
-        }
-
-        // metoda pobierajaca ilosc wynikow z wyszukiwarki wizyt do edycji
-        public List<int> GetAppointmentToEdit(string name)
-        {
-            using (var cmd = new MySqlCommand(name, connection))
-            {
-                MySqlDataReader reader = cmd.ExecuteReader(); // czytnik
-                List<int> vs = new List<int> { 0 };
-
-                // poki sa jakies wyniki (chociaz zawsze zakladamy, ze jest 1 wynik, bo ID jest unikalne)
-                while (reader.Read())
-                {
-                    vs[0]++;
-                    vs.Add(int.Parse(reader[0].ToString()));
-                }
-                return vs;
             }
         }
 

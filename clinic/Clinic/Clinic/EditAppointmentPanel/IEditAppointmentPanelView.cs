@@ -19,5 +19,9 @@ namespace Clinic
         event Action DeleteRowButtonClicked;
         event Action SaveAppointmentButtonClicked;
         #endregion
+
+        #region Methods
+        void FullfilFields(Appointment appointment);
+        #endregion
     }
 }

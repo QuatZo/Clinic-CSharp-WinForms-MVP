@@ -172,6 +172,9 @@ namespace Clinic
                 labelInfo.Text = value;
             }
         }
+
+
+        public List<Appointment> Appointments { get; set; }
         #endregion
 
         #region Events

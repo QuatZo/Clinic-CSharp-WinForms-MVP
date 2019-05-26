@@ -26,17 +26,11 @@ namespace Clinic
             }
         }
 
-        public string ChosenAppointment
+        public int ChosenAppointment
         {
             get
             {
-                if (listBox1.SelectedIndex > -1)
-                {
-                    List<string> ChosenAppointmentInfo = new List<string>(listBox1.SelectedItem.ToString().Split());
-
-                    return ChosenAppointmentInfo[0];
-                }
-                return "-1";
+                return listBox1.SelectedIndex;
             }
         }
         #endregion

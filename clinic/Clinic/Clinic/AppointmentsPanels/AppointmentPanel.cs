@@ -13,16 +13,20 @@ namespace Clinic
     public partial class AppointmentPanel : UserControl, IAppointmentPanelView
     {
         #region Properties
-        public List<string> FullfilFields
+        public Appointment FullfilFields
         {
             set
             {
-                textBoxPatientPesel.Text = value[0];
-                textBoxPatient.Text = value[1];
-                textBoxDoctor.Text = value[2];
-                textBoxContent.Text = value[3];
-                dateTimePickerAppointment.Value = DateTime.Parse(value[4]);
-                textBoxPrescription.Text = value[5];
+                textBoxPatientPesel.Text = value.Patient.Pesel.ToString();
+                textBoxPatient.Text = value.Patient.Name + " " + value.Patient.Surname;
+                textBoxDoctor.Text = value.Doctor.Name + " " + value.Doctor.Surname;
+                textBoxContent.Text = value.Content;
+                dateTimePickerAppointment.Value = value.Date;
+
+                foreach(var medicine in value.Medicines)
+                {
+                    listBoxPrescription.Items.Add($"{medicine.ID} <=> {medicine.Name} <=> {medicine.Dose}");
+                }
             }
         }
         #endregion

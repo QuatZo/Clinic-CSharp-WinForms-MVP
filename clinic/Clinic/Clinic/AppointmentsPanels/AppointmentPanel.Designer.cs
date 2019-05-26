@@ -30,10 +30,10 @@
         {
             this.dateTimePickerAppointment = new System.Windows.Forms.DateTimePicker();
             this.textBoxContent = new System.Windows.Forms.TextBox();
-            this.textBoxPrescription = new System.Windows.Forms.TextBox();
             this.textBoxDoctor = new System.Windows.Forms.TextBox();
             this.textBoxPatient = new System.Windows.Forms.TextBox();
             this.textBoxPatientPesel = new System.Windows.Forms.TextBox();
+            this.listBoxPrescription = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // dateTimePickerAppointment
@@ -56,16 +56,6 @@
             this.textBoxContent.TabIndex = 19;
             this.textBoxContent.Text = "Opis ";
             this.textBoxContent.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // textBoxPrescription
-            // 
-            this.textBoxPrescription.Enabled = false;
-            this.textBoxPrescription.Location = new System.Drawing.Point(259, 339);
-            this.textBoxPrescription.Multiline = true;
-            this.textBoxPrescription.Name = "textBoxPrescription";
-            this.textBoxPrescription.Size = new System.Drawing.Size(214, 121);
-            this.textBoxPrescription.TabIndex = 22;
-            this.textBoxPrescription.Text = "Recepta";
             // 
             // textBoxDoctor
             // 
@@ -94,14 +84,23 @@
             this.textBoxPatientPesel.TabIndex = 27;
             this.textBoxPatientPesel.Text = "PESEL";
             // 
+            // listBoxPrescription
+            // 
+            this.listBoxPrescription.Enabled = false;
+            this.listBoxPrescription.FormattingEnabled = true;
+            this.listBoxPrescription.Location = new System.Drawing.Point(259, 339);
+            this.listBoxPrescription.Name = "listBoxPrescription";
+            this.listBoxPrescription.Size = new System.Drawing.Size(214, 173);
+            this.listBoxPrescription.TabIndex = 28;
+            // 
             // AppointmentPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.listBoxPrescription);
             this.Controls.Add(this.textBoxPatientPesel);
             this.Controls.Add(this.textBoxPatient);
             this.Controls.Add(this.textBoxDoctor);
-            this.Controls.Add(this.textBoxPrescription);
             this.Controls.Add(this.dateTimePickerAppointment);
             this.Controls.Add(this.textBoxContent);
             this.Name = "AppointmentPanel";
@@ -114,9 +113,9 @@
         #endregion
         private System.Windows.Forms.DateTimePicker dateTimePickerAppointment;
         private System.Windows.Forms.TextBox textBoxContent;
-        private System.Windows.Forms.TextBox textBoxPrescription;
         private System.Windows.Forms.TextBox textBoxDoctor;
         private System.Windows.Forms.TextBox textBoxPatient;
         private System.Windows.Forms.TextBox textBoxPatientPesel;
+        private System.Windows.Forms.ListBox listBoxPrescription;
     }
 }
