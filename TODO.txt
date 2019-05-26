@@ -2,13 +2,10 @@
 
 - Diagram związków encji bazy
 
-- Walidacja
+- Walidacja (przede wszystkim tyczy się to pól i duplikatów w MySQL)
 
 - Design
-
-- Przerobić wszystkie funkcje, metody na bardziej obiektowe 
-	(np. po wybraniu danej wizyty nie powinno na nowo pobierać info tylko skorzystać z aktualnego, już pobranego)
 	
-- Dodać leki z dawkami do wizyt (póki co dodaje ("", ""))
+- Po wejściu na wizytę, po czym na kolejną, poprzednie wpisy nie są usuwane (do poprawy w properties)
 
-- Stworzyć zmienną widoczną w namepsace FormMain, która będzie przechowywała listę wizyt
+- Po wejściu na wyszukaną wizytę (lekarz) leki nie są posortowane po nazwie, po wciśnięciu [+] już są (sprawdzić polecenie)

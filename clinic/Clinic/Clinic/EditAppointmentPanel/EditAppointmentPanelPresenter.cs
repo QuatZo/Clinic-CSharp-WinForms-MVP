@@ -50,14 +50,7 @@ namespace Clinic
         {
             if (view.Prescription.Count > 0)
             {
-                List<int> ids = new List<int>();
-
-                foreach(var el in view.Prescription)
-                {
-                    ids.Add(int.Parse(el.Split()[0]));
-                }
-            
-                if(model.DeleteRowsFromPrescription(view.AppointmentID, ids))
+                if(model.DeleteRowsFromPrescription(view.AppointmentID, model.GetPrescriptionsID(view.Prescription)))
                 {
                     view.Prescription = model.GetPrescription(view.AppointmentID);
                 }

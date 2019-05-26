@@ -13,15 +13,16 @@ namespace Clinic
     public partial class EditAppointmentPanel : UserControl, IEditAppointmentPanelView
     {
         #region Properties
+        public int ID { get; set; }
         public int AppointmentID
         {
             get
             {
-                return int.Parse(label1.Text);
+                    return int.Parse(label1.Text);
             }
             set
             {
-                label1.Text = value.ToString();
+                    label1.Text = value.ToString();
             }
         }
         public string Content
@@ -69,8 +70,11 @@ namespace Clinic
             InitializeComponent();
         }
 
+        #region Methods
+        // metoda wypełniająca pola danymi
         public void FullfilFields(Appointment appointment)
         {
+            AppointmentID = appointment.Id;
             Content = appointment.Content;
 
             List<string> prescription = new List<string>();
@@ -95,5 +99,6 @@ namespace Clinic
         {
             SaveAppointmentButtonClicked?.Invoke();
         }
+        #endregion
     }
 }

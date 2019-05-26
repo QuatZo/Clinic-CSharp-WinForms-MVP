@@ -97,9 +97,15 @@ namespace Clinic
                 {
                     if (connection.Open())
                     {
-                        if (connection.SelectCount($"SELECT COUNT(*) FROM dawki_i_leki WHERE idd={SelectedDose} AND idl={SelectedMedicine}") == 0)
+                        Dictionary<string, string> parameters = new Dictionary<string, string>()
                         {
-                            if (connection.InsertInfo($"INSERT INTO dawki_i_leki(idd, idl) VALUES({SelectedDose}, {SelectedMedicine})"))
+                            {"@dose", SelectedDose.ToString() },
+                            {"@medicine", SelectedMedicine.ToString() }
+                        };
+
+                        if (connection.SelectCount($"SELECT COUNT(*) FROM dawki_i_leki WHERE idd=@dose AND idl=@medicine", parameters) == 0)
+                        {
+                            if (connection.InsertInfo($"INSERT INTO dawki_i_leki(idd, idl) VALUES(@dose, @medicine)", parameters))
                             {
                                 
                                 MessageBox.Show("Połączenie leku z dawką zostało pomyślnie dodane. Zmiany będą widoczne po wyłączeniu tego okna.", "Potwierdzenie", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -129,14 +135,14 @@ namespace Clinic
                 {
                     List<string> medicines = new List<string>();
 
-                    foreach (var el in connection.GetPrescription("SELECT idl, nazwa FROM leki ORDER BY 2"))
+                    foreach (var el in connection.GetPrescription("SELECT idl, nazwa FROM leki ORDER BY 2", new Dictionary<string, string>()))
                     {
                         medicines.Add(el);
                     }
 
                     List<string> doses = new List<string>();
 
-                    foreach (var el in connection.GetPrescription("SELECT idd, ile FROM dawki ORDER BY 2"))
+                    foreach (var el in connection.GetPrescription("SELECT idd, ile FROM dawki ORDER BY 2", new Dictionary<string, string>()))
                     {
                         doses.Add(el);
                     }

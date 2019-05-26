@@ -27,6 +27,7 @@ namespace Clinic
             Medicines = medicines;
         }
 
+        #region Methods
         public override string ToString()
         {
             string str = $"{Id}\t{Patient}\t{Doctor}\t{Date.ToString()}\t{Content}\t";
@@ -36,5 +37,6 @@ namespace Clinic
             }
             return str;
         }
+        #endregion
     }
 }

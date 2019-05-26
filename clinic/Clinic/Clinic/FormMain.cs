@@ -73,9 +73,8 @@ namespace Clinic
                 return editAppointmentSearchPanel1;
             }
         }
-        
 
-        // metody jako parametry (zmiana widocznosci okien, tekst)
+        // zmiana widocznosci okien
         public bool EditActive
         {
             get
@@ -161,6 +160,7 @@ namespace Clinic
             }
         }
 
+        // zmiana tekstu "Witaj, [...]"
         public string WelcomeLabel
         {
             get
@@ -173,7 +173,7 @@ namespace Clinic
             }
         }
 
-
+        // Wizyty
         public List<Appointment> Appointments { get; set; }
         #endregion
 
@@ -197,6 +197,7 @@ namespace Clinic
             Close();
         }
 
+        // wyłączanie wszystkich widoków, za wyjątkiem menu
         public void SetView()
         {
             if (!MenuActive) { MenuActive = true; }

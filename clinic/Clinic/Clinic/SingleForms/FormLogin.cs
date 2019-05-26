@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Clinic
 {
-    // zmienna przechowujaca kto aktualnie jest zalogowany
+    // typ wyliczeniowy, kto jest zalogowany (zamiast operacji na 0 1 czy bool)
     public enum Position
     {
         pacjent,
@@ -20,6 +20,7 @@ namespace Clinic
     public partial class FormLogin : Form
     {
         #region Static fields
+        // zmienne statyczne, position - kto zalogowany, patient i doctor używane w zależności od zalogowanej osoby
         public static Position position;
         public static Patient patient;
         public static Doctor doctor;
@@ -58,19 +59,25 @@ namespace Clinic
                 if (connection.Open()) {
                     double.TryParse(currentPesel, out double dPesel); // pesel jest przechowywany w stringu, parsujemy na double
 
-                    if (connection.SelectCount($"SELECT COUNT(*) FROM pacjenci WHERE pesel={currentPesel} AND nazwisko=\"{currentSurname}\" AND idp={currentID}") > 0)
+                    // parametryzacja zapytań
+                    Dictionary<string, string> loginParameters = new Dictionary<string, string>
                     {
+                        {"@id", currentID },
+                        {"@pesel", currentPesel },
+                        {"@surname", currentSurname }
+                    };
 
-                        patient = connection.GetPatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM pacjenci WHERE pesel={currentPesel} AND nazwisko=\"{currentSurname}\" AND idp={currentID}");
-
-                        // ustaw, ze loguje sie pacjent
+                    // jesli jest taki ktos w bazie
+                    if (connection.SelectCount($"SELECT COUNT(*) FROM pacjenci WHERE pesel=@pesel AND nazwisko=@surname AND idp=@id", loginParameters) > 0)
+                    {
+                        patient = connection.GetPatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM pacjenci WHERE pesel=@pesel AND nazwisko=@surname AND idp=@id", loginParameters);
                         position = Position.pacjent;
                         return true;
                     }
-                    else if (connection.SelectCount($"SELECT COUNT(*) FROM doktorzy WHERE pesel={currentPesel} AND nazwisko=\"{currentSurname}\" AND idd={currentID}") > 0)
+                    // jesli nie to sprawdz czy jest taki lekarz
+                    else if (connection.SelectCount($"SELECT COUNT(*) FROM doktorzy WHERE pesel=@pesel AND nazwisko=@surname AND idd=@id", loginParameters) > 0)
                     {
-                        doctor = connection.GetDoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM doktorzy WHERE pesel={currentPesel} AND nazwisko=\"{currentSurname}\" AND idd={currentID}");
-                        // ustaw, ze loguje sie lekarz
+                        doctor = connection.GetDoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM doktorzy WHERE pesel=@pesel AND nazwisko=@surname AND idd=@id", loginParameters);
                         position = Position.lekarz;
                         return true;
                     }
@@ -96,8 +103,13 @@ namespace Clinic
                 {
                     double.TryParse(currentPesel, out double dPesel); // pesel jest przechowywany w stringu, parsujemy na double
 
-                    // lista pacjentow; powinien byc jeden wynik, ale na wszelki wypadek wrzucamy do listy (bo w koncu select bez LIMIT 1)
-                    if (connection.SelectCount($"SELECT COUNT(*) FROM pacjenci WHERE pesel={currentPesel}") > 0)
+                    Dictionary<string, string> parameters = new Dictionary<string, string>()
+                    {
+                        {"@pesel", currentPesel }
+                    };
+
+                    // jeśli znaleziono kogoś o takim peselu to zwróć prawdę
+                    if (connection.SelectCount($"SELECT COUNT(*) FROM pacjenci WHERE pesel=@pesel", parameters) > 0)
                     {
                         return true;
                     }
@@ -150,11 +162,12 @@ namespace Clinic
                 if (position == Position.pacjent) { Console.WriteLine("Logowanie na pacjenta udane!"); }
                 else { Console.WriteLine("Logowanie na lekarza udane!"); }
             }
-            // jesli jednak nie jest w bazie to wyrzuc info o blednych danych (chyba, ze blad z polaczeniem to tylko info o bledzie z polaczeniem)
+            // jesli jednak nie jest w bazie to sprawdz czy pesel jest w bazie
             else
             {
                 if (DialogResult != DialogResult.Abort)
                 {
+                    // jesli jednak peselu nie ma w bazie, to odpal rejestrację
                     if (!PeselExistsInDatabase(textBoxPesel.Text))
                     {
                         patient = new Patient(-1, "", "", double.Parse(textBoxPesel.Text), Sexs.kobieta, DateTime.Now, "", "");

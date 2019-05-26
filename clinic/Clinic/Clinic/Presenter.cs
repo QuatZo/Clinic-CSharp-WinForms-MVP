@@ -16,9 +16,6 @@ namespace Clinic
 
         #region Presenters
         readonly EditPanelPresenter EditPresenter;
-        readonly MenuPanelPresenter MenuPresenter;
-        readonly AppointmentsPanelPresenter AppointmentsPresenter;
-        readonly AppointmentPanelPresenter AppointmentPresenter;
         readonly RegisterAppointmentPanelPresenter RegisterAppointmentPresenter;
         readonly EditAppointmentPanelPresenter EditAppointmentPresenter;
         readonly EditAppointmentSearchPanelPresenter EditAppointmentSearchPresenter;
@@ -28,20 +25,15 @@ namespace Clinic
             this.view = view;
             this.model = model;
 
-            // prezenter = konstruktor prezentera
+            // konstruktory prezenterów
             EditPresenter = new EditPanelPresenter(view.EditView, model);
-
-            MenuPresenter = new MenuPanelPresenter(view.MenuView, model);
-
-            AppointmentsPresenter = new AppointmentsPanelPresenter(view.AppointmentsView, model);
-            AppointmentPresenter = new AppointmentPanelPresenter(view.AppointmentView, model);
 
             RegisterAppointmentPresenter = new RegisterAppointmentPanelPresenter(view.RegisterAppointmentView, model);
 
             EditAppointmentPresenter = new EditAppointmentPanelPresenter(view.EditAppointmentView, model);
             EditAppointmentSearchPresenter = new EditAppointmentSearchPanelPresenter(view.EditAppointmentSearchView, model);
 
-            // eventy
+            // podpinanie eventów
             this.view.FormLoaded += MenuView_EditButtonClicked;
 
             this.view.MenuView.EditButtonClicked += MenuView_EditButtonClicked;
@@ -56,44 +48,40 @@ namespace Clinic
         }
 
         #region Methods
+        // szukaj wizyty (edycja, panel lekarza)
         private void EditAppointmentSearchView_SearchAppointmentButtonClicked()
         {
             view.Appointments = model.GetAppointments();
-            view.EditAppointmentView.AppointmentID = model.GetAppointmentToEditID(view.Appointments, view.EditAppointmentSearchView.PeselPatient, view.EditAppointmentSearchView.DateTimeAppointment);
+            view.EditAppointmentView.ID = model.GetAppointmentToEditID(view.Appointments, view.EditAppointmentSearchView.PeselPatient, view.EditAppointmentSearchView.DateTimeAppointment);
 
-            if (view.EditAppointmentView.AppointmentID > -1){
+            if (view.EditAppointmentView.ID > -1){
                 view.SetView();
 
                 if (!view.EditAppointmentActive) { view.EditAppointmentActive = true; }
-                view.EditAppointmentView.FullfilFields(view.Appointments[view.EditAppointmentView.AppointmentID]);
+                view.EditAppointmentView.FullfilFields(view.Appointments[view.EditAppointmentView.ID]);
             }
         }
 
+        // "Edytuj wizytę" w menu
         private void MenuView_EditAppointmentSearchButtonClicked()
         {
             view.SetView();
             if (!view.EditAppointmentSearchActive) { view.EditAppointmentSearchActive = true; }
         }
 
+        // "Zarejestruj wizytę" w menu
         private void MenuView_RegisterAppointmentButtonClicked()
         {
-            if (FormLogin.position == Position.pacjent)
-            {
+            view.SetView();
+            if (!view.RegisterAppointmentActive) { view.RegisterAppointmentActive = true; }
 
-                view.SetView();
-                if (!view.RegisterAppointmentActive) { view.RegisterAppointmentActive = true; }
+            if (view.RegisterAppointmentView.DoctorActive)
+                view.RegisterAppointmentView.DoctorActive = false;
 
-                if (view.RegisterAppointmentView.DoctorActive)
-                    view.RegisterAppointmentView.DoctorActive = false;
-
-                view.RegisterAppointmentView.Specializations = model.GetSpecializations();
-            }
-            else
-            {
-                MessageBox.Show("Brak uprawnien! To jest menu dla pacjenta!");
-            }
+            view.RegisterAppointmentView.Specializations = model.GetSpecializations();
         }
 
+        // Wybranie wizyty z listy
         private void AppointmentsView_ChosenAppointmentClick()
         {
             if (view.AppointmentsView.ChosenAppointment > -1)
@@ -104,33 +92,23 @@ namespace Clinic
             }
         }
 
+        // "Wizyty" w menu
         private void MenuView_AppointmentsButtonClicked()
         {
             view.SetView();
             if (!view.AppointmentsActive) { view.AppointmentsActive = true; }
 
-            List<string> appointments = new List<string>();
             view.Appointments = model.GetAppointments();
-            foreach (var appointment in view.Appointments)
-            {
-                string str = appointment.Id.ToString() + "\t- ";
-                str += appointment.Date.ToString("yyyy-MM-dd HH:mm") + "\t- ";
-
-                if (FormLogin.position == Position.pacjent) { str += $"{appointment.Doctor.Name} {appointment.Doctor.Surname}\t- "; }
-                else { str += $"{appointment.Patient.Name} {appointment.Patient.Surname}\t- "; }
-
-                str += appointment.Doctor.Room.ToString();
-
-                appointments.Add(str);
-            }
-            view.AppointmentsView.Content = appointments;
+            view.AppointmentsView.Content = model.GetAppointmentsMainInfo(view.Appointments);
         }
 
+        // "Zamknij" w menu
         private void MenuView_LogOut()
         {
             view.ExitForm();
         }
 
+        // "Edytuj dane" w menu
         private void MenuView_EditButtonClicked()
         {
             view.Title = FormLogin.position.ToString();
@@ -143,7 +121,7 @@ namespace Clinic
             if (!view.WelcomeLabel.Contains(FormLogin.position.ToString()))
                 view.WelcomeLabel = view.WelcomeLabel.Replace("Panel", "Panel " + FormLogin.position + "a");
 
-            // aktualizacja panelu edycji (pola wspoldzielone)
+            // aktualizacja widoku (pola wspoldzielone)
             if (!view.EditView.SharedFields)
                 view.EditView.SharedFields = true;
 
@@ -189,7 +167,7 @@ namespace Clinic
                 if (view.MenuView.RegisterAppointmentButtonVisibility)
                     view.MenuView.RegisterAppointmentButtonVisibility = false;
 
-                // uzupelnij dane (przydalaby sie jakas osobna metoda do tego, dla obydwoch 'pozycji' [lekarz/pacjent])
+                // uzupelnij dane
                 view.EditView.FullfilDoctorFields();
             }
         }

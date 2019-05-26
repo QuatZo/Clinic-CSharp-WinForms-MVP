@@ -12,9 +12,6 @@ namespace Clinic
         #region Classes
         IEditPanelView view;
         Model model;
-
-        Patient pacjent;
-        Doctor lekarz;
         #endregion
 
         public EditPanelPresenter(IEditPanelView view, Model model)
@@ -34,6 +31,7 @@ namespace Clinic
                 try
                 {
                     int.Parse(view.PhoneNumber);
+                    Patient pacjent = new Patient(-1, "", "", 0, 0, DateTime.Now, "", "");
                     // metoda w modelu, ktora zapisze pacjenta, a potem pobiera (prawdopodobnie) nowe dane
                     if (model.UpdatePatientInfo(view.PhoneNumber, view.Address))
                         pacjent = model.GetPatientInfo(FormLogin.patient.Pesel.ToString());
@@ -41,8 +39,6 @@ namespace Clinic
                     // czy dane zostaly zaktualizowane
                     if (pacjent.PhoneNumber == view.PhoneNumber && pacjent.Address == view.Address) { MessageBox.Show("Poprawnie zaktualizowano dane pacjenta!"); }
                     else { MessageBox.Show("Ups! Coś poszło nie tak. Sprawdź czy nie umieściłeś/aś gdzieś polskich znaków."); }
-
-                    if (lekarz != null) { lekarz = null; }
                 }
                 catch (FormatException)
                 {
@@ -59,6 +55,7 @@ namespace Clinic
                 try
                 {
                     int.Parse(view.PhoneNumber);
+                    Doctor lekarz = new Doctor(-1, "", "", 0, "", 0, 0);
                     // metoda w modelu, ktora zapisze lekarza, a potem pobiera (prawdopodobnie) nowe dane
                     if (model.UpdateDoctorInfo(view.PhoneNumber, view.Hour, view.Room))
                         lekarz = model.GetDoctorInfo(FormLogin.doctor.Pesel.ToString());
@@ -66,8 +63,6 @@ namespace Clinic
                     // czy dane zostaly zaktualizowane
                     if (lekarz.PhoneNumber == view.PhoneNumber && lekarz.Hour.ToString() == view.Hour && lekarz.Room == view.Room) { MessageBox.Show("Poprawnie zaktualizowano dane lekarza!"); }
                     else { MessageBox.Show("Ups! Coś poszło nie tak!"); }
-                
-                    if (pacjent != null) { pacjent = null; }
                 }
                 catch (FormatException)
                 {

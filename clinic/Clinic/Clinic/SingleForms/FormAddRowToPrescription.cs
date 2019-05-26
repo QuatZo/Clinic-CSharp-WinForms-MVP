@@ -59,24 +59,30 @@ namespace Clinic
             connectMedDose.Show();
         }
 
+        // metoda pobierająca aktualne leki wraz z dawkami na recepcie
         private List<string> GetPrescriptions()
         {
             using (var connection = new DatabaseConnection())
             {
+                Dictionary<string, string> parameters = new Dictionary<string, string>()
+                {
+                    {"@appointment", AppointmentID.ToString() }
+                };
+
                 if (connection.Open())
                 {
-                    return connection.GetPrescription($"SELECT dawki_i_leki.iddl, leki.nazwa, dawki.ile FROM dawki_i_leki JOIN leki ON leki.idl=dawki_i_leki.idl JOIN dawki ON dawki.idd=dawki_i_leki.idd WHERE iddl NOT IN (SELECT iddl FROM wiz_i_dawki_i_leki WHERE idw={AppointmentID}) ORDER BY 2");
+                    return connection.GetPrescription($"SELECT dawki_i_leki.iddl, leki.nazwa, dawki.ile FROM dawki_i_leki JOIN leki ON leki.idl=dawki_i_leki.idl JOIN dawki ON dawki.idd=dawki_i_leki.idd WHERE iddl NOT IN (SELECT iddl FROM wiz_i_dawki_i_leki WHERE idw=@appointment) ORDER BY 2", parameters);
                 }
                 else
                 {
                     MessageBox.Show("Błąd z połaczeniem!");
-                    List<string> vs = new List<string>();
-                    return vs;
+                    return new List<string>();
 
                 }
             }
         }
 
+        // jak najniższa forma (łączenie leku z dawkami) zostanie wyłączona, przeładuj listę
         private void FormConnectMedDose_FormClosing(object sender, FormClosingEventArgs e)
         {
             Rows = GetPrescriptions();
@@ -93,7 +99,13 @@ namespace Clinic
                     {
                         foreach(var id in RowsID)
                         {
-                            if (!connection.InsertInfo($"INSERT INTO wiz_i_dawki_i_leki(idw, iddl) VALUES({AppointmentID}, {id})")) { status = false; }
+                            Dictionary<string, string> parameters = new Dictionary<string, string>()
+                            {
+                                {"@appointment", AppointmentID.ToString() },
+                                {"@id", id.ToString() }
+                            };
+
+                            if (!connection.InsertInfo($"INSERT INTO wiz_i_dawki_i_leki(idw, iddl) VALUES(@appointment, @id)", parameters)) { status = false; }
                         }
                     }
                     else { status = false; }

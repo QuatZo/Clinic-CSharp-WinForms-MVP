@@ -69,14 +69,12 @@
     <Compile Include="AppointmentsPanels\AppointmentPanel.Designer.cs">
       <DependentUpon>AppointmentPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppointmentsPanels\AppointmentPanelPresenter.cs" />
     <Compile Include="AppointmentsPanels\AppointmentsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="AppointmentsPanels\AppointmentsPanel.Designer.cs">
       <DependentUpon>AppointmentsPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppointmentsPanels\AppointmentsPanelPresenter.cs" />
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="Database\DBInfo.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -149,7 +147,6 @@
     <Compile Include="MenuPanel\MenuPanel.Designer.cs">
       <DependentUpon>MenuPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuPanel\MenuPanelPresenter.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Classes\Patient.cs" />
     <Compile Include="Presenter.cs" />

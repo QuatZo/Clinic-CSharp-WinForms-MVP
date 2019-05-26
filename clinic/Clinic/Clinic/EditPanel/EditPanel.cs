@@ -189,6 +189,7 @@ namespace Clinic
                 SaveButtonClicked();
         }
 
+        // metoda uzupełniająca dane pacjenta
         public void FullfilPatientFields()
         {
             ID = FormLogin.patient.Id;
@@ -201,6 +202,7 @@ namespace Clinic
             Address = FormLogin.patient.Address;
         }
 
+        // metoda uzupełniająca dane lekarza
         public void FullfilDoctorFields()
         {
             ID = FormLogin.doctor.Id;

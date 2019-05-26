@@ -19,7 +19,7 @@ namespace Clinic
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            DialogResult loginResult = new FormLogin().ShowDialog();
+            DialogResult loginResult = new FormLogin().ShowDialog(); // logowanie
 
             // poki uzytkownik sie nie zaloguje (brak peselu w bazie) LUB nie wylaczy programu ORAZ jest polaczenie z baza
             while(loginResult != DialogResult.OK && loginResult != DialogResult.Cancel && loginResult != DialogResult.Abort)

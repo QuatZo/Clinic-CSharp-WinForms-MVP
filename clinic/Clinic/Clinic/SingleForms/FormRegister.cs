@@ -13,6 +13,7 @@ namespace Clinic
     public partial class FormRegister : Form
     {
         #region Properties
+        // obiekty WindowsForms
         private string FirstName
         {
             get
@@ -98,8 +99,24 @@ namespace Clinic
                     // jesli idzie otworzyc polaczenie
                     if (connection.Open())
                     {
-                        if (connection.InsertInfo($"INSERT INTO pacjenci(imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon) VALUES(\"{FirstName}\", \"{Surname}\", {PESEL}, {SexID}, \"{DateTimeBirthDay.ToString("yyyy-MM-dd")}\", \"{Address}\", {PhoneNumber})")){
-                            int id = connection.GetPatientInfo($"SELECT * FROM pacjenci WHERE pesel={PESEL}").Id;
+                        Dictionary<string, string> registerParameters = new Dictionary<string, string>()
+                        {
+                            {"@firstname", FirstName },
+                            {"@surname", Surname },
+                            {"@pesel", PESEL },
+                            {"@sex", SexID.ToString() },
+                            {"@birthday", DateTimeBirthDay.ToString("yyyy-MM-dd")},
+                            {"@address", Address },
+                            {"@phone", PhoneNumber },
+                        };
+
+                        if (connection.InsertInfo($"INSERT INTO pacjenci(imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon) VALUES(@firstname, @surname, @pesel, @sex, @birthday, @address, @phone)", registerParameters)){
+                            Dictionary<string, string> infoParameters = new Dictionary<string, string>()
+                            {
+                                {"@pesel", PESEL }
+                            };
+
+                            int id = connection.GetPatientInfo($"SELECT * FROM pacjenci WHERE pesel=@pesel", infoParameters).Id;
                             MessageBox.Show($"Rejestracja zakończona powodzeniem. Twoje ID do logowania to: {id}");
                             Close();
                         }
@@ -117,6 +134,7 @@ namespace Clinic
             }
         }
 
+        // sprawdź pola, czy są poprawne
         private bool ValidateFields()
         {
             try
@@ -150,6 +168,7 @@ namespace Clinic
             return true;
         }
 
+        // metodą wyświetlająca błąd (do walidacji, mniej pisania)
         private void ShowError(string errorMessage)
         {
             MessageBox.Show(errorMessage, "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -8,7 +8,6 @@ namespace Clinic
 {
     public interface IEditPanelView
     {
-
         #region Properties
         // wszystkie pola edycji (wspoldzielone, pacjenta, lekarza)
         bool SharedFields { get; set; }
