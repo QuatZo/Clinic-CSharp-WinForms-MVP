@@ -24,7 +24,7 @@ namespace Clinic
             Doctor = doctor;
             Date = date;
             Content = content;
-            Medicines = medicines;
+            Medicines = medicines.OrderBy(iTuple => iTuple.Item2).ThenBy(iTuple => iTuple.Item3).ToList(); // sortowanie po nazwie, potem po dawce
         }
 
         #region Methods

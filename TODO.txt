@@ -1,11 +1,5 @@
-- Zabezpieczenie poleceń przed SQL Injection (parametryzacja zapytań)
-
 - Diagram związków encji bazy
 
 - Walidacja (przede wszystkim tyczy się to pól i duplikatów w MySQL)
 
-- Design
-	
-- Po wejściu na wizytę, po czym na kolejną, poprzednie wpisy nie są usuwane (do poprawy w properties)
-
-- Po wejściu na wyszukaną wizytę (lekarz) leki nie są posortowane po nazwie, po wciśnięciu [+] już są (sprawdzić polecenie)
+- Design (trzeba coś pomyśleć nad tymi listboxami. Jak są enabled to nie można przesuwać scrollbara, może zamiana na readonly)

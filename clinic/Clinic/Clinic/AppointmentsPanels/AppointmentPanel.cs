@@ -23,9 +23,12 @@ namespace Clinic
                 textBoxContent.Text = value.Content;
                 dateTimePickerAppointment.Value = value.Date;
 
+                if(listBoxPrescription.Items.Count > 0) { listBoxPrescription.Items.Clear(); }
+
                 foreach(var medicine in value.Medicines)
                 {
-                    listBoxPrescription.Items.Add($"{medicine.ID} <=> {medicine.Name} <=> {medicine.Dose}");
+                    if(medicine.ID > -1)
+                        listBoxPrescription.Items.Add($"{medicine.ID} <=> {medicine.Name} <=> {medicine.Dose}");
                 }
             }
         }
