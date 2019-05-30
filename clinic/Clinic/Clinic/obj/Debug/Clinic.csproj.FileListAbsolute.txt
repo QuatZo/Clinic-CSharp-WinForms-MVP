@@ -44,8 +44,8 @@ E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.pdb
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.Database.DBInfo.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.EditAppointmentPanel.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.EditAppointmentSearchPanel.resources
-E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csprojAssemblyReference.cache
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormMain.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormAddRowToPrescription.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormConnectMedDose.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormRegister.resources
+E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csprojAssemblyReference.cache

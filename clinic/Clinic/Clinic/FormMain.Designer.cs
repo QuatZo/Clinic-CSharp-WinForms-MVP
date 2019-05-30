@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.labelInfo = new System.Windows.Forms.Label();
-            this.editAppointmentSearchPanel1 = new Clinic.EditAppointmentSearchPanel();
             this.editPanel1 = new Clinic.EditPanel();
             this.menuPanel1 = new Clinic.MenuPanel();
             this.appointmentPanel1 = new Clinic.AppointmentPanel();
             this.appointmentsPanel1 = new Clinic.AppointmentsPanel();
             this.registerAppointment1 = new Clinic.RegisterAppointmentPanel();
             this.editAppointmentPanel1 = new Clinic.EditAppointmentPanel();
+            this.editAppointmentSearchPanel1 = new Clinic.EditAppointmentSearchPanel();
             this.SuspendLayout();
             // 
             // labelInfo
@@ -48,14 +49,6 @@
             this.labelInfo.TabIndex = 7;
             this.labelInfo.Text = "Przychodnia lekarska\r\n\r\nPanel\r\n\r\nWitaj\r\n\r\n\r\nAutorzy:\r\nMadejski\r\nMrosek\r\nParkitny";
             this.labelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // editAppointmentSearchPanel1
-            // 
-            this.editAppointmentSearchPanel1.Location = new System.Drawing.Point(337, 13);
-            this.editAppointmentSearchPanel1.Name = "editAppointmentSearchPanel1";
-            this.editAppointmentSearchPanel1.Size = new System.Drawing.Size(767, 517);
-            this.editAppointmentSearchPanel1.TabIndex = 10;
-            this.editAppointmentSearchPanel1.Visible = false;
             // 
             // editPanel1
             // 
@@ -112,13 +105,26 @@
             // 
             // editAppointmentPanel1
             // 
+            this.editAppointmentPanel1.AppointmentID = -1;
+            this.editAppointmentPanel1.Content = "Opis";
+            this.editAppointmentPanel1.ID = 0;
             this.editAppointmentPanel1.Location = new System.Drawing.Point(337, 13);
             this.editAppointmentPanel1.Name = "editAppointmentPanel1";
+            this.editAppointmentPanel1.Prescription = ((System.Collections.Generic.List<string>)(resources.GetObject("editAppointmentPanel1.Prescription")));
             this.editAppointmentPanel1.Size = new System.Drawing.Size(767, 517);
             this.editAppointmentPanel1.TabIndex = 9;
             this.editAppointmentPanel1.Visible = false;
             // 
-            // Form1
+            // editAppointmentSearchPanel1
+            // 
+            this.editAppointmentSearchPanel1.Location = new System.Drawing.Point(337, 13);
+            this.editAppointmentSearchPanel1.Name = "editAppointmentSearchPanel1";
+            this.editAppointmentSearchPanel1.PeselPatient = "PESEL pacjenta";
+            this.editAppointmentSearchPanel1.Size = new System.Drawing.Size(767, 517);
+            this.editAppointmentSearchPanel1.TabIndex = 10;
+            this.editAppointmentSearchPanel1.Visible = false;
+            // 
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,7 +137,7 @@
             this.Controls.Add(this.registerAppointment1);
             this.Controls.Add(this.editAppointmentPanel1);
             this.Controls.Add(this.editAppointmentSearchPanel1);
-            this.Name = "Form1";
+            this.Name = "FormMain";
             this.Text = "Panel pacjenta";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

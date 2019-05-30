@@ -89,6 +89,10 @@ namespace Clinic
             {
                 textBoxHours.Text = value;
             }
+            get
+            {
+                return textBoxHours.Text;
+            }
         }
 
         public bool DoctorActive

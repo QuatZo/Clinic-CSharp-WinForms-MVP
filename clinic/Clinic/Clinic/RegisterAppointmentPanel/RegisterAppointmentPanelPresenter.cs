@@ -38,7 +38,13 @@ namespace Clinic
 
         private void View_RegisterButtonClicked()
         {
-            if (view.Specialization != "" && view.Doctor != "")
+            if(view.Hour == "poranne" && (view.AppointmentDate.Hour < 8 || view.AppointmentDate.Hour > 11) ||
+                view.Hour == "popoludniowe" && (view.AppointmentDate.Hour < 12 || view.AppointmentDate.Hour > 15) ||
+                view.Hour == "wieczorowe" && (view.AppointmentDate.Hour < 16 || view.AppointmentDate.Hour > 19))
+            {
+                MessageBox.Show("Godzina wizyty nie zgadza się z godzinami przyjęć lekarza!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (view.Specialization != "" && view.Doctor != "")
             {
                 if (model.RegisterAppointment(view.Doctor, view.Content, view.AppointmentDate)) { MessageBox.Show("Wizyta została zarejestrowana!"); }
                 else { MessageBox.Show("Ups! Coś poszło nie tak!"); }

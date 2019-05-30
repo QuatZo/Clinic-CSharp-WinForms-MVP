@@ -260,15 +260,32 @@ namespace Clinic
             {
                 if (connection.Open())
                 {
-                    Dictionary<string, string> parameters = new Dictionary<string, string>()
+                    Dictionary<string, string> selectCountParameters = new Dictionary<string, string>()
+                    {
+                        { "@idp", FormLogin.patient.Id.ToString() },
+                        { "@idd", doctorID.ToString() },
+                        { "@datebefore", date.AddMinutes(-30).ToString("yyyy-MM-dd HH:mm:ss")},
+                        { "@dateafter", date.AddMinutes(30).ToString("yyyy-MM-dd HH:mm:ss")}
+                    };
+
+                    Dictionary<string, string> insertParameters = new Dictionary<string, string>()
                     {
                         { "@idp", FormLogin.patient.Id.ToString() },
                         { "@idd", doctorID.ToString() },
                         { "@content", content },
                         { "@date", date.ToString("yyyy-MM-dd HH:mm:ss")}
                     };
-                    if (connection.InsertInfo($"INSERT INTO wizyty (idp, idd, opis, data) VALUES (@idp, @idd, @content, @date)", parameters)) { return true; }
-                    else { return false; }
+
+                    if(connection.SelectCount($"SELECT COUNT(*) FROM wizyty WHERE wizyty.data BETWEEN @datebefore AND @dateafter AND idp=@idp AND idd=@idd", selectCountParameters) == 0)
+                    {
+                        if (connection.InsertInfo($"INSERT INTO wizyty (idp, idd, opis, data) VALUES (@idp, @idd, @content, @date)", insertParameters))
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                    MessageBox.Show("Lekarz o tej godzinie jest zajęty! Wybierz inną datę!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
                 }
                 else
                 {

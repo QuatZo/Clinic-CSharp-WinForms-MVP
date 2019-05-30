@@ -1,5 +1,3 @@
-- Diagram związków encji bazy
-
-- Walidacja (przede wszystkim tyczy się to pól i duplikatów w MySQL)
+- Diagram związków encji bazy (sprawdzenie poziomów normalizacji)
 
 - Design (trzeba coś pomyśleć nad tymi listboxami. Jak są enabled to nie można przesuwać scrollbara, może zamiana na readonly)

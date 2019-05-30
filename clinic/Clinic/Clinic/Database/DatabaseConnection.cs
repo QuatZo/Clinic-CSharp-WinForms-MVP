@@ -204,9 +204,16 @@ namespace Clinic
                 {
                     cmd.Parameters.AddWithValue(parameter.Key, parameter.Value);
                 }
-
-                if (cmd.ExecuteNonQuery() > 0) { return true; }
-                else { return false; }
+                try
+                {
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if ( rowsAffected > 0) { return true; }
+                    return false;
+                }
+                catch (MySqlException)
+                {
+                    return false;
+                }
             }
         }
 

@@ -13,7 +13,7 @@ namespace Clinic
         string Specialization { get; }
         List<string> Doctors { set; }
         string Doctor { get; }
-        string Hour { set; }
+        string Hour { get;  set; }
         string Content { get; }
         DateTime AppointmentDate { get; set; }
         bool DoctorActive { get; set; }

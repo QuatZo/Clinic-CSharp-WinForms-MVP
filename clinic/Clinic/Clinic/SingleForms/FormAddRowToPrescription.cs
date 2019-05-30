@@ -112,7 +112,7 @@ namespace Clinic
                     
                     if (status) { MessageBox.Show("Leki zostały poprawnie dodane do recepty!", "Pozytywnie dodano!", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                     else { MessageBox.Show("Błąd podpisania leku do recepty! Upewnij się, że cokolwiek zostało wybrane." +
-                        "Jeśli uważasz, że wszystko zostało wykonane poprawnie, zgłoś się do administratora!", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                        "Możliwe jest, że próbujesz dodać duplikat. Uruchom te okno ponownie.", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 }
                 else
                 {
