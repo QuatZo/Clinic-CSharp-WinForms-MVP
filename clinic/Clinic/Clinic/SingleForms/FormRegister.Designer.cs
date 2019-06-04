@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegister));
             this.dateTimePickerBirthDay = new System.Windows.Forms.DateTimePicker();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxSurname = new System.Windows.Forms.TextBox();
@@ -123,6 +124,7 @@
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.textBoxPhoneNumber);
             this.Controls.Add(this.textBoxAddress);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRegister";
             this.Text = "Panel rejestracji";
             this.Load += new System.EventHandler(this.FormRegister_Load);

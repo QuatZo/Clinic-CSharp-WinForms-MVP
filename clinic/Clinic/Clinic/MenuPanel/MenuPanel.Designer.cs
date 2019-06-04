@@ -37,6 +37,7 @@
             // 
             // buttonEdit
             // 
+            this.buttonEdit.Font = new System.Drawing.Font("OCR A Std", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEdit.Location = new System.Drawing.Point(3, 3);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(313, 44);
@@ -57,6 +58,7 @@
             // 
             // buttonAppointments
             // 
+            this.buttonAppointments.Font = new System.Drawing.Font("OCR A Std", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAppointments.Location = new System.Drawing.Point(3, 103);
             this.buttonAppointments.Name = "buttonAppointments";
             this.buttonAppointments.Size = new System.Drawing.Size(313, 44);
@@ -67,6 +69,7 @@
             // 
             // buttonLogOut
             // 
+            this.buttonLogOut.Font = new System.Drawing.Font("OCR A Std", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogOut.Location = new System.Drawing.Point(3, 153);
             this.buttonLogOut.Name = "buttonLogOut";
             this.buttonLogOut.Size = new System.Drawing.Size(313, 44);
@@ -77,6 +80,7 @@
             // 
             // buttonEditAppointment
             // 
+            this.buttonEditAppointment.Font = new System.Drawing.Font("OCR A Std", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEditAppointment.Location = new System.Drawing.Point(4, 53);
             this.buttonEditAppointment.Name = "buttonEditAppointment";
             this.buttonEditAppointment.Size = new System.Drawing.Size(313, 44);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.textBoxSurname = new System.Windows.Forms.TextBox();
             this.textBoxPesel = new System.Windows.Forms.TextBox();
@@ -79,6 +80,7 @@
             this.Controls.Add(this.textBoxSurname);
             this.Controls.Add(this.textBoxPesel);
             this.Controls.Add(this.buttonLogin);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormLogin";
             this.Text = "Panel logowania";
             this.ResumeLayout(false);

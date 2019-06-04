@@ -30,8 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.labelInfo = new System.Windows.Forms.Label();
-            this.editPanel1 = new Clinic.EditPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuPanel1 = new Clinic.MenuPanel();
+            this.editPanel1 = new Clinic.EditPanel();
             this.appointmentPanel1 = new Clinic.AppointmentPanel();
             this.appointmentsPanel1 = new Clinic.AppointmentsPanel();
             this.registerAppointment1 = new Clinic.RegisterAppointmentPanel();
@@ -42,17 +44,49 @@
             // labelInfo
             // 
             this.labelInfo.AutoSize = true;
-            this.labelInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInfo.Location = new System.Drawing.Point(68, 13);
+            this.labelInfo.Font = new System.Drawing.Font("OCR A Std", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInfo.Location = new System.Drawing.Point(24, 13);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(207, 264);
+            this.labelInfo.Size = new System.Drawing.Size(289, 120);
             this.labelInfo.TabIndex = 7;
-            this.labelInfo.Text = "Przychodnia lekarska\r\n\r\nPanel\r\n\r\nWitaj\r\n\r\n\r\nAutorzy:\r\nMadejski\r\nMrosek\r\nParkitny";
+            this.labelInfo.Text = "Przychodnia lekarska\r\n\r\nPanel\r\n\r\n\r\nWitaj!";
             this.labelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelInfo.Click += new System.EventHandler(this.labelInfo_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("OCR A Std", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(10, 535);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(157, 36);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Dawid Mrosek\r\nBartłomiej Madejski\r\nPatryk Parkitny\r\n";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("OCR A Std", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(10, 522);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 12);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Autorzy:\r\n";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // menuPanel1
+            // 
+            this.menuPanel1.EditAppointmentButtonVisibility = true;
+            this.menuPanel1.Location = new System.Drawing.Point(12, 199);
+            this.menuPanel1.Name = "menuPanel1";
+            this.menuPanel1.RegisterAppointmentButtonVisibility = true;
+            this.menuPanel1.Size = new System.Drawing.Size(325, 204);
+            this.menuPanel1.TabIndex = 1;
             // 
             // editPanel1
             // 
             this.editPanel1.Address = "Adres";
+            this.editPanel1.BackColor = System.Drawing.SystemColors.Control;
             this.editPanel1.BirthDay = new System.DateTime(2019, 5, 18, 17, 41, 25, 213);
             this.editPanel1.DoctorFields = true;
             this.editPanel1.FirstName = "Imie";
@@ -64,15 +98,6 @@
             this.editPanel1.Size = new System.Drawing.Size(807, 559);
             this.editPanel1.Surname = "Nazwisko";
             this.editPanel1.TabIndex = 8;
-            // 
-            // menuPanel1
-            // 
-            this.menuPanel1.EditAppointmentButtonVisibility = true;
-            this.menuPanel1.Location = new System.Drawing.Point(16, 321);
-            this.menuPanel1.Name = "menuPanel1";
-            this.menuPanel1.RegisterAppointmentButtonVisibility = true;
-            this.menuPanel1.Size = new System.Drawing.Size(325, 204);
-            this.menuPanel1.TabIndex = 1;
             // 
             // appointmentPanel1
             // 
@@ -97,6 +122,7 @@
             this.registerAppointment1.AppointmentDate = new System.DateTime(2019, 5, 18, 17, 41, 25, 231);
             this.registerAppointment1.DoctorActive = false;
             this.registerAppointment1.Enabled = false;
+            this.registerAppointment1.Hour = "";
             this.registerAppointment1.Location = new System.Drawing.Point(337, 13);
             this.registerAppointment1.Name = "registerAppointment1";
             this.registerAppointment1.Size = new System.Drawing.Size(767, 513);
@@ -128,15 +154,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1115, 537);
-            this.Controls.Add(this.editPanel1);
+            this.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.ClientSize = new System.Drawing.Size(1154, 580);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.labelInfo);
             this.Controls.Add(this.menuPanel1);
+            this.Controls.Add(this.editPanel1);
             this.Controls.Add(this.appointmentPanel1);
             this.Controls.Add(this.appointmentsPanel1);
             this.Controls.Add(this.registerAppointment1);
             this.Controls.Add(this.editAppointmentPanel1);
             this.Controls.Add(this.editAppointmentSearchPanel1);
+            this.Controls.Add(this.label3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.Text = "Panel pacjenta";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -155,6 +185,8 @@
         private EditPanel editPanel1;
         private EditAppointmentPanel editAppointmentPanel1;
         private EditAppointmentSearchPanel editAppointmentSearchPanel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
 

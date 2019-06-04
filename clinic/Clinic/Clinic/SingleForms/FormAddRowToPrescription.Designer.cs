@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddRowToPrescription));
             this.listBoxRows = new System.Windows.Forms.ListBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -82,6 +83,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.listBoxRows);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAddRowToPrescription";
             this.Text = "Dodaj lek z dawką do recepty";
             this.Load += new System.EventHandler(this.FormAddRowToPrescription_Load);

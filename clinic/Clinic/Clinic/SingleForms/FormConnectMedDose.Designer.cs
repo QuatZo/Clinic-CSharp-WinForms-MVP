@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConnectMedDose));
             this.comboBoxMedicine = new System.Windows.Forms.ComboBox();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
@@ -93,6 +94,7 @@
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.comboBoxMedicine);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormConnectMedDose";
             this.Text = "Połącz lek z dawką";
             this.Load += new System.EventHandler(this.FormAddRowToPrescription_Load);
