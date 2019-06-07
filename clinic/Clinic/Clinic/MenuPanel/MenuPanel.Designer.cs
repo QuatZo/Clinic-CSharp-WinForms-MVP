@@ -28,16 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonEdit = new System.Windows.Forms.Button();
-            this.buttonRegisterAppointment = new System.Windows.Forms.Button();
-            this.buttonAppointments = new System.Windows.Forms.Button();
-            this.buttonLogOut = new System.Windows.Forms.Button();
-            this.buttonEditAppointment = new System.Windows.Forms.Button();
+            this.buttonEdit = new Clinic.ButtonModified();
+            this.buttonRegisterAppointment = new Clinic.ButtonModified();
+            this.buttonAppointments = new Clinic.ButtonModified();
+            this.buttonLogOut = new Clinic.ButtonModified();
+            this.buttonEditAppointment = new Clinic.ButtonModified();
             this.SuspendLayout();
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Font = new System.Drawing.Font("OCR A Std", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEdit.BackColor = System.Drawing.Color.White;
+            this.buttonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEdit.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonEdit.ForeColor = System.Drawing.Color.Black;
             this.buttonEdit.Location = new System.Drawing.Point(3, 3);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(313, 44);
@@ -48,6 +51,10 @@
             // 
             // buttonRegisterAppointment
             // 
+            this.buttonRegisterAppointment.BackColor = System.Drawing.Color.White;
+            this.buttonRegisterAppointment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRegisterAppointment.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonRegisterAppointment.ForeColor = System.Drawing.Color.Black;
             this.buttonRegisterAppointment.Location = new System.Drawing.Point(3, 53);
             this.buttonRegisterAppointment.Name = "buttonRegisterAppointment";
             this.buttonRegisterAppointment.Size = new System.Drawing.Size(313, 44);
@@ -58,7 +65,10 @@
             // 
             // buttonAppointments
             // 
-            this.buttonAppointments.Font = new System.Drawing.Font("OCR A Std", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAppointments.BackColor = System.Drawing.Color.White;
+            this.buttonAppointments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAppointments.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonAppointments.ForeColor = System.Drawing.Color.Black;
             this.buttonAppointments.Location = new System.Drawing.Point(3, 103);
             this.buttonAppointments.Name = "buttonAppointments";
             this.buttonAppointments.Size = new System.Drawing.Size(313, 44);
@@ -69,7 +79,10 @@
             // 
             // buttonLogOut
             // 
-            this.buttonLogOut.Font = new System.Drawing.Font("OCR A Std", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLogOut.BackColor = System.Drawing.Color.White;
+            this.buttonLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLogOut.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonLogOut.ForeColor = System.Drawing.Color.Black;
             this.buttonLogOut.Location = new System.Drawing.Point(3, 153);
             this.buttonLogOut.Name = "buttonLogOut";
             this.buttonLogOut.Size = new System.Drawing.Size(313, 44);
@@ -80,7 +93,10 @@
             // 
             // buttonEditAppointment
             // 
-            this.buttonEditAppointment.Font = new System.Drawing.Font("OCR A Std", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEditAppointment.BackColor = System.Drawing.Color.White;
+            this.buttonEditAppointment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEditAppointment.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonEditAppointment.ForeColor = System.Drawing.Color.Black;
             this.buttonEditAppointment.Location = new System.Drawing.Point(4, 53);
             this.buttonEditAppointment.Name = "buttonEditAppointment";
             this.buttonEditAppointment.Size = new System.Drawing.Size(313, 44);
@@ -93,11 +109,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonEditAppointment);
             this.Controls.Add(this.buttonEdit);
-            this.Controls.Add(this.buttonRegisterAppointment);
             this.Controls.Add(this.buttonAppointments);
             this.Controls.Add(this.buttonLogOut);
+            this.Controls.Add(this.buttonEditAppointment);
+            this.Controls.Add(this.buttonRegisterAppointment);
             this.Name = "MenuPanel";
             this.Size = new System.Drawing.Size(320, 200);
             this.ResumeLayout(false);
@@ -106,10 +122,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonEdit;
-        private System.Windows.Forms.Button buttonRegisterAppointment;
-        private System.Windows.Forms.Button buttonAppointments;
-        private System.Windows.Forms.Button buttonLogOut;
-        private System.Windows.Forms.Button buttonEditAppointment;
+        private ButtonModified buttonEdit;
+        private ButtonModified buttonRegisterAppointment;
+        private ButtonModified buttonAppointments;
+        private ButtonModified buttonLogOut;
+        private ButtonModified buttonEditAppointment;
     }
 }

@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConnectMedDose));
             this.comboBoxMedicine = new System.Windows.Forms.ComboBox();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonExit = new System.Windows.Forms.Button();
+            this.buttonAdd = new Clinic.ButtonModified();
+            this.buttonExit = new Clinic.ButtonModified();
             this.comboBoxDose = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -39,17 +39,22 @@
             // comboBoxMedicine
             // 
             this.comboBoxMedicine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMedicine.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxMedicine.FormattingEnabled = true;
-            this.comboBoxMedicine.Location = new System.Drawing.Point(12, 50);
+            this.comboBoxMedicine.Location = new System.Drawing.Point(41, 50);
             this.comboBoxMedicine.Name = "comboBoxMedicine";
-            this.comboBoxMedicine.Size = new System.Drawing.Size(191, 21);
+            this.comboBoxMedicine.Size = new System.Drawing.Size(191, 30);
             this.comboBoxMedicine.TabIndex = 0;
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(12, 77);
+            this.buttonAdd.BackColor = System.Drawing.Color.White;
+            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAdd.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonAdd.ForeColor = System.Drawing.Color.Black;
+            this.buttonAdd.Location = new System.Drawing.Point(41, 86);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(191, 23);
+            this.buttonAdd.Size = new System.Drawing.Size(191, 35);
             this.buttonAdd.TabIndex = 2;
             this.buttonAdd.Text = "Dodaj";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -57,9 +62,13 @@
             // 
             // buttonExit
             // 
-            this.buttonExit.Location = new System.Drawing.Point(209, 77);
+            this.buttonExit.BackColor = System.Drawing.Color.White;
+            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExit.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonExit.ForeColor = System.Drawing.Color.Black;
+            this.buttonExit.Location = new System.Drawing.Point(253, 86);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(191, 23);
+            this.buttonExit.Size = new System.Drawing.Size(191, 35);
             this.buttonExit.TabIndex = 3;
             this.buttonExit.Text = "Wyjdź";
             this.buttonExit.UseVisualStyleBackColor = true;
@@ -68,19 +77,20 @@
             // comboBoxDose
             // 
             this.comboBoxDose.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDose.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxDose.FormattingEnabled = true;
-            this.comboBoxDose.Location = new System.Drawing.Point(209, 50);
+            this.comboBoxDose.Location = new System.Drawing.Point(253, 50);
             this.comboBoxDose.Name = "comboBoxDose";
-            this.comboBoxDose.Size = new System.Drawing.Size(191, 21);
+            this.comboBoxDose.Size = new System.Drawing.Size(191, 30);
             this.comboBoxDose.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(21, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(368, 15);
+            this.label1.Size = new System.Drawing.Size(450, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "Dodane leki pokażą się na liście dopiero po wyłączeniu tego okna.";
             // 
@@ -88,13 +98,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(415, 108);
+            this.ClientSize = new System.Drawing.Size(474, 141);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxDose);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.comboBoxMedicine);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(490, 180);
+            this.MinimumSize = new System.Drawing.Size(490, 180);
             this.Name = "FormConnectMedDose";
             this.Text = "Połącz lek z dawką";
             this.Load += new System.EventHandler(this.FormAddRowToPrescription_Load);
@@ -106,9 +119,9 @@
         #endregion
 
         private System.Windows.Forms.ComboBox comboBoxMedicine;
-        private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.ComboBox comboBoxDose;
         private System.Windows.Forms.Label label1;
+        private ButtonModified buttonAdd;
+        private ButtonModified buttonExit;
     }
 }

@@ -78,3 +78,33 @@ E:\BZ_SiSharp\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\Google.Protobuf.xml
 E:\BZ_SiSharp\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\MySql.Data.xml
 E:\BZ_SiSharp\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\System.ValueTuple.xml
 E:\BZ_SiSharp\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csproj.CopyComplete
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\Clinic.exe.config
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\Clinic.exe
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\Clinic.pdb
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\Google.Protobuf.dll
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\MySql.Data.dll
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\System.ValueTuple.dll
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\Google.Protobuf.xml
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\MySql.Data.xml
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\System.ValueTuple.xml
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csprojAssemblyReference.cache
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.AppointmentPanel.resources
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.AppointmentsPanel.resources
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.Database.DBInfo.resources
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.EditAppointmentPanel.resources
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.EditAppointmentSearchPanel.resources
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.EditPanel.resources
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormConnectMedDose.resources
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormAddRowToPrescription.resources
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormMain.resources
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormLogin.resources
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormRegister.resources
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.MenuPanel.resources
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.Properties.Resources.resources
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.RegisterAppointmentPanel.resources
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csproj.GenerateResource.cache
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csproj.CoreCompileInputs.cache
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csproj.CopyComplete
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.exe
+C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.pdb

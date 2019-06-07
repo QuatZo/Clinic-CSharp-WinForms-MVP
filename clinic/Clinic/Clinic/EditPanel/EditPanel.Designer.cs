@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.comboBoxSex = new System.Windows.Forms.ComboBox();
-            this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonEdit = new Clinic.ButtonModified();
             this.textBoxPhoneNumber = new System.Windows.Forms.TextBox();
             this.textBoxAddress = new System.Windows.Forms.TextBox();
             this.textBoxPESEL = new System.Windows.Forms.TextBox();
@@ -55,23 +55,26 @@
             // 
             this.comboBoxSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSex.Enabled = false;
-            this.comboBoxSex.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxSex.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxSex.FormattingEnabled = true;
             this.comboBoxSex.Items.AddRange(new object[] {
             "kobieta",
             "mezczyzna"});
             this.comboBoxSex.Location = new System.Drawing.Point(281, 291);
             this.comboBoxSex.Name = "comboBoxSex";
-            this.comboBoxSex.Size = new System.Drawing.Size(393, 25);
+            this.comboBoxSex.Size = new System.Drawing.Size(393, 30);
             this.comboBoxSex.TabIndex = 30;
             this.comboBoxSex.SelectedIndexChanged += new System.EventHandler(this.comboBoxSex_SelectedIndexChanged);
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEdit.BackColor = System.Drawing.Color.White;
+            this.buttonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEdit.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonEdit.ForeColor = System.Drawing.Color.Black;
             this.buttonEdit.Location = new System.Drawing.Point(281, 405);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(215, 31);
+            this.buttonEdit.Size = new System.Drawing.Size(215, 41);
             this.buttonEdit.TabIndex = 27;
             this.buttonEdit.Text = "Zapisz";
             this.buttonEdit.UseVisualStyleBackColor = true;
@@ -79,68 +82,68 @@
             // 
             // textBoxPhoneNumber
             // 
-            this.textBoxPhoneNumber.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPhoneNumber.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxPhoneNumber.Location = new System.Drawing.Point(281, 260);
             this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
-            this.textBoxPhoneNumber.Size = new System.Drawing.Size(393, 25);
+            this.textBoxPhoneNumber.Size = new System.Drawing.Size(393, 26);
             this.textBoxPhoneNumber.TabIndex = 26;
             // 
             // textBoxAddress
             // 
-            this.textBoxAddress.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAddress.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxAddress.Location = new System.Drawing.Point(281, 354);
             this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(393, 25);
+            this.textBoxAddress.Size = new System.Drawing.Size(393, 26);
             this.textBoxAddress.TabIndex = 25;
             // 
             // textBoxPESEL
             // 
             this.textBoxPESEL.Enabled = false;
-            this.textBoxPESEL.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPESEL.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxPESEL.Location = new System.Drawing.Point(281, 229);
             this.textBoxPESEL.Name = "textBoxPESEL";
-            this.textBoxPESEL.Size = new System.Drawing.Size(393, 25);
+            this.textBoxPESEL.Size = new System.Drawing.Size(393, 26);
             this.textBoxPESEL.TabIndex = 31;
             // 
             // textBoxSurname
             // 
             this.textBoxSurname.Enabled = false;
-            this.textBoxSurname.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxSurname.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxSurname.Location = new System.Drawing.Point(281, 198);
             this.textBoxSurname.Name = "textBoxSurname";
-            this.textBoxSurname.Size = new System.Drawing.Size(393, 25);
+            this.textBoxSurname.Size = new System.Drawing.Size(393, 26);
             this.textBoxSurname.TabIndex = 32;
             // 
             // textBoxName
             // 
             this.textBoxName.Enabled = false;
-            this.textBoxName.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxName.Location = new System.Drawing.Point(281, 167);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(393, 25);
+            this.textBoxName.Size = new System.Drawing.Size(393, 26);
             this.textBoxName.TabIndex = 33;
             // 
             // dateTimePickerBirthDay
             // 
             this.dateTimePickerBirthDay.Enabled = false;
-            this.dateTimePickerBirthDay.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerBirthDay.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.dateTimePickerBirthDay.Location = new System.Drawing.Point(281, 323);
             this.dateTimePickerBirthDay.Name = "dateTimePickerBirthDay";
-            this.dateTimePickerBirthDay.Size = new System.Drawing.Size(393, 25);
+            this.dateTimePickerBirthDay.Size = new System.Drawing.Size(393, 26);
             this.dateTimePickerBirthDay.TabIndex = 35;
             // 
             // textBoxRoom
             // 
-            this.textBoxRoom.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxRoom.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxRoom.Location = new System.Drawing.Point(281, 291);
             this.textBoxRoom.Name = "textBoxRoom";
-            this.textBoxRoom.Size = new System.Drawing.Size(393, 25);
+            this.textBoxRoom.Size = new System.Drawing.Size(393, 26);
             this.textBoxRoom.TabIndex = 36;
             // 
             // comboBoxHours
             // 
             this.comboBoxHours.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxHours.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxHours.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxHours.FormattingEnabled = true;
             this.comboBoxHours.Items.AddRange(new object[] {
             "poranne",
@@ -148,17 +151,17 @@
             "wieczorowe"});
             this.comboBoxHours.Location = new System.Drawing.Point(281, 322);
             this.comboBoxHours.Name = "comboBoxHours";
-            this.comboBoxHours.Size = new System.Drawing.Size(393, 25);
+            this.comboBoxHours.Size = new System.Drawing.Size(393, 30);
             this.comboBoxHours.TabIndex = 37;
             this.comboBoxHours.SelectedIndexChanged += new System.EventHandler(this.comboBoxHours_SelectedIndexChanged);
             // 
             // labelID
             // 
             this.labelID.AutoSize = true;
-            this.labelID.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelID.Location = new System.Drawing.Point(132, 136);
             this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(28, 17);
+            this.labelID.Size = new System.Drawing.Size(24, 22);
             this.labelID.TabIndex = 38;
             this.labelID.Text = "ID";
             this.labelID.Click += new System.EventHandler(this.label1_Click);
@@ -166,90 +169,90 @@
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelName.Location = new System.Drawing.Point(132, 167);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(48, 17);
+            this.labelName.Size = new System.Drawing.Size(41, 22);
             this.labelName.TabIndex = 39;
             this.labelName.Text = "Imie";
             // 
             // labelSurName
             // 
             this.labelSurName.AutoSize = true;
-            this.labelSurName.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSurName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelSurName.Location = new System.Drawing.Point(132, 198);
             this.labelSurName.Name = "labelSurName";
-            this.labelSurName.Size = new System.Drawing.Size(88, 17);
+            this.labelSurName.Size = new System.Drawing.Size(77, 22);
             this.labelSurName.TabIndex = 41;
             this.labelSurName.Text = "Nazwisko";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label4.Location = new System.Drawing.Point(132, 229);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 17);
+            this.label4.Size = new System.Drawing.Size(53, 22);
             this.label4.TabIndex = 40;
             this.label4.Text = "PESEL";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.Location = new System.Drawing.Point(132, 260);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 17);
+            this.label5.Size = new System.Drawing.Size(62, 22);
             this.label5.TabIndex = 45;
             this.label5.Text = "Telefon";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label6.Location = new System.Drawing.Point(132, 291);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(143, 17);
+            this.label6.Size = new System.Drawing.Size(122, 22);
             this.label6.TabIndex = 44;
             this.label6.Text = "Numer gabinetu";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label7.Location = new System.Drawing.Point(132, 322);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 17);
+            this.label7.Size = new System.Drawing.Size(68, 22);
             this.label7.TabIndex = 43;
             this.label7.Text = "Godziny";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label8.Location = new System.Drawing.Point(132, 354);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 17);
+            this.label8.Size = new System.Drawing.Size(49, 22);
             this.label8.TabIndex = 42;
             this.label8.Text = "Adres";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label9.Location = new System.Drawing.Point(132, 291);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 17);
+            this.label9.Size = new System.Drawing.Size(41, 22);
             this.label9.TabIndex = 46;
             this.label9.Text = "Płeć";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label10.Location = new System.Drawing.Point(132, 322);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(143, 17);
+            this.label10.Size = new System.Drawing.Size(117, 22);
             this.label10.TabIndex = 47;
             this.label10.Text = "Data urodzenia";
             this.label10.Click += new System.EventHandler(this.label10_Click);
@@ -257,10 +260,10 @@
             // textBoxID
             // 
             this.textBoxID.Enabled = false;
-            this.textBoxID.Font = new System.Drawing.Font("OCR-A BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxID.Location = new System.Drawing.Point(281, 136);
             this.textBoxID.Name = "textBoxID";
-            this.textBoxID.Size = new System.Drawing.Size(393, 25);
+            this.textBoxID.Size = new System.Drawing.Size(393, 26);
             this.textBoxID.TabIndex = 34;
             // 
             // EditPanel
@@ -299,7 +302,6 @@
         #endregion
 
         private System.Windows.Forms.ComboBox comboBoxSex;
-        private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.TextBox textBoxPhoneNumber;
         private System.Windows.Forms.TextBox textBoxAddress;
         private System.Windows.Forms.TextBox textBoxPESEL;
@@ -319,5 +321,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxID;
+        private ButtonModified buttonEdit;
     }
 }

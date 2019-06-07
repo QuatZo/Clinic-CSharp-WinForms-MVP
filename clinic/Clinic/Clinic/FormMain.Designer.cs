@@ -44,32 +44,32 @@
             // labelInfo
             // 
             this.labelInfo.AutoSize = true;
-            this.labelInfo.Font = new System.Drawing.Font("OCR A Std", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInfo.Location = new System.Drawing.Point(24, 13);
+            this.labelInfo.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelInfo.Location = new System.Drawing.Point(42, 31);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(289, 120);
+            this.labelInfo.Size = new System.Drawing.Size(196, 120);
             this.labelInfo.TabIndex = 7;
-            this.labelInfo.Text = "Przychodnia lekarska\r\n\r\nPanel\r\n\r\n\r\nWitaj!";
+            this.labelInfo.Text = "Przychodnia lekarska\r\n\r\nPanel\r\n\r\nWitaj!";
             this.labelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelInfo.Click += new System.EventHandler(this.labelInfo_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("OCR A Std", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(10, 535);
+            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(9, 524);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(157, 36);
+            this.label3.Size = new System.Drawing.Size(107, 48);
             this.label3.TabIndex = 2;
             this.label3.Text = "Dawid Mrosek\r\nBartłomiej Madejski\r\nPatryk Parkitny\r\n";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("OCR A Std", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(10, 522);
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(9, 509);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 12);
+            this.label2.Size = new System.Drawing.Size(52, 16);
             this.label2.TabIndex = 11;
             this.label2.Text = "Autorzy:\r\n";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -77,7 +77,7 @@
             // menuPanel1
             // 
             this.menuPanel1.EditAppointmentButtonVisibility = true;
-            this.menuPanel1.Location = new System.Drawing.Point(12, 199);
+            this.menuPanel1.Location = new System.Drawing.Point(6, 199);
             this.menuPanel1.Name = "menuPanel1";
             this.menuPanel1.RegisterAppointmentButtonVisibility = true;
             this.menuPanel1.Size = new System.Drawing.Size(325, 204);
@@ -167,6 +167,9 @@
             this.Controls.Add(this.editAppointmentSearchPanel1);
             this.Controls.Add(this.label3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1170, 619);
+            this.MinimumSize = new System.Drawing.Size(1170, 619);
             this.Name = "FormMain";
             this.Text = "Panel pacjenta";
             this.Load += new System.EventHandler(this.Form1_Load);

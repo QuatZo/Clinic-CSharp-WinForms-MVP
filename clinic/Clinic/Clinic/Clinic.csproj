@@ -66,6 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ButtonModified.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Classes\Appointment.cs" />
     <Compile Include="AppointmentsPanels\AppointmentPanel.cs">
       <SubType>UserControl</SubType>

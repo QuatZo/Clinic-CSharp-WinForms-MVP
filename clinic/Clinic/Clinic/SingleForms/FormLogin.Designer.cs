@@ -32,40 +32,47 @@
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.textBoxSurname = new System.Windows.Forms.TextBox();
             this.textBoxPesel = new System.Windows.Forms.TextBox();
-            this.buttonLogin = new System.Windows.Forms.Button();
+            this.buttonLogin = new Clinic.ButtonModified();
             this.SuspendLayout();
             // 
             // textBoxID
             // 
-            this.textBoxID.Location = new System.Drawing.Point(131, 180);
+            this.textBoxID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxID.Location = new System.Drawing.Point(63, 122);
             this.textBoxID.Name = "textBoxID";
-            this.textBoxID.Size = new System.Drawing.Size(243, 20);
+            this.textBoxID.Size = new System.Drawing.Size(243, 26);
             this.textBoxID.TabIndex = 6;
             this.textBoxID.Text = "ID";
             // 
             // textBoxSurname
             // 
-            this.textBoxSurname.Location = new System.Drawing.Point(131, 154);
+            this.textBoxSurname.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxSurname.Location = new System.Drawing.Point(63, 90);
             this.textBoxSurname.Name = "textBoxSurname";
-            this.textBoxSurname.Size = new System.Drawing.Size(243, 20);
+            this.textBoxSurname.Size = new System.Drawing.Size(243, 26);
             this.textBoxSurname.TabIndex = 5;
             this.textBoxSurname.Text = "Nazwisko";
             // 
             // textBoxPesel
             // 
-            this.textBoxPesel.Location = new System.Drawing.Point(131, 128);
+            this.textBoxPesel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxPesel.Location = new System.Drawing.Point(63, 58);
             this.textBoxPesel.Name = "textBoxPesel";
-            this.textBoxPesel.Size = new System.Drawing.Size(243, 20);
+            this.textBoxPesel.Size = new System.Drawing.Size(243, 26);
             this.textBoxPesel.TabIndex = 4;
             this.textBoxPesel.Text = "PESEL";
             this.textBoxPesel.TextChanged += new System.EventHandler(this.textBoxPesel_TextChanged);
             // 
             // buttonLogin
             // 
+            this.buttonLogin.BackColor = System.Drawing.Color.White;
             this.buttonLogin.Enabled = false;
-            this.buttonLogin.Location = new System.Drawing.Point(200, 226);
+            this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonLogin.ForeColor = System.Drawing.Color.Black;
+            this.buttonLogin.Location = new System.Drawing.Point(114, 171);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(105, 48);
+            this.buttonLogin.Size = new System.Drawing.Size(137, 37);
             this.buttonLogin.TabIndex = 7;
             this.buttonLogin.Text = "Logowanie";
             this.buttonLogin.UseVisualStyleBackColor = true;
@@ -75,12 +82,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 406);
+            this.ClientSize = new System.Drawing.Size(373, 255);
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.textBoxSurname);
             this.Controls.Add(this.textBoxPesel);
             this.Controls.Add(this.buttonLogin);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(389, 294);
+            this.MinimumSize = new System.Drawing.Size(389, 294);
             this.Name = "FormLogin";
             this.Text = "Panel logowania";
             this.ResumeLayout(false);
@@ -93,6 +103,6 @@
         private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.TextBox textBoxSurname;
         private System.Windows.Forms.TextBox textBoxPesel;
-        private System.Windows.Forms.Button buttonLogin;
+        private ButtonModified buttonLogin;
     }
 }
