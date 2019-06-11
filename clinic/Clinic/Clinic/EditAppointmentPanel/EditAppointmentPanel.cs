@@ -51,10 +51,14 @@ namespace Clinic
             set
             {
                 if(listBoxReceipt.Items.Count > 0) { listBoxReceipt.Items.Clear(); }
-                foreach(var el in value)
+                try
                 {
-                    listBoxReceipt.Items.Add(el);
+                    foreach (var el in value)
+                    {
+                        listBoxReceipt.Items.Add(el);
+                    }
                 }
+                catch (NullReferenceException) { }
             }
         }
         #endregion

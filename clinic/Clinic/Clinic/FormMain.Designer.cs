@@ -159,13 +159,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelInfo);
             this.Controls.Add(this.menuPanel1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.editPanel1);
             this.Controls.Add(this.appointmentPanel1);
             this.Controls.Add(this.appointmentsPanel1);
             this.Controls.Add(this.registerAppointment1);
             this.Controls.Add(this.editAppointmentPanel1);
             this.Controls.Add(this.editAppointmentSearchPanel1);
-            this.Controls.Add(this.label3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1170, 619);

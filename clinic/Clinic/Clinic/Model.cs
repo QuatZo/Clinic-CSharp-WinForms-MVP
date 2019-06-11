@@ -300,17 +300,21 @@ namespace Clinic
         {
             int count = 0;
             int id = -1;
-            for(int i = 0; i < appointments.Count; i++)
+            try
             {
-                if(appointments[i].Patient.Pesel.ToString() == patientPesel && appointments[i].Date >= date.AddMinutes(-1) && appointments[i].Date <= date.AddMinutes(1))
+                for (int i = 0; i < appointments.Count; i++)
                 {
-                    count++;
-                    id = i;
+                    if (appointments[i].Patient.Pesel.ToString() == patientPesel && appointments[i].Date >= date.AddMinutes(-1) && appointments[i].Date <= date.AddMinutes(1))
+                    {
+                        count++;
+                        id = i;
+                    }
                 }
+                if (count == 1) { return id; }
+                else if (count == 0) { MessageBox.Show("Brak wyników!"); }
+                else { MessageBox.Show("Podana wizyta widnieje 2x w systemie. Proszę zgłosić się do administratora."); }
             }
-            if ( count == 1) { return id; }
-            else if (count == 0) { MessageBox.Show("Brak wyników!"); }
-            else { MessageBox.Show("Podana wizyta widnieje 2x w systemie. Proszę zgłosić się do administratora."); }
+            catch (NullReferenceException) { }
             return -1;
         }
 
@@ -345,19 +349,26 @@ namespace Clinic
         {
             List<string> apps = new List<string>();
 
-            foreach (var appointment in appointments)
+            try
             {
-                string str = appointment.Id.ToString() + "\t- ";
-                str += appointment.Date.ToString("yyyy-MM-dd HH:mm") + "\t- ";
+                foreach (var appointment in appointments)
+                {
+                    string str = appointment.Id.ToString() + "\t- ";
+                    str += appointment.Date.ToString("yyyy-MM-dd HH:mm") + "\t- ";
 
-                if (FormLogin.position == Position.pacjent) { str += $"{appointment.Doctor.Name} {appointment.Doctor.Surname}\t- "; }
-                else { str += $"{appointment.Patient.Name} {appointment.Patient.Surname}\t- "; }
+                    if (FormLogin.position == Position.pacjent) { str += $"{appointment.Doctor.Name} {appointment.Doctor.Surname}\t- "; }
+                    else { str += $"{appointment.Patient.Name} {appointment.Patient.Surname}\t- "; }
 
-                str += appointment.Doctor.Room.ToString();
+                    str += appointment.Doctor.Room.ToString();
 
-                apps.Add(str);
+                    apps.Add(str);
+                }
+                return apps;
             }
-            return apps;
+            catch (NullReferenceException)
+            {
+                return new List<string>();
+            }
         }
         #endregion
 

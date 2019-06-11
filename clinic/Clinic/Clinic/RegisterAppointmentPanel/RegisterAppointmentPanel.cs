@@ -18,10 +18,14 @@ namespace Clinic
             set
             {
                 if(comboBoxSpecialization.Items.Count > 0) { comboBoxSpecialization.Items.Clear(); }
-                foreach (var spec in value)
+                try
                 {
-                    comboBoxSpecialization.Items.Add(spec);
+                    foreach (var spec in value)
+                    {
+                        comboBoxSpecialization.Items.Add(spec);
+                    }
                 }
+                catch (NullReferenceException) { }
             }
         }
         public string Specialization
@@ -44,11 +48,15 @@ namespace Clinic
             set
             {
                 if (comboBoxDoctor.Items.Count > 0) { comboBoxDoctor.Items.Clear(); }
-                foreach (var doc in value)
+                try
                 {
-                    comboBoxDoctor.Items.Add(doc);
+                    foreach (var doc in value)
+                    {
+                        comboBoxDoctor.Items.Add(doc);
+                    }
                 }
-            }
+                catch (NullReferenceException) { }
+}
         }
         public string Doctor
         {

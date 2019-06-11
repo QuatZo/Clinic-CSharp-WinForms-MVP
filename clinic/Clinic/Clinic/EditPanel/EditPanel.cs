@@ -192,26 +192,34 @@ namespace Clinic
         // metoda uzupełniająca dane pacjenta
         public void FullfilPatientFields()
         {
-            ID = FormLogin.patient.Id;
-            FirstName = FormLogin.patient.Name;
-            Surname = FormLogin.patient.Surname;
-            Pesel = FormLogin.patient.Pesel;
-            PhoneNumber = FormLogin.patient.PhoneNumber;
-            Sex = FormLogin.patient.Sex.ToString();
-            BirthDay = FormLogin.patient.BirthDay;
-            Address = FormLogin.patient.Address;
+            try
+            {
+                ID = FormLogin.patient.Id;
+                FirstName = FormLogin.patient.Name;
+                Surname = FormLogin.patient.Surname;
+                Pesel = FormLogin.patient.Pesel;
+                PhoneNumber = FormLogin.patient.PhoneNumber;
+                Sex = FormLogin.patient.Sex.ToString();
+                BirthDay = FormLogin.patient.BirthDay;
+                Address = FormLogin.patient.Address;
+            }
+            catch (NullReferenceException) { }
         }
 
         // metoda uzupełniająca dane lekarza
         public void FullfilDoctorFields()
         {
-            ID = FormLogin.doctor.Id;
-            FirstName = FormLogin.doctor.Name;
-            Surname = FormLogin.doctor.Surname;
-            Pesel = FormLogin.doctor.Pesel;
-            PhoneNumber = FormLogin.doctor.PhoneNumber;
-            Hour = FormLogin.doctor.Hour.ToString();
-            Room = FormLogin.doctor.Room;
+            try
+            {
+                ID = FormLogin.doctor.Id;
+                FirstName = FormLogin.doctor.Name;
+                Surname = FormLogin.doctor.Surname;
+                Pesel = FormLogin.doctor.Pesel;
+                PhoneNumber = FormLogin.doctor.PhoneNumber;
+                Hour = FormLogin.doctor.Hour.ToString();
+                Room = FormLogin.doctor.Room;
+            }
+            catch (NullReferenceException) { }
         }
         #endregion
 

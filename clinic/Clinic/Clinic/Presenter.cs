@@ -128,12 +128,18 @@ namespace Clinic
             // jesli jest zalogowany pacjent
             if (FormLogin.position == Position.pacjent)
             {
-                // metoda w modelu, ktora pobierze pacjenta
-                FormLogin.patient = model.GetPatientInfo(FormLogin.patient.Pesel.ToString());
+                
+                try
+                {
+                    // metoda w modelu, ktora pobierze pacjenta
+                    FormLogin.patient = model.GetPatientInfo(FormLogin.patient.Pesel.ToString());
 
-                // aktualizuj info, jesli juz nie jest zaktualizowane (czyt. pierwszy raz odpalone)
-                if (!view.WelcomeLabel.Contains($"Witaj, {FormLogin.patient.Name} {FormLogin.patient.Surname}"))
-                    view.WelcomeLabel = view.WelcomeLabel.Replace("Witaj", $"Witaj, {FormLogin.patient.Name} {FormLogin.patient.Surname}");
+                    // aktualizuj info, jesli juz nie jest zaktualizowane (czyt. pierwszy raz odpalone)
+                
+                    if (!view.WelcomeLabel.Contains($"Witaj, {FormLogin.patient.Name} {FormLogin.patient.Surname}"))
+                        view.WelcomeLabel = view.WelcomeLabel.Replace("Witaj", $"Witaj, {FormLogin.patient.Name} {FormLogin.patient.Surname}");
+                }
+                catch (NullReferenceException) { }
 
                 // pokaz pola pacjenta i ukryj doktora
                 if (!view.EditView.PatientFields)
@@ -150,12 +156,17 @@ namespace Clinic
             }
             else
             {
-                // metoda w modelu, ktora pobierze lekarza
-                FormLogin.doctor = model.GetDoctorInfo(FormLogin.doctor.Pesel.ToString());
+                try
+                {
+                    // metoda w modelu, ktora pobierze lekarza
+                    FormLogin.doctor = model.GetDoctorInfo(FormLogin.doctor.Pesel.ToString());
 
-                // aktualizuj info, jesli juz nie jest zaktualizowane (czyt. pierwszy raz odpalone)
-                if (!view.WelcomeLabel.Contains($"Witaj, {FormLogin.doctor.Name} {FormLogin.doctor.Surname}"))
-                    view.WelcomeLabel = view.WelcomeLabel.Replace("Witaj", $"Witaj, {FormLogin.doctor.Name} {FormLogin.doctor.Surname}");
+                    // aktualizuj info, jesli juz nie jest zaktualizowane (czyt. pierwszy raz odpalone)
+                
+                    if (!view.WelcomeLabel.Contains($"Witaj, {FormLogin.doctor.Name} {FormLogin.doctor.Surname}"))
+                        view.WelcomeLabel = view.WelcomeLabel.Replace("Witaj", $"Witaj, {FormLogin.doctor.Name} {FormLogin.doctor.Surname}");
+                }
+                catch (NullReferenceException) { }
 
                 // ukryj pola pacjenta i pokaz doktora
                 if (view.EditView.PatientFields)
