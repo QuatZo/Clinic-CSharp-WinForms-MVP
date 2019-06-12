@@ -55,3 +55,11 @@ Normalizacja nazw zmiennych
 ---------------------------------------------------
 * - opcjonalne
 ** - gdy bêdzie trzeba wypchaæ bazê
+
+Dokumentacja
+Strona tytu³owa
+Dlaczego to zrobiliœmy, po co, i kto w sk³¹dzie
+Diagram ERD (strza³ki - jeden do jeden, bez - wiele)
+Model relacyjny
+Instrukcja u¿ytkowania (screeny z programu)
+Przysz³oœæ 
