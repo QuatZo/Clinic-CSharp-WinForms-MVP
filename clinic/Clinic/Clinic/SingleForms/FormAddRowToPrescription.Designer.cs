@@ -41,7 +41,7 @@
             this.listBoxRows.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listBoxRows.FormattingEnabled = true;
             this.listBoxRows.ItemHeight = 22;
-            this.listBoxRows.Location = new System.Drawing.Point(75, 44);
+            this.listBoxRows.Location = new System.Drawing.Point(81, 45);
             this.listBoxRows.Name = "listBoxRows";
             this.listBoxRows.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxRows.Size = new System.Drawing.Size(297, 334);
@@ -53,7 +53,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonSave.ForeColor = System.Drawing.Color.Black;
-            this.buttonSave.Location = new System.Drawing.Point(109, 397);
+            this.buttonSave.Location = new System.Drawing.Point(115, 398);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(227, 35);
             this.buttonSave.TabIndex = 1;
@@ -77,7 +77,7 @@
             this.buttonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEdit.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonEdit.ForeColor = System.Drawing.Color.Black;
-            this.buttonEdit.Location = new System.Drawing.Point(109, 438);
+            this.buttonEdit.Location = new System.Drawing.Point(115, 439);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(227, 35);
             this.buttonEdit.TabIndex = 3;
@@ -89,7 +89,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(96, 492);
+            this.label2.Location = new System.Drawing.Point(102, 493);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(250, 18);
             this.label2.TabIndex = 4;
@@ -99,6 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(460, 519);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonEdit);

@@ -61,7 +61,6 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(279, 26);
             this.textBoxName.TabIndex = 44;
-            this.textBoxName.Text = "Imie";
             this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             // 
             // textBoxSurname
@@ -71,7 +70,6 @@
             this.textBoxSurname.Name = "textBoxSurname";
             this.textBoxSurname.Size = new System.Drawing.Size(279, 26);
             this.textBoxSurname.TabIndex = 43;
-            this.textBoxSurname.Text = "Nazwisko";
             // 
             // textBoxPESEL
             // 
@@ -81,7 +79,6 @@
             this.textBoxPESEL.Name = "textBoxPESEL";
             this.textBoxPESEL.Size = new System.Drawing.Size(279, 26);
             this.textBoxPESEL.TabIndex = 42;
-            this.textBoxPESEL.Text = "PESEL";
             // 
             // comboBoxSex
             // 
@@ -117,16 +114,15 @@
             this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
             this.textBoxPhoneNumber.Size = new System.Drawing.Size(279, 26);
             this.textBoxPhoneNumber.TabIndex = 39;
-            this.textBoxPhoneNumber.Text = "Telefon";
             // 
             // textBoxAddress
             // 
+            this.textBoxAddress.BackColor = System.Drawing.Color.White;
             this.textBoxAddress.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxAddress.Location = new System.Drawing.Point(187, 223);
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(279, 26);
             this.textBoxAddress.TabIndex = 38;
-            this.textBoxAddress.Text = "Adres";
             this.textBoxAddress.TextChanged += new System.EventHandler(this.textBoxAddress_TextChanged);
             // 
             // Imie

@@ -80,7 +80,7 @@
             this.menuPanel1.Location = new System.Drawing.Point(6, 199);
             this.menuPanel1.Name = "menuPanel1";
             this.menuPanel1.RegisterAppointmentButtonVisibility = true;
-            this.menuPanel1.Size = new System.Drawing.Size(325, 204);
+            this.menuPanel1.Size = new System.Drawing.Size(313, 204);
             this.menuPanel1.TabIndex = 1;
             // 
             // editPanel1
@@ -90,7 +90,7 @@
             this.editPanel1.BirthDay = new System.DateTime(2019, 5, 18, 17, 41, 25, 213);
             this.editPanel1.DoctorFields = true;
             this.editPanel1.FirstName = "Imie";
-            this.editPanel1.Location = new System.Drawing.Point(337, 13);
+            this.editPanel1.Location = new System.Drawing.Point(337, 12);
             this.editPanel1.Name = "editPanel1";
             this.editPanel1.PatientFields = true;
             this.editPanel1.PhoneNumber = "Telefon";
@@ -102,7 +102,7 @@
             // appointmentPanel1
             // 
             this.appointmentPanel1.Enabled = false;
-            this.appointmentPanel1.Location = new System.Drawing.Point(337, 13);
+            this.appointmentPanel1.Location = new System.Drawing.Point(337, 12);
             this.appointmentPanel1.Name = "appointmentPanel1";
             this.appointmentPanel1.Size = new System.Drawing.Size(767, 512);
             this.appointmentPanel1.TabIndex = 6;
@@ -111,9 +111,9 @@
             // appointmentsPanel1
             // 
             this.appointmentsPanel1.Enabled = false;
-            this.appointmentsPanel1.Location = new System.Drawing.Point(337, 13);
+            this.appointmentsPanel1.Location = new System.Drawing.Point(337, 12);
             this.appointmentsPanel1.Name = "appointmentsPanel1";
-            this.appointmentsPanel1.Size = new System.Drawing.Size(766, 517);
+            this.appointmentsPanel1.Size = new System.Drawing.Size(807, 559);
             this.appointmentsPanel1.TabIndex = 5;
             this.appointmentsPanel1.Visible = false;
             // 
@@ -123,30 +123,32 @@
             this.registerAppointment1.DoctorActive = false;
             this.registerAppointment1.Enabled = false;
             this.registerAppointment1.Hour = "";
-            this.registerAppointment1.Location = new System.Drawing.Point(337, 13);
+            this.registerAppointment1.Location = new System.Drawing.Point(337, 12);
             this.registerAppointment1.Name = "registerAppointment1";
-            this.registerAppointment1.Size = new System.Drawing.Size(767, 513);
+            this.registerAppointment1.Size = new System.Drawing.Size(807, 559);
             this.registerAppointment1.TabIndex = 4;
             this.registerAppointment1.Visible = false;
             // 
             // editAppointmentPanel1
             // 
             this.editAppointmentPanel1.AppointmentID = -1;
+            this.editAppointmentPanel1.BackColor = System.Drawing.Color.White;
             this.editAppointmentPanel1.Content = "Opis";
             this.editAppointmentPanel1.ID = 0;
-            this.editAppointmentPanel1.Location = new System.Drawing.Point(337, 13);
+            this.editAppointmentPanel1.Location = new System.Drawing.Point(337, 12);
             this.editAppointmentPanel1.Name = "editAppointmentPanel1";
             this.editAppointmentPanel1.Prescription = ((System.Collections.Generic.List<string>)(resources.GetObject("editAppointmentPanel1.Prescription")));
-            this.editAppointmentPanel1.Size = new System.Drawing.Size(767, 517);
+            this.editAppointmentPanel1.Size = new System.Drawing.Size(805, 559);
             this.editAppointmentPanel1.TabIndex = 9;
             this.editAppointmentPanel1.Visible = false;
             // 
             // editAppointmentSearchPanel1
             // 
-            this.editAppointmentSearchPanel1.Location = new System.Drawing.Point(337, 13);
+            this.editAppointmentSearchPanel1.BackColor = System.Drawing.Color.White;
+            this.editAppointmentSearchPanel1.Location = new System.Drawing.Point(337, 12);
             this.editAppointmentSearchPanel1.Name = "editAppointmentSearchPanel1";
             this.editAppointmentSearchPanel1.PeselPatient = "PESEL pacjenta";
-            this.editAppointmentSearchPanel1.Size = new System.Drawing.Size(767, 517);
+            this.editAppointmentSearchPanel1.Size = new System.Drawing.Size(805, 555);
             this.editAppointmentSearchPanel1.TabIndex = 10;
             this.editAppointmentSearchPanel1.Visible = false;
             // 
@@ -154,7 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(199)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1154, 580);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelInfo);

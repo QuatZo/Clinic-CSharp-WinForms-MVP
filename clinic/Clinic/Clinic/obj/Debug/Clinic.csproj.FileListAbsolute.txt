@@ -88,7 +88,6 @@ C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_S
 C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\Google.Protobuf.xml
 C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\MySql.Data.xml
 C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\System.ValueTuple.xml
-C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csprojAssemblyReference.cache
 C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.AppointmentPanel.resources
 C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.AppointmentsPanel.resources
 C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.Database.DBInfo.resources

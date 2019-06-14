@@ -353,11 +353,11 @@ namespace Clinic
             {
                 foreach (var appointment in appointments)
                 {
-                    string str = appointment.Id.ToString() + "\t- ";
-                    str += appointment.Date.ToString("yyyy-MM-dd HH:mm") + "\t- ";
+                    string str = appointment.Id.ToString() + " - ";
+                    str += appointment.Date.ToString("yyyy-MM-dd HH:mm") + " - ";
 
-                    if (FormLogin.position == Position.pacjent) { str += $"{appointment.Doctor.Name} {appointment.Doctor.Surname}\t- "; }
-                    else { str += $"{appointment.Patient.Name} {appointment.Patient.Surname}\t- "; }
+                    if (FormLogin.position == Position.pacjent) { str += $"{appointment.Doctor.Name} {appointment.Doctor.Surname} - "; }
+                    else { str += $"{appointment.Patient.Name} {appointment.Patient.Surname} - "; }
 
                     str += appointment.Doctor.Room.ToString();
 

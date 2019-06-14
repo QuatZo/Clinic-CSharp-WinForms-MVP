@@ -35,18 +35,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(211, 70);
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(174, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(289, 13);
+            this.label1.Size = new System.Drawing.Size(459, 22);
             this.label1.TabIndex = 3;
             this.label1.Text = "Lista z datami, po kliknięciu w datę przejdzie do opisu wizyty";
             // 
             // listBox1
             // 
+            this.listBox1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(183, 104);
+            this.listBox1.ItemHeight = 22;
+            this.listBox1.Location = new System.Drawing.Point(203, 100);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(359, 342);
+            this.listBox1.Size = new System.Drawing.Size(385, 334);
             this.listBox1.TabIndex = 2;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -57,7 +60,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox1);
             this.Name = "AppointmentsPanel";
-            this.Size = new System.Drawing.Size(725, 517);
+            this.Size = new System.Drawing.Size(817, 517);
             this.ResumeLayout(false);
             this.PerformLayout();
 

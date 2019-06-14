@@ -41,7 +41,7 @@
             this.comboBoxMedicine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMedicine.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxMedicine.FormattingEnabled = true;
-            this.comboBoxMedicine.Location = new System.Drawing.Point(41, 50);
+            this.comboBoxMedicine.Location = new System.Drawing.Point(38, 51);
             this.comboBoxMedicine.Name = "comboBoxMedicine";
             this.comboBoxMedicine.Size = new System.Drawing.Size(191, 30);
             this.comboBoxMedicine.TabIndex = 0;
@@ -52,7 +52,7 @@
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdd.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonAdd.ForeColor = System.Drawing.Color.Black;
-            this.buttonAdd.Location = new System.Drawing.Point(41, 86);
+            this.buttonAdd.Location = new System.Drawing.Point(38, 87);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(191, 35);
             this.buttonAdd.TabIndex = 2;
@@ -66,7 +66,7 @@
             this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExit.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonExit.ForeColor = System.Drawing.Color.Black;
-            this.buttonExit.Location = new System.Drawing.Point(253, 86);
+            this.buttonExit.Location = new System.Drawing.Point(250, 87);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(191, 35);
             this.buttonExit.TabIndex = 3;
@@ -79,7 +79,7 @@
             this.comboBoxDose.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDose.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxDose.FormattingEnabled = true;
-            this.comboBoxDose.Location = new System.Drawing.Point(253, 50);
+            this.comboBoxDose.Location = new System.Drawing.Point(250, 51);
             this.comboBoxDose.Name = "comboBoxDose";
             this.comboBoxDose.Size = new System.Drawing.Size(191, 30);
             this.comboBoxDose.TabIndex = 4;
@@ -88,7 +88,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(21, 9);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(450, 20);
             this.label1.TabIndex = 5;
@@ -98,6 +98,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(474, 141);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxDose);
