@@ -53,6 +53,7 @@
             // 
             // comboBoxSex
             // 
+            this.comboBoxSex.BackColor = System.Drawing.Color.White;
             this.comboBoxSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSex.Enabled = false;
             this.comboBoxSex.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -98,28 +99,31 @@
             // 
             // textBoxPESEL
             // 
-            this.textBoxPESEL.Enabled = false;
+            this.textBoxPESEL.BackColor = System.Drawing.Color.White;
             this.textBoxPESEL.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxPESEL.Location = new System.Drawing.Point(281, 229);
             this.textBoxPESEL.Name = "textBoxPESEL";
+            this.textBoxPESEL.ReadOnly = true;
             this.textBoxPESEL.Size = new System.Drawing.Size(393, 26);
             this.textBoxPESEL.TabIndex = 31;
             // 
             // textBoxSurname
             // 
-            this.textBoxSurname.Enabled = false;
+            this.textBoxSurname.BackColor = System.Drawing.Color.White;
             this.textBoxSurname.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxSurname.Location = new System.Drawing.Point(281, 198);
             this.textBoxSurname.Name = "textBoxSurname";
+            this.textBoxSurname.ReadOnly = true;
             this.textBoxSurname.Size = new System.Drawing.Size(393, 26);
             this.textBoxSurname.TabIndex = 32;
             // 
             // textBoxName
             // 
-            this.textBoxName.Enabled = false;
+            this.textBoxName.BackColor = System.Drawing.Color.White;
             this.textBoxName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxName.Location = new System.Drawing.Point(281, 167);
             this.textBoxName.Name = "textBoxName";
+            this.textBoxName.ReadOnly = true;
             this.textBoxName.Size = new System.Drawing.Size(393, 26);
             this.textBoxName.TabIndex = 33;
             // 
@@ -134,6 +138,7 @@
             // 
             // textBoxRoom
             // 
+            this.textBoxRoom.BackColor = System.Drawing.Color.White;
             this.textBoxRoom.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxRoom.Location = new System.Drawing.Point(281, 291);
             this.textBoxRoom.Name = "textBoxRoom";
@@ -142,6 +147,7 @@
             // 
             // comboBoxHours
             // 
+            this.comboBoxHours.BackColor = System.Drawing.Color.White;
             this.comboBoxHours.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxHours.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxHours.FormattingEnabled = true;
@@ -159,7 +165,7 @@
             // 
             this.labelID.AutoSize = true;
             this.labelID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelID.Location = new System.Drawing.Point(132, 136);
+            this.labelID.Location = new System.Drawing.Point(131, 140);
             this.labelID.Name = "labelID";
             this.labelID.Size = new System.Drawing.Size(24, 22);
             this.labelID.TabIndex = 38;
@@ -170,7 +176,7 @@
             // 
             this.labelName.AutoSize = true;
             this.labelName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelName.Location = new System.Drawing.Point(132, 167);
+            this.labelName.Location = new System.Drawing.Point(131, 171);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(41, 22);
             this.labelName.TabIndex = 39;
@@ -180,7 +186,7 @@
             // 
             this.labelSurName.AutoSize = true;
             this.labelSurName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelSurName.Location = new System.Drawing.Point(132, 198);
+            this.labelSurName.Location = new System.Drawing.Point(131, 202);
             this.labelSurName.Name = "labelSurName";
             this.labelSurName.Size = new System.Drawing.Size(77, 22);
             this.labelSurName.TabIndex = 41;
@@ -190,7 +196,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(132, 229);
+            this.label4.Location = new System.Drawing.Point(131, 233);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 22);
             this.label4.TabIndex = 40;
@@ -200,7 +206,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(132, 260);
+            this.label5.Location = new System.Drawing.Point(131, 264);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 22);
             this.label5.TabIndex = 45;
@@ -210,7 +216,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(132, 291);
+            this.label6.Location = new System.Drawing.Point(131, 295);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(122, 22);
             this.label6.TabIndex = 44;
@@ -220,7 +226,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(132, 322);
+            this.label7.Location = new System.Drawing.Point(131, 326);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 22);
             this.label7.TabIndex = 43;
@@ -230,7 +236,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.Location = new System.Drawing.Point(132, 354);
+            this.label8.Location = new System.Drawing.Point(131, 358);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 22);
             this.label8.TabIndex = 42;
@@ -240,7 +246,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label9.Location = new System.Drawing.Point(132, 291);
+            this.label9.Location = new System.Drawing.Point(131, 295);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 22);
             this.label9.TabIndex = 46;
@@ -250,7 +256,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label10.Location = new System.Drawing.Point(132, 322);
+            this.label10.Location = new System.Drawing.Point(131, 326);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(117, 22);
             this.label10.TabIndex = 47;
@@ -259,10 +265,11 @@
             // 
             // textBoxID
             // 
-            this.textBoxID.Enabled = false;
+            this.textBoxID.BackColor = System.Drawing.Color.White;
             this.textBoxID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxID.Location = new System.Drawing.Point(281, 136);
             this.textBoxID.Name = "textBoxID";
+            this.textBoxID.ReadOnly = true;
             this.textBoxID.Size = new System.Drawing.Size(393, 26);
             this.textBoxID.TabIndex = 34;
             // 

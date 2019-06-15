@@ -100,9 +100,9 @@
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(159, 148);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 22);
+            this.label1.Size = new System.Drawing.Size(105, 22);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Specjaliacja";
+            this.label1.Text = "Specjalizacja";
             // 
             // label2
             // 
@@ -128,7 +128,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(159, 221);
+            this.label4.Location = new System.Drawing.Point(159, 218);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 22);
             this.label4.TabIndex = 21;
@@ -138,7 +138,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(161, 249);
+            this.label5.Location = new System.Drawing.Point(159, 249);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(174, 22);
             this.label5.TabIndex = 22;

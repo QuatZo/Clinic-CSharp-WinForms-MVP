@@ -55,11 +55,12 @@
             // 
             // textBoxContent
             // 
-            this.textBoxContent.Enabled = false;
+            this.textBoxContent.BackColor = System.Drawing.Color.White;
             this.textBoxContent.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxContent.Location = new System.Drawing.Point(209, 358);
             this.textBoxContent.Multiline = true;
             this.textBoxContent.Name = "textBoxContent";
+            this.textBoxContent.ReadOnly = true;
             this.textBoxContent.Size = new System.Drawing.Size(401, 139);
             this.textBoxContent.TabIndex = 19;
             this.textBoxContent.Text = "Opis ";
@@ -67,42 +68,45 @@
             // 
             // textBoxDoctor
             // 
-            this.textBoxDoctor.Enabled = false;
+            this.textBoxDoctor.BackColor = System.Drawing.Color.White;
             this.textBoxDoctor.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxDoctor.Location = new System.Drawing.Point(209, 130);
             this.textBoxDoctor.Name = "textBoxDoctor";
+            this.textBoxDoctor.ReadOnly = true;
             this.textBoxDoctor.Size = new System.Drawing.Size(214, 26);
             this.textBoxDoctor.TabIndex = 24;
             this.textBoxDoctor.Text = "Lekarz";
             // 
             // textBoxPatient
             // 
-            this.textBoxPatient.Enabled = false;
+            this.textBoxPatient.BackColor = System.Drawing.Color.White;
             this.textBoxPatient.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxPatient.Location = new System.Drawing.Point(209, 98);
             this.textBoxPatient.Name = "textBoxPatient";
+            this.textBoxPatient.ReadOnly = true;
             this.textBoxPatient.Size = new System.Drawing.Size(214, 26);
             this.textBoxPatient.TabIndex = 26;
             this.textBoxPatient.Text = "Pacjent";
             // 
             // textBoxPatientPesel
             // 
-            this.textBoxPatientPesel.Enabled = false;
+            this.textBoxPatientPesel.BackColor = System.Drawing.Color.White;
             this.textBoxPatientPesel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxPatientPesel.Location = new System.Drawing.Point(209, 66);
             this.textBoxPatientPesel.Name = "textBoxPatientPesel";
+            this.textBoxPatientPesel.ReadOnly = true;
             this.textBoxPatientPesel.Size = new System.Drawing.Size(214, 26);
             this.textBoxPatientPesel.TabIndex = 27;
             this.textBoxPatientPesel.Text = "PESEL";
             // 
             // listBoxPrescription
             // 
-            this.listBoxPrescription.Enabled = false;
             this.listBoxPrescription.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listBoxPrescription.FormattingEnabled = true;
             this.listBoxPrescription.ItemHeight = 22;
             this.listBoxPrescription.Location = new System.Drawing.Point(209, 194);
             this.listBoxPrescription.Name = "listBoxPrescription";
+            this.listBoxPrescription.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.listBoxPrescription.Size = new System.Drawing.Size(291, 158);
             this.listBoxPrescription.TabIndex = 28;
             // 

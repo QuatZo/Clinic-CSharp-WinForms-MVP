@@ -76,17 +76,18 @@
             // 
             // menuPanel1
             // 
+            this.menuPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(199)))), ((int)(((byte)(255)))));
             this.menuPanel1.EditAppointmentButtonVisibility = true;
             this.menuPanel1.Location = new System.Drawing.Point(6, 199);
             this.menuPanel1.Name = "menuPanel1";
             this.menuPanel1.RegisterAppointmentButtonVisibility = true;
-            this.menuPanel1.Size = new System.Drawing.Size(313, 204);
+            this.menuPanel1.Size = new System.Drawing.Size(325, 204);
             this.menuPanel1.TabIndex = 1;
             // 
             // editPanel1
             // 
             this.editPanel1.Address = "Adres";
-            this.editPanel1.BackColor = System.Drawing.SystemColors.Control;
+            this.editPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(199)))), ((int)(((byte)(255)))));
             this.editPanel1.BirthDay = new System.DateTime(2019, 5, 18, 17, 41, 25, 213);
             this.editPanel1.DoctorFields = true;
             this.editPanel1.FirstName = "Imie";
@@ -132,7 +133,7 @@
             // editAppointmentPanel1
             // 
             this.editAppointmentPanel1.AppointmentID = -1;
-            this.editAppointmentPanel1.BackColor = System.Drawing.Color.White;
+            this.editAppointmentPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(199)))), ((int)(((byte)(255)))));
             this.editAppointmentPanel1.Content = "Opis";
             this.editAppointmentPanel1.ID = 0;
             this.editAppointmentPanel1.Location = new System.Drawing.Point(337, 12);
@@ -144,7 +145,7 @@
             // 
             // editAppointmentSearchPanel1
             // 
-            this.editAppointmentSearchPanel1.BackColor = System.Drawing.Color.White;
+            this.editAppointmentSearchPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(199)))), ((int)(((byte)(255)))));
             this.editAppointmentSearchPanel1.Location = new System.Drawing.Point(337, 12);
             this.editAppointmentSearchPanel1.Name = "editAppointmentSearchPanel1";
             this.editAppointmentSearchPanel1.PeselPatient = "PESEL pacjenta";
