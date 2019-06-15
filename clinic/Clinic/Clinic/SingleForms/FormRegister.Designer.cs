@@ -222,6 +222,7 @@
             this.MinimumSize = new System.Drawing.Size(504, 365);
             this.Name = "FormRegister";
             this.Text = "Panel rejestracji";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormRegister_FormClosing);
             this.Load += new System.EventHandler(this.FormRegister_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

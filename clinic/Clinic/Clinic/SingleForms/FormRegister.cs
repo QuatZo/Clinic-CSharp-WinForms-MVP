@@ -12,8 +12,24 @@ namespace Clinic
 {
     public partial class FormRegister : Form
     {
+        
+
+        #region Singleton
+        private static FormRegister instance;
+
+        public static FormRegister Instance
+        {
+            get
+            {
+                return instance ?? (instance = new FormRegister());
+            }
+        }
+        #endregion
+
+        #region Fields
         private readonly DatabaseConnection connection = DatabaseConnection.Instance;
         private readonly FormLogin formLogin = FormLogin.Instance;
+        #endregion
 
         #region Properties
         // obiekty WindowsForms
@@ -72,7 +88,7 @@ namespace Clinic
         }
         #endregion
 
-        public FormRegister()
+        private FormRegister()
         {
             InitializeComponent();
         }
@@ -179,5 +195,15 @@ namespace Clinic
             MessageBox.Show(errorMessage, "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         #endregion
+
+        private void FormRegister_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            textBoxName.Text = "";
+            textBoxSurname.Text = "";
+            textBoxAddress.Text = "";
+            textBoxPESEL.Text = "";
+            textBoxPhoneNumber.Text = "";
+            dateTimePickerBirthDay.Value = DateTime.Now;
+        }
     }
 }
