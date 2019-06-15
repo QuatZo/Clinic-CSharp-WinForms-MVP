@@ -10,21 +10,37 @@ using System.Threading.Tasks;
 
 namespace Clinic
 {
-    class DatabaseConnection: IDisposable
+    class DatabaseConnection
     {
-        #region Fields
-        private readonly MySqlConnection connection;
-        #endregion
+        private static DatabaseConnection instance;
 
-        #region Main methods
-        public DatabaseConnection()
+        public static DatabaseConnection Instance
         {
-            // utworzenie polaczenia
+            get
+            {
+                return instance ?? (instance = new DatabaseConnection());
+            }
+        }
+        private DatabaseConnection() {
             connection = new MySqlConnection
             {
                 ConnectionString = string.Format($"server={DBInfo.server};database={DBInfo.database};uid={DBInfo.user};password={DBInfo.passwd}")
             };
         }
+
+        #region Fields
+        private readonly MySqlConnection connection;
+        #endregion
+
+        #region Main methods
+        //public DatabaseConnection()
+        //{
+        //    // utworzenie polaczenia
+        //    connection = new MySqlConnection
+        //    {
+        //        ConnectionString = string.Format($"server={DBInfo.server};database={DBInfo.database};uid={DBInfo.user};password={DBInfo.passwd}")
+        //    };
+        //}
 
         // metoda otwierajaca polaczenie
         public bool Open()

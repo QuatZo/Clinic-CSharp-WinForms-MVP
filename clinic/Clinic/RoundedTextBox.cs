@@ -1,8 +1,8 @@
 ﻿using System;
 
-public class Class1
+namespace Clinic
 {
-    class RoundedTextBox : TextBox
+    public class RoundedTextBox : TextBox
     {
         public Color color = Color.White;
         public int borderRadius = 25;

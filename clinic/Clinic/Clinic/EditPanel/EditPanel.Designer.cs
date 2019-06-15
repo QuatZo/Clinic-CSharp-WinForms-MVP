@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.comboBoxSex = new System.Windows.Forms.ComboBox();
-            this.buttonEdit = new Clinic.ButtonModified();
             this.textBoxPhoneNumber = new System.Windows.Forms.TextBox();
             this.textBoxAddress = new System.Windows.Forms.TextBox();
             this.textBoxPESEL = new System.Windows.Forms.TextBox();
@@ -49,6 +48,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.textBoxID = new System.Windows.Forms.TextBox();
+            this.buttonEdit = new Clinic.ButtonModified();
             this.SuspendLayout();
             // 
             // comboBoxSex
@@ -66,20 +66,6 @@
             this.comboBoxSex.Size = new System.Drawing.Size(393, 30);
             this.comboBoxSex.TabIndex = 30;
             this.comboBoxSex.SelectedIndexChanged += new System.EventHandler(this.comboBoxSex_SelectedIndexChanged);
-            // 
-            // buttonEdit
-            // 
-            this.buttonEdit.BackColor = System.Drawing.Color.White;
-            this.buttonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEdit.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonEdit.ForeColor = System.Drawing.Color.Black;
-            this.buttonEdit.Location = new System.Drawing.Point(281, 405);
-            this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(215, 41);
-            this.buttonEdit.TabIndex = 27;
-            this.buttonEdit.Text = "Zapisz";
-            this.buttonEdit.UseVisualStyleBackColor = true;
-            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // textBoxPhoneNumber
             // 
@@ -155,7 +141,7 @@
             "poranne",
             "popoludniowe",
             "wieczorowe"});
-            this.comboBoxHours.Location = new System.Drawing.Point(281, 322);
+            this.comboBoxHours.Location = new System.Drawing.Point(281, 323);
             this.comboBoxHours.Name = "comboBoxHours";
             this.comboBoxHours.Size = new System.Drawing.Size(393, 30);
             this.comboBoxHours.TabIndex = 37;
@@ -272,6 +258,21 @@
             this.textBoxID.ReadOnly = true;
             this.textBoxID.Size = new System.Drawing.Size(393, 26);
             this.textBoxID.TabIndex = 34;
+            this.textBoxID.TextChanged += new System.EventHandler(this.textBoxID_TextChanged);
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.BackColor = System.Drawing.Color.White;
+            this.buttonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEdit.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonEdit.ForeColor = System.Drawing.Color.Black;
+            this.buttonEdit.Location = new System.Drawing.Point(281, 405);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(215, 41);
+            this.buttonEdit.TabIndex = 27;
+            this.buttonEdit.Text = "Zapisz";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // EditPanel
             // 

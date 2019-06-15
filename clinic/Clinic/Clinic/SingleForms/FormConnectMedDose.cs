@@ -12,6 +12,8 @@ namespace Clinic
 {
     public partial class FormConnectMedDose : Form
     {
+        private readonly DatabaseConnection connection = DatabaseConnection.Instance;
+
         #region Properties
         private List<string> Medicines
         {
@@ -81,6 +83,7 @@ namespace Clinic
         public FormConnectMedDose()
         {
             InitializeComponent();
+            connection = DatabaseConnection.Instance;
         }
 
         #region Methods
@@ -93,32 +96,29 @@ namespace Clinic
         {
             if (SelectedMedicine > -1 && SelectedDose > -1)
             {
-                using (var connection = new DatabaseConnection())
+                if (connection.Open())
                 {
-                    if (connection.Open())
+                    Dictionary<string, string> parameters = new Dictionary<string, string>()
                     {
-                        Dictionary<string, string> parameters = new Dictionary<string, string>()
-                        {
-                            {"@dose", SelectedDose.ToString() },
-                            {"@medicine", SelectedMedicine.ToString() }
-                        };
+                        {"@dose", SelectedDose.ToString() },
+                        {"@medicine", SelectedMedicine.ToString() }
+                    };
 
-                        if (connection.SelectCount($"SELECT COUNT(*) FROM dawki_i_leki WHERE idd=@dose AND idl=@medicine", parameters) == 0)
-                        {
-                            if (connection.InsertInfo($"INSERT INTO dawki_i_leki(idd, idl) VALUES(@dose, @medicine)", parameters))
-                            {
-                                
-                                MessageBox.Show("Połączenie leku z dawką zostało pomyślnie dodane. Zmiany będą widoczne po wyłączeniu tego okna.", "Potwierdzenie", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else { MessageBox.Show("Błąd z przypisywaniem dawki do leku! Zgłoś się do administratora!"); }
-                        }
-                        else { MessageBox.Show("Taki wpis już istnieje!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                        
-                    }
-                    else
+                    if (connection.SelectCount($"SELECT COUNT(*) FROM dawki_i_leki WHERE idd=@dose AND idl=@medicine", parameters) == 0)
                     {
-                        MessageBox.Show("Błąd z połaczeniem!");
+                        if (connection.InsertInfo($"INSERT INTO dawki_i_leki(idd, idl) VALUES(@dose, @medicine)", parameters))
+                        { 
+                            MessageBox.Show("Połączenie leku z dawką zostało pomyślnie dodane. Zmiany będą widoczne po wyłączeniu tego okna.", "Potwierdzenie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            connection.Close();
+                        }
+                        else { MessageBox.Show("Błąd z przypisywaniem dawki do leku! Zgłoś się do administratora!"); }
                     }
+                    else { MessageBox.Show("Taki wpis już istnieje!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                        
+                }
+                else
+                {
+                    MessageBox.Show("Błąd z połaczeniem!");
                 }
             }
             else
@@ -129,31 +129,30 @@ namespace Clinic
 
         private void FormAddRowToPrescription_Load(object sender, EventArgs e)
         {
-            using (var connection = new DatabaseConnection())
+            if (connection.Open())
             {
-                if (connection.Open())
+                List<string> medicines = new List<string>();
+
+                foreach (var el in connection.GetPrescription("SELECT idl, nazwa FROM leki ORDER BY 2", new Dictionary<string, string>()))
                 {
-                    List<string> medicines = new List<string>();
-
-                    foreach (var el in connection.GetPrescription("SELECT idl, nazwa FROM leki ORDER BY 2", new Dictionary<string, string>()))
-                    {
-                        medicines.Add(el);
-                    }
-
-                    List<string> doses = new List<string>();
-
-                    foreach (var el in connection.GetPrescription("SELECT idd, ile FROM dawki ORDER BY 2", new Dictionary<string, string>()))
-                    {
-                        doses.Add(el);
-                    }
-
-                    Medicines = medicines;
-                    Doses = doses;
+                    medicines.Add(el);
                 }
-                else
+
+                List<string> doses = new List<string>();
+
+                foreach (var el in connection.GetPrescription("SELECT idd, ile FROM dawki ORDER BY 2", new Dictionary<string, string>()))
                 {
-                    MessageBox.Show("Błąd z połaczeniem!");
+                    doses.Add(el);
                 }
+
+                Medicines = medicines;
+                Doses = doses;
+
+                connection.Close();
+            }
+            else
+            {
+                MessageBox.Show("Błąd z połaczeniem!");
             }
         }
         #endregion

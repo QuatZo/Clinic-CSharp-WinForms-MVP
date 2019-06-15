@@ -12,6 +12,8 @@ namespace Clinic
 {
     public partial class FormRegister : Form
     {
+        private readonly DatabaseConnection connection = DatabaseConnection.Instance;
+
         #region Properties
         // obiekty WindowsForms
         private string FirstName
@@ -94,42 +96,41 @@ namespace Clinic
         {
             if (ValidateFields())
             {
-                using (var connection = new DatabaseConnection())
+                // jesli idzie otworzyc polaczenie
+                if (connection.Open())
                 {
-                    // jesli idzie otworzyc polaczenie
-                    if (connection.Open())
+                    Dictionary<string, string> registerParameters = new Dictionary<string, string>()
                     {
-                        Dictionary<string, string> registerParameters = new Dictionary<string, string>()
+                        {"@firstname", FirstName },
+                        {"@surname", Surname },
+                        {"@pesel", PESEL },
+                        {"@sex", SexID.ToString() },
+                        {"@birthday", DateTimeBirthDay.ToString("yyyy-MM-dd")},
+                        {"@address", Address },
+                        {"@phone", PhoneNumber },
+                    };
+
+                    if (connection.InsertInfo($"INSERT INTO pacjenci(imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon) VALUES(@firstname, @surname, @pesel, @sex, @birthday, @address, @phone)", registerParameters)){
+                        Dictionary<string, string> infoParameters = new Dictionary<string, string>()
                         {
-                            {"@firstname", FirstName },
-                            {"@surname", Surname },
-                            {"@pesel", PESEL },
-                            {"@sex", SexID.ToString() },
-                            {"@birthday", DateTimeBirthDay.ToString("yyyy-MM-dd")},
-                            {"@address", Address },
-                            {"@phone", PhoneNumber },
+                            {"@pesel", PESEL }
                         };
 
-                        if (connection.InsertInfo($"INSERT INTO pacjenci(imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon) VALUES(@firstname, @surname, @pesel, @sex, @birthday, @address, @phone)", registerParameters)){
-                            Dictionary<string, string> infoParameters = new Dictionary<string, string>()
-                            {
-                                {"@pesel", PESEL }
-                            };
-
-                            int id = connection.GetPatientInfo($"SELECT * FROM pacjenci WHERE pesel=@pesel", infoParameters).Id;
-                            MessageBox.Show($"Rejestracja zakończona powodzeniem. Twoje ID do logowania to: {id}");
-                            Close();
-                        }
-                        else
-                        {
-                            ShowError("Ups! Coś poszło nie tak!");
-                        }
+                        int id = connection.GetPatientInfo($"SELECT * FROM pacjenci WHERE pesel=@pesel", infoParameters).Id;
+                        MessageBox.Show($"Rejestracja zakończona powodzeniem. Twoje ID do logowania to: {id}");
+                        connection.Close();
+                        Close();
                     }
                     else
                     {
-                        // zwroc problem z polaczeniem jesli nie udalo sie otworzyc polaczenia
-                        MessageBox.Show("Błąd z połaczeniem!");
+                        ShowError("Ups! Coś poszło nie tak!");
+                        connection.Close();
                     }
+                }
+                else
+                {
+                    // zwroc problem z polaczeniem jesli nie udalo sie otworzyc polaczenia
+                    MessageBox.Show("Błąd z połaczeniem!");
                 }
             }
         }

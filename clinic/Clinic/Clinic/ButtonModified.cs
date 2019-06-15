@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace Clinic
 {
-    class ButtonModified : System.Windows.Forms.Button
+    class ButtonModified : Button
     {
         //we can use this to modify the color of the border 
-        public Color BorderColor = System.Drawing.Color.LightGray;
+        public Color BorderColor = Color.LightGray;
         //we can use this to modify the border size
         public int BorderSize = 3;
         public ButtonModified()
@@ -21,10 +21,9 @@ namespace Clinic
             BackColor = Color.White;
             FlatAppearance.BorderColor = BorderColor;
             FlatAppearance.BorderSize = BorderSize;
-            Font = new System.Drawing.Font("Trebuchet MS",
-            30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))),
-                    ((int)(((byte)(199)))), ((int)(((byte)(255)))));
+            Font = new Font("Trebuchet MS",
+            30F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            ForeColor = Color.FromArgb(101, 199, 255);
 
             this.MouseDown += new MouseEventHandler(ButtonLastest_MouseDown);
             this.MouseUp += new MouseEventHandler(ButtonLastest_MouseUp);
@@ -32,16 +31,14 @@ namespace Clinic
 
         void ButtonLastest_MouseUp(object sender, MouseEventArgs e)
         {
-            ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))),
-                    ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            ForeColor = Color.FromArgb(0, 0, 0);
             BackColor = Color.White;
         }
 
         void ButtonLastest_MouseDown(object sender, MouseEventArgs e)
         {
-            BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))),
-                    ((int)(((byte)(199)))), ((int)(((byte)(255)))));
-            ForeColor = System.Drawing.Color.White;
+            BackColor = Color.FromArgb(101, 199, 255);
+            ForeColor = Color.White;
 
         }
         int top;
@@ -66,8 +63,7 @@ namespace Clinic
 
             gfxPath_mod.AddArc(left, top, CornerRadius, CornerRadius, 180, 90);
             gfxPath_mod.AddArc(right - CornerRadius, top, CornerRadius, CornerRadius, 270, 90);
-            gfxPath_mod.AddArc(right - CornerRadius, bottom - CornerRadius,
-                CornerRadius, CornerRadius, 0, 90);
+            gfxPath_mod.AddArc(right - CornerRadius, bottom - CornerRadius, CornerRadius, CornerRadius, 0, 90);
             gfxPath_mod.AddArc(left, bottom - CornerRadius, CornerRadius, CornerRadius, 90, 90);
 
             gfxPath_mod.CloseAllFigures();
@@ -80,16 +76,14 @@ namespace Clinic
             GraphicsPath gfxPath = new GraphicsPath();
             gfxPath.AddArc(left + inside + 1, top + inside, CornerRadius, CornerRadius, 180, 100);
 
-            gfxPath.AddArc(right - CornerRadius - inside - 2,
-                top + inside, CornerRadius, CornerRadius, 270, 90);
-            gfxPath.AddArc(right - CornerRadius - inside - 2,
-                bottom - CornerRadius - inside - 1, CornerRadius, CornerRadius, 0, 90);
+            gfxPath.AddArc(right - CornerRadius - inside - 2, top + inside, CornerRadius, CornerRadius, 270, 90);
+            gfxPath.AddArc(right - CornerRadius - inside - 2, bottom - CornerRadius - inside - 1, CornerRadius, CornerRadius, 0, 90);
 
             gfxPath.AddArc(left + inside + 1,
             bottom - CornerRadius - inside, CornerRadius, CornerRadius, 95, 95);
             pevent.Graphics.DrawPath(newPen, gfxPath);
 
-            this.Region = new System.Drawing.Region(gfxPath_mod);
+            this.Region = new Region(gfxPath_mod);
         }
     }
 }

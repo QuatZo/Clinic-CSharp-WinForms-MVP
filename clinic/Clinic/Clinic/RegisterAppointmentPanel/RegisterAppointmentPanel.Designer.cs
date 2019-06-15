@@ -43,7 +43,7 @@
             // 
             // dateTimePickerAppointment
             // 
-            this.dateTimePickerAppointment.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dateTimePickerAppointment.CustomFormat = "dd-MM-yyyy HH:mm";
             this.dateTimePickerAppointment.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.dateTimePickerAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerAppointment.Location = new System.Drawing.Point(341, 214);
@@ -60,7 +60,7 @@
             this.textBoxContent.Name = "textBoxContent";
             this.textBoxContent.Size = new System.Drawing.Size(520, 114);
             this.textBoxContent.TabIndex = 12;
-            this.textBoxContent.Text = "Opis (nadpisywany później przez lekarza)";
+            this.textBoxContent.Text = "Opis";
             // 
             // comboBoxSpecialization
             // 

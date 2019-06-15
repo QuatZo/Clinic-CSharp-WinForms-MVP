@@ -19,6 +19,8 @@ namespace Clinic
 
     public partial class FormLogin : Form
     {
+        private readonly DatabaseConnection connection = DatabaseConnection.Instance;
+
         #region Static fields
         // zmienne statyczne, position - kto zalogowany, patient i doctor używane w zależności od zalogowanej osoby
         public static Position position;
@@ -29,6 +31,7 @@ namespace Clinic
         public FormLogin()
         {
             InitializeComponent();
+            connection = DatabaseConnection.Instance;
         }
 
         #region Methods
@@ -53,75 +56,80 @@ namespace Clinic
         // czy jest w bazie danych
         private bool IsInDatabase(string currentPesel, string currentSurname, string currentID)
         {
-            using (var connection = new DatabaseConnection())
-            {
-                // jesli idzie otworzyc polaczenie
-                if (connection.Open()) {
-                    double.TryParse(currentPesel, out double dPesel); // pesel jest przechowywany w stringu, parsujemy na double
+            // jesli idzie otworzyc polaczenie
+            if (connection.Open()) {
+                double.TryParse(currentPesel, out double dPesel); // pesel jest przechowywany w stringu, parsujemy na double
 
-                    // parametryzacja zapytań
-                    Dictionary<string, string> loginParameters = new Dictionary<string, string>
-                    {
-                        {"@id", currentID },
-                        {"@pesel", currentPesel },
-                        {"@surname", currentSurname }
-                    };
+                // parametryzacja zapytań
+                Dictionary<string, string> loginParameters = new Dictionary<string, string>
+                {
+                    {"@id", currentID },
+                    {"@pesel", currentPesel },
+                    {"@surname", currentSurname }
+                };
 
-                    // jesli jest taki ktos w bazie
-                    if (connection.SelectCount($"SELECT COUNT(*) FROM pacjenci WHERE pesel=@pesel AND nazwisko=@surname AND idp=@id", loginParameters) > 0)
-                    {
-                        patient = connection.GetPatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM pacjenci WHERE pesel=@pesel AND nazwisko=@surname AND idp=@id", loginParameters);
-                        position = Position.pacjent;
-                        return true;
-                    }
-                    // jesli nie to sprawdz czy jest taki lekarz
-                    else if (connection.SelectCount($"SELECT COUNT(*) FROM doktorzy WHERE pesel=@pesel AND nazwisko=@surname AND idd=@id", loginParameters) > 0)
-                    {
-                        doctor = connection.GetDoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM doktorzy WHERE pesel=@pesel AND nazwisko=@surname AND idd=@id", loginParameters);
-                        position = Position.lekarz;
-                        return true;
-                    }
-                    // jesli jednak nie ma w bazie to zwroc falsz
-                    else { return false; }
+                // jesli jest taki ktos w bazie
+                if (connection.SelectCount($"SELECT COUNT(*) FROM pacjenci WHERE pesel=@pesel AND nazwisko=@surname AND idp=@id", loginParameters) > 0)
+                {
+                    patient = connection.GetPatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM pacjenci WHERE pesel=@pesel AND nazwisko=@surname AND idp=@id", loginParameters);
+                    position = Position.pacjent;
+                    connection.Close();
+                    return true;
                 }
-                else {
-                    // zwroc falsz i problem z polaczeniem jesli nie udalo sie otworzyc polaczenia
-                    MessageBox.Show("Błąd z połaczeniem!");
-                    DialogResult = DialogResult.Abort;
+                // jesli nie to sprawdz czy jest taki lekarz
+                else if (connection.SelectCount($"SELECT COUNT(*) FROM doktorzy WHERE pesel=@pesel AND nazwisko=@surname AND idd=@id", loginParameters) > 0)
+                {
+                    doctor = connection.GetDoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM doktorzy WHERE pesel=@pesel AND nazwisko=@surname AND idd=@id", loginParameters);
+                    position = Position.lekarz;
+                    connection.Close();
+                    return true;
+                }
+                // jesli jednak nie ma w bazie to zwroc falsz
+                else
+                {
+                    connection.Close();
                     return false;
                 }
+            }
+            else {
+                // zwroc falsz i problem z polaczeniem jesli nie udalo sie otworzyc polaczenia
+                MessageBox.Show("Błąd z połaczeniem!");
+                DialogResult = DialogResult.Abort;
+                return false;
             }
         }
 
         // czy pesel istnieje w bazie danych
         private bool PeselExistsInDatabase(string currentPesel)
         {
-            using (var connection = new DatabaseConnection())
+            // jesli idzie otworzyc polaczenie
+            if (connection.Open())
             {
-                // jesli idzie otworzyc polaczenie
-                if (connection.Open())
+                double.TryParse(currentPesel, out double dPesel); // pesel jest przechowywany w stringu, parsujemy na double
+
+                Dictionary<string, string> parameters = new Dictionary<string, string>()
                 {
-                    double.TryParse(currentPesel, out double dPesel); // pesel jest przechowywany w stringu, parsujemy na double
+                    {"@pesel", currentPesel }
+                };
 
-                    Dictionary<string, string> parameters = new Dictionary<string, string>()
-                    {
-                        {"@pesel", currentPesel }
-                    };
-
-                    // jeśli znaleziono kogoś o takim peselu to zwróć prawdę
-                    if (connection.SelectCount($"SELECT COUNT(*) FROM pacjenci WHERE pesel=@pesel", parameters) > 0)
-                    {
-                        return true;
-                    }
-                    else { return false; }
+                // jeśli znaleziono kogoś o takim peselu to zwróć prawdę
+                if (connection.SelectCount($"SELECT COUNT(*) FROM pacjenci WHERE pesel=@pesel", parameters) > 0)
+                {
+                    connection.Close();
+                    return true;
                 }
                 else
                 {
-                    // zwroc falsz i problem z polaczeniem jesli nie udalo sie otworzyc polaczenia
-                    MessageBox.Show("Błąd z połaczeniem!");
-                    DialogResult = DialogResult.Abort;
+                    connection.Close();
                     return false;
                 }
+            }
+            else
+            {
+                // zwroc falsz i problem z polaczeniem jesli nie udalo sie otworzyc polaczenia
+                MessageBox.Show("Błąd z połaczeniem!");
+                DialogResult = DialogResult.Abort;
+                return false;
             }
         }
 

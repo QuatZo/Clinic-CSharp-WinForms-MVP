@@ -12,6 +12,8 @@ namespace Clinic
 {
     public partial class FormAddRowToPrescription : Form
     {
+        private readonly DatabaseConnection connection = DatabaseConnection.Instance;
+
         #region Properties
         private int AppointmentID { get; set; }
         private List<int> RowsID
@@ -62,23 +64,19 @@ namespace Clinic
         // metoda pobierająca aktualne leki wraz z dawkami na recepcie
         private List<string> GetPrescriptions()
         {
-            using (var connection = new DatabaseConnection())
+            Dictionary<string, string> parameters = new Dictionary<string, string>()
             {
-                Dictionary<string, string> parameters = new Dictionary<string, string>()
-                {
-                    {"@appointment", AppointmentID.ToString() }
-                };
+                {"@appointment", AppointmentID.ToString() }
+            };
 
-                if (connection.Open())
-                {
-                    return connection.GetPrescription($"SELECT dawki_i_leki.iddl, leki.nazwa, dawki.ile FROM dawki_i_leki JOIN leki ON leki.idl=dawki_i_leki.idl JOIN dawki ON dawki.idd=dawki_i_leki.idd WHERE iddl NOT IN (SELECT iddl FROM wiz_i_dawki_i_leki WHERE idw=@appointment) ORDER BY 2", parameters);
-                }
-                else
-                {
-                    MessageBox.Show("Błąd z połaczeniem!");
-                    return new List<string>();
-
-                }
+            if (connection.Open())
+            {
+                return connection.GetPrescription($"SELECT dawki_i_leki.iddl, leki.nazwa, dawki.ile FROM dawki_i_leki JOIN leki ON leki.idl=dawki_i_leki.idl JOIN dawki ON dawki.idd=dawki_i_leki.idd WHERE iddl NOT IN (SELECT iddl FROM wiz_i_dawki_i_leki WHERE idw=@appointment) ORDER BY 2", parameters);
+            }
+            else
+            {
+                MessageBox.Show("Błąd z połaczeniem!");
+                return new List<string>();
             }
         }
 
@@ -90,36 +88,32 @@ namespace Clinic
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            using (var connection = new DatabaseConnection())
+            if (connection.Open())
             {
-                if (connection.Open())
+                bool status = true;
+                if(RowsID.Count > 0)
                 {
-                    bool status = true;
-                    if(RowsID.Count > 0)
+                    foreach(var id in RowsID)
                     {
-                        foreach(var id in RowsID)
+                        Dictionary<string, string> parameters = new Dictionary<string, string>()
                         {
-                            Dictionary<string, string> parameters = new Dictionary<string, string>()
-                            {
-                                {"@appointment", AppointmentID.ToString() },
-                                {"@id", id.ToString() }
-                            };
+                            {"@appointment", AppointmentID.ToString() },
+                            {"@id", id.ToString() }
+                        };
 
-                            if (!connection.InsertInfo($"INSERT INTO wiz_i_dawki_i_leki(idw, iddl) VALUES(@appointment, @id)", parameters)) { status = false; }
-                        }
+                        if (!connection.InsertInfo($"INSERT INTO wiz_i_dawki_i_leki(idw, iddl) VALUES(@appointment, @id)", parameters)) { status = false; }
                     }
-                    else { status = false; }
+                }
+                else { status = false; }
                     
-                    if (status) { MessageBox.Show("Leki zostały poprawnie dodane do recepty!", "Pozytywnie dodano!", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-                    else { MessageBox.Show("Błąd podpisania leku do recepty! Upewnij się, że cokolwiek zostało wybrane." +
-                        "Możliwe jest, że próbujesz dodać duplikat. Uruchom te okno ponownie.", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                }
-                else
-                {
-                    MessageBox.Show("Błąd z połaczeniem!");
-                }
+                if (status) { MessageBox.Show("Leki zostały poprawnie dodane do recepty!", "Pozytywnie dodano!", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                else { MessageBox.Show("Błąd podpisania leku do recepty! Upewnij się, że cokolwiek zostało wybrane." +
+                    "Możliwe jest, że próbujesz dodać duplikat. Uruchom te okno ponownie.", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
-            
+            else
+            {
+                MessageBox.Show("Błąd z połaczeniem!");
+            }
         }
         #endregion
     }

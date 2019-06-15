@@ -40,6 +40,9 @@ namespace Clinic
                 comboBoxSex.Visible = value;
                 dateTimePickerBirthDay.Visible = value;
                 textBoxAddress.Visible = value;
+                label8.Visible = value;
+                label9.Visible = value;
+                label10.Visible = value;
             }
         }
         public bool DoctorFields
@@ -52,6 +55,8 @@ namespace Clinic
             {
                 textBoxRoom.Visible = value;
                 comboBoxHours.Visible = value;
+                label7.Visible = value;
+                label6.Visible = value;
             }
         }
 
@@ -239,6 +244,11 @@ namespace Clinic
         }
 
         private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxID_TextChanged(object sender, EventArgs e)
         {
 
         }
