@@ -10,8 +10,8 @@ namespace Clinic
     class RegisterAppointmentPanelPresenter
     {
         #region Classes
-        IRegisterAppointmentPanelView view;
-        Model model;
+        private IRegisterAppointmentPanelView view;
+        private Model model;
         #endregion
 
         public RegisterAppointmentPanelPresenter(IRegisterAppointmentPanelView view, Model model)

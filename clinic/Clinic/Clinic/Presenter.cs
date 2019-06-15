@@ -11,15 +11,15 @@ namespace Clinic
     {
         #region Classes
         private readonly FormLogin formLogin = FormLogin.Instance;
-        Model model = new Model();
-        IView view = new FormMain();
+        private Model model = new Model();
+        private IView view = new FormMain();
         #endregion
 
         #region Presenters
-        readonly EditPanelPresenter EditPresenter;
-        readonly RegisterAppointmentPanelPresenter RegisterAppointmentPresenter;
-        readonly EditAppointmentPanelPresenter EditAppointmentPresenter;
-        readonly EditAppointmentSearchPanelPresenter EditAppointmentSearchPresenter;
+        private readonly EditPanelPresenter EditPresenter;
+        private readonly RegisterAppointmentPanelPresenter RegisterAppointmentPresenter;
+        private readonly EditAppointmentPanelPresenter EditAppointmentPresenter;
+        private readonly EditAppointmentSearchPanelPresenter EditAppointmentSearchPresenter;
         #endregion
 
         public Presenter(IView view, Model model){

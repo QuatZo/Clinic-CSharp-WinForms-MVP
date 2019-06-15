@@ -12,7 +12,9 @@ namespace Clinic
 {
     public partial class FormConnectMedDose : Form
     {
+        #region Fields
         private readonly DatabaseConnection connection = DatabaseConnection.Instance;
+        #endregion
 
         #region Properties
         private List<string> Medicines

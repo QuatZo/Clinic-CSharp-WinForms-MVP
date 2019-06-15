@@ -12,7 +12,6 @@ namespace Clinic
 {
     class DatabaseConnection
     {
-
         #region Singleton
         private static DatabaseConnection instance;
 

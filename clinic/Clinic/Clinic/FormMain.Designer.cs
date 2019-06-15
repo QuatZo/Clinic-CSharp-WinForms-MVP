@@ -51,7 +51,6 @@
             this.labelInfo.TabIndex = 7;
             this.labelInfo.Text = "Przychodnia lekarska\r\n\r\nPanel\r\n\r\nWitaj!";
             this.labelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelInfo.Click += new System.EventHandler(this.labelInfo_Click);
             // 
             // label3
             // 
@@ -72,7 +71,6 @@
             this.label2.Size = new System.Drawing.Size(52, 16);
             this.label2.TabIndex = 11;
             this.label2.Text = "Autorzy:\r\n";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // menuPanel1
             // 

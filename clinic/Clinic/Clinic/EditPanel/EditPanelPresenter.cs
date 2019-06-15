@@ -11,8 +11,8 @@ namespace Clinic
     {
         #region Classes
         private readonly FormLogin formLogin = FormLogin.Instance;
-        IEditPanelView view;
-        Model model;
+        private IEditPanelView view;
+        private Model model;
         #endregion
 
         public EditPanelPresenter(IEditPanelView view, Model model)

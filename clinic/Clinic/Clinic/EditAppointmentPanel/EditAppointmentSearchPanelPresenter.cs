@@ -8,8 +8,10 @@ namespace Clinic
 {
     class EditAppointmentSearchPanelPresenter
     {
-        IEditAppointmentSearchPanelView view;
-        Model model;
+        #region Classes
+        private IEditAppointmentSearchPanelView view;
+        private Model model;
+        #endregion 
 
         public EditAppointmentSearchPanelPresenter(IEditAppointmentSearchPanelView view, Model model)
         {
@@ -19,6 +21,7 @@ namespace Clinic
             this.view.PatientPeselChanged += View_PatientPeselChanged;
         }
 
+        #region Methods
         private void View_PatientPeselChanged()
         {
             try
@@ -31,5 +34,6 @@ namespace Clinic
                 else { view.PeselPatient = view.PeselPatient.Substring(0, view.PeselPatient.Length - 1); }
             }
         }
+        #endregion
     }
 }

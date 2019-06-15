@@ -232,10 +232,5 @@ namespace Clinic
             }
         }
         #endregion
-
-        private void textBoxID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

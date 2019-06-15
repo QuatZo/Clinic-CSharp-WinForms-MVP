@@ -9,8 +9,10 @@ namespace Clinic
 {
     class EditAppointmentPanelPresenter
     {
-        IEditAppointmentPanelView view;
-        Model model;
+        #region Classes
+        private IEditAppointmentPanelView view;
+        private Model model;
+        #endregion 
 
         public EditAppointmentPanelPresenter(IEditAppointmentPanelView view, Model model)
         {
@@ -22,6 +24,7 @@ namespace Clinic
             this.view.DeleteRowButtonClicked += View_DeleteRowButtonClicked;
         }
 
+        #region Methods
         private void View_SaveAppointmentButtonClicked()
         {
             if (model.UpdateAppointmentInfo(view.AppointmentID, view.Content))
@@ -56,5 +59,6 @@ namespace Clinic
                 }
             }
         }
+        #endregion
     }
 }

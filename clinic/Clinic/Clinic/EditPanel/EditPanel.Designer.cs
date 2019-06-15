@@ -65,7 +65,6 @@
             this.comboBoxSex.Name = "comboBoxSex";
             this.comboBoxSex.Size = new System.Drawing.Size(393, 30);
             this.comboBoxSex.TabIndex = 30;
-            this.comboBoxSex.SelectedIndexChanged += new System.EventHandler(this.comboBoxSex_SelectedIndexChanged);
             // 
             // textBoxPhoneNumber
             // 
@@ -145,7 +144,6 @@
             this.comboBoxHours.Name = "comboBoxHours";
             this.comboBoxHours.Size = new System.Drawing.Size(393, 30);
             this.comboBoxHours.TabIndex = 37;
-            this.comboBoxHours.SelectedIndexChanged += new System.EventHandler(this.comboBoxHours_SelectedIndexChanged);
             // 
             // labelID
             // 
@@ -156,7 +154,6 @@
             this.labelID.Size = new System.Drawing.Size(24, 22);
             this.labelID.TabIndex = 38;
             this.labelID.Text = "ID";
-            this.labelID.Click += new System.EventHandler(this.label1_Click);
             // 
             // labelName
             // 
@@ -247,7 +244,6 @@
             this.label10.Size = new System.Drawing.Size(117, 22);
             this.label10.TabIndex = 47;
             this.label10.Text = "Data urodzenia";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // textBoxID
             // 
@@ -258,7 +254,6 @@
             this.textBoxID.ReadOnly = true;
             this.textBoxID.Size = new System.Drawing.Size(393, 26);
             this.textBoxID.TabIndex = 34;
-            this.textBoxID.TextChanged += new System.EventHandler(this.textBoxID_TextChanged);
             // 
             // buttonEdit
             // 

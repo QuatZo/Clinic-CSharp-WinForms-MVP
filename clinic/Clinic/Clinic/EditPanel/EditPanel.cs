@@ -227,30 +227,5 @@ namespace Clinic
             catch (NullReferenceException) { }
         }
         #endregion
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxHours_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxSex_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

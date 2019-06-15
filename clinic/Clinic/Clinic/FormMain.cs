@@ -209,15 +209,5 @@ namespace Clinic
             if (EditAppointmentSearchActive) { EditAppointmentSearchActive = false; }
         }
         #endregion
-
-        private void labelInfo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

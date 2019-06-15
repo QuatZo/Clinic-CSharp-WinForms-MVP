@@ -10,8 +10,10 @@ namespace Clinic
     // Wszystkie metody wszystkich widoków
     class Model
     {
+        #region Fields
         private readonly DatabaseConnection connection = DatabaseConnection.Instance;
         private readonly FormLogin formLogin = FormLogin.Instance;
+        #endregion
 
         #region Patient methods
         // aktualizuje dane pacjenta i zwraca czy zostaly zaktualizowane

@@ -12,7 +12,9 @@ namespace Clinic
 {
     public partial class FormAddRowToPrescription : Form
     {
+        #region Fields
         private readonly DatabaseConnection connection = DatabaseConnection.Instance;
+        #endregion
 
         #region Properties
         private int AppointmentID { get; set; }
