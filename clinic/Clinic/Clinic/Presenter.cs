@@ -10,6 +10,7 @@ namespace Clinic
     class Presenter
     {
         #region Classes
+        private readonly FormLogin formLogin = FormLogin.Instance;
         Model model = new Model();
         IView view = new FormMain();
         #endregion
@@ -111,33 +112,33 @@ namespace Clinic
         // "Edytuj dane" w menu
         private void MenuView_EditButtonClicked()
         {
-            view.Title = FormLogin.position.ToString();
+            view.Title = formLogin.Position.ToString();
 
             // wylacz wszystkie widoki procz menu, potem wlacz ten ktory chcemy widziec
             view.SetView();
             if (!view.EditActive) { view.EditActive = true; }
 
             // aktualizacja panelu informacji (kto jest zalogowany i jaki panel [pacjent/lekarz])
-            if (!view.WelcomeLabel.Contains(FormLogin.position.ToString()))
-                view.WelcomeLabel = view.WelcomeLabel.Replace("Panel", "Panel " + FormLogin.position + "a");
+            if (!view.WelcomeLabel.Contains(formLogin.Position.ToString()))
+                view.WelcomeLabel = view.WelcomeLabel.Replace("Panel", "Panel " + formLogin.Position + "a");
 
             // aktualizacja widoku (pola wspoldzielone)
             if (!view.EditView.SharedFields)
                 view.EditView.SharedFields = true;
 
             // jesli jest zalogowany pacjent
-            if (FormLogin.position == Position.pacjent)
+            if (formLogin.Position == Position.pacjent)
             {
                 
                 try
                 {
                     // metoda w modelu, ktora pobierze pacjenta
-                    FormLogin.patient = model.GetPatientInfo(FormLogin.patient.Pesel.ToString());
+                    FormLogin.Instance.Patient = model.GetPatientInfo(FormLogin.Instance.Patient.Pesel.ToString());
 
                     // aktualizuj info, jesli juz nie jest zaktualizowane (czyt. pierwszy raz odpalone)
                 
-                    if (!view.WelcomeLabel.Contains($"Witaj, {FormLogin.patient.Name} {FormLogin.patient.Surname}"))
-                        view.WelcomeLabel = view.WelcomeLabel.Replace("Witaj", $"Witaj, {FormLogin.patient.Name} {FormLogin.patient.Surname}");
+                    if (!view.WelcomeLabel.Contains($"Witaj, {FormLogin.Instance.Patient.Name} {FormLogin.Instance.Patient.Surname}"))
+                        view.WelcomeLabel = view.WelcomeLabel.Replace("Witaj", $"Witaj, {FormLogin.Instance.Patient.Name} {FormLogin.Instance.Patient.Surname}");
                 }
                 catch (NullReferenceException) { }
 
@@ -159,12 +160,12 @@ namespace Clinic
                 try
                 {
                     // metoda w modelu, ktora pobierze lekarza
-                    FormLogin.doctor = model.GetDoctorInfo(FormLogin.doctor.Pesel.ToString());
+                    FormLogin.Instance.Doctor = model.GetDoctorInfo(FormLogin.Instance.Doctor.Pesel.ToString());
 
                     // aktualizuj info, jesli juz nie jest zaktualizowane (czyt. pierwszy raz odpalone)
                 
-                    if (!view.WelcomeLabel.Contains($"Witaj, {FormLogin.doctor.Name} {FormLogin.doctor.Surname}"))
-                        view.WelcomeLabel = view.WelcomeLabel.Replace("Witaj", $"Witaj, {FormLogin.doctor.Name} {FormLogin.doctor.Surname}");
+                    if (!view.WelcomeLabel.Contains($"Witaj, {FormLogin.Instance.Doctor.Name} {FormLogin.Instance.Doctor.Surname}"))
+                        view.WelcomeLabel = view.WelcomeLabel.Replace("Witaj", $"Witaj, {FormLogin.Instance.Doctor.Name} {FormLogin.Instance.Doctor.Surname}");
                 }
                 catch (NullReferenceException) { }
 

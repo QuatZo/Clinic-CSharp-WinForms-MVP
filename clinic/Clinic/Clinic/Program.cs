@@ -19,13 +19,13 @@ namespace Clinic
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            DialogResult loginResult = new FormLogin().ShowDialog(); // logowanie
+            DialogResult loginResult = FormLogin.Instance.ShowDialog(); // logowanie
 
             // poki uzytkownik sie nie zaloguje (brak peselu w bazie) LUB nie wylaczy programu ORAZ jest polaczenie z baza
             while(loginResult != DialogResult.OK && loginResult != DialogResult.Cancel && loginResult != DialogResult.Abort)
             {
                 Application.Run(new FormRegister()); // odpalaj formularz rejestracji, forma logowania pojawi sie dopiero po wylaczeniu
-                loginResult = new FormLogin().ShowDialog();
+                loginResult = FormLogin.Instance.ShowDialog();
             }
 
             // Jesli wynik logowania jest "OK" to odpal formę z programem

@@ -13,6 +13,7 @@ namespace Clinic
     public partial class FormRegister : Form
     {
         private readonly DatabaseConnection connection = DatabaseConnection.Instance;
+        private readonly FormLogin formLogin = FormLogin.Instance;
 
         #region Properties
         // obiekty WindowsForms
@@ -89,7 +90,7 @@ namespace Clinic
 
         private void FormRegister_Load(object sender, EventArgs e)
         {
-            PESEL = FormLogin.patient.Pesel.ToString();
+            PESEL = formLogin.Patient.Pesel.ToString();
         }
 
         private void buttonRegister_Click(object sender, EventArgs e)
@@ -116,8 +117,11 @@ namespace Clinic
                             {"@pesel", PESEL }
                         };
 
-                        int id = connection.GetPatientInfo($"SELECT * FROM pacjenci WHERE pesel=@pesel", infoParameters).Id;
-                        MessageBox.Show($"Rejestracja zakończona powodzeniem. Twoje ID do logowania to: {id}");
+                        Patient newPatient = connection.GetPatientInfo($"SELECT * FROM pacjenci WHERE pesel=@pesel", infoParameters);
+                        formLogin.Pesel = newPatient.Pesel;
+                        formLogin.Surname = newPatient.Surname;
+                        formLogin.Id = newPatient.Id;
+                        MessageBox.Show($"Rejestracja zakończona powodzeniem. Twoje ID do logowania to: {newPatient.Id}");
                         connection.Close();
                         Close();
                     }

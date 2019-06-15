@@ -12,6 +12,8 @@ namespace Clinic
 {
     class DatabaseConnection
     {
+
+        #region Singleton
         private static DatabaseConnection instance;
 
         public static DatabaseConnection Instance
@@ -21,27 +23,20 @@ namespace Clinic
                 return instance ?? (instance = new DatabaseConnection());
             }
         }
+
         private DatabaseConnection() {
             connection = new MySqlConnection
             {
                 ConnectionString = string.Format($"server={DBInfo.server};database={DBInfo.database};uid={DBInfo.user};password={DBInfo.passwd}")
             };
         }
+        #endregion
 
         #region Fields
         private readonly MySqlConnection connection;
         #endregion
 
         #region Main methods
-        //public DatabaseConnection()
-        //{
-        //    // utworzenie polaczenia
-        //    connection = new MySqlConnection
-        //    {
-        //        ConnectionString = string.Format($"server={DBInfo.server};database={DBInfo.database};uid={DBInfo.user};password={DBInfo.passwd}")
-        //    };
-        //}
-
         // metoda otwierajaca polaczenie
         public bool Open()
         {
@@ -67,11 +62,6 @@ namespace Clinic
             {
                 Console.WriteLine($"Cannot disconnect from the server: {e}");
             }
-        }
-
-        public void Dispose()
-        {
-            Close();
         }
         #endregion
 
@@ -263,7 +253,6 @@ namespace Clinic
                 return int.Parse(cmd.ExecuteScalar().ToString());
             }
         }
-
         #endregion
 
         #region Other methods

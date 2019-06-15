@@ -199,14 +199,14 @@ namespace Clinic
         {
             try
             {
-                ID = FormLogin.patient.Id;
-                FirstName = FormLogin.patient.Name;
-                Surname = FormLogin.patient.Surname;
-                Pesel = FormLogin.patient.Pesel;
-                PhoneNumber = FormLogin.patient.PhoneNumber;
-                Sex = FormLogin.patient.Sex.ToString();
-                BirthDay = FormLogin.patient.BirthDay;
-                Address = FormLogin.patient.Address;
+                ID = FormLogin.Instance.Patient.Id;
+                FirstName = FormLogin.Instance.Patient.Name;
+                Surname = FormLogin.Instance.Patient.Surname;
+                Pesel = FormLogin.Instance.Patient.Pesel;
+                PhoneNumber = FormLogin.Instance.Patient.PhoneNumber;
+                Sex = FormLogin.Instance.Patient.Sex.ToString();
+                BirthDay = FormLogin.Instance.Patient.BirthDay;
+                Address = FormLogin.Instance.Patient.Address;
             }
             catch (NullReferenceException) { }
         }
@@ -216,13 +216,13 @@ namespace Clinic
         {
             try
             {
-                ID = FormLogin.doctor.Id;
-                FirstName = FormLogin.doctor.Name;
-                Surname = FormLogin.doctor.Surname;
-                Pesel = FormLogin.doctor.Pesel;
-                PhoneNumber = FormLogin.doctor.PhoneNumber;
-                Hour = FormLogin.doctor.Hour.ToString();
-                Room = FormLogin.doctor.Room;
+                ID = FormLogin.Instance.Doctor.Id;
+                FirstName = FormLogin.Instance.Doctor.Name;
+                Surname = FormLogin.Instance.Doctor.Surname;
+                Pesel = FormLogin.Instance.Doctor.Pesel;
+                PhoneNumber = FormLogin.Instance.Doctor.PhoneNumber;
+                Hour = FormLogin.Instance.Doctor.Hour.ToString();
+                Room = FormLogin.Instance.Doctor.Room;
             }
             catch (NullReferenceException) { }
         }

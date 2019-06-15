@@ -11,6 +11,7 @@ namespace Clinic
     class Model
     {
         private readonly DatabaseConnection connection = DatabaseConnection.Instance;
+        private readonly FormLogin formLogin = FormLogin.Instance;
 
         #region Patient methods
         // aktualizuje dane pacjenta i zwraca czy zostaly zaktualizowane
@@ -22,7 +23,7 @@ namespace Clinic
                 {
                     { "@phone", phoneNumber},
                     { "@address", address },
-                    { "@id", FormLogin.patient.Id.ToString() }
+                    { "@id", formLogin.Patient.Id.ToString() }
                 };
 
                 if (connection.UpdateInfo($"UPDATE pacjenci SET telefon=@phone, adres=@address WHERE idp=@id", parameters)) {
@@ -97,7 +98,7 @@ namespace Clinic
                     { "@phone", phoneNumber },
                     { "@room", room.ToString() },
                     { "@hour", hour },
-                    { "@id", FormLogin.doctor.Id.ToString() }
+                    { "@id", formLogin.Doctor.Id.ToString() }
                 };
                 if (connection.UpdateInfo($"UPDATE doktorzy SET telefon=@phone, gabinet=@room, godziny=@hour WHERE idd=@id", parameters))
                 {
@@ -190,15 +191,15 @@ namespace Clinic
 
                 string whereClause;
 
-                if (FormLogin.position == Position.pacjent)
+                if (formLogin.Position == Position.pacjent)
                 {
                     whereClause = $"pacjenci.idp=@id";
-                    parameters.Add("@id", FormLogin.patient.Id.ToString());
+                    parameters.Add("@id", formLogin.Patient.Id.ToString());
                 }
                 else
                 {
                     whereClause = $"doktorzy.idd=@id";
-                    parameters.Add("@id", FormLogin.doctor.Id.ToString());
+                    parameters.Add("@id", formLogin.Doctor.Id.ToString());
                 }
                 List<Appointment> result = connection.GetAppointments($"SELECT pacjenci.idp, pacjenci.imie AS pImie, pacjenci.nazwisko AS pNazwisko, pacjenci.pesel AS pPesel, plec, data_urodzenia, adres, pacjenci.telefon AS pTelefon," +
                     $" doktorzy.idd, doktorzy.imie AS dImie, doktorzy.nazwisko AS dNazwisko, doktorzy.pesel AS dPesel, doktorzy.telefon AS dTelefon, doktorzy.gabinet, doktorzy.godziny," +
@@ -255,7 +256,7 @@ namespace Clinic
             {
                 Dictionary<string, string> selectCountParameters = new Dictionary<string, string>()
                 {
-                    { "@idp", FormLogin.patient.Id.ToString() },
+                    { "@idp", formLogin.Patient.Id.ToString() },
                     { "@idd", doctorID.ToString() },
                     { "@datebefore", date.AddMinutes(-30).ToString("yyyy-MM-dd HH:mm:ss")},
                     { "@dateafter", date.AddMinutes(30).ToString("yyyy-MM-dd HH:mm:ss")}
@@ -263,7 +264,7 @@ namespace Clinic
 
                 Dictionary<string, string> insertParameters = new Dictionary<string, string>()
                 {
-                    { "@idp", FormLogin.patient.Id.ToString() },
+                    { "@idp", formLogin.Patient.Id.ToString() },
                     { "@idd", doctorID.ToString() },
                     { "@content", content },
                     { "@date", date.ToString("yyyy-MM-dd HH:mm:ss")}
@@ -351,7 +352,7 @@ namespace Clinic
                     string str = appointment.Id.ToString() + " - ";
                     str += appointment.Date.ToString("yyyy-MM-dd HH:mm") + " - ";
 
-                    if (FormLogin.position == Position.pacjent) { str += $"{appointment.Doctor.Name} {appointment.Doctor.Surname} - "; }
+                    if (formLogin.Position == Position.pacjent) { str += $"{appointment.Doctor.Name} {appointment.Doctor.Surname} - "; }
                     else { str += $"{appointment.Patient.Name} {appointment.Patient.Surname} - "; }
 
                     str += appointment.Doctor.Room.ToString();

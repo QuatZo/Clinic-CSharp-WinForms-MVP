@@ -45,6 +45,7 @@
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(178, 26);
             this.textBoxID.TabIndex = 6;
+            this.textBoxID.TextChanged += new System.EventHandler(this.textBoxID_TextChanged);
             // 
             // textBoxSurname
             // 

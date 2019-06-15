@@ -19,19 +19,65 @@ namespace Clinic
 
     public partial class FormLogin : Form
     {
-        private readonly DatabaseConnection connection = DatabaseConnection.Instance;
+        #region Singleton
+        private static FormLogin instance;
 
-        #region Static fields
-        // zmienne statyczne, position - kto zalogowany, patient i doctor używane w zależności od zalogowanej osoby
-        public static Position position;
-        public static Patient patient;
-        public static Doctor doctor;
+        public static FormLogin Instance
+        {
+            get
+            {
+                return instance ?? (instance = new FormLogin());
+            }
+        }
         #endregion
 
-        public FormLogin()
+        #region Fields
+        private readonly DatabaseConnection connection = DatabaseConnection.Instance;
+        #endregion
+
+        #region Properties
+        public string Surname
+        {
+            get
+            {
+                return textBoxSurname.Text;
+            }
+            set
+            {
+                textBoxSurname.Text = value;
+            }
+        }
+        public double Pesel
+        {
+            get
+            {
+                return double.Parse(textBoxPesel.Text);
+            }
+            set
+            {
+                textBoxPesel.Text = value.ToString();
+            }
+        }
+        public int Id
+        {
+            get
+            {
+                return int.Parse(textBoxID.Text);
+            }
+            set
+            {
+                textBoxID.Text = value.ToString();
+            }
+        }
+
+        public Position Position { get; set; }
+        public Patient Patient { get; set; }
+        public Doctor Doctor { get; set; }
+        #endregion
+
+        private FormLogin()
         {
             InitializeComponent();
-            connection = DatabaseConnection.Instance;
         }
 
         #region Methods
@@ -71,16 +117,16 @@ namespace Clinic
                 // jesli jest taki ktos w bazie
                 if (connection.SelectCount($"SELECT COUNT(*) FROM pacjenci WHERE pesel=@pesel AND nazwisko=@surname AND idp=@id", loginParameters) > 0)
                 {
-                    patient = connection.GetPatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM pacjenci WHERE pesel=@pesel AND nazwisko=@surname AND idp=@id", loginParameters);
-                    position = Position.pacjent;
+                    Patient = connection.GetPatientInfo($"SELECT idp, imie, nazwisko, pesel, plec, data_urodzenia, adres, telefon FROM pacjenci WHERE pesel=@pesel AND nazwisko=@surname AND idp=@id", loginParameters);
+                    Position = Position.pacjent;
                     connection.Close();
                     return true;
                 }
                 // jesli nie to sprawdz czy jest taki lekarz
                 else if (connection.SelectCount($"SELECT COUNT(*) FROM doktorzy WHERE pesel=@pesel AND nazwisko=@surname AND idd=@id", loginParameters) > 0)
                 {
-                    doctor = connection.GetDoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM doktorzy WHERE pesel=@pesel AND nazwisko=@surname AND idd=@id", loginParameters);
-                    position = Position.lekarz;
+                    Doctor = connection.GetDoctorInfo($"SELECT idd, imie, nazwisko, pesel, telefon, gabinet, godziny FROM doktorzy WHERE pesel=@pesel AND nazwisko=@surname AND idd=@id", loginParameters);
+                    Position = Position.lekarz;
                     connection.Close();
                     return true;
                 }
@@ -167,7 +213,7 @@ namespace Clinic
             if (IsInDatabase(textBoxPesel.Text, textBoxSurname.Text, textBoxID.Text))
             {
                 DialogResult = DialogResult.OK;
-                if (position == Position.pacjent) { Console.WriteLine("Logowanie na pacjenta udane!"); }
+                if (Position == Position.pacjent) { Console.WriteLine("Logowanie na pacjenta udane!"); }
                 else { Console.WriteLine("Logowanie na lekarza udane!"); }
             }
             // jesli jednak nie jest w bazie to sprawdz czy pesel jest w bazie
@@ -178,7 +224,7 @@ namespace Clinic
                     // jesli jednak peselu nie ma w bazie, to odpal rejestrację
                     if (!PeselExistsInDatabase(textBoxPesel.Text))
                     {
-                        patient = new Patient(-1, "", "", double.Parse(textBoxPesel.Text), Sexs.kobieta, DateTime.Now, "", "");
+                        Patient = new Patient(-1, "", "", double.Parse(textBoxPesel.Text), Sexs.kobieta, DateTime.Now, "", "");
                         DialogResult = DialogResult.No;
                     }
                     if (DialogResult != DialogResult.No) { MessageBox.Show("Błędne dane!"); }
@@ -186,5 +232,10 @@ namespace Clinic
             }
         }
         #endregion
+
+        private void textBoxID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace Clinic
     class EditPanelPresenter
     {
         #region Classes
+        private readonly FormLogin formLogin = FormLogin.Instance;
         IEditPanelView view;
         Model model;
         #endregion
@@ -26,7 +27,7 @@ namespace Clinic
         private void View_SaveButtonClicked()
         {
             // jesli pacjent jest zalogowany
-            if (FormLogin.position == Position.pacjent)
+            if (formLogin.Position == Position.pacjent)
             {
                 try
                 {
@@ -34,7 +35,7 @@ namespace Clinic
                     Patient pacjent = new Patient(-1, "", "", 0, 0, DateTime.Now, "", "");
                     // metoda w modelu, ktora zapisze pacjenta, a potem pobiera (prawdopodobnie) nowe dane
                     if (model.UpdatePatientInfo(view.PhoneNumber, view.Address))
-                        pacjent = model.GetPatientInfo(FormLogin.patient.Pesel.ToString());
+                        pacjent = model.GetPatientInfo(formLogin.Patient.Pesel.ToString());
 
                     // czy dane zostaly zaktualizowane
                     if (pacjent.PhoneNumber == view.PhoneNumber && pacjent.Address == view.Address) { MessageBox.Show("Poprawnie zaktualizowano dane pacjenta!"); }
@@ -58,7 +59,7 @@ namespace Clinic
                     Doctor lekarz = new Doctor(-1, "", "", 0, "", 0, 0);
                     // metoda w modelu, ktora zapisze lekarza, a potem pobiera (prawdopodobnie) nowe dane
                     if (model.UpdateDoctorInfo(view.PhoneNumber, view.Hour, view.Room))
-                        lekarz = model.GetDoctorInfo(FormLogin.doctor.Pesel.ToString());
+                        lekarz = model.GetDoctorInfo(formLogin.Doctor.Pesel.ToString());
 
                     // czy dane zostaly zaktualizowane
                     if (lekarz.PhoneNumber == view.PhoneNumber && lekarz.Hour.ToString() == view.Hour && lekarz.Room == view.Room) { MessageBox.Show("Poprawnie zaktualizowano dane lekarza!"); }
