@@ -14,7 +14,7 @@ namespace Clinic
     public class Patient
     {
         #region Properties
-        public int Id { get; private set; }
+        public int Id { get; private set; } = -1;
         public string Name { get; private set; }
         public string Surname { get; private set; }
         public double Pesel { get; private set; }

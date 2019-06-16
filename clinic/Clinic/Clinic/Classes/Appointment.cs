@@ -9,7 +9,7 @@ namespace Clinic
     public class Appointment
     {
         #region Properties
-        public int Id { get; set; }
+        public int Id { get; set; } = -1;
         public Patient Patient { get; set; }
         public Doctor Doctor { get; set; }
         public DateTime Date { get; set; }

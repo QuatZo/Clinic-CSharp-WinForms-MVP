@@ -41,7 +41,8 @@ namespace Clinic
         {
             try
             {
-                connection.Open();
+                if(connection.State != ConnectionState.Open) { connection.Open(); }
+                
                 return true;
             }
             catch(MySqlException e){

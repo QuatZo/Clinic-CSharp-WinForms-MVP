@@ -25,7 +25,6 @@ namespace Clinic
             while(loginResult != DialogResult.OK && loginResult != DialogResult.Cancel && loginResult != DialogResult.Abort)
             {
                 FormRegister.Instance.ShowDialog();
-                //Application.Run(FormRegister.Instance); // odpalaj formularz rejestracji, forma logowania pojawi sie dopiero po wylaczeniu
                 loginResult = FormLogin.Instance.ShowDialog();
             }
 
