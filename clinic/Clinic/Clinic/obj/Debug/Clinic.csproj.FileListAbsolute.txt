@@ -48,7 +48,6 @@ E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormMa
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormAddRowToPrescription.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormConnectMedDose.resources
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.FormRegister.resources
-E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csprojAssemblyReference.cache
 E:\BZ_SiSharp\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.AppointmentPanel.resources
 E:\BZ_SiSharp\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.AppointmentsPanel.resources
 E:\BZ_SiSharp\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.Database.DBInfo.resources
@@ -110,3 +109,4 @@ C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_S
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\System.ValueTuple.dll
 E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\bin\Debug\System.ValueTuple.xml
 C:\Users\milor\Desktop\Dokumenty\Studia\Rok 2\Semestr 4\Bazy danych\Projekt\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csprojAssemblyReference.cache
+E:\Studia\Projekty\BDiC#\BD_SiSharp\clinic\Clinic\Clinic\obj\Debug\Clinic.csprojAssemblyReference.cache

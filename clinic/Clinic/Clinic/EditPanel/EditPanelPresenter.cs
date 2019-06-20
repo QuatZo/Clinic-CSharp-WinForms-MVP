@@ -49,6 +49,10 @@ namespace Clinic
                 {
                     MessageBox.Show("Podano błędny numer telefonu!");
                 }
+                catch (CustomExceptions.DatabaseConnectionFailedException)
+                {
+                    MessageBox.Show("Błąd z połączeniem!");
+                }
             }
             // jesli lekarz jest zalogowany
             else
@@ -68,6 +72,10 @@ namespace Clinic
                 catch (FormatException)
                 {
                     MessageBox.Show("Podano błędne dane!");
+                }
+                catch (CustomExceptions.DatabaseConnectionFailedException)
+                {
+                    MessageBox.Show("Błąd z połączeniem!");
                 }
             }   
             

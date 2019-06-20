@@ -46,8 +46,19 @@ namespace Clinic
             }
             else if (view.Specialization != "" && view.Doctor != "")
             {
-                if (model.RegisterAppointment(view.Doctor, view.Content, view.AppointmentDate)) { MessageBox.Show("Wizyta została zarejestrowana!"); }
-                else { MessageBox.Show("Ups! Coś poszło nie tak!"); }
+                try
+                {
+                    if (model.RegisterAppointment(view.Doctor, view.Content, view.AppointmentDate)) { MessageBox.Show("Wizyta została zarejestrowana!"); }
+                    else { MessageBox.Show("Ups! Coś poszło nie tak!"); }
+                }
+                catch (CustomExceptions.DatabaseConnectionFailedException)
+                {
+                    MessageBox.Show("Błąd z połączeniem!");
+                }
+                catch (CustomExceptions.DoctorIsBusyAtThisTimeException)
+                {
+                    MessageBox.Show("Lekarz o tej godzinie jest zajęty! Wybierz inną datę!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
@@ -59,7 +70,14 @@ namespace Clinic
         {
             if (view.Doctor != null || view.Doctor != "")
             {
-                view.Hour = model.GetDoctorHours(view.Doctor);
+                try
+                {
+                    view.Hour = model.GetDoctorHours(view.Doctor);
+                }
+                catch (CustomExceptions.DatabaseConnectionFailedException)
+                {
+                    MessageBox.Show("Błąd z połączeniem!");
+                }
             }
         }
 
@@ -68,7 +86,14 @@ namespace Clinic
             if (!view.DoctorActive)
                 view.DoctorActive = true;
 
-            view.Doctors = model.GetDoctors(view.Specialization);
+            try
+            {
+                view.Doctors = model.GetDoctors(view.Specialization);
+            }
+            catch (CustomExceptions.DatabaseConnectionFailedException)
+            {
+                MessageBox.Show("Błąd z połączeniem!");
+            }
         }
         #endregion
     }

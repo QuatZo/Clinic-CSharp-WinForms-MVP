@@ -52,7 +52,14 @@ namespace Clinic
         #region Methods
         private void FormAddRowToPrescription_Load(object sender, EventArgs e)
         {
-            Rows = GetPrescriptions();
+            try
+            {
+                Rows = GetPrescriptions();
+            }
+            catch (CustomExceptions.DatabaseConnectionFailedException)
+            {
+                MessageBox.Show("Błąd z połączeniem!");
+            }
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -77,15 +84,21 @@ namespace Clinic
             }
             else
             {
-                MessageBox.Show("Błąd z połaczeniem!");
-                return new List<string>();
+                throw new CustomExceptions.DatabaseConnectionFailedException();
             }
         }
 
         // jak najniższa forma (łączenie leku z dawkami) zostanie wyłączona, przeładuj listę
         private void FormConnectMedDose_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Rows = GetPrescriptions();
+            try
+            {
+                Rows = GetPrescriptions();
+            }
+            catch (CustomExceptions.DatabaseConnectionFailedException)
+            {
+                MessageBox.Show("Błąd z połączeniem!");
+            }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)

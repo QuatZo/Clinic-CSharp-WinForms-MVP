@@ -31,9 +31,9 @@ namespace Clinic
         public override string ToString()
         {
             string str = $"{Id}\t{Patient}\t{Doctor}\t{Date.ToString()}\t{Content}\t";
-            foreach(var medicine in Medicines)
+            foreach(var (ID, Name, Dose) in Medicines)
             {
-                str += $"({medicine.ID}, {medicine.Name}, {medicine.Dose})\t";
+                str += $"({ID}, {Name}, {Dose})\t";
             }
             return str;
         }

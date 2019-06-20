@@ -27,13 +27,20 @@ namespace Clinic
         #region Methods
         private void View_SaveAppointmentButtonClicked()
         {
-            if (model.UpdateAppointmentInfo(view.AppointmentID, view.Content))
+            try
             {
-                MessageBox.Show("Opis został poprawnie zaktualizowany!", "Potwierdzenie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (model.UpdateAppointmentInfo(view.AppointmentID, view.Content))
+                {
+                    MessageBox.Show("Opis został poprawnie zaktualizowany!", "Potwierdzenie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Ups! Coś poszło nie tak!", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (CustomExceptions.DatabaseConnectionFailedException)
             {
-                MessageBox.Show("Ups! Coś poszło nie tak!", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Błąd z połączeniem!");
             }
         }
 
@@ -46,16 +53,34 @@ namespace Clinic
 
         private void AddRowForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            view.Prescription = model.GetPrescription(view.AppointmentID);
+            try
+            {
+                view.Prescription = model.GetPrescription(view.AppointmentID);
+            }
+            catch (CustomExceptions.DatabaseConnectionFailedException)
+            {
+                MessageBox.Show("Błąd z połączeniem!");
+            }
         }
 
         private void View_DeleteRowButtonClicked()
         {
             if (view.Prescription.Count > 0)
             {
-                if(model.DeleteRowsFromPrescription(view.AppointmentID, model.GetPrescriptionsID(view.Prescription)))
+                try
                 {
-                    view.Prescription = model.GetPrescription(view.AppointmentID);
+                    if(model.DeleteRowsFromPrescription(view.AppointmentID, model.GetPrescriptionsID(view.Prescription)))
+                    {
+                        view.Prescription = model.GetPrescription(view.AppointmentID);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wpis nie został usunięty. Proszę się zgłosić do administratora!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (CustomExceptions.DatabaseConnectionFailedException)
+                {
+                    MessageBox.Show("Błąd z połączeniem!");
                 }
             }
         }

@@ -52,14 +52,26 @@ namespace Clinic
         // szukaj wizyty (edycja, panel lekarza)
         private void EditAppointmentSearchView_SearchAppointmentButtonClicked()
         {
-            view.Appointments = model.GetAppointments();
-            view.EditAppointmentView.ID = model.GetAppointmentToEditID(view.Appointments, view.EditAppointmentSearchView.PeselPatient, view.EditAppointmentSearchView.DateTimeAppointment);
+            try
+            {
+                view.Appointments = model.GetAppointments();
+                view.EditAppointmentView.ID = model.GetAppointmentToEditID(view.Appointments, view.EditAppointmentSearchView.PeselPatient, view.EditAppointmentSearchView.DateTimeAppointment);
 
-            if (view.EditAppointmentView.ID > -1){
-                view.SetView();
+                if (view.EditAppointmentView.ID > -1)
+                {
+                    view.SetView();
 
-                if (!view.EditAppointmentActive) { view.EditAppointmentActive = true; }
-                view.EditAppointmentView.FullfilFields(view.Appointments[view.EditAppointmentView.ID]);
+                    if (!view.EditAppointmentActive) { view.EditAppointmentActive = true; }
+                    view.EditAppointmentView.FullfilFields(view.Appointments[view.EditAppointmentView.ID]);
+                }
+                else
+                {
+                    MessageBox.Show("Brak jednoznacznych wyników!");
+                }
+            }
+            catch (CustomExceptions.DatabaseConnectionFailedException)
+            {
+                MessageBox.Show("Błąd z połączeniem!");
             }
         }
 
@@ -74,22 +86,39 @@ namespace Clinic
         private void MenuView_RegisterAppointmentButtonClicked()
         {
             view.SetView();
-            if (!view.RegisterAppointmentActive) { view.RegisterAppointmentActive = true; }
+            try
+            {
+                if (!view.RegisterAppointmentActive) { view.RegisterAppointmentActive = true; }
 
-            if (view.RegisterAppointmentView.DoctorActive)
-                view.RegisterAppointmentView.DoctorActive = false;
+                if (view.RegisterAppointmentView.DoctorActive)
+                    view.RegisterAppointmentView.DoctorActive = false;
 
-            view.RegisterAppointmentView.Specializations = model.GetSpecializations();
+            
+                view.RegisterAppointmentView.Specializations = model.GetSpecializations();
+            }
+            catch (CustomExceptions.DatabaseConnectionFailedException)
+            {
+                MessageBox.Show("Błąd z połączeniem!");
+            }
         }
 
         // Wybranie wizyty z listy
         private void AppointmentsView_ChosenAppointmentClick()
         {
+            
             if (view.AppointmentsView.ChosenAppointment > -1)
             {
                 view.SetView();
-                if (!view.AppointmentActive) { view.AppointmentActive = true; }
-                view.AppointmentView.FullfilFields = view.Appointments[view.AppointmentsView.ChosenAppointment];
+                try
+                {
+                    if (!view.AppointmentActive) { view.AppointmentActive = true; }
+                    view.AppointmentView.FullfilFields = view.Appointments[view.AppointmentsView.ChosenAppointment];
+                }
+                catch (CustomExceptions.DatabaseConnectionFailedException)
+                {
+                    MessageBox.Show("Błąd z połączeniem!");
+                }
+                
             }
         }
 
@@ -99,8 +128,15 @@ namespace Clinic
             view.SetView();
             if (!view.AppointmentsActive) { view.AppointmentsActive = true; }
 
-            view.Appointments = model.GetAppointments();
-            view.AppointmentsView.Content = model.GetAppointmentsMainInfo(view.Appointments);
+            try
+            {
+                view.Appointments = model.GetAppointments();
+                view.AppointmentsView.Content = model.GetAppointmentsMainInfo(view.Appointments);
+            }
+            catch (CustomExceptions.DatabaseConnectionFailedException)
+            {
+                MessageBox.Show("Błąd z połączeniem!");
+            }
         }
 
         // "Zamknij" w menu
@@ -141,6 +177,10 @@ namespace Clinic
                         view.WelcomeLabel = view.WelcomeLabel.Replace("Witaj", $"Witaj, {FormLogin.Instance.Patient.Name} {FormLogin.Instance.Patient.Surname}");
                 }
                 catch (NullReferenceException) { }
+                catch (CustomExceptions.DatabaseConnectionFailedException)
+                {
+                    MessageBox.Show("Błąd z połączeniem!");
+                }
 
                 // pokaz pola pacjenta i ukryj doktora
                 if (!view.EditView.PatientFields)
@@ -168,6 +208,10 @@ namespace Clinic
                         view.WelcomeLabel = view.WelcomeLabel.Replace("Witaj", $"Witaj, {FormLogin.Instance.Doctor.Name} {FormLogin.Instance.Doctor.Surname}");
                 }
                 catch (NullReferenceException) { }
+                catch (CustomExceptions.DatabaseConnectionFailedException)
+                {
+                    MessageBox.Show("Błąd z połączeniem!");
+                }
 
                 // ukryj pola pacjenta i pokaz doktora
                 if (view.EditView.PatientFields)

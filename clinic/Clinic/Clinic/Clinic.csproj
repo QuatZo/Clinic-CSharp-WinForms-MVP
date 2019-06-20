@@ -82,6 +82,8 @@
     <Compile Include="AppointmentsPanels\AppointmentsPanel.Designer.cs">
       <DependentUpon>AppointmentsPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomExceptions\DatabaseConnectionFailedException.cs" />
+    <Compile Include="CustomExceptions\DoctorIsBusyAtThisTimeException.cs" />
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="Database\DBInfo.Designer.cs">
       <AutoGen>True</AutoGen>

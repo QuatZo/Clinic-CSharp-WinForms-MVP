@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Clinic
 {
@@ -39,8 +38,7 @@ namespace Clinic
             }
             else
             {
-                MessageBox.Show("Błąd z połaczeniem!");
-                return false;
+                throw new CustomExceptions.DatabaseConnectionFailedException();
             }
         }
 
@@ -60,9 +58,7 @@ namespace Clinic
             }
             else
             {
-                MessageBox.Show("Błąd z połaczeniem!");
-                Patient result = null;
-                return result;
+                throw new CustomExceptions.DatabaseConnectionFailedException();
             }
         }
         #endregion
@@ -84,9 +80,7 @@ namespace Clinic
             }
             else
             {
-                MessageBox.Show("Błąd z połaczeniem!");
-                Doctor result = null;
-                return result;
+                throw new CustomExceptions.DatabaseConnectionFailedException();
             }
         }
 
@@ -115,8 +109,7 @@ namespace Clinic
             }
             else
             {
-                MessageBox.Show("Błąd z połaczeniem!");
-                return false;
+                throw new CustomExceptions.DatabaseConnectionFailedException();
             }
         }
 
@@ -137,9 +130,7 @@ namespace Clinic
             }
             else
             {
-                MessageBox.Show("Błąd z połaczeniem!");
-                List<string> result = null;
-                return result;
+                throw new CustomExceptions.DatabaseConnectionFailedException();
             }
         }
 
@@ -158,9 +149,7 @@ namespace Clinic
             }
             else
             {
-                MessageBox.Show("Błąd z połaczeniem!");
-                string result = null;
-                return result;
+                throw new CustomExceptions.DatabaseConnectionFailedException();
             }
         }
 
@@ -176,9 +165,7 @@ namespace Clinic
             }
             else
             {
-                MessageBox.Show("Błąd z połaczeniem!");
-                List<string> result = null;
-                return result;
+                throw new CustomExceptions.DatabaseConnectionFailedException();
             }
         }
         #endregion
@@ -221,33 +208,7 @@ namespace Clinic
             }
             else
             {
-                MessageBox.Show("Błąd z połaczeniem!");
-                List<Appointment> result = null;
-                return result;
-            }
-        }
-
-        // pobiera informacje nt konkretnej wizyty, wybranej przez zalogowanego uzytkownika
-        public List<string> GetSpecificAppointment(string id)
-        {
-            if (connection.Open())
-            {
-                Dictionary<string, string> parameters = new Dictionary<string, string>()
-                {
-                    { "@id", id}
-                };
-                List<string> result = connection.GetAppointment($"SELECT pacjenci.pesel, CONCAT(pacjenci.imie, \" \", pacjenci.nazwisko), CONCAT(doktorzy.imie, \" \", doktorzy.nazwisko), wizyty.opis, wizyty.data FROM wizyty JOIN pacjenci ON pacjenci.idp=wizyty.idp JOIN doktorzy ON doktorzy.idd=wizyty.idd WHERE wizyty.idw=@id", parameters);
-
-                result.Add(string.Join(Environment.NewLine, connection.GetPrescription($"SELECT CONCAT(leki.nazwa, \" \", dawki.ile) FROM wizyty JOIN wiz_i_dawki_i_leki ON wizyty.idw=wiz_i_dawki_i_leki.idw JOIN dawki_i_leki ON wiz_i_dawki_i_leki.iddl=dawki_i_leki.iddl JOIN dawki ON dawki_i_leki.idd=dawki.idd JOIN leki ON dawki_i_leki.idl=leki.idl WHERE wizyty.idw=@id", parameters).ToArray()));
-
-                connection.Close();
-                return result;
-            }
-            else
-            {
-                MessageBox.Show("Błąd z połaczeniem!");
-                List<string> result = null;
-                return result;
+                throw new CustomExceptions.DatabaseConnectionFailedException();
             }
         }
 
@@ -282,15 +243,12 @@ namespace Clinic
                     connection.Close();
                     return false;
                 }
-                MessageBox.Show("Lekarz o tej godzinie jest zajęty! Wybierz inną datę!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 connection.Close();
-                return false;
+                throw new CustomExceptions.DoctorIsBusyAtThisTimeException();
             }
             else
             {
-                MessageBox.Show("Błąd z połaczeniem!");
-                return false;
+                throw new CustomExceptions.DatabaseConnectionFailedException();
             }
         }
 
@@ -310,8 +268,6 @@ namespace Clinic
                     }
                 }
                 if (count == 1) { return id; }
-                else if (count == 0) { MessageBox.Show("Brak wyników!"); }
-                else { MessageBox.Show("Podana wizyta widnieje 2x w systemie. Proszę zgłosić się do administratora."); }
             }
             catch (NullReferenceException) { }
             return -1;
@@ -337,8 +293,7 @@ namespace Clinic
             }
             else
             {
-                MessageBox.Show("Błąd z połaczeniem!");
-                return false;
+                throw new CustomExceptions.DatabaseConnectionFailedException();
             }
         }
 
@@ -388,9 +343,7 @@ namespace Clinic
             }
             else
             {
-                MessageBox.Show("Błąd z połaczeniem!");
-                List<string> result = null;
-                return result;
+                throw new CustomExceptions.DatabaseConnectionFailedException();
             }
         }
 
@@ -412,7 +365,6 @@ namespace Clinic
 
                 if (!connection.DeleteInfo($"DELETE FROM wiz_i_dawki_i_leki WHERE idw=@id {inClause}", parameters))
                 {
-                    MessageBox.Show("Ups! Coś poszło nie tak, spróbuj ponownie!");
                     connection.Close();
                     return false;
                 }
@@ -421,8 +373,7 @@ namespace Clinic
             }
             else
             {
-                MessageBox.Show("Błąd z połaczeniem!");
-                return false;
+                throw new CustomExceptions.DatabaseConnectionFailedException();
             }
         }
 
